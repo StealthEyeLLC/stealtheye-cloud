@@ -1,16 +1,15 @@
 # Next Action
 
-Complete **S0 — Foundation, Continuity, Packet Spine, and Cheap CI** on branch:
+Merge **S0 — Foundation, Continuity, Packet Spine, and Cheap CI** after the final CI rerun remains green.
+
+Then begin:
 
 ```text
-build/s0-foundation-continuity-ci
+S1 — Mission Executor, Atomic Drop Rail, Authority Queue, and GitHub Evidence
 ```
 
-Immediate work:
+S1 target branch:
 
-1. Add Rust workspace and `secloud` validator CLI.
-2. Add Relay/Seal/packet schemas and fixtures.
-3. Add `.stealtheye/` continuity folder spine.
-4. Add GitHub Actions proof workflows.
-5. Open S0 PR.
-6. Read CI result and repair until green.
+```text
+build/s1-mission-executor-atomic-drop
+```
