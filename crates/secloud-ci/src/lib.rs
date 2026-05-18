@@ -21,7 +21,10 @@ pub fn validate_evidence_card_text(content: &str, schema_name: &str) -> Evidence
     if !content.contains("summary") {
         errors.push("missing summary marker".to_string());
     }
-    EvidenceCardValidation { valid: errors.is_empty(), errors }
+    EvidenceCardValidation {
+        valid: errors.is_empty(),
+        errors,
+    }
 }
 
 #[cfg(test)]
@@ -36,7 +39,10 @@ mod tests {
 
     #[test]
     fn evidence_card_accepts_markers() {
-        let result = validate_evidence_card_text("CiEvidenceCardV0 mission_id summary", CI_EVIDENCE_CARD_SCHEMA);
+        let result = validate_evidence_card_text(
+            "CiEvidenceCardV0 mission_id summary",
+            CI_EVIDENCE_CARD_SCHEMA,
+        );
         assert!(result.valid, "{:?}", result.errors);
     }
 }
