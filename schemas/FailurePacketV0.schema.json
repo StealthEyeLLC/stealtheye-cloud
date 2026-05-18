@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FailurePacketV0",
+  "type": "object",
+  "required": ["schema_version", "failure_id", "mission_id", "failure_kind", "summary"],
+  "properties": {
+    "schema_version": {"const": "FailurePacketV0"},
+    "failure_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "failure_kind": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
