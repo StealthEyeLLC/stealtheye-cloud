@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stealtheye.cloud/schemas/StealthEyeRelayV0.schema.json",
+  "title": "StealthEyeRelayV0",
+  "type": "object",
+  "required": ["schema_version", "relay_id", "product_name", "mission_id", "mission_status", "next_action", "resume_prompt"],
+  "properties": {
+    "schema_version": {"const": "StealthEyeRelayV0"},
+    "relay_id": {"type": "string", "minLength": 1},
+    "product_name": {"const": "StealthEye Cloud"},
+    "mission_id": {"type": "string", "minLength": 1},
+    "mission_status": {"type": "string"},
+    "next_action": {"type": "string", "minLength": 1},
+    "resume_prompt": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
