@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AtomicDropPackageV0",
+  "type": "object",
+  "required": ["schema_version", "package_id", "mission_id", "operations"],
+  "properties": {
+    "schema_version": {"const": "AtomicDropPackageV0"},
+    "package_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "operations": {"type": "array"}
+  },
+  "additionalProperties": true
+}
