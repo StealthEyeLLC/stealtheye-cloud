@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ToolPermissionEnvelopeV0",
+  "type": "object",
+  "required": ["schema_version", "permission_id", "tool_name", "mission_id", "authority_class", "allowed"],
+  "properties": {
+    "schema_version": {"const": "ToolPermissionEnvelopeV0"},
+    "permission_id": {"type": "string", "minLength": 1},
+    "tool_name": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "authority_class": {"type": "string", "minLength": 1},
+    "allowed": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}
