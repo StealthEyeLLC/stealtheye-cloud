@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ToolCapabilitySearchV0",
+  "type": "object",
+  "required": ["schema_version", "search_id", "query", "matches"],
+  "properties": {
+    "schema_version": {"const": "ToolCapabilitySearchV0"},
+    "search_id": {"type": "string", "minLength": 1},
+    "query": {"type": "string"},
+    "matches": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
