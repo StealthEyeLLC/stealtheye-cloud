@@ -92,7 +92,8 @@ fn validate_seal() -> Result<String, String> {
 }
 
 fn validate_file_contains(path: &str, needles: &[&str]) -> Result<String, String> {
-    let content = fs::read_to_string(path).map_err(|err| format!("failed to read {path}: {err}"))?;
+    let content =
+        fs::read_to_string(path).map_err(|err| format!("failed to read {path}: {err}"))?;
     let mut missing = Vec::new();
     for needle in needles {
         if !content.contains(needle) {
