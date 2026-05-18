@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MissionExecutorDispatchV0",
+  "type": "object",
+  "required": ["schema_version", "dispatch_id", "mission_id", "branch", "proof_tier"],
+  "properties": {
+    "schema_version": {"const": "MissionExecutorDispatchV0"},
+    "dispatch_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "branch": {"type": "string", "minLength": 1},
+    "proof_tier": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,52 @@
+name: mission-executor
+
+on:
+  workflow_dispatch:
+    inputs:
+      mission_id:
+        description: Mission id to validate
+        required: true
+        default: s1-mission-executor-atomic-drop
+      proof_tier:
+        description: Proof tier to run
+        required: true
+        default: proof-fast
+
+jobs:
+  mission-executor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Mission dispatch summary
+        run: |
+          echo "mission_id=${{ inputs.mission_id }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "proof_tier=${{ inputs.proof_tier }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "StealthEye Cloud S1 mission-executor workflow validates the public-safe mission body and proof spine." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Format
+        run: cargo fmt --all -- --check
+
+      - name: Check
+        run: cargo check --workspace
+
+      - name: Test
+        run: cargo test --workspace
+
+      - name: Validate root files
+        run: cargo run -p secloud-cli -- validate root
+
+      - name: Validate schemas
+        run: cargo run -p secloud-cli -- validate schemas
+
+      - name: Validate Relay
+        run: cargo run -p secloud-cli -- validate relay
+
+      - name: Validate Seal
+        run: cargo run -p secloud-cli -- validate seal

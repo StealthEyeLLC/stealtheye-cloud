@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DropPlanV0",
+  "type": "object",
+  "required": ["schema_version", "plan_id", "mission_id", "steps"],
+  "properties": {
+    "schema_version": {"const": "DropPlanV0"},
+    "plan_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "steps": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

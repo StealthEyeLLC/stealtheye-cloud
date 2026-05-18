@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DropValidationV0",
+  "type": "object",
+  "required": ["schema_version", "validation_id", "mission_id", "valid", "errors"],
+  "properties": {
+    "schema_version": {"const": "DropValidationV0"},
+    "validation_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "valid": {"type": "boolean"},
+    "errors": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

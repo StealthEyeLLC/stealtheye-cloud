@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GitHubEvidencePackV0",
+  "type": "object",
+  "required": ["schema_version", "evidence_id", "mission_id", "repo", "summary"],
+  "properties": {
+    "schema_version": {"const": "GitHubEvidencePackV0"},
+    "evidence_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "repo": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

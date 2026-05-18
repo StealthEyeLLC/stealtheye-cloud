@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StealthEyeAutonomyStatusV0",
+  "type": "object",
+  "required": ["schema_version", "status_id", "mission_id", "local_actions_required", "approvals_required", "summary"],
+  "properties": {
+    "schema_version": {"const": "StealthEyeAutonomyStatusV0"},
+    "status_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "local_actions_required": {"type": "integer", "minimum": 0},
+    "approvals_required": {"type": "integer", "minimum": 0},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

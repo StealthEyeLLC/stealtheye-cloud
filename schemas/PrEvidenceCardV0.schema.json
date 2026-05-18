@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PrEvidenceCardV0",
+  "type": "object",
+  "required": ["schema_version", "card_id", "mission_id", "pr", "status", "summary"],
+  "properties": {
+    "schema_version": {"const": "PrEvidenceCardV0"},
+    "card_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "pr": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

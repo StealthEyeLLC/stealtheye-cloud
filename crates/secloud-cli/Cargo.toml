@@ -13,3 +13,6 @@ path = "src/main.rs"
 secloud-packets = { path = "../secloud-packets" }
 secloud-relay = { path = "../secloud-relay" }
 secloud-seal = { path = "../secloud-seal" }
+secloud-mission = { path = "../secloud-mission" }
+secloud-file-bundle = { path = "../secloud-file-bundle" }
+secloud-ci = { path = "../secloud-ci" }
