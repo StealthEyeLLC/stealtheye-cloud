@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BrowserObservationPacketV0",
+  "type": "object",
+  "required": ["schema_version", "observation_id", "mission_id", "route", "summary"],
+  "properties": {
+    "schema_version": {"const": "BrowserObservationPacketV0"},
+    "observation_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "route": {"type": "string"},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

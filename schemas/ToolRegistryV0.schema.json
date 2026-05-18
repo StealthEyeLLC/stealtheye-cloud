@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ToolRegistryV0",
+  "type": "object",
+  "required": ["schema_version", "tools", "blocked_tool_names"],
+  "properties": {
+    "schema_version": {"const": "ToolRegistryV0"},
+    "tools": {"type": "array", "items": {"type": "string"}},
+    "blocked_tool_names": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

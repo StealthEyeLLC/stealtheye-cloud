@@ -1,0 +1,21 @@
+# StealthEye Cloud
+
+> No-local ChatGPT-native GitHub/browser execution-body agent.
+
+## Start
+
+- Instructions: `AGENTS.md`
+- Active state: `STEALTHEYE_ACTIVE.md`
+- Decisions: `STEALTHEYE_DECISIONS.md`
+- Handoff: `STEALTHEYE_RELAY.md` and `STEALTHEYE_RELAY.json`
+- Latest checkpoint: `STEALTHEYE_SEAL.json`
+- Next action: `NEXT_ACTION.md`
+
+## Specs
+
+- Final technical spec: `docs/StealthEye_Cloud_Final_Technical_Specification.md`
+- Build plan: `docs/StealthEye_Cloud_Build_Plan.md`
+
+## Current phase
+
+S0 — Foundation, Continuity, Packet Spine, and Cheap CI.

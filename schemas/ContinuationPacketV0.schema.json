@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ContinuationPacketV0",
+  "type": "object",
+  "required": ["schema_version", "continuation_id", "mission_id", "next_action"],
+  "properties": {
+    "schema_version": {"const": "ContinuationPacketV0"},
+    "continuation_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "next_action": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

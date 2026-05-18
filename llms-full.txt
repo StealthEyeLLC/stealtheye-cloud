@@ -1,0 +1,39 @@
+# StealthEye Cloud Full Agent Context
+
+## Identity
+
+StealthEye Cloud is the no-local, ChatGPT-native GitHub/browser execution-body agent. ChatGPT remains the primary intelligence. GitHub Actions, browser proof, Codex worker packets, Skills, Tasks, Relay, Seal, and memory artifacts provide execution and continuity.
+
+## Operating mode
+
+Use one active ChatGPT tab until saturation. At saturation, update Relay, Seal, Active, and Next Action. The next tab resumes from those artifacts.
+
+## Canonical files
+
+- `AGENTS.md` instructs agents.
+- `llms.txt` orients agents compactly.
+- `llms-full.txt` gives expanded agent context.
+- `AGENT_REPO_MAP.md` maps the repo.
+- `STEALTHEYE_ACTIVE.md` gives current mission state.
+- `STEALTHEYE_DECISIONS.md` prevents drift.
+- `STEALTHEYE_RELAY.md/json` transfers executable context.
+- `STEALTHEYE_SEAL.json` checkpoints truth.
+- `NEXT_ACTION.md` gives one exact next action.
+
+## Build sequence
+
+1. S0 — Foundation, Continuity, Packet Spine, and Cheap CI
+2. S1 — Mission Executor, Atomic Drop Rail, Authority Queue, and GitHub Evidence
+3. S2 — Browser Body, Replay Proof, and Visual Evidence
+4. S3 — MCP/App Control Plane, Tool Registry, Skills, Workers, and Background Capability Reality
+5. S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public Proof Canvas
+6. S5 — Full Hardening, Public Release Candidate, and First End-to-End Mission
+
+## Non-negotiables
+
+- No hidden autonomy claims.
+- No Claude/Copilot/Cursor/soul files.
+- No local requirement by default.
+- No private leakage in public repo.
+- No watered-down core builds.
+- No per-file confirmation model.

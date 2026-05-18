@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ObservationPacketV0",
+  "type": "object",
+  "required": ["schema_version", "observation_id", "mission_id", "summary"],
+  "properties": {
+    "schema_version": {"const": "ObservationPacketV0"},
+    "observation_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

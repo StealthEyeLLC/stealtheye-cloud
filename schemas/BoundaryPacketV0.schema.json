@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BoundaryPacketV0",
+  "type": "object",
+  "required": ["schema_version", "boundary_id", "mission_id", "boundary_kind", "required_user_action"],
+  "properties": {
+    "schema_version": {"const": "BoundaryPacketV0"},
+    "boundary_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "boundary_kind": {"type": "string", "minLength": 1},
+    "required_user_action": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

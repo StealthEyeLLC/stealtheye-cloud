@@ -1,0 +1,13 @@
+[workspace]
+members = [
+    "crates/secloud-packets",
+    "crates/secloud-relay",
+    "crates/secloud-seal",
+    "crates/secloud-cli",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/StealthEyeLLC/stealtheye-cloud"

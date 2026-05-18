@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CapabilityRegistryV0",
+  "type": "object",
+  "required": ["schema_version", "capabilities"],
+  "properties": {
+    "schema_version": {"const": "CapabilityRegistryV0"},
+    "capabilities": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

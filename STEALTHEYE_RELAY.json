@@ -1,0 +1,34 @@
+{
+  "schema_version": "StealthEyeRelayV0",
+  "relay_id": "relay-s0-bootstrap",
+  "created_at": "2026-05-18T00:00:00Z",
+  "product_name": "StealthEye Cloud",
+  "mission_id": "s0-foundation-continuity-ci",
+  "mission_title": "S0 — Foundation, Continuity, Packet Spine, and Cheap CI",
+  "mission_status": "active",
+  "active_repo": "StealthEyeLLC/stealtheye-cloud",
+  "active_branch": "build/s0-foundation-continuity-ci",
+  "active_pr": null,
+  "latest_seal_id": "seal-s0-mission-bootstrap",
+  "latest_ci_status": "not_run",
+  "latest_browser_status": "not_required",
+  "current_approval": "user-approved-public-safe-s0-build",
+  "next_action": "Complete S0 Rust validator spine, schemas, fixtures, and GitHub Actions workflows.",
+  "blocked_reason": null,
+  "do_not_reopen": [
+    "product name",
+    "no-local default",
+    "one-tab saturation mode",
+    "Relay/Seal/Active/Next Action handoff",
+    "forbidden file policy"
+  ],
+  "required_files": [
+    "AGENTS.md",
+    "STEALTHEYE_ACTIVE.md",
+    "STEALTHEYE_DECISIONS.md",
+    "STEALTHEYE_RELAY.md",
+    "STEALTHEYE_SEAL.json",
+    "NEXT_ACTION.md"
+  ],
+  "resume_prompt": "Resume this StealthEye Cloud mission from this Relay. Use the latest Seal as truth, obey the Active Approval Envelope, do not reopen frozen decisions, and perform the Next Exact Action unless a boundary is required."
+}

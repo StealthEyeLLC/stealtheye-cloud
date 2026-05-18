@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MissionApprovalV0",
+  "type": "object",
+  "required": ["schema_version", "approval_id", "mission_id", "allowed_scope", "stop_conditions"],
+  "properties": {
+    "schema_version": {"const": "MissionApprovalV0"},
+    "approval_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "allowed_scope": {"type": "array", "items": {"type": "string"}},
+    "stop_conditions": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
