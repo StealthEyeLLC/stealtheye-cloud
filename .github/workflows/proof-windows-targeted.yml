@@ -1,0 +1,31 @@
+name: proof-windows-targeted
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'crates/**'
+      - 'STEALTHEYE_RELAY.md'
+      - 'STEALTHEYE_SEAL.json'
+      - '.github/workflows/proof-windows-targeted.yml'
+
+jobs:
+  proof-windows-targeted:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Test
+        run: cargo test --workspace
+
+      - name: Validate Relay
+        run: cargo run -p secloud-cli -- validate relay
+
+      - name: Validate Seal
+        run: cargo run -p secloud-cli -- validate seal
