@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OutputShelfV0",
+  "type": "object",
+  "required": ["schema_version", "shelf_id", "mission_id", "artifacts"],
+  "properties": {
+    "schema_version": {"const": "OutputShelfV0"},
+    "shelf_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "artifacts": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
