@@ -5,9 +5,7 @@ members = [
     "crates/secloud-seal",
     "crates/secloud-mission",
     "crates/secloud-file-bundle",
-    "crates/secloud-github",
     "crates/secloud-ci",
-    "crates/secloud-capabilities",
     "crates/secloud-cli",
 ]
 resolver = "2"
