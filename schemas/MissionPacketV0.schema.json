@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MissionPacketV0",
+  "type": "object",
+  "required": ["schema_version", "mission_id", "title", "objective"],
+  "properties": {
+    "schema_version": {"const": "MissionPacketV0"},
+    "mission_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "objective": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
