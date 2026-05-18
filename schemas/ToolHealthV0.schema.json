@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ToolHealthV0",
+  "type": "object",
+  "required": ["schema_version", "tool_name", "status", "summary"],
+  "properties": {
+    "schema_version": {"const": "ToolHealthV0"},
+    "tool_name": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
