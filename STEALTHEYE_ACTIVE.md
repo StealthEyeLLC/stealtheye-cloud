@@ -14,7 +14,7 @@ S1 — Mission Executor, Atomic Drop Rail, Authority Queue, and GitHub Evidence
 
 ## Active PR
 
-Pending.
+PR #2 — S1: Mission executor, atomic drop rail, authority queue, and GitHub evidence
 
 ## Current approval envelope
 
@@ -42,7 +42,13 @@ Stop for:
 
 ## Latest CI status
 
-S1 CI not run yet. S0 previously merged green.
+Green on PR #2 before final state update:
+
+1. `proof-fast` — success
+2. `proof-full` — success
+3. `proof-windows-targeted` — success
+
+Final state update may trigger a lightweight rerun; if not, the last executable S1 head was green.
 
 ## Latest browser status
 
@@ -54,7 +60,7 @@ None.
 
 ## Next exact action
 
-Open S1 PR, run public GitHub proof workflows, repair failures directly in GitHub, and merge when green.
+Merge S1, then begin S2 — Browser Body, Replay Proof, and Visual Evidence.
 
 ## Saturation status
 
