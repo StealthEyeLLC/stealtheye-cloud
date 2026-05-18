@@ -6,29 +6,30 @@ StealthEye Cloud
 
 ## Current mission
 
-S0 — Foundation, Continuity, Packet Spine, and Cheap CI
+S1 — Mission Executor, Atomic Drop Rail, Authority Queue, and GitHub Evidence
 
 ## Active branch
 
-`build/s0-foundation-continuity-ci`
+`build/s1-mission-executor-atomic-drop`
 
 ## Active PR
 
-PR #1 — S0: Foundation, continuity, packet spine, and cheap CI
+Pending.
 
 ## Current approval envelope
 
-User approved direct build continuation for S0 in the public repository.
+User approved cloud-only direct build continuation. Local/laptop work is disabled unless catastrophe or explicit user instruction.
 
 Allowed:
 
-1. create S0 branch
-2. add public-safe files
-3. add Rust workspace and validators
-4. add schemas and fixtures
-5. add GitHub Actions proof workflows
+1. create S1 branch
+2. add public-safe S1 files
+3. add mission executor schemas and docs
+4. add Rust validation crates
+5. add mission-executor GitHub Actions workflow
 6. open PR
-7. merge when green if GitHub allows
+7. repair CI failures directly in GitHub
+8. merge when green if GitHub allows
 
 Stop for:
 
@@ -41,17 +42,11 @@ Stop for:
 
 ## Latest CI status
 
-Green before final state update:
-
-1. `proof-fast` — success
-2. `proof-full` — success
-3. `proof-windows-targeted` — success
-
-Final state update is expected to rerun these gates before merge.
+S1 CI not run yet. S0 previously merged green.
 
 ## Latest browser status
 
-Not required for S0.
+Not required for S1.
 
 ## Current blocker
 
@@ -59,7 +54,7 @@ None.
 
 ## Next exact action
 
-Merge S0 after final CI rerun remains green, then begin S1 — Mission Executor, Atomic Drop Rail, Authority Queue, and GitHub Evidence.
+Open S1 PR, run public GitHub proof workflows, repair failures directly in GitHub, and merge when green.
 
 ## Saturation status
 
