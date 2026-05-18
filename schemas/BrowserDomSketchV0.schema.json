@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BrowserDomSketchV0",
+  "type": "object",
+  "required": ["schema_version", "sketch_id", "mission_id", "route", "nodes"],
+  "properties": {
+    "schema_version": {"const": "BrowserDomSketchV0"},
+    "sketch_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "route": {"type": "string"},
+    "nodes": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}
