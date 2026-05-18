@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VisualEvidenceCardV0",
+  "type": "object",
+  "required": ["schema_version", "card_id", "mission_id", "artifact_path", "summary"],
+  "properties": {
+    "schema_version": {"const": "VisualEvidenceCardV0"},
+    "card_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "artifact_path": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
