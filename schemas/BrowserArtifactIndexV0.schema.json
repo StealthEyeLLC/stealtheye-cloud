@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BrowserArtifactIndexV0",
+  "type": "object",
+  "required": ["schema_version", "mission_id", "route", "screenshot", "console_errors", "network_failures", "dom_sketch", "status"],
+  "properties": {
+    "schema_version": {"const": "BrowserArtifactIndexV0"},
+    "mission_id": {"type": "string", "minLength": 1},
+    "route": {"type": "string"},
+    "screenshot": {"type": "string", "minLength": 1},
+    "console_errors": {"type": "array", "items": {"type": "string"}},
+    "network_failures": {"type": "array", "items": {"type": "string"}},
+    "dom_sketch": {"type": "object"},
+    "status": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
