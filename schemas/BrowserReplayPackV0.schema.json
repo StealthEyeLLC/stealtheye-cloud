@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BrowserReplayPackV0",
+  "type": "object",
+  "required": ["schema_version", "replay_id", "mission_id", "steps", "expected_result"],
+  "properties": {
+    "schema_version": {"const": "BrowserReplayPackV0"},
+    "replay_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "steps": {"type": "array", "items": {"type": "string"}},
+    "expected_result": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
