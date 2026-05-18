@@ -14,7 +14,7 @@ S0 — Foundation, Continuity, Packet Spine, and Cheap CI
 
 ## Active PR
 
-Pending.
+PR #1 — S0: Foundation, continuity, packet spine, and cheap CI
 
 ## Current approval envelope
 
@@ -41,7 +41,13 @@ Stop for:
 
 ## Latest CI status
 
-Not run yet.
+Green before final state update:
+
+1. `proof-fast` — success
+2. `proof-full` — success
+3. `proof-windows-targeted` — success
+
+Final state update is expected to rerun these gates before merge.
 
 ## Latest browser status
 
@@ -53,7 +59,7 @@ None.
 
 ## Next exact action
 
-Complete S0 foundation files, Rust validator spine, schemas, fixtures, and GitHub Actions proof workflows on `build/s0-foundation-continuity-ci`.
+Merge S0 after final CI rerun remains green, then begin S1 — Mission Executor, Atomic Drop Rail, Authority Queue, and GitHub Evidence.
 
 ## Saturation status
 
