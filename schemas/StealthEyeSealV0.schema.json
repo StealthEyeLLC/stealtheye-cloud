@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stealtheye.cloud/schemas/StealthEyeSealV0.schema.json",
+  "title": "StealthEyeSealV0",
+  "type": "object",
+  "required": ["schema_version", "seal_id", "seal_type", "product", "mission_id", "next_action", "content_hash"],
+  "properties": {
+    "schema_version": {"const": "StealthEyeSealV0"},
+    "seal_id": {"type": "string", "minLength": 1},
+    "seal_type": {"enum": ["MISSION", "APPROVAL", "PROOF", "BLOCKED", "HANDOFF", "FINAL"]},
+    "product": {"const": "StealthEye Cloud"},
+    "mission_id": {"type": "string", "minLength": 1},
+    "next_action": {"type": "string"},
+    "content_hash": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
