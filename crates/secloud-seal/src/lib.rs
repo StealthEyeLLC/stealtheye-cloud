@@ -1,12 +1,7 @@
 //! StealthEye Seal validation for S0.
 
 pub const ALLOWED_SEAL_TYPES: &[&str] = &[
-    "MISSION",
-    "APPROVAL",
-    "PROOF",
-    "BLOCKED",
-    "HANDOFF",
-    "FINAL",
+    "MISSION", "APPROVAL", "PROOF", "BLOCKED", "HANDOFF", "FINAL",
 ];
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -40,7 +35,10 @@ pub fn validate_seal_json_text(content: &str) -> SealValidation {
         .iter()
         .any(|kind| content.contains(&format!("\"seal_type\": \"{kind}\"")));
     if !has_allowed_type {
-        errors.push("seal_type must be one of MISSION, APPROVAL, PROOF, BLOCKED, HANDOFF, FINAL".to_string());
+        errors.push(
+            "seal_type must be one of MISSION, APPROVAL, PROOF, BLOCKED, HANDOFF, FINAL"
+                .to_string(),
+        );
     }
 
     if !content.contains("StealthEye Cloud") {
