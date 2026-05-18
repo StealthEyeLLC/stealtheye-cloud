@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BrowserRepairPacketV0",
+  "type": "object",
+  "required": ["schema_version", "repair_id", "mission_id", "failure_summary", "recommended_action"],
+  "properties": {
+    "schema_version": {"const": "BrowserRepairPacketV0"},
+    "repair_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "failure_summary": {"type": "string", "minLength": 1},
+    "recommended_action": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

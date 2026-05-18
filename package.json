@@ -1,0 +1,14 @@
+{
+  "name": "stealtheye-cloud",
+  "version": "0.1.0",
+  "private": true,
+  "description": "StealthEye Cloud browser proof body.",
+  "scripts": {
+    "proof:browser": "playwright test -c browser/playwright/playwright.config.ts",
+    "proof:browser:summary": "node browser/playwright/scripts/check-browser-artifacts.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "typescript": "^5.8.3"
+  }
+}

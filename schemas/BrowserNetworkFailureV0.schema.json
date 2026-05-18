@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BrowserNetworkFailureV0",
+  "type": "object",
+  "required": ["schema_version", "failure_id", "mission_id", "route", "requests"],
+  "properties": {
+    "schema_version": {"const": "BrowserNetworkFailureV0"},
+    "failure_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "route": {"type": "string"},
+    "requests": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

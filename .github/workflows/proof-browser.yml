@@ -1,0 +1,57 @@
+name: proof-browser
+
+on:
+  push:
+    branches:
+      - main
+      - 'build/**'
+      - 'repair/**'
+    paths:
+      - 'browser/**'
+      - 'package.json'
+      - '.github/workflows/proof-browser.yml'
+      - 'schemas/Browser*.schema.json'
+      - 'docs/BROWSER_BODY.md'
+      - 'docs/REPLAY_PROOF_SURFACE.md'
+      - 'docs/VISUAL_EVIDENCE.md'
+  pull_request:
+    paths:
+      - 'browser/**'
+      - 'package.json'
+      - '.github/workflows/proof-browser.yml'
+      - 'schemas/Browser*.schema.json'
+      - 'docs/BROWSER_BODY.md'
+      - 'docs/REPLAY_PROOF_SURFACE.md'
+      - 'docs/VISUAL_EVIDENCE.md'
+  workflow_dispatch:
+
+jobs:
+  proof-browser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser proof
+        run: npm run proof:browser
+
+      - name: Validate browser artifacts
+        run: npm run proof:browser:summary
+
+      - name: Upload browser artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-proof-artifacts
+          path: .stealtheye/browser/

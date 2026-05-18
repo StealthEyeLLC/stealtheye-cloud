@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BrowserRouteSmokeV0",
+  "type": "object",
+  "required": ["schema_version", "smoke_id", "mission_id", "route", "status"],
+  "properties": {
+    "schema_version": {"const": "BrowserRouteSmokeV0"},
+    "smoke_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "route": {"type": "string"},
+    "status": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

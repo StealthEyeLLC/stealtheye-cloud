@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BrowserRunRequestV0",
+  "type": "object",
+  "required": ["schema_version", "request_id", "mission_id", "route", "expected_artifacts"],
+  "properties": {
+    "schema_version": {"const": "BrowserRunRequestV0"},
+    "request_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "route": {"type": "string"},
+    "expected_artifacts": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

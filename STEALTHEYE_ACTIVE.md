@@ -6,15 +6,15 @@ StealthEye Cloud
 
 ## Current mission
 
-S1 — Mission Executor, Atomic Drop Rail, Authority Queue, and GitHub Evidence
+S2 — Browser Body, Replay Proof, and Visual Evidence
 
 ## Active branch
 
-`build/s1-mission-executor-atomic-drop`
+`build/s2-browser-body-proof`
 
 ## Active PR
 
-PR #2 — S1: Mission executor, atomic drop rail, authority queue, and GitHub evidence
+PR #3 — S2: Browser body, replay proof, and visual evidence
 
 ## Current approval envelope
 
@@ -22,14 +22,13 @@ User approved cloud-only direct build continuation. Local/laptop work is disable
 
 Allowed:
 
-1. create S1 branch
-2. add public-safe S1 files
-3. add mission executor schemas and docs
-4. add Rust validation crates
-5. add mission-executor GitHub Actions workflow
-6. open PR
-7. repair CI failures directly in GitHub
-8. merge when green if GitHub allows
+1. create S2 branch
+2. add public-safe browser proof files
+3. add Playwright browser body workflow
+4. add browser observation schemas and docs
+5. open PR
+6. repair CI failures directly in GitHub
+7. merge when green if GitHub allows
 
 Stop for:
 
@@ -42,17 +41,17 @@ Stop for:
 
 ## Latest CI status
 
-Green on PR #2 before final state update:
+Green on PR #3 before final state update:
 
 1. `proof-fast` — success
 2. `proof-full` — success
-3. `proof-windows-targeted` — success
+3. `proof-browser` — success
 
-Final state update may trigger a lightweight rerun; if not, the last executable S1 head was green.
+`proof-windows-targeted` did not trigger because S2 did not touch Windows-sensitive paths.
 
 ## Latest browser status
 
-Not required for S1.
+Green. Browser proof installed Chromium, ran the deterministic browser proof, validated browser artifacts, and uploaded browser artifacts.
 
 ## Current blocker
 
@@ -60,7 +59,7 @@ None.
 
 ## Next exact action
 
-Merge S1, then begin S2 — Browser Body, Replay Proof, and Visual Evidence.
+Merge S2, then begin S3 — MCP/App Control Plane, Tool Registry, Skills, Workers, and Background Capability Reality.
 
 ## Saturation status
 
