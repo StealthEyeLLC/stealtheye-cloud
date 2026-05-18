@@ -14,7 +14,7 @@ S2 — Browser Body, Replay Proof, and Visual Evidence
 
 ## Active PR
 
-Pending.
+PR #3 — S2: Browser body, replay proof, and visual evidence
 
 ## Current approval envelope
 
@@ -41,11 +41,17 @@ Stop for:
 
 ## Latest CI status
 
-S2 CI not run yet. S1 merged green.
+Green on PR #3 before final state update:
+
+1. `proof-fast` — success
+2. `proof-full` — success
+3. `proof-browser` — success
+
+`proof-windows-targeted` did not trigger because S2 did not touch Windows-sensitive paths.
 
 ## Latest browser status
 
-Pending first `proof-browser` run.
+Green. Browser proof installed Chromium, ran the deterministic browser proof, validated browser artifacts, and uploaded browser artifacts.
 
 ## Current blocker
 
@@ -53,7 +59,7 @@ None.
 
 ## Next exact action
 
-Open S2 PR, run public GitHub proof workflows including `proof-browser`, repair failures directly in GitHub, and merge when green.
+Merge S2, then begin S3 — MCP/App Control Plane, Tool Registry, Skills, Workers, and Background Capability Reality.
 
 ## Saturation status
 
