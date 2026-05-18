@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OperatorStateV0",
+  "type": "object",
+  "required": ["schema_version", "state_id", "mission_id", "summary", "next_action"],
+  "properties": {
+    "schema_version": {"const": "OperatorStateV0"},
+    "state_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1},
+    "next_action": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
