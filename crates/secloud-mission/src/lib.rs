@@ -37,7 +37,10 @@ mod tests {
 
     #[test]
     fn marker_validation_reports_missing_values() {
-        let result = validate_required_markers("MissionExecutorDispatchV0", &["MissionExecutorDispatchV0", "AuthorityQueueV0"]);
+        let result = validate_required_markers(
+            "MissionExecutorDispatchV0",
+            &["MissionExecutorDispatchV0", "AuthorityQueueV0"],
+        );
         assert!(!result.valid);
         assert_eq!(result.errors.len(), 1);
     }
