@@ -15,6 +15,16 @@ members = [
     "crates/secloud-hardening",
     "crates/secloud-release",
     "crates/secloud-e2e",
+    "crates/secloud-gateway",
+    "crates/secloud-mcp-adapters",
+    "crates/secloud-gemini-worker",
+    "crates/secloud-knowledge-mirror",
+    "crates/secloud-notifications",
+    "crates/secloud-external-auth",
+    "crates/secloud-gateway-security",
+    "crates/secloud-git-worker",
+    "crates/secloud-mobile-qa",
+    "crates/secloud-remediator",
     "crates/secloud-cli",
 ]
 resolver = "2"
