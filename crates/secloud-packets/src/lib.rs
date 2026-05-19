@@ -59,6 +59,24 @@ pub const REQUIRED_PACKET_SCHEMAS: &[&str] = &[
     "ResearchResultImportV0",
     "AgentModeTaskPacketV0",
     "FeatureAvailabilityCheckV0",
+    "FeedbackSignalV0",
+    "PatternCandidateV0",
+    "SkillCandidateV0",
+    "SkillPromotionDecisionV0",
+    "SkillTemplateIndexV0",
+    "TemplateToSkillCompilerV0",
+    "PastSessionSearchV0",
+    "SearchCorpusManifestV0",
+    "SearchResultCardV0",
+    "SearchImportDecisionV0",
+    "HypothesisRaceV0",
+    "CandidateBranchV0",
+    "CandidateReducerV0",
+    "RaceDecisionV0",
+    "ProofCanvasManifestV0",
+    "ProofPanelV0",
+    "ProofArtifactRefV0",
+    "ProofViewerBuildV0",
 ];
 
 pub const FORBIDDEN_ROOT_FILES: &[&str] = &[
@@ -102,6 +120,14 @@ mod tests {
         assert!(is_required_schema("ToolPermissionEnvelopeV0"));
         assert!(is_required_schema("StealthEyeWorkersV0"));
         assert!(is_required_schema("FeatureAvailabilityCheckV0"));
+    }
+
+    #[test]
+    fn required_schema_inventory_contains_s4_learning_search_race_and_canvas_contracts() {
+        assert!(is_required_schema("SkillCandidateV0"));
+        assert!(is_required_schema("PastSessionSearchV0"));
+        assert!(is_required_schema("HypothesisRaceV0"));
+        assert!(is_required_schema("ProofCanvasManifestV0"));
     }
 
     #[test]
