@@ -7,24 +7,24 @@ This document is the current build plan for `StealthEyeLLC/stealtheye-cloud`.
 Current verified state:
 
 ```text
-S0–S5 merged green
-latest verified S5 merge: a190d7347569cc3a59d91678ddc5dec9d9e48c1b
+S0–S6 merged green
+S6 PR #8 merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
+Post-S6 cleanup PR #9 merge SHA: a5e6eccc37067cf264fd8859c69fc412da855bb8
 ```
 
-S5 completed the first public no-local release-candidate spine with these gates green:
+S6 completed the zero-trust cross-cloud gateway readiness/enforcement substrate and was verified before merge with these gates green:
 
 ```text
 proof-fast
 proof-full
-proof-browser
 proof-e2e
+proof-gateway
 proof-windows-targeted
 ```
 
 The next locked build wave is:
 
 ```text
-S6 — Zero-Trust Cross-Cloud Gateway
 S7 — First Real Activations
 S8 — StealthEye Cloud Remediator
 ```
@@ -120,134 +120,17 @@ Status: merged.
 
 Purpose: hardening/release/e2e crates, release-candidate docs, `proof-e2e`, and first public no-local release-candidate proof.
 
+### S6 — Zero-Trust Cross-Cloud Gateway
+
+Status: merged.
+
+Purpose: zero-trust readiness/enforcement substrate for gateway transport/session/origin/backpressure contracts, adapter lifecycle/integrity/catalog contracts, Gemini worker readiness, semantic normalization, data-tainting, external authority boundaries, knowledge mirror, notification, repo worker, mobile/game QA, Remediator readiness, full S6 schema inventory, validator surface, and dedicated `proof-gateway` workflow.
+
+S6 did not activate live external services, automate browser sessions/cookies, or mutate production/database systems.
+
 ## 4. Next Build Wave
 
-## 4.1 S6 — Zero-Trust Cross-Cloud Gateway
-
-### Objective
-
-Build the real enforcement and readiness substrate for cross-cloud operation.
-
-S6 does not activate live external services. It proves the control plane, adapter lifecycle, auth boundaries, taint boundaries, normalization boundaries, backpressure, readiness lanes, and Remediator contracts.
-
-### Branch
-
-```text
-build/s6-zero-trust-cross-cloud-gateway
-```
-
-### Crates
-
-```text
-crates/secloud-gateway
-crates/secloud-mcp-adapters
-crates/secloud-gemini-worker
-crates/secloud-knowledge-mirror
-crates/secloud-notifications
-crates/secloud-external-auth
-crates/secloud-gateway-security
-crates/secloud-git-worker
-crates/secloud-mobile-qa
-crates/secloud-remediator
-```
-
-### Required S6 systems
-
-1. Gateway transport/session/origin/auth policy
-2. MCP adapter registry
-3. Adapter type-state enforcement
-4. MCP descriptor integrity / rug-pull defense
-5. Adapter candidate catalog and risk scoring
-6. Gemini worker readiness
-7. Semantic normalization and prompt topology isolation
-8. Data-tainting and indirect prompt injection isolation
-9. Backpressure governor
-10. External auth policy
-11. Workflow injection guard
-12. Knowledge mirror readiness and redaction
-13. Notification readiness
-14. Git worker readiness
-15. Mobile QA readiness
-16. Document/web ingest safety contracts
-17. Production adapter contracts
-18. Telemetry adapter contracts
-19. Remediator readiness
-
-### Required S6 validators
-
-```text
-secloud validate gateway
-secloud validate gateway-transport
-secloud validate mcp-adapters
-secloud validate adapter-type-state
-secloud validate adapter-integrity
-secloud validate adapter-catalog
-secloud validate gemini-worker
-secloud validate normalization
-secloud validate prompt-topology
-secloud validate data-tainting
-secloud validate injection-isolation
-secloud validate backpressure
-secloud validate external-auth
-secloud validate workflow-security
-secloud validate knowledge-mirror
-secloud validate semantic-snapshot
-secloud validate notifications
-secloud validate git-worker
-secloud validate mobile-qa
-secloud validate game-qa
-secloud validate document-ingest
-secloud validate web-ingest
-secloud validate production-adapters
-secloud validate database-boundary
-secloud validate telemetry-adapters
-secloud validate telemetry-redaction
-secloud validate remediator
-secloud validate remediation-intake
-secloud validate remediation-permissions
-secloud validate remediation-reproduction
-secloud validate remediation-failure-taxonomy
-secloud validate remediation-proof-plan
-secloud validate remediation-report
-```
-
-`secloud doctor` must include all S6 validators.
-
-### Required S6 workflow
-
-Add:
-
-```text
-.github/workflows/proof-gateway.yml
-```
-
-Required green gates:
-
-```text
-proof-fast
-proof-full
-proof-e2e
-proof-gateway
-proof-browser if triggered
-proof-windows-targeted if triggered
-```
-
-### S6 acceptance
-
-S6 passes when:
-
-1. all S6 crates compile
-2. all S6 schema files exist and are in packet inventory
-3. all S6 validators pass
-4. `proof-gateway` is green
-5. `secloud doctor` includes S6 validators
-6. docs are updated
-7. Active/Relay/Seal/Next Action are updated
-8. no external service is falsely claimed active
-9. no forbidden session automation exists
-10. no forbidden files exist
-
-## 4.2 S7 — First Real Activations
+## 4.1 S7 — First Real Activations
 
 ### Objective
 
@@ -290,7 +173,7 @@ S7 passes when the activated lanes perform real actions:
 7. relevant proof workflows are green
 8. docs state exactly which lanes are active and which are not
 
-## 4.3 S8 — StealthEye Cloud Remediator
+## 4.2 S8 — StealthEye Cloud Remediator
 
 ### Objective
 
@@ -379,8 +262,8 @@ Stop for:
 2. paid compute
 3. account permission changes
 4. private data exposure risk
-5. deployment/production mutation
-6. database mutation
+5. deployment/production mutation without explicit approval
+6. database mutation without explicit approval
 7. legal/commercial commitment
 8. platform auth boundary
 9. unresolved high-impact ambiguity
@@ -389,20 +272,14 @@ Do not stop for routine continuation, docs updates, CI repair, validator wiring,
 
 ## 7. Immediate Next Action
 
-Create and prove the documentation/handoff update PR from:
+Begin:
 
 ```text
-build/s6-s8-roadmap-docs-handoff
-```
-
-Then begin:
-
-```text
-S6 — Zero-Trust Cross-Cloud Gateway
+S7 — First Real Activations
 ```
 
 Target branch:
 
 ```text
-build/s6-zero-trust-cross-cloud-gateway
+build/s7-first-real-activations
 ```
