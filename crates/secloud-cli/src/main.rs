@@ -8,8 +8,8 @@ use secloud_learning::{has_promotion_rule, is_learning_schema, LEARNING_PACKET_S
 use secloud_packets::{FORBIDDEN_ROOT_FILES, REQUIRED_PACKET_SCHEMAS, REQUIRED_ROOT_FILES};
 use secloud_proof_viewer::{is_panel_kind, is_viewer_schema, PROOF_VIEWER_PACKET_SCHEMAS};
 use secloud_relay::validate_relay_markdown;
-use secloud_search::{is_allowed_corpus, is_search_schema, SEARCH_PACKET_SCHEMAS};
 use secloud_seal::validate_seal_json_text;
+use secloud_search::{is_allowed_corpus, is_search_schema, SEARCH_PACKET_SCHEMAS};
 use secloud_workers::{is_real_surface, is_worker_schema, WORKER_PACKET_SCHEMAS};
 
 fn main() {
