@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StealthEyeWorkersV0",
+  "type": "object",
+  "required": ["schema_version", "workers", "real_surfaces", "blocked_hidden_autonomy_claims"],
+  "properties": {
+    "schema_version": {"const": "StealthEyeWorkersV0"},
+    "workers": {"type": "array", "items": {"type": "string"}},
+    "real_surfaces": {"type": "array", "items": {"type": "string"}},
+    "blocked_hidden_autonomy_claims": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
