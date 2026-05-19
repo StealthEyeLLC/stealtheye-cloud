@@ -6,15 +6,15 @@ StealthEye Cloud
 
 ## Current mission
 
-S5 — Full Hardening, Public Release Candidate, and First End-to-End Mission
+Documentation and handoff update for S6/S7/S8 roadmap
 
 ## Active branch
 
-`build/s5-hardening-release-e2e`
+`build/s6-s8-roadmap-docs-handoff`
 
 ## Active PR
 
-PR #6 — S5: Hardening, release candidate, and first end-to-end mission
+Pending.
 
 ## Current approval envelope
 
@@ -22,15 +22,14 @@ User approved cloud-only direct build continuation. Local/laptop work is disable
 
 Allowed:
 
-1. use GitHub-only implementation
-2. add public-safe S5 hardening/release/e2e files
-3. add S5 Rust validation crates
-4. add S5 schemas and docs
-5. add dedicated e2e proof workflow
-6. update GitHub Actions proof workflows
-7. open PR
-8. repair CI failures directly in GitHub
-9. merge when green if GitHub allows
+1. update README and build docs
+2. add S6/S7/S8 roadmap docs
+3. update handoff/continuation docs
+4. update Relay/Seal/Active/Next Action
+5. open PR
+6. repair CI failures directly in GitHub
+7. merge when green if GitHub allows
+8. continue next tab into S6 using repo docs
 
 Stop for:
 
@@ -43,7 +42,13 @@ Stop for:
 
 ## Latest CI status
 
-Green on PR #6 before final state update:
+S5 merged green on `main` at:
+
+```text
+a190d7347569cc3a59d91678ddc5dec9d9e48c1b
+```
+
+Verified S5 gates:
 
 1. `proof-fast` — success
 2. `proof-full` — success
@@ -51,9 +56,7 @@ Green on PR #6 before final state update:
 4. `proof-e2e` — success
 5. `proof-windows-targeted` — success
 
-## Latest browser status
-
-Green. S5 keeps proof-browser as a release-candidate gate.
+Current docs/handoff branch CI not run yet.
 
 ## Current blocker
 
@@ -61,8 +64,8 @@ None.
 
 ## Next exact action
 
-Merge S5 after the final state-only proof rerun remains green, then finalize the public release-candidate handoff and decide the next major build wave.
+Open the docs/handoff PR, prove it green, merge it, then begin S6 — Zero-Trust Cross-Cloud Gateway on branch `build/s6-zero-trust-cross-cloud-gateway`.
 
 ## Saturation status
 
-Current tab active.
+Current tab is saturated enough that the repo handoff files must be treated as the continuation source of truth after this PR.
