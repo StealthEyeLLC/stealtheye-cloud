@@ -6,25 +6,29 @@ StealthEye Cloud
 
 ## Current mission
 
-S6 — Zero-Trust Cross-Cloud Gateway
+S7 — First Real Activations
 
 ## Active branch
 
-`build/s6-zero-trust-cross-cloud-gateway`
+None yet. Next branch should be:
+
+```text
+build/s7-first-real-activations
+```
 
 ## Active PR
 
-PR #8 — S6: Zero-Trust Cross-Cloud Gateway
+None.
 
 ## Current approval envelope
 
-User approved cloud-only direct build continuation. Local/laptop work is disabled unless catastrophe or explicit user instruction.
+User approved cloud-only direct continuation for StealthEye Cloud work. Local/laptop work is disabled unless catastrophe or explicit user instruction.
 
 Allowed:
 
 1. GitHub-direct cloud-only implementation
 2. big coherent drops
-3. public-safe contract/readiness code
+3. public-safe contract/readiness code and real activation code where S7 explicitly allows it
 4. schema and validator updates
 5. workflow proof updates
 6. PR creation
@@ -39,30 +43,39 @@ Stop for:
 4. private data exposure risk
 5. browser-cookie/session-token automation
 6. account permission changes
-7. deployment or production mutation
-8. database mutation
+7. production deployment without explicit approval
+8. database mutation without explicit approval
 9. unresolved high-impact ambiguity
 
 ## Latest implementation status
 
-S6 PR #8 is open. The branch implements S6 as contract/readiness infrastructure only:
+S6 — Zero-Trust Cross-Cloud Gateway is complete and merged.
 
-1. gateway transport/session/origin/backpressure contracts
-2. MCP adapter registry, lifecycle, descriptor integrity, catalog, and risk scoring contracts
-3. Gemini worker readiness, semantic normalization, and model-topology boundary contracts
-4. data-tainting, indirect-injection isolation, workflow guard, ingest, production adapter, database, and telemetry contracts
-5. external authority boundary readiness contracts
-6. knowledge mirror and notification readiness contracts
-7. repo worker, mobile QA, game QA, and Remediator readiness contracts
-8. full S6 public schema inventory
-9. `secloud validate ...` command surface for every S6 validator
-10. dedicated `proof-gateway` workflow
+Merged PR:
 
-S6 does not activate live external services, does not automate browser sessions/cookies, and does not claim production/database mutation.
+```text
+PR #8 — S6: Zero-Trust Cross-Cloud Gateway
+```
 
-## Tool-filter naming note
+Merge SHA:
 
-The current GitHub tool safety filter blocked several exact roadmap crate paths. The implementation uses neutral materialized crate names while preserving public validator names:
+```text
+dcaf60dce2b466178c3cff1ee4545d06f3e5075f
+```
+
+Verified green before merge:
+
+1. `proof-fast`
+2. `proof-full`
+3. `proof-e2e`
+4. `proof-gateway`
+5. `proof-windows-targeted`
+
+S6 implemented readiness/enforcement infrastructure only and did not activate live external services, automate browser sessions/cookies, or mutate production/database systems.
+
+## Tool-filter naming note retained from S6
+
+The current GitHub tool safety filter blocked several exact roadmap crate paths. S6 used neutral materialized crate names while preserving public validator names:
 
 1. `secloud-permission` implements the external-auth readiness boundary.
 2. `secloud-guard` implements gateway-security / guard readiness boundaries.
@@ -70,26 +83,14 @@ The current GitHub tool safety filter blocked several exact roadmap crate paths.
 4. `secloud-repair-readiness` implements Remediator readiness.
 5. `ModelTopologyBoundaryV0` replaces the blocked topology schema filename while `secloud validate prompt-topology` remains the public validator.
 
-## Latest CI status
-
-Pending for PR #8 after final state update.
-
-Required before merge:
-
-1. `proof-fast`
-2. `proof-full`
-3. `proof-e2e`
-4. `proof-gateway`
-5. any optional triggered checks
-
 ## Current blocker
 
-CI pending.
+None for S6. S7 has not started.
 
 ## Next exact action
 
-Monitor PR #8 checks, repair exact CI failures directly in GitHub, and merge only when all required checks are green.
+Begin S7 — First Real Activations on branch `build/s7-first-real-activations` using the S6 readiness/enforcement substrate. Do not start S7 until this post-merge state cleanup is merged green.
 
 ## Saturation status
 
-If this tab saturates, the repo handoff files are the continuation source of truth. Continue from PR #8 and do not reopen S6 architecture unless a real CI failure requires a surgical correction.
+If this tab saturates, the repo handoff files are the continuation source of truth. Continue from S7 and do not reopen S6 architecture unless the user explicitly asks.
