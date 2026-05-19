@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EndToEndStepV0",
+  "type": "object",
+  "required": ["schema_version", "step_id", "mission_id", "step_name", "status"],
+  "properties": {
+    "schema_version": {"const": "EndToEndStepV0"},
+    "step_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "step_name": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
