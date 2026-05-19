@@ -57,100 +57,7 @@ fn main() {
     let result = match args.as_slice() {
         [cmd] if cmd == "doctor" => doctor(),
         [cmd] if cmd == "status" => status(),
-        [cmd, target] if cmd == "validate" && target == "relay" => validate_relay(),
-        [cmd, target] if cmd == "validate" && target == "seal" => validate_seal(),
-        [cmd, target] if cmd == "validate" && target == "active" => validate_file_contains(
-            "STEALTHEYE_ACTIVE.md",
-            &["Current mission", "Next exact action"],
-        ),
-        [cmd, target] if cmd == "validate" && target == "decisions" => validate_file_contains(
-            "STEALTHEYE_DECISIONS.md",
-            &["Frozen decisions", "Forbidden files"],
-        ),
-        [cmd, target] if cmd == "validate" && target == "schemas" => validate_schemas(),
-        [cmd, target] if cmd == "validate" && target == "root" => validate_root_files(),
-        [cmd, target] if cmd == "validate" && target == "skills" => validate_skills(),
-        [cmd, target] if cmd == "validate" && target == "capabilities" => validate_capabilities(),
-        [cmd, target] if cmd == "validate" && target == "workers" => validate_workers(),
-        [cmd, target] if cmd == "validate" && target == "control" => validate_control_registry(),
-        [cmd, target] if cmd == "validate" && target == "learning" => validate_learning(),
-        [cmd, target] if cmd == "validate" && target == "search" => validate_search(),
-        [cmd, target] if cmd == "validate" && target == "hypothesis" => validate_hypothesis(),
-        [cmd, target] if cmd == "validate" && target == "proof-viewer" => validate_proof_viewer(),
-        [cmd, target] if cmd == "validate" && target == "hardening" => validate_hardening(),
-        [cmd, target] if cmd == "validate" && target == "release" => validate_release(),
-        [cmd, target] if cmd == "validate" && target == "e2e" => validate_e2e(),
-        [cmd, target] if cmd == "validate" && target == "gateway" => validate_gateway(),
-        [cmd, target] if cmd == "validate" && target == "gateway-transport" => {
-            validate_gateway_transport()
-        }
-        [cmd, target] if cmd == "validate" && target == "mcp-adapters" => validate_mcp_adapters(),
-        [cmd, target] if cmd == "validate" && target == "adapter-type-state" => {
-            validate_adapter_type_state()
-        }
-        [cmd, target] if cmd == "validate" && target == "adapter-integrity" => {
-            validate_adapter_integrity()
-        }
-        [cmd, target] if cmd == "validate" && target == "adapter-catalog" => {
-            validate_adapter_catalog()
-        }
-        [cmd, target] if cmd == "validate" && target == "gemini-worker" => validate_gemini_worker(),
-        [cmd, target] if cmd == "validate" && target == "normalization" => validate_normalization(),
-        [cmd, target] if cmd == "validate" && target == "prompt-topology" => {
-            validate_prompt_topology()
-        }
-        [cmd, target] if cmd == "validate" && target == "data-tainting" => validate_data_tainting(),
-        [cmd, target] if cmd == "validate" && target == "injection-isolation" => {
-            validate_injection_isolation()
-        }
-        [cmd, target] if cmd == "validate" && target == "backpressure" => validate_backpressure(),
-        [cmd, target] if cmd == "validate" && target == "external-auth" => validate_external_auth(),
-        [cmd, target] if cmd == "validate" && target == "workflow-security" => {
-            validate_workflow_security()
-        }
-        [cmd, target] if cmd == "validate" && target == "knowledge-mirror" => {
-            validate_knowledge_mirror()
-        }
-        [cmd, target] if cmd == "validate" && target == "semantic-snapshot" => {
-            validate_semantic_snapshot()
-        }
-        [cmd, target] if cmd == "validate" && target == "notifications" => validate_notifications(),
-        [cmd, target] if cmd == "validate" && target == "git-worker" => validate_git_worker(),
-        [cmd, target] if cmd == "validate" && target == "mobile-qa" => validate_mobile_qa(),
-        [cmd, target] if cmd == "validate" && target == "game-qa" => validate_game_qa(),
-        [cmd, target] if cmd == "validate" && target == "document-ingest" => validate_document_ingest(),
-        [cmd, target] if cmd == "validate" && target == "web-ingest" => validate_web_ingest(),
-        [cmd, target] if cmd == "validate" && target == "production-adapters" => {
-            validate_production_adapters()
-        }
-        [cmd, target] if cmd == "validate" && target == "database-boundary" => {
-            validate_database_boundary()
-        }
-        [cmd, target] if cmd == "validate" && target == "telemetry-adapters" => {
-            validate_telemetry_adapters()
-        }
-        [cmd, target] if cmd == "validate" && target == "telemetry-redaction" => {
-            validate_telemetry_redaction()
-        }
-        [cmd, target] if cmd == "validate" && target == "remediator" => validate_remediator(),
-        [cmd, target] if cmd == "validate" && target == "remediation-intake" => {
-            validate_remediation_intake()
-        }
-        [cmd, target] if cmd == "validate" && target == "remediation-permissions" => {
-            validate_remediation_permissions()
-        }
-        [cmd, target] if cmd == "validate" && target == "remediation-reproduction" => {
-            validate_remediation_reproduction()
-        }
-        [cmd, target] if cmd == "validate" && target == "remediation-failure-taxonomy" => {
-            validate_remediation_failure_taxonomy()
-        }
-        [cmd, target] if cmd == "validate" && target == "remediation-proof-plan" => {
-            validate_remediation_proof_plan()
-        }
-        [cmd, target] if cmd == "validate" && target == "remediation-report" => {
-            validate_remediation_report()
-        }
+        [cmd, target] if cmd == "validate" => validate_target(target),
         _ => {
             print_help();
             Err("unknown command".to_string())
@@ -158,12 +65,75 @@ fn main() {
     };
 
     match result {
-        Ok(message) => {
-            println!("PASS: {message}");
-        }
+        Ok(message) => println!("PASS: {message}"),
         Err(error) => {
             eprintln!("FAIL: {error}");
             std::process::exit(1);
+        }
+    }
+}
+
+fn validate_target(target: &str) -> Result<String, String> {
+    match target {
+        "relay" => validate_relay(),
+        "seal" => validate_seal(),
+        "active" => validate_file_contains(
+            "STEALTHEYE_ACTIVE.md",
+            &["Current mission", "Next exact action"],
+        ),
+        "decisions" => validate_file_contains(
+            "STEALTHEYE_DECISIONS.md",
+            &["Frozen decisions", "Forbidden files"],
+        ),
+        "schemas" => validate_schemas(),
+        "root" => validate_root_files(),
+        "skills" => validate_skills(),
+        "capabilities" => validate_capabilities(),
+        "workers" => validate_workers(),
+        "control" => validate_control_registry(),
+        "learning" => validate_learning(),
+        "search" => validate_search(),
+        "hypothesis" => validate_hypothesis(),
+        "proof-viewer" => validate_proof_viewer(),
+        "hardening" => validate_hardening(),
+        "release" => validate_release(),
+        "e2e" => validate_e2e(),
+        "gateway" => validate_gateway(),
+        "gateway-transport" => validate_gateway_transport(),
+        "mcp-adapters" => validate_mcp_adapters(),
+        "adapter-type-state" => validate_adapter_type_state(),
+        "adapter-integrity" => validate_adapter_integrity(),
+        "adapter-catalog" => validate_adapter_catalog(),
+        "gemini-worker" => validate_gemini_worker(),
+        "normalization" => validate_normalization(),
+        "prompt-topology" => validate_prompt_topology(),
+        "data-tainting" => validate_data_tainting(),
+        "injection-isolation" => validate_injection_isolation(),
+        "backpressure" => validate_backpressure(),
+        "external-auth" => validate_external_auth(),
+        "workflow-security" => validate_workflow_security(),
+        "knowledge-mirror" => validate_knowledge_mirror(),
+        "semantic-snapshot" => validate_semantic_snapshot(),
+        "notifications" => validate_notifications(),
+        "git-worker" => validate_git_worker(),
+        "mobile-qa" => validate_mobile_qa(),
+        "game-qa" => validate_game_qa(),
+        "document-ingest" => validate_document_ingest(),
+        "web-ingest" => validate_web_ingest(),
+        "production-adapters" => validate_production_adapters(),
+        "database-boundary" => validate_database_boundary(),
+        "telemetry-adapters" => validate_telemetry_adapters(),
+        "telemetry-redaction" => validate_telemetry_redaction(),
+        "remediator" => validate_remediator(),
+        "remediation-intake" => validate_remediation_intake(),
+        "remediation-permissions" => validate_remediation_permissions(),
+        "remediation-reproduction" => validate_remediation_reproduction(),
+        "remediation-failure-taxonomy" => validate_remediation_failure_taxonomy(),
+        "remediation-proof-plan" => validate_remediation_proof_plan(),
+        "remediation-report" => validate_remediation_report(),
+        _ => {
+            print_help();
+            Err(format!("unknown validation target: {target}"))
         }
     }
 }
@@ -172,107 +142,68 @@ fn print_help() {
     println!("secloud commands:");
     println!("  secloud doctor");
     println!("  secloud status");
-    println!("  secloud validate relay");
-    println!("  secloud validate seal");
-    println!("  secloud validate active");
-    println!("  secloud validate decisions");
-    println!("  secloud validate schemas");
-    println!("  secloud validate root");
-    println!("  secloud validate skills");
-    println!("  secloud validate capabilities");
-    println!("  secloud validate workers");
-    println!("  secloud validate control");
-    println!("  secloud validate learning");
-    println!("  secloud validate search");
-    println!("  secloud validate hypothesis");
-    println!("  secloud validate proof-viewer");
-    println!("  secloud validate hardening");
-    println!("  secloud validate release");
-    println!("  secloud validate e2e");
-    println!("  secloud validate gateway");
-    println!("  secloud validate gateway-transport");
-    println!("  secloud validate mcp-adapters");
-    println!("  secloud validate adapter-type-state");
-    println!("  secloud validate adapter-integrity");
-    println!("  secloud validate adapter-catalog");
-    println!("  secloud validate gemini-worker");
-    println!("  secloud validate normalization");
-    println!("  secloud validate prompt-topology");
-    println!("  secloud validate data-tainting");
-    println!("  secloud validate injection-isolation");
-    println!("  secloud validate backpressure");
-    println!("  secloud validate external-auth");
-    println!("  secloud validate workflow-security");
-    println!("  secloud validate knowledge-mirror");
-    println!("  secloud validate semantic-snapshot");
-    println!("  secloud validate notifications");
-    println!("  secloud validate git-worker");
-    println!("  secloud validate mobile-qa");
-    println!("  secloud validate game-qa");
-    println!("  secloud validate document-ingest");
-    println!("  secloud validate web-ingest");
-    println!("  secloud validate production-adapters");
-    println!("  secloud validate database-boundary");
-    println!("  secloud validate telemetry-adapters");
-    println!("  secloud validate telemetry-redaction");
-    println!("  secloud validate remediator");
-    println!("  secloud validate remediation-intake");
-    println!("  secloud validate remediation-permissions");
-    println!("  secloud validate remediation-reproduction");
-    println!("  secloud validate remediation-failure-taxonomy");
-    println!("  secloud validate remediation-proof-plan");
-    println!("  secloud validate remediation-report");
+    for target in VALIDATION_TARGETS {
+        println!("  secloud validate {target}");
+    }
 }
 
+const VALIDATION_TARGETS: &[&str] = &[
+    "relay",
+    "seal",
+    "active",
+    "decisions",
+    "schemas",
+    "root",
+    "skills",
+    "capabilities",
+    "workers",
+    "control",
+    "learning",
+    "search",
+    "hypothesis",
+    "proof-viewer",
+    "hardening",
+    "release",
+    "e2e",
+    "gateway",
+    "gateway-transport",
+    "mcp-adapters",
+    "adapter-type-state",
+    "adapter-integrity",
+    "adapter-catalog",
+    "gemini-worker",
+    "normalization",
+    "prompt-topology",
+    "data-tainting",
+    "injection-isolation",
+    "backpressure",
+    "external-auth",
+    "workflow-security",
+    "knowledge-mirror",
+    "semantic-snapshot",
+    "notifications",
+    "git-worker",
+    "mobile-qa",
+    "game-qa",
+    "document-ingest",
+    "web-ingest",
+    "production-adapters",
+    "database-boundary",
+    "telemetry-adapters",
+    "telemetry-redaction",
+    "remediator",
+    "remediation-intake",
+    "remediation-permissions",
+    "remediation-reproduction",
+    "remediation-failure-taxonomy",
+    "remediation-proof-plan",
+    "remediation-report",
+];
+
 fn doctor() -> Result<String, String> {
-    validate_root_files()?;
-    validate_schemas()?;
-    validate_relay()?;
-    validate_seal()?;
-    validate_skills()?;
-    validate_capabilities()?;
-    validate_workers()?;
-    validate_control_registry()?;
-    validate_learning()?;
-    validate_search()?;
-    validate_hypothesis()?;
-    validate_proof_viewer()?;
-    validate_hardening()?;
-    validate_release()?;
-    validate_e2e()?;
-    validate_gateway()?;
-    validate_gateway_transport()?;
-    validate_mcp_adapters()?;
-    validate_adapter_type_state()?;
-    validate_adapter_integrity()?;
-    validate_adapter_catalog()?;
-    validate_gemini_worker()?;
-    validate_normalization()?;
-    validate_prompt_topology()?;
-    validate_data_tainting()?;
-    validate_injection_isolation()?;
-    validate_backpressure()?;
-    validate_external_auth()?;
-    validate_workflow_security()?;
-    validate_knowledge_mirror()?;
-    validate_semantic_snapshot()?;
-    validate_notifications()?;
-    validate_git_worker()?;
-    validate_mobile_qa()?;
-    validate_game_qa()?;
-    validate_document_ingest()?;
-    validate_web_ingest()?;
-    validate_production_adapters()?;
-    validate_database_boundary()?;
-    validate_telemetry_adapters()?;
-    validate_telemetry_redaction()?;
-    validate_remediator()?;
-    validate_remediation_intake()?;
-    validate_remediation_permissions()?;
-    validate_remediation_reproduction()?;
-    validate_remediation_failure_taxonomy()?;
-    validate_remediation_proof_plan()?;
-    validate_remediation_report()?;
+    for target in VALIDATION_TARGETS {
+        validate_target(target)?;
+    }
     Ok("doctor checks passed".to_string())
 }
 
@@ -310,12 +241,11 @@ fn validate_seal() -> Result<String, String> {
 fn validate_file_contains(path: &str, needles: &[&str]) -> Result<String, String> {
     let content =
         fs::read_to_string(path).map_err(|err| format!("failed to read {path}: {err}"))?;
-    let mut missing = Vec::new();
-    for needle in needles {
-        if !content.contains(needle) {
-            missing.push(*needle);
-        }
-    }
+    let missing: Vec<&str> = needles
+        .iter()
+        .copied()
+        .filter(|needle| !content.contains(needle))
+        .collect();
     if missing.is_empty() {
         Ok(format!("{path} contains required markers"))
     } else {
@@ -328,20 +258,8 @@ fn validate_schemas() -> Result<String, String> {
     if !root.exists() {
         return Err("schemas directory missing".to_string());
     }
-
-    let mut missing = Vec::new();
-    for schema in REQUIRED_PACKET_SCHEMAS {
-        let path = root.join(format!("{schema}.schema.json"));
-        if !path.exists() {
-            missing.push(path.display().to_string());
-        }
-    }
-
-    if missing.is_empty() {
-        Ok("required schemas are present".to_string())
-    } else {
-        Err(format!("missing schemas: {}", missing.join(", ")))
-    }
+    validate_schema_files(REQUIRED_PACKET_SCHEMAS)?;
+    Ok("required schemas are present".to_string())
 }
 
 fn validate_schema_files(schema_names: &[&str]) -> Result<(), String> {
@@ -370,30 +288,16 @@ fn require_all(label: &str, values: &[&str], predicate: impl Fn(&str) -> bool) -
 }
 
 fn validate_root_files() -> Result<String, String> {
-    let mut missing = Vec::new();
     for file in REQUIRED_ROOT_FILES {
         if !Path::new(file).exists() {
-            missing.push(*file);
+            return Err(format!("missing root file: {file}"));
         }
     }
-
-    let mut forbidden_present = Vec::new();
     for file in FORBIDDEN_ROOT_FILES {
         if Path::new(file).exists() {
-            forbidden_present.push(*file);
+            return Err(format!("forbidden file present: {file}"));
         }
     }
-
-    if !missing.is_empty() {
-        return Err(format!("missing root files: {}", missing.join(", ")));
-    }
-    if !forbidden_present.is_empty() {
-        return Err(format!(
-            "forbidden files present: {}",
-            forbidden_present.join(", ")
-        ));
-    }
-
     Ok("root files are valid".to_string())
 }
 
@@ -410,18 +314,13 @@ fn validate_skills() -> Result<String, String> {
         "codex-worker",
         "spec-generation",
     ];
-    let mut missing = Vec::new();
     for skill in required_skills {
         let path = format!(".stealtheye/skills/{skill}/SKILL.md");
         if !Path::new(&path).exists() {
-            missing.push(path);
+            return Err(format!("missing skill: {path}"));
         }
     }
-    if missing.is_empty() {
-        Ok("required skills are present".to_string())
-    } else {
-        Err(format!("missing skills: {}", missing.join(", ")))
-    }
+    Ok("required skills are present".to_string())
 }
 
 fn validate_capabilities() -> Result<String, String> {
@@ -446,12 +345,11 @@ fn validate_workers() -> Result<String, String> {
             "FeatureAvailabilityCheckV0",
         ],
     )?;
-    if !is_real_surface("github.actions") {
-        return Err("worker registry must include github.actions".to_string());
-    }
-    if !is_worker_schema("FeatureAvailabilityCheckV0") {
-        return Err("worker schema inventory must include FeatureAvailabilityCheckV0".to_string());
-    }
+    require("github.actions", is_real_surface("github.actions"))?;
+    require(
+        "FeatureAvailabilityCheckV0",
+        is_worker_schema("FeatureAvailabilityCheckV0"),
+    )?;
     validate_schema_files(WORKER_PACKET_SCHEMAS)?;
     Ok("workers are valid".to_string())
 }
@@ -474,70 +372,47 @@ fn validate_control_registry() -> Result<String, String> {
 
 fn validate_learning() -> Result<String, String> {
     validate_schema_files(LEARNING_PACKET_SCHEMAS)?;
-    if !is_learning_schema("SkillCandidateV0") {
-        return Err("learning registry must include SkillCandidateV0".to_string());
-    }
-    if !has_promotion_rule("human_authority_preserved") {
-        return Err("learning promotion rules must preserve human authority".to_string());
-    }
+    require("SkillCandidateV0", is_learning_schema("SkillCandidateV0"))?;
+    require("human_authority_preserved", has_promotion_rule("human_authority_preserved"))?;
     Ok("learning contracts are valid".to_string())
 }
 
 fn validate_search() -> Result<String, String> {
     validate_schema_files(SEARCH_PACKET_SCHEMAS)?;
-    if !is_search_schema("PastSessionSearchV0") {
-        return Err("search registry must include PastSessionSearchV0".to_string());
-    }
-    if !is_allowed_corpus("relay") || !is_allowed_corpus("seal") {
-        return Err("search corpus must include relay and seal".to_string());
-    }
+    require("PastSessionSearchV0", is_search_schema("PastSessionSearchV0"))?;
+    require("relay corpus", is_allowed_corpus("relay"))?;
+    require("seal corpus", is_allowed_corpus("seal"))?;
     Ok("search contracts are valid".to_string())
 }
 
 fn validate_hypothesis() -> Result<String, String> {
     validate_schema_files(HYPOTHESIS_PACKET_SCHEMAS)?;
-    if !is_hypothesis_schema("HypothesisRaceV0") {
-        return Err("hypothesis registry must include HypothesisRaceV0".to_string());
-    }
-    if !is_stop_condition("authority_boundary") {
-        return Err("hypothesis stop conditions must include authority_boundary".to_string());
-    }
+    require("HypothesisRaceV0", is_hypothesis_schema("HypothesisRaceV0"))?;
+    require("authority_boundary", is_stop_condition("authority_boundary"))?;
     Ok("hypothesis contracts are valid".to_string())
 }
 
 fn validate_proof_viewer() -> Result<String, String> {
     validate_schema_files(PROOF_VIEWER_PACKET_SCHEMAS)?;
-    if !is_viewer_schema("ProofCanvasManifestV0") {
-        return Err("proof viewer registry must include ProofCanvasManifestV0".to_string());
-    }
-    if !is_panel_kind("browser") {
-        return Err("proof viewer panels must include browser".to_string());
-    }
+    require("ProofCanvasManifestV0", is_viewer_schema("ProofCanvasManifestV0"))?;
+    require("browser panel", is_panel_kind("browser"))?;
     Ok("proof viewer contracts are valid".to_string())
 }
 
 fn validate_hardening() -> Result<String, String> {
     validate_schema_files(HARDENING_PACKET_SCHEMAS)?;
-    if !is_hardening_schema("ReleaseReadinessV0") {
-        return Err("hardening registry must include ReleaseReadinessV0".to_string());
-    }
+    require("ReleaseReadinessV0", is_hardening_schema("ReleaseReadinessV0"))?;
     for check in REQUIRED_HARDENING_CHECKS {
-        if !has_required_check(check) {
-            return Err(format!("missing hardening check: {check}"));
-        }
+        require(check, has_required_check(check))?;
     }
     Ok("hardening contracts are valid".to_string())
 }
 
 fn validate_release() -> Result<String, String> {
     validate_schema_files(RELEASE_PACKET_SCHEMAS)?;
-    if !is_release_schema("ReleaseCandidateV0") {
-        return Err("release registry must include ReleaseCandidateV0".to_string());
-    }
+    require("ReleaseCandidateV0", is_release_schema("ReleaseCandidateV0"))?;
     for artifact in REQUIRED_RELEASE_ARTIFACTS {
-        if !is_required_artifact(artifact) {
-            return Err(format!("release registry missing artifact: {artifact}"));
-        }
+        require(artifact, is_required_artifact(artifact))?;
         if !Path::new(artifact).exists() {
             return Err(format!("release artifact missing from repo: {artifact}"));
         }
@@ -547,13 +422,9 @@ fn validate_release() -> Result<String, String> {
 
 fn validate_e2e() -> Result<String, String> {
     validate_schema_files(E2E_PACKET_SCHEMAS)?;
-    if !is_e2e_schema("EndToEndMissionV0") {
-        return Err("e2e registry must include EndToEndMissionV0".to_string());
-    }
+    require("EndToEndMissionV0", is_e2e_schema("EndToEndMissionV0"))?;
     for step in REQUIRED_E2E_STEPS {
-        if !has_required_step(step) {
-            return Err(format!("missing e2e step: {step}"));
-        }
+        require(step, has_required_step(step))?;
     }
     Ok("e2e contracts are valid".to_string())
 }
@@ -577,10 +448,7 @@ fn validate_gateway() -> Result<String, String> {
 
 fn validate_gateway_transport() -> Result<String, String> {
     validate_schema_files(GATEWAY_PACKET_SCHEMAS)?;
-    require(
-        "GatewayTransportPolicyV0",
-        is_gateway_schema("GatewayTransportPolicyV0"),
-    )?;
+    require("GatewayTransportPolicyV0", is_gateway_schema("GatewayTransportPolicyV0"))?;
     require_all(
         "gateway-transport",
         &[
@@ -607,10 +475,7 @@ fn validate_backpressure() -> Result<String, String> {
 
 fn validate_mcp_adapters() -> Result<String, String> {
     validate_schema_files(MCP_ADAPTER_PACKET_SCHEMAS)?;
-    require(
-        "McpAdapterRegistryV0",
-        is_mcp_adapter_schema("McpAdapterRegistryV0"),
-    )?;
+    require("McpAdapterRegistryV0", is_mcp_adapter_schema("McpAdapterRegistryV0"))?;
     Ok("MCP adapter contracts are valid".to_string())
 }
 
@@ -692,8 +557,8 @@ fn validate_normalization() -> Result<String, String> {
 fn validate_prompt_topology() -> Result<String, String> {
     validate_schema_files(GEMINI_WORKER_PACKET_SCHEMAS)?;
     require(
-        "ProviderPromptTopologyV0",
-        is_gemini_worker_schema("ProviderPromptTopologyV0"),
+        "ModelTopologyBoundaryV0",
+        is_gemini_worker_schema("ModelTopologyBoundaryV0"),
     )?;
     require_all(
         "prompt-topology-boundary",
