@@ -37,6 +37,8 @@ mod tests {
 
     #[test]
     fn permission_rules_do_not_need_secret_material_for_readiness() {
-        assert!(has_permission_rule("secret_material_never_required_for_readiness"));
+        assert!(has_permission_rule(
+            "secret_material_never_required_for_readiness"
+        ));
     }
 }
