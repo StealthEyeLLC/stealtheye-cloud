@@ -47,6 +47,8 @@ mod tests {
 
     #[test]
     fn prompt_topology_is_isolated() {
-        assert!(has_prompt_topology_boundary("provider_specific_prompt_not_shared"));
+        assert!(has_prompt_topology_boundary(
+            "provider_specific_prompt_not_shared"
+        ));
     }
 }
