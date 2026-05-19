@@ -1,21 +1,33 @@
 {
   "schema_version": "StealthEyeRelayV0",
-  "relay_id": "relay-s6-zero-trust-cross-cloud-gateway-pr8",
-  "created_at": "2026-05-19T11:30:00Z",
+  "relay_id": "relay-s6-merged-s7-next",
+  "created_at": "2026-05-19T12:25:00Z",
   "product_name": "StealthEye Cloud",
-  "mission_id": "s6-zero-trust-cross-cloud-gateway",
-  "mission_title": "S6 — Zero-Trust Cross-Cloud Gateway",
-  "mission_status": "active_pr_open_ci_pending",
+  "mission_id": "s7-first-real-activations",
+  "mission_title": "S7 — First Real Activations",
+  "mission_status": "ready_to_start_after_post_s6_state_cleanup",
   "active_repo": "StealthEyeLLC/stealtheye-cloud",
-  "active_branch": "build/s6-zero-trust-cross-cloud-gateway",
-  "active_pr": 8,
-  "active_pr_url": "https://github.com/StealthEyeLLC/stealtheye-cloud/pull/8",
-  "latest_seal_id": "seal-s6-zero-trust-cross-cloud-gateway-pr8",
-  "latest_ci_status": "pending",
+  "active_branch": null,
+  "active_pr": null,
+  "active_pr_url": null,
+  "latest_seal_id": "seal-s6-merged-s7-next",
+  "latest_ci_status": "s6_merged_green",
   "latest_browser_status": "not_required",
-  "current_approval": "user-approved-cloud-only-s6-implementation-and-ci-repair",
-  "next_action": "Monitor PR #8 checks, repair exact CI failures directly in GitHub, and merge only when required checks are green.",
-  "blocked_reason": "ci_pending",
+  "current_approval": "user-approved-cloud-only-continuation-with-boundary-stops",
+  "completed_milestone": {
+    "mission_id": "s6-zero-trust-cross-cloud-gateway",
+    "pr": 8,
+    "merge_sha": "dcaf60dce2b466178c3cff1ee4545d06f3e5075f",
+    "verified_checks": [
+      "proof-fast",
+      "proof-full",
+      "proof-e2e",
+      "proof-gateway",
+      "proof-windows-targeted"
+    ]
+  },
+  "next_action": "After this post-S6 state cleanup is merged, create build/s7-first-real-activations from current main and begin S7 — First Real Activations.",
+  "blocked_reason": null,
   "do_not_reopen": [
     "S6/S7/S8 naming",
     "no-placeholder rule",
@@ -26,7 +38,8 @@
     "forbidden file policy",
     "forbidden session automation",
     "S6 readiness-only boundary",
-    "neutral materialized crate workaround"
+    "neutral materialized crate workaround",
+    "S6 architecture and proof"
   ],
   "required_files": [
     "AGENTS.md",
@@ -38,15 +51,9 @@
     "NEXT_ACTION.md",
     "docs/S6_S7_S8_ROADMAP.md",
     "docs/S6_ZERO_TRUST_CROSS_CLOUD_GATEWAY.md",
-    "docs/HANDOFF_AND_CONTINUATION.md",
-    ".github/workflows/proof-gateway.yml"
+    "docs/HANDOFF_AND_CONTINUATION.md"
   ],
-  "required_checks_before_merge": [
-    "proof-fast",
-    "proof-full",
-    "proof-e2e",
-    "proof-gateway"
-  ],
-  "safety_boundary": "S6 is readiness/enforcement only: no live provider calls, no browser-cookie/session-token automation, no production deployment, and no database mutation.",
-  "resume_prompt": "Resume StealthEye Cloud S6 from this Relay. Use the latest Seal as checkpoint truth, obey the Active approval envelope, do not reopen frozen decisions, inspect PR #8 checks, patch exact CI failures if any, and merge only when green."
+  "s7_target_branch": "build/s7-first-real-activations",
+  "safety_boundary": "S7 may activate real capability only where repo policy, S6 enforcement substrate, explicit approvals, and public-safe boundaries allow it. No secrets, no paid compute, no production deployment, no database mutation, and no browser-cookie/session-token automation without explicit approval where applicable.",
+  "resume_prompt": "Resume StealthEye Cloud from this Relay. Confirm S6 PR #8 is merged at dcaf60dce2b466178c3cff1ee4545d06f3e5075f, verify this post-S6 state cleanup is merged, then start S7 on build/s7-first-real-activations without reopening S6."
 }
