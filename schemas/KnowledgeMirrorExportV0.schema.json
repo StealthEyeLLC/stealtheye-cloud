@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KnowledgeMirrorExportV0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "lane",
+    "bundle_path",
+    "manifest_path",
+    "semantic_snapshot_path",
+    "redaction_report_path",
+    "source_count",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {"const": "KnowledgeMirrorExportV0"},
+    "lane": {"const": "knowledge_mirror_export"},
+    "bundle_path": {"type": "string"},
+    "manifest_path": {"type": "string"},
+    "semantic_snapshot_path": {"type": "string"},
+    "redaction_report_path": {"type": "string"},
+    "source_count": {"type": "integer", "minimum": 1},
+    "status": {"enum": ["success", "failure"]}
+  },
+  "additionalProperties": true
+}

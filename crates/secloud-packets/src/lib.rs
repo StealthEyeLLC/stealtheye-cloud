@@ -132,6 +132,10 @@ pub const REQUIRED_PACKET_SCHEMAS: &[&str] = &[
     "RemediationFailureTaxonomyV0",
     "RemediationProofPlanV0",
     "RemediationReportV0",
+    "MobilePlaytestActivationV0",
+    "NotificationActivationRunV0",
+    "KnowledgeMirrorExportV0",
+    "S7ActivationProofV0",
 ];
 
 pub const FORBIDDEN_ROOT_FILES: &[&str] = &[
@@ -201,6 +205,14 @@ mod tests {
         assert!(is_required_schema("ExternalAuthPolicyV0"));
         assert!(is_required_schema("GitWorkerReadinessV0"));
         assert!(is_required_schema("RemediatorReadinessV0"));
+    }
+
+    #[test]
+    fn required_schema_inventory_contains_s7_activation_contracts() {
+        assert!(is_required_schema("MobilePlaytestActivationV0"));
+        assert!(is_required_schema("NotificationActivationRunV0"));
+        assert!(is_required_schema("KnowledgeMirrorExportV0"));
+        assert!(is_required_schema("S7ActivationProofV0"));
     }
 
     #[test]

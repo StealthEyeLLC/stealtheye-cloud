@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "S7ActivationProofV0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mission_id",
+    "activated_lanes",
+    "proof_workflows",
+    "boundary_status",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {"const": "S7ActivationProofV0"},
+    "mission_id": {"const": "s7-first-real-activations"},
+    "activated_lanes": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 3
+    },
+    "proof_workflows": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 2
+    },
+    "boundary_status": {"type": "string"},
+    "status": {"enum": ["success", "failure", "pending_ci"]}
+  },
+  "additionalProperties": true
+}
