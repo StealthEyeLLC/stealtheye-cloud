@@ -16,3 +16,5 @@ secloud-seal = { path = "../secloud-seal" }
 secloud-mission = { path = "../secloud-mission" }
 secloud-file-bundle = { path = "../secloud-file-bundle" }
 secloud-ci = { path = "../secloud-ci" }
+secloud-control = { path = "../secloud-control" }
+secloud-workers = { path = "../secloud-workers" }
