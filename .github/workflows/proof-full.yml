@@ -39,3 +39,15 @@ jobs:
 
       - name: Validate Seal
         run: cargo run -p secloud-cli -- validate seal
+
+      - name: Validate Skills
+        run: cargo run -p secloud-cli -- validate skills
+
+      - name: Validate Capabilities
+        run: cargo run -p secloud-cli -- validate capabilities
+
+      - name: Validate Workers
+        run: cargo run -p secloud-cli -- validate workers
+
+      - name: Validate Control Registry
+        run: cargo run -p secloud-cli -- validate control
