@@ -1,0 +1,136 @@
+name: proof-gateway
+
+on:
+  push:
+    branches:
+      - main
+      - 'build/**'
+      - 'repair/**'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  proof-gateway:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Format
+        run: cargo fmt --all -- --check
+
+      - name: Check
+        run: cargo check --workspace
+
+      - name: Test
+        run: cargo test --workspace
+
+      - name: Validate schemas
+        run: cargo run -p secloud-cli -- validate schemas
+
+      - name: Validate gateway
+        run: cargo run -p secloud-cli -- validate gateway
+
+      - name: Validate gateway transport
+        run: cargo run -p secloud-cli -- validate gateway-transport
+
+      - name: Validate backpressure
+        run: cargo run -p secloud-cli -- validate backpressure
+
+      - name: Validate MCP adapters
+        run: cargo run -p secloud-cli -- validate mcp-adapters
+
+      - name: Validate adapter type state
+        run: cargo run -p secloud-cli -- validate adapter-type-state
+
+      - name: Validate adapter integrity
+        run: cargo run -p secloud-cli -- validate adapter-integrity
+
+      - name: Validate adapter catalog
+        run: cargo run -p secloud-cli -- validate adapter-catalog
+
+      - name: Validate Gemini worker
+        run: cargo run -p secloud-cli -- validate gemini-worker
+
+      - name: Validate normalization
+        run: cargo run -p secloud-cli -- validate normalization
+
+      - name: Validate prompt topology
+        run: cargo run -p secloud-cli -- validate prompt-topology
+
+      - name: Validate data tainting
+        run: cargo run -p secloud-cli -- validate data-tainting
+
+      - name: Validate injection isolation
+        run: cargo run -p secloud-cli -- validate injection-isolation
+
+      - name: Validate external auth boundary
+        run: cargo run -p secloud-cli -- validate external-auth
+
+      - name: Validate workflow guard
+        run: cargo run -p secloud-cli -- validate workflow-security
+
+      - name: Validate knowledge mirror
+        run: cargo run -p secloud-cli -- validate knowledge-mirror
+
+      - name: Validate semantic snapshot
+        run: cargo run -p secloud-cli -- validate semantic-snapshot
+
+      - name: Validate notifications
+        run: cargo run -p secloud-cli -- validate notifications
+
+      - name: Validate git worker readiness
+        run: cargo run -p secloud-cli -- validate git-worker
+
+      - name: Validate mobile QA
+        run: cargo run -p secloud-cli -- validate mobile-qa
+
+      - name: Validate game QA
+        run: cargo run -p secloud-cli -- validate game-qa
+
+      - name: Validate document ingest
+        run: cargo run -p secloud-cli -- validate document-ingest
+
+      - name: Validate web ingest
+        run: cargo run -p secloud-cli -- validate web-ingest
+
+      - name: Validate production adapters
+        run: cargo run -p secloud-cli -- validate production-adapters
+
+      - name: Validate database boundary
+        run: cargo run -p secloud-cli -- validate database-boundary
+
+      - name: Validate telemetry adapters
+        run: cargo run -p secloud-cli -- validate telemetry-adapters
+
+      - name: Validate telemetry redaction
+        run: cargo run -p secloud-cli -- validate telemetry-redaction
+
+      - name: Validate Remediator readiness
+        run: cargo run -p secloud-cli -- validate remediator
+
+      - name: Validate remediation intake
+        run: cargo run -p secloud-cli -- validate remediation-intake
+
+      - name: Validate remediation permissions
+        run: cargo run -p secloud-cli -- validate remediation-permissions
+
+      - name: Validate remediation reproduction
+        run: cargo run -p secloud-cli -- validate remediation-reproduction
+
+      - name: Validate remediation failure taxonomy
+        run: cargo run -p secloud-cli -- validate remediation-failure-taxonomy
+
+      - name: Validate remediation proof plan
+        run: cargo run -p secloud-cli -- validate remediation-proof-plan
+
+      - name: Validate remediation report
+        run: cargo run -p secloud-cli -- validate remediation-report
+
+      - name: Doctor
+        run: cargo run -p secloud-cli -- doctor
