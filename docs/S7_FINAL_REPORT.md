@@ -2,17 +2,23 @@
 
 ## Status
 
-S7 implementation package is complete on branch:
+S7 is complete and merged.
+
+Merged PR:
 
 ```text
-build/s7-first-real-activations
+PR #11 — S7: First Real Activations
 ```
 
-This report is final for the implementation branch. Merge requires green CI.
+Merge SHA:
+
+```text
+d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
+```
 
 ## Activated lanes
 
-S7 activates:
+S7 activated:
 
 1. Mobile Browser Game Preview and Playtest Activation
 2. Notification Lane Activation
@@ -22,7 +28,7 @@ S7 activates:
 
 ### Mobile activation
 
-S7 adds a static mobile playtest preview:
+S7 added a static mobile playtest preview:
 
 ```text
 public/previews/s7-mobile-playtest/index.html
@@ -32,7 +38,7 @@ The mobile proof workflow runs Playwright with an iPhone-class viewport, perform
 
 ### Notification activation
 
-S7 adds:
+S7 added:
 
 ```text
 scripts/s7-notification-activation.mjs
@@ -42,7 +48,7 @@ Default behavior is dry-run proof with redaction. Real dispatch is only attempte
 
 ### Knowledge mirror activation
 
-S7 adds:
+S7 added:
 
 ```text
 scripts/s7-knowledge-mirror-export.mjs
@@ -67,6 +73,19 @@ schemas/S7ActivationProofV0.schema.json
 .github/workflows/proof-activations.yml
 ```
 
+## Green proof before merge
+
+```text
+proof-fast — success
+proof-full — success
+proof-e2e — success
+proof-gateway — success
+proof-browser — success
+proof-mobile — success
+proof-activations — success
+proof-windows-targeted — success
+```
+
 ## Safety boundaries preserved
 
 1. No browser-cookie/session-token automation.
@@ -78,22 +97,9 @@ schemas/S7ActivationProofV0.schema.json
 7. No live external mirror sync.
 8. Notification real dispatch requires explicit secret plus enable flag.
 
-## Expected green gates
+## Next action
 
-```text
-proof-fast
-proof-full
-proof-browser
-proof-e2e
-proof-gateway
-proof-mobile
-proof-activations
-proof-windows-targeted
-```
-
-## Next action after S7 merge
-
-After S7 merges green, proceed to:
+After post-S7 state cleanup merges green, proceed to:
 
 ```text
 S8 — StealthEye Cloud Remediator

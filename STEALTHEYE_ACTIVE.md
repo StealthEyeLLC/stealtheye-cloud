@@ -6,17 +6,19 @@ StealthEye Cloud
 
 ## Current mission
 
-S7 — First Real Activations
+S8 — StealthEye Cloud Remediator
 
 ## Active branch
 
+None yet. Next branch should be:
+
 ```text
-build/s7-first-real-activations
+build/s8-remediator-mode
 ```
 
 ## Active PR
 
-Pending creation from the active branch.
+None.
 
 ## Current approval envelope
 
@@ -26,7 +28,7 @@ Allowed:
 
 1. GitHub-direct cloud-only implementation
 2. big coherent drops
-3. public-safe real activation code for S7 lanes
+3. public-safe real activation code where the active phase explicitly allows it
 4. schema and validator updates
 5. workflow proof updates
 6. PR creation
@@ -47,37 +49,46 @@ Stop for:
 
 ## Latest implementation status
 
-S7 implementation package is in progress on `build/s7-first-real-activations`.
-
-S6 — Zero-Trust Cross-Cloud Gateway is complete and merged.
+S7 — First Real Activations is complete and merged.
 
 Merged PR:
 
 ```text
-PR #8 — S6: Zero-Trust Cross-Cloud Gateway
+PR #11 — S7: First Real Activations
 ```
 
-S6 merge SHA:
+S7 merge SHA:
 
 ```text
-dcaf60dce2b466178c3cff1ee4545d06f3e5075f
+d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
 ```
 
-Post-S6 cleanup PR #9 merge SHA:
+Verified green before merge:
 
-```text
-a5e6eccc37067cf264fd8859c69fc412da855bb8
-```
+1. `proof-fast`
+2. `proof-full`
+3. `proof-e2e`
+4. `proof-gateway`
+5. `proof-browser`
+6. `proof-mobile`
+7. `proof-activations`
+8. `proof-windows-targeted`
 
-## S7 activated lanes
+S7 activated:
 
 1. Mobile Browser Game Preview and Playtest Activation
 2. Notification Lane Activation
 3. Knowledge Mirror Export Activation
 
-## S7 boundaries
+S7 preserved boundaries:
 
-S7 activation is public-safe and does not use secrets by default. Notification real dispatch requires both an explicit webhook secret and `STEALTHEYE_NOTIFICATION_REAL_DISPATCH=true`. Knowledge mirror export is a static GitHub Actions artifact, not a live external sync.
+1. no browser-cookie/session-token automation
+2. no secrets committed or printed
+3. no paid compute
+4. no production deployment
+5. no database mutation
+6. no live external mirror sync
+7. notification real dispatch requires explicit secret plus enable flag
 
 ## Current blocker
 
@@ -85,8 +96,8 @@ None.
 
 ## Next exact action
 
-Open the S7 PR, run one CI wave, inspect all failures before patching, batch repairs if needed, and merge when green.
+Begin S8 — StealthEye Cloud Remediator on branch `build/s8-remediator-mode` after this post-S7 state cleanup is merged green.
 
 ## Saturation status
 
-If this tab saturates, the repo handoff files are the continuation source of truth. Continue S7 from the active branch and do not reopen S6 architecture unless the user explicitly asks.
+If this tab saturates, the repo handoff files are the continuation source of truth. Continue from S8 and do not reopen S6 or S7 architecture unless the user explicitly asks.
