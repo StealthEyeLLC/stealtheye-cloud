@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EndToEndMissionV0",
+  "type": "object",
+  "required": ["schema_version", "mission_id", "title", "steps", "completion_gate"],
+  "properties": {
+    "schema_version": {"const": "EndToEndMissionV0"},
+    "mission_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "steps": {"type": "array", "items": {"type": "string"}},
+    "completion_gate": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
