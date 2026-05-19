@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseReadinessV0",
+  "type": "object",
+  "required": ["schema_version", "readiness_id", "mission_id", "ready", "required_checks"],
+  "properties": {
+    "schema_version": {"const": "ReleaseReadinessV0"},
+    "readiness_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "ready": {"type": "boolean"},
+    "required_checks": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
