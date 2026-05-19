@@ -144,6 +144,41 @@ pub const REQUIRED_PACKET_SCHEMAS: &[&str] = &[
     "NotificationActivationRunV0",
     "KnowledgeMirrorExportV0",
     "S7ActivationProofV0",
+    "OneDropPlanV0",
+    "MissionApprovalEnvelopeV0",
+    "ApprovalCompressionPolicyV0",
+    "NoMidpointAskPolicyV0",
+    "ToolCallBundlePolicyV0",
+    "RepoMutationBatchV0",
+    "BatchRepairPlanV0",
+    "MergeAwareNextActionV0",
+    "PostMergeTruthTemplateV0",
+    "StateConsistencyReportV0",
+    "ObsoletePhraseScanV0",
+    "DocConflictFindingV0",
+    "StealthEyePhaseStateV0",
+    "BranchLifecycleV0",
+    "PrLifecycleV0",
+    "ProofSelectorV0",
+    "RequiredChecksManifestV0",
+    "WorkflowPathFilterSimulationV0",
+    "CiWaveCounterV0",
+    "RepairCauseMemoryV0",
+    "ValidatorRegistrationReportV0",
+    "SchemaInventoryDiffV0",
+    "WorkspaceRegistrationCheckV0",
+    "CapabilityDowngradeFindingV0",
+    "NoSilentDowngradePolicyV0",
+    "HumanAvailabilityProfileV0",
+    "ConfirmationFrictionEventV0",
+    "ToolFallbackLadderV0",
+    "ExistingWorkReusePolicyV0",
+    "PartialDropRecoveryV0",
+    "NextTabPromptArtifactV0",
+    "CapabilityActivationLedgerV0",
+    "FuturePhaseDefaultContractV0",
+    "BuildVelocityReportV0",
+    "S9BuildAcceleratorProofV0",
 ];
 
 pub const FORBIDDEN_ROOT_FILES: &[&str] = &[
@@ -233,6 +268,18 @@ mod tests {
         assert!(is_required_schema("RemediationPatchTournamentV0"));
         assert!(is_required_schema("RemediationCommercialV0"));
         assert!(is_required_schema("RemediatorExecutionReceiptV0"));
+    }
+
+    #[test]
+    fn required_schema_inventory_contains_s9_build_accelerator_contracts() {
+        assert!(is_required_schema("OneDropPlanV0"));
+        assert!(is_required_schema("MissionApprovalEnvelopeV0"));
+        assert!(is_required_schema("BatchRepairPlanV0"));
+        assert!(is_required_schema("StateConsistencyReportV0"));
+        assert!(is_required_schema("NoSilentDowngradePolicyV0"));
+        assert!(is_required_schema("FuturePhaseDefaultContractV0"));
+        assert!(is_required_schema("BuildVelocityReportV0"));
+        assert!(is_required_schema("S9BuildAcceleratorProofV0"));
     }
 
     #[test]

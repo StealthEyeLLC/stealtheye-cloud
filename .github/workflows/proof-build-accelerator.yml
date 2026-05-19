@@ -1,0 +1,137 @@
+name: proof-build-accelerator
+
+on:
+  push:
+    branches:
+      - main
+      - 'build/**'
+      - 'repair/**'
+    paths:
+      - 'crates/secloud-build-accelerator/**'
+      - 'crates/secloud-cli/**'
+      - 'crates/secloud-packets/**'
+      - 'schemas/*Drop*.schema.json'
+      - 'schemas/*Approval*.schema.json'
+      - 'schemas/*Repair*.schema.json'
+      - 'schemas/*Merge*.schema.json'
+      - 'schemas/*State*.schema.json'
+      - 'schemas/*Velocity*.schema.json'
+      - 'schemas/*Friction*.schema.json'
+      - 'schemas/*Downgrade*.schema.json'
+      - 'schemas/S9*.schema.json'
+      - 'scripts/s9-build-accelerator-proof.mjs'
+      - 'scripts/check-s9-build-accelerator-artifacts.mjs'
+      - '.github/workflows/proof-build-accelerator.yml'
+      - 'package.json'
+      - 'docs/ONE_DROP_BUILD_MODE.md'
+      - 'docs/MISSION_APPROVAL_ENVELOPE.md'
+      - 'docs/BATCH_REPAIR_POLICY.md'
+      - 'docs/MERGE_AWARE_HANDOFF.md'
+      - 'docs/PHASE_TEMPLATE_SYSTEM.md'
+      - 'docs/PROMPTS/**'
+      - 'docs/S9_FINAL_REPORT.md'
+      - 'STEALTHEYE_ACTIVE.md'
+      - 'STEALTHEYE_RELAY.md'
+      - 'STEALTHEYE_RELAY.json'
+      - 'STEALTHEYE_SEAL.json'
+      - 'NEXT_ACTION.md'
+  pull_request:
+    paths:
+      - 'crates/secloud-build-accelerator/**'
+      - 'crates/secloud-cli/**'
+      - 'crates/secloud-packets/**'
+      - 'schemas/*Drop*.schema.json'
+      - 'schemas/*Approval*.schema.json'
+      - 'schemas/*Repair*.schema.json'
+      - 'schemas/*Merge*.schema.json'
+      - 'schemas/*State*.schema.json'
+      - 'schemas/*Velocity*.schema.json'
+      - 'schemas/*Friction*.schema.json'
+      - 'schemas/*Downgrade*.schema.json'
+      - 'schemas/S9*.schema.json'
+      - 'scripts/s9-build-accelerator-proof.mjs'
+      - 'scripts/check-s9-build-accelerator-artifacts.mjs'
+      - '.github/workflows/proof-build-accelerator.yml'
+      - 'package.json'
+      - 'docs/ONE_DROP_BUILD_MODE.md'
+      - 'docs/MISSION_APPROVAL_ENVELOPE.md'
+      - 'docs/BATCH_REPAIR_POLICY.md'
+      - 'docs/MERGE_AWARE_HANDOFF.md'
+      - 'docs/PHASE_TEMPLATE_SYSTEM.md'
+      - 'docs/PROMPTS/**'
+      - 'docs/S9_FINAL_REPORT.md'
+      - 'STEALTHEYE_ACTIVE.md'
+      - 'STEALTHEYE_RELAY.md'
+      - 'STEALTHEYE_RELAY.json'
+      - 'STEALTHEYE_SEAL.json'
+      - 'NEXT_ACTION.md'
+  workflow_dispatch:
+
+jobs:
+  proof-build-accelerator:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Format
+        run: cargo fmt --all -- --check
+
+      - name: Check
+        run: cargo check --workspace
+
+      - name: Test Build Accelerator contracts
+        run: cargo test -p secloud-build-accelerator
+
+      - name: Clippy Build Accelerator contracts
+        run: cargo clippy -p secloud-build-accelerator -- -D warnings
+
+      - name: Validate S9 one-drop
+        run: cargo run -p secloud-cli -- validate one-drop
+
+      - name: Validate S9 mission approval
+        run: cargo run -p secloud-cli -- validate mission-approval
+
+      - name: Validate S9 batch repair
+        run: cargo run -p secloud-cli -- validate batch-repair
+
+      - name: Validate S9 merge-aware handoff
+        run: cargo run -p secloud-cli -- validate merge-aware-handoff
+
+      - name: Validate S9 state consistency
+        run: cargo run -p secloud-cli -- validate state-consistency
+
+      - name: Validate S9 no silent downgrade
+        run: cargo run -p secloud-cli -- validate no-silent-downgrade
+
+      - name: Validate S9 build velocity
+        run: cargo run -p secloud-cli -- validate build-velocity
+
+      - name: Validate S9 future phase contract
+        run: cargo run -p secloud-cli -- validate future-phase-contract
+
+      - name: Validate S9 next-tab prompt
+        run: cargo run -p secloud-cli -- validate next-tab-prompt
+
+      - name: Run S9 build accelerator proof
+        run: npm run proof:build-accelerator
+
+      - name: Validate S9 build accelerator artifacts
+        run: npm run proof:build-accelerator:summary
+
+      - name: Upload Build Accelerator artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s9-build-accelerator-artifacts
+          path: .stealtheye/build-accelerator/

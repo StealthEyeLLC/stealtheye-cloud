@@ -27,6 +27,7 @@ members = [
     "crates/secloud-repair-readiness",
     "crates/secloud-activations",
     "crates/secloud-remediator",
+    "crates/secloud-build-accelerator",
     "crates/secloud-cli",
 ]
 resolver = "2"

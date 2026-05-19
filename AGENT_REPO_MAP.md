@@ -6,7 +6,7 @@ This file gives ChatGPT and future agent workers a fast map of the StealthEye Cl
 
 ## Current phase
 
-S0–S7 are merged green. S8 — StealthEye Cloud Remediator is active on `build/s8-remediator-mode`.
+S0–S8 are merged green. S9 — One-Drop Build Accelerator is active on `build/s9-one-drop-build-accelerator`.
 
 ## Root files
 
@@ -50,9 +50,10 @@ S0–S7 are merged green. S8 — StealthEye Cloud Remediator is active on `build
 - `crates/secloud-repair-readiness/` — S6 Remediator readiness contracts
 - `crates/secloud-activations/` — S7 active capability contracts
 - `crates/secloud-remediator/` — S8 active Remediator Mode contracts
+- `crates/secloud-build-accelerator/` — S9 one-drop build accelerator contracts
 - `crates/secloud-cli/` — `secloud` CLI validators
 - `schemas/` — public JSON Schema contracts
-- `scripts/` — public-safe activation and Remediator proof scripts
+- `scripts/` — public-safe activation, Remediator, and build-accelerator proof scripts
 - `browser/playwright/` — browser proof tests and artifact validation
 - `public/proof/` — public proof canvas
 - `docs/` — canonical specs, build plan, phase docs, and handoff docs
@@ -69,12 +70,13 @@ S0–S7 are merged green. S8 — StealthEye Cloud Remediator is active on `build
 - `proof-gateway.yml` — gateway/readiness/guard/Remediator validator proof
 - `proof-activations.yml` — S7 active capability proof
 - `proof-remediator.yml` — S8 active Remediator Mode proof
+- `proof-build-accelerator.yml` — S9 one-drop build accelerator proof
 - `proof-windows-targeted.yml` — targeted Windows proof
 
 ## Active implementation branch
 
 ```text
-build/s8-remediator-mode
+build/s9-one-drop-build-accelerator
 ```
 
 ## Forbidden files

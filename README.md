@@ -6,7 +6,7 @@ It is optimized for one active ChatGPT tab until saturation, public free CI proo
 
 ## Current build state
 
-Current status: **S0–S8 merged green; S9 selected as next mission**.
+Current status: **S0–S8 merged green; S9 implementation active on `build/s9-one-drop-build-accelerator`**.
 
 Completed spine:
 
@@ -22,13 +22,13 @@ S7 — First Real Activations
 S8 — StealthEye Cloud Remediator
 ```
 
-S9 next mission:
+Active mission:
 
 ```text
 S9 — One-Drop Build Accelerator
 ```
 
-S9’s purpose is to make every future phase/project operate as close as possible to:
+S9 makes every future phase/project operate as close as possible to:
 
 ```text
 one mission approval
@@ -38,6 +38,8 @@ one mission approval
 → batched repairs
 → merge when green
 ```
+
+S9 does not reduce proof strength. It adds no-silent-downgrade checks and preserves validators, schema coverage, workflow proof, safety boundaries, and green-before-merge discipline.
 
 ## Recent completion truth
 
@@ -63,8 +65,14 @@ Post-S8 cleanup PR #14 merge SHA: e45b0e75fc9b1f8a9e1ed09db90d69037fe9c11d
 - `docs/StealthEye_Cloud_Build_Plan.md`
 - `docs/S8_STEALTHEYE_CLOUD_REMEDIATOR.md`
 - `docs/S9_ONE_DROP_BUILD_ACCELERATOR.md`
+- `docs/ONE_DROP_BUILD_MODE.md`
+- `docs/MISSION_APPROVAL_ENVELOPE.md`
+- `docs/BATCH_REPAIR_POLICY.md`
+- `docs/MERGE_AWARE_HANDOFF.md`
+- `docs/PHASE_TEMPLATE_SYSTEM.md`
 - `docs/HANDOFF_AND_CONTINUATION.md`
 - `docs/PROMPTS/NEXT_TAB_PROMPT.md`
+- `docs/PROMPTS/FUTURE_PHASE_DEFAULT_PROMPT.md`
 
 ## Current proof workflows
 
@@ -76,6 +84,7 @@ Post-S8 cleanup PR #14 merge SHA: e45b0e75fc9b1f8a9e1ed09db90d69037fe9c11d
 - `proof-gateway.yml`
 - `proof-activations.yml`
 - `proof-remediator.yml`
+- `proof-build-accelerator.yml`
 - `proof-windows-targeted.yml`
 
 ## Canonical operating model
