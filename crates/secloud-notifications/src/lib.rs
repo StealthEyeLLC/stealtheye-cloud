@@ -3,10 +3,8 @@
 //! This crate models notification lane readiness without dispatching messages,
 //! touching secrets, or contacting external providers.
 
-pub const NOTIFICATION_PACKET_SCHEMAS: &[&str] = &[
-    "NotificationReadinessV0",
-    "NotificationDispatchPolicyV0",
-];
+pub const NOTIFICATION_PACKET_SCHEMAS: &[&str] =
+    &["NotificationReadinessV0", "NotificationDispatchPolicyV0"];
 
 pub const REQUIRED_NOTIFICATION_CHECKS: &[&str] = &[
     "provider_declared",
