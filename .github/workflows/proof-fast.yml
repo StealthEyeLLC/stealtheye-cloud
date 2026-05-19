@@ -60,5 +60,17 @@ jobs:
       - name: Validate Control Registry
         run: cargo run -p secloud-cli -- validate control
 
+      - name: Validate Learning
+        run: cargo run -p secloud-cli -- validate learning
+
+      - name: Validate Search
+        run: cargo run -p secloud-cli -- validate search
+
+      - name: Validate Hypothesis
+        run: cargo run -p secloud-cli -- validate hypothesis
+
+      - name: Validate Proof Viewer
+        run: cargo run -p secloud-cli -- validate proof-viewer
+
       - name: Doctor
         run: cargo run -p secloud-cli -- doctor

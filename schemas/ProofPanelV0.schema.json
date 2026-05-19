@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProofPanelV0",
+  "type": "object",
+  "required": ["schema_version", "panel_id", "mission_id", "panel_kind", "title"],
+  "properties": {
+    "schema_version": {"const": "ProofPanelV0"},
+    "panel_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "panel_kind": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

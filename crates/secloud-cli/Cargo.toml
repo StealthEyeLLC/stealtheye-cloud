@@ -18,3 +18,7 @@ secloud-file-bundle = { path = "../secloud-file-bundle" }
 secloud-ci = { path = "../secloud-ci" }
 secloud-control = { path = "../secloud-control" }
 secloud-workers = { path = "../secloud-workers" }
+secloud-learning = { path = "../secloud-learning" }
+secloud-search = { path = "../secloud-search" }
+secloud-hypothesis = { path = "../secloud-hypothesis" }
+secloud-proof-viewer = { path = "../secloud-proof-viewer" }

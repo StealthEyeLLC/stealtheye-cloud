@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PastSessionSearchV0",
+  "type": "object",
+  "required": ["schema_version", "search_id", "mission_id", "query", "corpora"],
+  "properties": {
+    "schema_version": {"const": "PastSessionSearchV0"},
+    "search_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "query": {"type": "string"},
+    "corpora": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

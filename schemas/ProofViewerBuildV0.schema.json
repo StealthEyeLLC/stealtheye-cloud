@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProofViewerBuildV0",
+  "type": "object",
+  "required": ["schema_version", "build_id", "mission_id", "output_path", "summary"],
+  "properties": {
+    "schema_version": {"const": "ProofViewerBuildV0"},
+    "build_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "output_path": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

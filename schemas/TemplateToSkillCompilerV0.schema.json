@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TemplateToSkillCompilerV0",
+  "type": "object",
+  "required": ["schema_version", "compiler_id", "template_id", "output_skill_path", "summary"],
+  "properties": {
+    "schema_version": {"const": "TemplateToSkillCompilerV0"},
+    "compiler_id": {"type": "string", "minLength": 1},
+    "template_id": {"type": "string", "minLength": 1},
+    "output_skill_path": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

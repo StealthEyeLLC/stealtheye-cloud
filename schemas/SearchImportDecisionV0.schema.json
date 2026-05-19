@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SearchImportDecisionV0",
+  "type": "object",
+  "required": ["schema_version", "decision_id", "search_id", "result_id", "decision", "reason"],
+  "properties": {
+    "schema_version": {"const": "SearchImportDecisionV0"},
+    "decision_id": {"type": "string", "minLength": 1},
+    "search_id": {"type": "string", "minLength": 1},
+    "result_id": {"type": "string", "minLength": 1},
+    "decision": {"type": "string", "minLength": 1},
+    "reason": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

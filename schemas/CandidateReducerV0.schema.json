@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CandidateReducerV0",
+  "type": "object",
+  "required": ["schema_version", "reducer_id", "race_id", "mission_id", "winner", "reason"],
+  "properties": {
+    "schema_version": {"const": "CandidateReducerV0"},
+    "reducer_id": {"type": "string", "minLength": 1},
+    "race_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "winner": {"type": "string"},
+    "reason": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

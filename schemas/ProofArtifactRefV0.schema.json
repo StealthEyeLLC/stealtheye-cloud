@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProofArtifactRefV0",
+  "type": "object",
+  "required": ["schema_version", "artifact_id", "mission_id", "artifact_path", "artifact_kind"],
+  "properties": {
+    "schema_version": {"const": "ProofArtifactRefV0"},
+    "artifact_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "artifact_path": {"type": "string", "minLength": 1},
+    "artifact_kind": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

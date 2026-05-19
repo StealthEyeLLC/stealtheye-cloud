@@ -8,6 +8,10 @@ members = [
     "crates/secloud-ci",
     "crates/secloud-control",
     "crates/secloud-workers",
+    "crates/secloud-learning",
+    "crates/secloud-search",
+    "crates/secloud-hypothesis",
+    "crates/secloud-proof-viewer",
     "crates/secloud-cli",
 ]
 resolver = "2"

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SkillPromotionDecisionV0",
+  "type": "object",
+  "required": ["schema_version", "decision_id", "candidate_id", "mission_id", "decision", "reason"],
+  "properties": {
+    "schema_version": {"const": "SkillPromotionDecisionV0"},
+    "decision_id": {"type": "string", "minLength": 1},
+    "candidate_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "decision": {"type": "string", "minLength": 1},
+    "reason": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

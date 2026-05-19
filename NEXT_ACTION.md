@@ -1,17 +1,17 @@
 # Next Action
 
-Open and prove **S3 — MCP/App Control Plane, Tool Registry, Skills, Workers, and Background Capability Reality**.
+Open and prove **S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public Proof Canvas**.
 
 Current branch:
 
 ```text
-build/s3-mcp-app-control-workers
+build/s4-learning-search-hypothesis-proof-viewer
 ```
 
 Immediate work:
 
-1. Open S3 PR.
-2. Let public GitHub Actions run.
-3. Repair exact CI/control/worker/Skill validation failures directly in GitHub.
+1. Open S4 PR.
+2. Let public GitHub Actions run, including proof-browser.
+3. Repair exact CI/browser/S4 validation failures directly in GitHub.
 4. Merge when green.
-5. Begin S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public Proof Canvas.
+5. Begin S5 — Full Hardening, Public Release Candidate, and First End-to-End Mission.

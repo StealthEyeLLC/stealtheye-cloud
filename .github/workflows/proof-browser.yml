@@ -8,21 +8,27 @@ on:
       - 'repair/**'
     paths:
       - 'browser/**'
+      - 'public/proof/**'
       - 'package.json'
       - '.github/workflows/proof-browser.yml'
       - 'schemas/Browser*.schema.json'
+      - 'schemas/Proof*.schema.json'
       - 'docs/BROWSER_BODY.md'
       - 'docs/REPLAY_PROOF_SURFACE.md'
       - 'docs/VISUAL_EVIDENCE.md'
+      - 'docs/PUBLIC_PROOF_CANVAS.md'
   pull_request:
     paths:
       - 'browser/**'
+      - 'public/proof/**'
       - 'package.json'
       - '.github/workflows/proof-browser.yml'
       - 'schemas/Browser*.schema.json'
+      - 'schemas/Proof*.schema.json'
       - 'docs/BROWSER_BODY.md'
       - 'docs/REPLAY_PROOF_SURFACE.md'
       - 'docs/VISUAL_EVIDENCE.md'
+      - 'docs/PUBLIC_PROOF_CANVAS.md'
   workflow_dispatch:
 
 jobs:

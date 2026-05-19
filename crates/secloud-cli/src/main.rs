@@ -3,9 +3,13 @@ use std::fs;
 use std::path::Path;
 
 use secloud_control::{classify_tool_name, ALLOWED_TOOL_NAMES, BLOCKED_TOOL_NAMES};
+use secloud_hypothesis::{is_hypothesis_schema, is_stop_condition, HYPOTHESIS_PACKET_SCHEMAS};
+use secloud_learning::{has_promotion_rule, is_learning_schema, LEARNING_PACKET_SCHEMAS};
 use secloud_packets::{FORBIDDEN_ROOT_FILES, REQUIRED_PACKET_SCHEMAS, REQUIRED_ROOT_FILES};
+use secloud_proof_viewer::{is_panel_kind, is_viewer_schema, PROOF_VIEWER_PACKET_SCHEMAS};
 use secloud_relay::validate_relay_markdown;
 use secloud_seal::validate_seal_json_text;
+use secloud_search::{is_allowed_corpus, is_search_schema, SEARCH_PACKET_SCHEMAS};
 use secloud_workers::{is_real_surface, is_worker_schema, WORKER_PACKET_SCHEMAS};
 
 fn main() {
@@ -29,6 +33,10 @@ fn main() {
         [cmd, target] if cmd == "validate" && target == "capabilities" => validate_capabilities(),
         [cmd, target] if cmd == "validate" && target == "workers" => validate_workers(),
         [cmd, target] if cmd == "validate" && target == "control" => validate_control_registry(),
+        [cmd, target] if cmd == "validate" && target == "learning" => validate_learning(),
+        [cmd, target] if cmd == "validate" && target == "search" => validate_search(),
+        [cmd, target] if cmd == "validate" && target == "hypothesis" => validate_hypothesis(),
+        [cmd, target] if cmd == "validate" && target == "proof-viewer" => validate_proof_viewer(),
         _ => {
             print_help();
             Err("unknown command".to_string())
@@ -60,6 +68,10 @@ fn print_help() {
     println!("  secloud validate capabilities");
     println!("  secloud validate workers");
     println!("  secloud validate control");
+    println!("  secloud validate learning");
+    println!("  secloud validate search");
+    println!("  secloud validate hypothesis");
+    println!("  secloud validate proof-viewer");
 }
 
 fn doctor() -> Result<String, String> {
@@ -71,6 +83,10 @@ fn doctor() -> Result<String, String> {
     validate_capabilities()?;
     validate_workers()?;
     validate_control_registry()?;
+    validate_learning()?;
+    validate_search()?;
+    validate_hypothesis()?;
+    validate_proof_viewer()?;
     Ok("doctor checks passed".to_string())
 }
 
@@ -140,6 +156,16 @@ fn validate_schemas() -> Result<String, String> {
     } else {
         Err(format!("missing schemas: {}", missing.join(", ")))
     }
+}
+
+fn validate_schema_files(schema_names: &[&str]) -> Result<(), String> {
+    for schema in schema_names {
+        let path = Path::new("schemas").join(format!("{schema}.schema.json"));
+        if !path.exists() {
+            return Err(format!("missing schema: {}", path.display()));
+        }
+    }
+    Ok(())
 }
 
 fn validate_root_files() -> Result<String, String> {
@@ -225,12 +251,7 @@ fn validate_workers() -> Result<String, String> {
     if !is_worker_schema("FeatureAvailabilityCheckV0") {
         return Err("worker schema inventory must include FeatureAvailabilityCheckV0".to_string());
     }
-    for schema in WORKER_PACKET_SCHEMAS {
-        let path = Path::new("schemas").join(format!("{schema}.schema.json"));
-        if !path.exists() {
-            return Err(format!("missing worker schema: {}", path.display()));
-        }
-    }
+    validate_schema_files(WORKER_PACKET_SCHEMAS)?;
     Ok("workers are valid".to_string())
 }
 
@@ -248,4 +269,48 @@ fn validate_control_registry() -> Result<String, String> {
         }
     }
     Ok("control registry is valid".to_string())
+}
+
+fn validate_learning() -> Result<String, String> {
+    validate_schema_files(LEARNING_PACKET_SCHEMAS)?;
+    if !is_learning_schema("SkillCandidateV0") {
+        return Err("learning registry must include SkillCandidateV0".to_string());
+    }
+    if !has_promotion_rule("human_authority_preserved") {
+        return Err("learning promotion rules must preserve human authority".to_string());
+    }
+    Ok("learning contracts are valid".to_string())
+}
+
+fn validate_search() -> Result<String, String> {
+    validate_schema_files(SEARCH_PACKET_SCHEMAS)?;
+    if !is_search_schema("PastSessionSearchV0") {
+        return Err("search registry must include PastSessionSearchV0".to_string());
+    }
+    if !is_allowed_corpus("relay") || !is_allowed_corpus("seal") {
+        return Err("search corpus must include relay and seal".to_string());
+    }
+    Ok("search contracts are valid".to_string())
+}
+
+fn validate_hypothesis() -> Result<String, String> {
+    validate_schema_files(HYPOTHESIS_PACKET_SCHEMAS)?;
+    if !is_hypothesis_schema("HypothesisRaceV0") {
+        return Err("hypothesis registry must include HypothesisRaceV0".to_string());
+    }
+    if !is_stop_condition("authority_boundary") {
+        return Err("hypothesis stop conditions must include authority_boundary".to_string());
+    }
+    Ok("hypothesis contracts are valid".to_string())
+}
+
+fn validate_proof_viewer() -> Result<String, String> {
+    validate_schema_files(PROOF_VIEWER_PACKET_SCHEMAS)?;
+    if !is_viewer_schema("ProofCanvasManifestV0") {
+        return Err("proof viewer registry must include ProofCanvasManifestV0".to_string());
+    }
+    if !is_panel_kind("browser") {
+        return Err("proof viewer panels must include browser".to_string());
+    }
+    Ok("proof viewer contracts are valid".to_string())
 }

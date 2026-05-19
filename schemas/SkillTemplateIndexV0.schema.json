@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SkillTemplateIndexV0",
+  "type": "object",
+  "required": ["schema_version", "index_id", "templates"],
+  "properties": {
+    "schema_version": {"const": "SkillTemplateIndexV0"},
+    "index_id": {"type": "string", "minLength": 1},
+    "templates": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

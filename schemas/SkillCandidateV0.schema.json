@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SkillCandidateV0",
+  "type": "object",
+  "required": ["schema_version", "candidate_id", "mission_id", "skill_name", "proposed_path", "summary"],
+  "properties": {
+    "schema_version": {"const": "SkillCandidateV0"},
+    "candidate_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "skill_name": {"type": "string", "minLength": 1},
+    "proposed_path": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
