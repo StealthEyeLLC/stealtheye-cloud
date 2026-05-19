@@ -19,12 +19,8 @@ pub const ADAPTER_TYPE_STATES: &[&str] = &[
     "rejected",
 ];
 
-pub const NON_EXECUTING_STATES: &[&str] = &[
-    "candidate",
-    "contract_only",
-    "quarantined",
-    "rejected",
-];
+pub const NON_EXECUTING_STATES: &[&str] =
+    &["candidate", "contract_only", "quarantined", "rejected"];
 
 pub const DESCRIPTOR_INTEGRITY_FIELDS: &[&str] = &[
     "name",
