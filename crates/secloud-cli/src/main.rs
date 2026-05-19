@@ -280,7 +280,11 @@ fn require(label: &str, ok: bool) -> Result<(), String> {
     }
 }
 
-fn require_all(label: &str, values: &[&str], predicate: impl Fn(&str) -> bool) -> Result<(), String> {
+fn require_all(
+    label: &str,
+    values: &[&str],
+    predicate: impl Fn(&str) -> bool,
+) -> Result<(), String> {
     for value in values {
         require(&format!("{label}:{value}"), predicate(value))?;
     }
@@ -373,13 +377,19 @@ fn validate_control_registry() -> Result<String, String> {
 fn validate_learning() -> Result<String, String> {
     validate_schema_files(LEARNING_PACKET_SCHEMAS)?;
     require("SkillCandidateV0", is_learning_schema("SkillCandidateV0"))?;
-    require("human_authority_preserved", has_promotion_rule("human_authority_preserved"))?;
+    require(
+        "human_authority_preserved",
+        has_promotion_rule("human_authority_preserved"),
+    )?;
     Ok("learning contracts are valid".to_string())
 }
 
 fn validate_search() -> Result<String, String> {
     validate_schema_files(SEARCH_PACKET_SCHEMAS)?;
-    require("PastSessionSearchV0", is_search_schema("PastSessionSearchV0"))?;
+    require(
+        "PastSessionSearchV0",
+        is_search_schema("PastSessionSearchV0"),
+    )?;
     require("relay corpus", is_allowed_corpus("relay"))?;
     require("seal corpus", is_allowed_corpus("seal"))?;
     Ok("search contracts are valid".to_string())
@@ -388,20 +398,29 @@ fn validate_search() -> Result<String, String> {
 fn validate_hypothesis() -> Result<String, String> {
     validate_schema_files(HYPOTHESIS_PACKET_SCHEMAS)?;
     require("HypothesisRaceV0", is_hypothesis_schema("HypothesisRaceV0"))?;
-    require("authority_boundary", is_stop_condition("authority_boundary"))?;
+    require(
+        "authority_boundary",
+        is_stop_condition("authority_boundary"),
+    )?;
     Ok("hypothesis contracts are valid".to_string())
 }
 
 fn validate_proof_viewer() -> Result<String, String> {
     validate_schema_files(PROOF_VIEWER_PACKET_SCHEMAS)?;
-    require("ProofCanvasManifestV0", is_viewer_schema("ProofCanvasManifestV0"))?;
+    require(
+        "ProofCanvasManifestV0",
+        is_viewer_schema("ProofCanvasManifestV0"),
+    )?;
     require("browser panel", is_panel_kind("browser"))?;
     Ok("proof viewer contracts are valid".to_string())
 }
 
 fn validate_hardening() -> Result<String, String> {
     validate_schema_files(HARDENING_PACKET_SCHEMAS)?;
-    require("ReleaseReadinessV0", is_hardening_schema("ReleaseReadinessV0"))?;
+    require(
+        "ReleaseReadinessV0",
+        is_hardening_schema("ReleaseReadinessV0"),
+    )?;
     for check in REQUIRED_HARDENING_CHECKS {
         require(check, has_required_check(check))?;
     }
@@ -410,7 +429,10 @@ fn validate_hardening() -> Result<String, String> {
 
 fn validate_release() -> Result<String, String> {
     validate_schema_files(RELEASE_PACKET_SCHEMAS)?;
-    require("ReleaseCandidateV0", is_release_schema("ReleaseCandidateV0"))?;
+    require(
+        "ReleaseCandidateV0",
+        is_release_schema("ReleaseCandidateV0"),
+    )?;
     for artifact in REQUIRED_RELEASE_ARTIFACTS {
         require(artifact, is_required_artifact(artifact))?;
         if !Path::new(artifact).exists() {
@@ -448,7 +470,10 @@ fn validate_gateway() -> Result<String, String> {
 
 fn validate_gateway_transport() -> Result<String, String> {
     validate_schema_files(GATEWAY_PACKET_SCHEMAS)?;
-    require("GatewayTransportPolicyV0", is_gateway_schema("GatewayTransportPolicyV0"))?;
+    require(
+        "GatewayTransportPolicyV0",
+        is_gateway_schema("GatewayTransportPolicyV0"),
+    )?;
     require_all(
         "gateway-transport",
         &[
@@ -464,7 +489,10 @@ fn validate_gateway_transport() -> Result<String, String> {
 
 fn validate_backpressure() -> Result<String, String> {
     validate_schema_files(GATEWAY_PACKET_SCHEMAS)?;
-    require("BackpressurePolicyV0", is_gateway_schema("BackpressurePolicyV0"))?;
+    require(
+        "BackpressurePolicyV0",
+        is_gateway_schema("BackpressurePolicyV0"),
+    )?;
     require_all(
         "backpressure-control",
         &["retry_budget", "rate_budget", "token_budget", "loop_cutoff"],
@@ -475,13 +503,19 @@ fn validate_backpressure() -> Result<String, String> {
 
 fn validate_mcp_adapters() -> Result<String, String> {
     validate_schema_files(MCP_ADAPTER_PACKET_SCHEMAS)?;
-    require("McpAdapterRegistryV0", is_mcp_adapter_schema("McpAdapterRegistryV0"))?;
+    require(
+        "McpAdapterRegistryV0",
+        is_mcp_adapter_schema("McpAdapterRegistryV0"),
+    )?;
     Ok("MCP adapter contracts are valid".to_string())
 }
 
 fn validate_adapter_type_state() -> Result<String, String> {
     validate_schema_files(MCP_ADAPTER_PACKET_SCHEMAS)?;
-    require("AdapterTypeStateV0", is_mcp_adapter_schema("AdapterTypeStateV0"))?;
+    require(
+        "AdapterTypeStateV0",
+        is_mcp_adapter_schema("AdapterTypeStateV0"),
+    )?;
     require_all(
         "adapter-state",
         &["contract_only", "quarantined", "rejected"],
@@ -522,7 +556,11 @@ fn validate_adapter_catalog() -> Result<String, String> {
     )?;
     require_all(
         "adapter-risk-factor",
-        &["requires_secret", "untrusted_descriptor", "mutable_remote_capability"],
+        &[
+            "requires_secret",
+            "untrusted_descriptor",
+            "mutable_remote_capability",
+        ],
         has_risk_factor,
     )?;
     Ok("adapter catalog contracts are valid".to_string())
@@ -606,7 +644,10 @@ fn validate_injection_isolation() -> Result<String, String> {
 
 fn validate_external_auth() -> Result<String, String> {
     validate_schema_files(PERMISSION_PACKET_SCHEMAS)?;
-    require("ExternalAuthPolicyV0", is_permission_schema("ExternalAuthPolicyV0"))?;
+    require(
+        "ExternalAuthPolicyV0",
+        is_permission_schema("ExternalAuthPolicyV0"),
+    )?;
     require_all(
         "permission-rule",
         &[
@@ -622,7 +663,10 @@ fn validate_external_auth() -> Result<String, String> {
 
 fn validate_workflow_security() -> Result<String, String> {
     validate_schema_files(GUARD_PACKET_SCHEMAS)?;
-    require("WorkflowGuardPolicyV0", is_guard_schema("WorkflowGuardPolicyV0"))?;
+    require(
+        "WorkflowGuardPolicyV0",
+        is_guard_schema("WorkflowGuardPolicyV0"),
+    )?;
     require(
         "workflow_payload_cannot_mutate_plan",
         has_isolation_rule("workflow_payload_cannot_mutate_plan"),
@@ -646,7 +690,10 @@ fn validate_knowledge_mirror() -> Result<String, String> {
         ],
         has_mirror_check,
     )?;
-    require("redacts_private_user_data", redacts_class("private_user_data"))?;
+    require(
+        "redacts_private_user_data",
+        redacts_class("private_user_data"),
+    )?;
     Ok("knowledge mirror contracts are valid".to_string())
 }
 
@@ -693,7 +740,10 @@ fn validate_git_worker() -> Result<String, String> {
 
 fn validate_mobile_qa() -> Result<String, String> {
     validate_schema_files(MOBILE_QA_PACKET_SCHEMAS)?;
-    require("MobileQaReadinessV0", is_mobile_qa_schema("MobileQaReadinessV0"))?;
+    require(
+        "MobileQaReadinessV0",
+        is_mobile_qa_schema("MobileQaReadinessV0"),
+    )?;
     require_all(
         "mobile-qa-check",
         &["viewport_matrix_declared", "activation_deferred_to_s7"],
@@ -704,7 +754,10 @@ fn validate_mobile_qa() -> Result<String, String> {
 
 fn validate_game_qa() -> Result<String, String> {
     validate_schema_files(MOBILE_QA_PACKET_SCHEMAS)?;
-    require("GameQaReadinessV0", is_mobile_qa_schema("GameQaReadinessV0"))?;
+    require(
+        "GameQaReadinessV0",
+        is_mobile_qa_schema("GameQaReadinessV0"),
+    )?;
     require_all(
         "game-qa-check",
         &["startup_smoke_declared", "screenshot_artifact_declared"],
@@ -715,7 +768,10 @@ fn validate_game_qa() -> Result<String, String> {
 
 fn validate_document_ingest() -> Result<String, String> {
     validate_schema_files(GUARD_PACKET_SCHEMAS)?;
-    require("DocumentIngestPolicyV0", is_guard_schema("DocumentIngestPolicyV0"))?;
+    require(
+        "DocumentIngestPolicyV0",
+        is_guard_schema("DocumentIngestPolicyV0"),
+    )?;
     require(
         "untrusted_document_content",
         has_taint_class("untrusted_document_content"),
@@ -730,7 +786,10 @@ fn validate_document_ingest() -> Result<String, String> {
 fn validate_web_ingest() -> Result<String, String> {
     validate_schema_files(GUARD_PACKET_SCHEMAS)?;
     require("WebIngestPolicyV0", is_guard_schema("WebIngestPolicyV0"))?;
-    require("untrusted_web_content", has_taint_class("untrusted_web_content"))?;
+    require(
+        "untrusted_web_content",
+        has_taint_class("untrusted_web_content"),
+    )?;
     require(
         "untrusted_content_is_data",
         has_isolation_rule("untrusted_content_is_data"),
@@ -746,7 +805,11 @@ fn validate_production_adapters() -> Result<String, String> {
     )?;
     require_all(
         "production-contract",
-        &["readiness_only", "no_deployment_mutation", "no_database_mutation"],
+        &[
+            "readiness_only",
+            "no_deployment_mutation",
+            "no_database_mutation",
+        ],
         has_production_contract,
     )?;
     Ok("production adapter contracts are valid".to_string())
@@ -755,7 +818,10 @@ fn validate_production_adapters() -> Result<String, String> {
 fn validate_database_boundary() -> Result<String, String> {
     validate_schema_files(GUARD_PACKET_SCHEMAS)?;
     require("DatabaseBoundaryV0", is_guard_schema("DatabaseBoundaryV0"))?;
-    require("no_database_mutation", has_production_contract("no_database_mutation"))?;
+    require(
+        "no_database_mutation",
+        has_production_contract("no_database_mutation"),
+    )?;
     Ok("database boundary contracts are valid".to_string())
 }
 
@@ -775,7 +841,10 @@ fn validate_telemetry_redaction() -> Result<String, String> {
         "TelemetryRedactionPolicyV0",
         is_guard_schema("TelemetryRedactionPolicyV0"),
     )?;
-    require("redaction_required", has_production_contract("redaction_required"))?;
+    require(
+        "redaction_required",
+        has_production_contract("redaction_required"),
+    )?;
     Ok("telemetry redaction contracts are valid".to_string())
 }
 
