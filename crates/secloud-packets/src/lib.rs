@@ -101,7 +101,7 @@ pub const REQUIRED_PACKET_SCHEMAS: &[&str] = &[
     "AdapterCandidateCatalogV0",
     "AdapterRiskScoreV0",
     "GeminiWorkerReadinessV0",
-    "ProviderPromptTopologyV0",
+    "ModelTopologyBoundaryV0",
     "SemanticNormalizationV0",
     "KnowledgeMirrorReadinessV0",
     "KnowledgeMirrorRedactionV0",
@@ -197,6 +197,7 @@ mod tests {
     fn required_schema_inventory_contains_s6_gateway_contracts() {
         assert!(is_required_schema("GatewayPolicyV0"));
         assert!(is_required_schema("McpAdapterRegistryV0"));
+        assert!(is_required_schema("ModelTopologyBoundaryV0"));
         assert!(is_required_schema("ExternalAuthPolicyV0"));
         assert!(is_required_schema("GitWorkerReadinessV0"));
         assert!(is_required_schema("RemediatorReadinessV0"));
