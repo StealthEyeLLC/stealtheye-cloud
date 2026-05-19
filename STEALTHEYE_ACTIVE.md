@@ -14,7 +14,7 @@ S3 — MCP/App Control Plane, Tool Registry, Skills, Workers, and Background Cap
 
 ## Active PR
 
-Pending.
+PR #4 — S3: Control plane, tool registry, skills, workers, and background reality
 
 ## Current approval envelope
 
@@ -43,7 +43,11 @@ Stop for:
 
 ## Latest CI status
 
-S3 CI not run yet. S2 merged green.
+Green on PR #4 before final state update:
+
+1. `proof-fast` — success
+2. `proof-full` — success
+3. `proof-windows-targeted` — success
 
 ## Latest browser status
 
@@ -55,7 +59,7 @@ None.
 
 ## Next exact action
 
-Open S3 PR, run public GitHub proof workflows, repair failures directly in GitHub, and merge when green.
+Merge S3 after the final state-only proof rerun remains green, then begin S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public Proof Canvas.
 
 ## Saturation status
 
