@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MissionCompletionGateV0",
+  "type": "object",
+  "required": ["schema_version", "gate_id", "mission_id", "passed", "required_evidence"],
+  "properties": {
+    "schema_version": {"const": "MissionCompletionGateV0"},
+    "gate_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "passed": {"type": "boolean"},
+    "required_evidence": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
