@@ -71,7 +71,8 @@ mod tests {
         include_str!("../../../schemas/MobilePlaytestActivationV0.schema.json");
     const NOTIFICATION_SCHEMA: &str =
         include_str!("../../../schemas/NotificationActivationRunV0.schema.json");
-    const MIRROR_SCHEMA: &str = include_str!("../../../schemas/KnowledgeMirrorExportV0.schema.json");
+    const MIRROR_SCHEMA: &str =
+        include_str!("../../../schemas/KnowledgeMirrorExportV0.schema.json");
     const PROOF_SCHEMA: &str = include_str!("../../../schemas/S7ActivationProofV0.schema.json");
 
     #[test]
