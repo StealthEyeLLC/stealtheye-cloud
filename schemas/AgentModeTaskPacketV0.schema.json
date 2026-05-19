@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgentModeTaskPacketV0",
+  "type": "object",
+  "required": ["schema_version", "task_id", "mission_id", "objective", "requires_user_start"],
+  "properties": {
+    "schema_version": {"const": "AgentModeTaskPacketV0"},
+    "task_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "objective": {"type": "string", "minLength": 1},
+    "requires_user_start": {"const": true}
+  },
+  "additionalProperties": true
+}

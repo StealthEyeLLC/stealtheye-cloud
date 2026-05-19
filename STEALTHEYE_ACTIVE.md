@@ -6,15 +6,15 @@ StealthEye Cloud
 
 ## Current mission
 
-S2 — Browser Body, Replay Proof, and Visual Evidence
+S3 — MCP/App Control Plane, Tool Registry, Skills, Workers, and Background Capability Reality
 
 ## Active branch
 
-`build/s2-browser-body-proof`
+`build/s3-mcp-app-control-workers`
 
 ## Active PR
 
-PR #3 — S2: Browser body, replay proof, and visual evidence
+PR #4 — S3: Control plane, tool registry, skills, workers, and background reality
 
 ## Current approval envelope
 
@@ -22,13 +22,15 @@ User approved cloud-only direct build continuation. Local/laptop work is disable
 
 Allowed:
 
-1. create S2 branch
-2. add public-safe browser proof files
-3. add Playwright browser body workflow
-4. add browser observation schemas and docs
-5. open PR
-6. repair CI failures directly in GitHub
-7. merge when green if GitHub allows
+1. use GitHub-only implementation
+2. add public-safe S3 control-plane files
+3. add control and worker registry crates
+4. add tool/worker/background schemas and docs
+5. add Skill folders and validation
+6. update GitHub Actions proof workflows
+7. open PR
+8. repair CI failures directly in GitHub
+9. merge when green if GitHub allows
 
 Stop for:
 
@@ -41,17 +43,15 @@ Stop for:
 
 ## Latest CI status
 
-Green on PR #3 before final state update:
+Green on PR #4 before final state update:
 
 1. `proof-fast` — success
 2. `proof-full` — success
-3. `proof-browser` — success
-
-`proof-windows-targeted` did not trigger because S2 did not touch Windows-sensitive paths.
+3. `proof-windows-targeted` — success
 
 ## Latest browser status
 
-Green. Browser proof installed Chromium, ran the deterministic browser proof, validated browser artifacts, and uploaded browser artifacts.
+S2 browser proof merged green. S3 does not add new browser runtime behavior.
 
 ## Current blocker
 
@@ -59,7 +59,7 @@ None.
 
 ## Next exact action
 
-Merge S2, then begin S3 — MCP/App Control Plane, Tool Registry, Skills, Workers, and Background Capability Reality.
+Merge S3 after the final state-only proof rerun remains green, then begin S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public Proof Canvas.
 
 ## Saturation status
 

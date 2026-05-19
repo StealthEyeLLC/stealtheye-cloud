@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ToolIdentityV0",
+  "type": "object",
+  "required": ["schema_version", "tool_id", "name", "authority_class"],
+  "properties": {
+    "schema_version": {"const": "ToolIdentityV0"},
+    "tool_id": {"type": "string", "minLength": 1},
+    "name": {"type": "string", "minLength": 1},
+    "authority_class": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResearchResultImportV0",
+  "type": "object",
+  "required": ["schema_version", "result_id", "task_id", "mission_id", "summary", "citations"],
+  "properties": {
+    "schema_version": {"const": "ResearchResultImportV0"},
+    "result_id": {"type": "string", "minLength": 1},
+    "task_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1},
+    "citations": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

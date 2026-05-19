@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ToolPackManifestV0",
+  "type": "object",
+  "required": ["schema_version", "pack_id", "tools", "blocked_tool_names"],
+  "properties": {
+    "schema_version": {"const": "ToolPackManifestV0"},
+    "pack_id": {"type": "string", "minLength": 1},
+    "tools": {"type": "array", "items": {"type": "string"}},
+    "blocked_tool_names": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

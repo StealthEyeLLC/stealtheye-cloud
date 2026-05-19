@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ToolResultEnvelopeV0",
+  "type": "object",
+  "required": ["schema_version", "result_id", "tool_name", "mission_id", "status", "summary"],
+  "properties": {
+    "schema_version": {"const": "ToolResultEnvelopeV0"},
+    "result_id": {"type": "string", "minLength": 1},
+    "tool_name": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

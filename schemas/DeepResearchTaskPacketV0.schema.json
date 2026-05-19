@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeepResearchTaskPacketV0",
+  "type": "object",
+  "required": ["schema_version", "task_id", "mission_id", "question", "source_plan", "expected_output"],
+  "properties": {
+    "schema_version": {"const": "DeepResearchTaskPacketV0"},
+    "task_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "question": {"type": "string", "minLength": 1},
+    "source_plan": {"type": "array", "items": {"type": "string"}},
+    "expected_output": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

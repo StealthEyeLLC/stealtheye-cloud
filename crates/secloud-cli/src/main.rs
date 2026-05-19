@@ -2,9 +2,11 @@ use std::env;
 use std::fs;
 use std::path::Path;
 
+use secloud_control::{classify_tool_name, ALLOWED_TOOL_NAMES, BLOCKED_TOOL_NAMES};
 use secloud_packets::{FORBIDDEN_ROOT_FILES, REQUIRED_PACKET_SCHEMAS, REQUIRED_ROOT_FILES};
 use secloud_relay::validate_relay_markdown;
 use secloud_seal::validate_seal_json_text;
+use secloud_workers::{is_real_surface, is_worker_schema, WORKER_PACKET_SCHEMAS};
 
 fn main() {
     let args: Vec<String> = env::args().skip(1).collect();
@@ -23,6 +25,10 @@ fn main() {
         ),
         [cmd, target] if cmd == "validate" && target == "schemas" => validate_schemas(),
         [cmd, target] if cmd == "validate" && target == "root" => validate_root_files(),
+        [cmd, target] if cmd == "validate" && target == "skills" => validate_skills(),
+        [cmd, target] if cmd == "validate" && target == "capabilities" => validate_capabilities(),
+        [cmd, target] if cmd == "validate" && target == "workers" => validate_workers(),
+        [cmd, target] if cmd == "validate" && target == "control" => validate_control_registry(),
         _ => {
             print_help();
             Err("unknown command".to_string())
@@ -50,6 +56,10 @@ fn print_help() {
     println!("  secloud validate decisions");
     println!("  secloud validate schemas");
     println!("  secloud validate root");
+    println!("  secloud validate skills");
+    println!("  secloud validate capabilities");
+    println!("  secloud validate workers");
+    println!("  secloud validate control");
 }
 
 fn doctor() -> Result<String, String> {
@@ -57,6 +67,10 @@ fn doctor() -> Result<String, String> {
     validate_schemas()?;
     validate_relay()?;
     validate_seal()?;
+    validate_skills()?;
+    validate_capabilities()?;
+    validate_workers()?;
+    validate_control_registry()?;
     Ok("doctor checks passed".to_string())
 }
 
@@ -154,4 +168,84 @@ fn validate_root_files() -> Result<String, String> {
     }
 
     Ok("root files are valid".to_string())
+}
+
+fn validate_skills() -> Result<String, String> {
+    let required_skills = [
+        "relay-generation",
+        "seal-generation",
+        "tab-resume",
+        "mission-executor",
+        "ci-repair",
+        "browser-repair",
+        "public-kernel-drop",
+        "oss-audit",
+        "codex-worker",
+        "spec-generation",
+    ];
+    let mut missing = Vec::new();
+    for skill in required_skills {
+        let path = format!(".stealtheye/skills/{skill}/SKILL.md");
+        if !Path::new(&path).exists() {
+            missing.push(path);
+        }
+    }
+    if missing.is_empty() {
+        Ok("required skills are present".to_string())
+    } else {
+        Err(format!("missing skills: {}", missing.join(", ")))
+    }
+}
+
+fn validate_capabilities() -> Result<String, String> {
+    validate_file_contains(
+        "STEALTHEYE_CAPABILITIES.md",
+        &[
+            "Allowed high-level tool names",
+            "Blocked raw tool names",
+            "secloud.status",
+            "secret.read",
+        ],
+    )
+}
+
+fn validate_workers() -> Result<String, String> {
+    validate_file_contains(
+        "STEALTHEYE_WORKERS.md",
+        &[
+            "Real surfaces",
+            "Worker packets",
+            "CodexTaskPacketV0",
+            "FeatureAvailabilityCheckV0",
+        ],
+    )?;
+    if !is_real_surface("github.actions") {
+        return Err("worker registry must include github.actions".to_string());
+    }
+    if !is_worker_schema("FeatureAvailabilityCheckV0") {
+        return Err("worker schema inventory must include FeatureAvailabilityCheckV0".to_string());
+    }
+    for schema in WORKER_PACKET_SCHEMAS {
+        let path = Path::new("schemas").join(format!("{schema}.schema.json"));
+        if !path.exists() {
+            return Err(format!("missing worker schema: {}", path.display()));
+        }
+    }
+    Ok("workers are valid".to_string())
+}
+
+fn validate_control_registry() -> Result<String, String> {
+    for name in ALLOWED_TOOL_NAMES {
+        let verdict = classify_tool_name(name);
+        if !verdict.allowed || verdict.blocked {
+            return Err(format!("allowed tool rejected: {name}"));
+        }
+    }
+    for name in BLOCKED_TOOL_NAMES {
+        let verdict = classify_tool_name(name);
+        if verdict.allowed || !verdict.blocked {
+            return Err(format!("blocked tool was not blocked: {name}"));
+        }
+    }
+    Ok("control registry is valid".to_string())
 }
