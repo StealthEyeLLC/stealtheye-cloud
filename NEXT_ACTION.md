@@ -1,32 +1,40 @@
 # Next Action
 
-Open and prove the documentation/handoff update for the **S6/S7/S8 roadmap**.
+Continue **S6 — Zero-Trust Cross-Cloud Gateway** on PR #8.
 
 Current branch:
-
-```text
-build/s6-s8-roadmap-docs-handoff
-```
-
-Immediate work:
-
-1. Open the docs/handoff PR.
-2. Let public GitHub Actions run.
-3. Repair exact CI/doc validation failures directly in GitHub.
-4. Merge when green.
-5. Begin **S6 — Zero-Trust Cross-Cloud Gateway**.
-
-Next implementation branch after this PR merges:
 
 ```text
 build/s6-zero-trust-cross-cloud-gateway
 ```
 
-S6 source docs:
+Active PR:
 
 ```text
-docs/S6_S7_S8_ROADMAP.md
-docs/S6_ZERO_TRUST_CROSS_CLOUD_GATEWAY.md
-docs/StealthEye_Cloud_Build_Plan.md
-docs/HANDOFF_AND_CONTINUATION.md
+https://github.com/StealthEyeLLC/stealtheye-cloud/pull/8
+```
+
+Immediate work:
+
+1. Monitor PR #8 GitHub Actions checks.
+2. Inspect exact failing job logs if any check fails.
+3. Patch only real CI failures directly in GitHub.
+4. Do not add placeholders or fake external activation.
+5. Merge PR #8 only when required checks are green.
+6. After merge, update Relay/Seal/Active/Next Action for S7 — First Real Activations.
+
+Required PR #8 proof:
+
+```text
+proof-fast
+proof-full
+proof-e2e
+proof-gateway
+any optional triggered checks
+```
+
+S6 safety boundary:
+
+```text
+S6 is readiness/enforcement only. No live external provider calls, no browser-cookie/session-token automation, no production deployment, and no database mutation.
 ```

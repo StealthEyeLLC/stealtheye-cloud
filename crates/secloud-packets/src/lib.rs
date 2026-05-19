@@ -90,6 +90,48 @@ pub const REQUIRED_PACKET_SCHEMAS: &[&str] = &[
     "EndToEndStepV0",
     "EndToEndProofSummaryV0",
     "MissionCompletionGateV0",
+    "GatewayPolicyV0",
+    "GatewayTransportPolicyV0",
+    "GatewaySessionPolicyV0",
+    "GatewayOriginPolicyV0",
+    "BackpressurePolicyV0",
+    "McpAdapterRegistryV0",
+    "AdapterTypeStateV0",
+    "AdapterDescriptorIntegrityV0",
+    "AdapterCandidateCatalogV0",
+    "AdapterRiskScoreV0",
+    "GeminiWorkerReadinessV0",
+    "ModelTopologyBoundaryV0",
+    "SemanticNormalizationV0",
+    "KnowledgeMirrorReadinessV0",
+    "KnowledgeMirrorRedactionV0",
+    "SemanticSnapshotV0",
+    "NotificationReadinessV0",
+    "NotificationDispatchPolicyV0",
+    "ExternalAuthPolicyV0",
+    "CredentialBoundaryV0",
+    "SessionMaterialBanV0",
+    "DataTaintPolicyV0",
+    "InjectionIsolationPolicyV0",
+    "WorkflowGuardPolicyV0",
+    "DocumentIngestPolicyV0",
+    "WebIngestPolicyV0",
+    "ProductionAdapterContractV0",
+    "DatabaseBoundaryV0",
+    "TelemetryAdapterContractV0",
+    "TelemetryRedactionPolicyV0",
+    "GitWorkerReadinessV0",
+    "RepoWorkerPermissionEnvelopeV0",
+    "MobileQaReadinessV0",
+    "GameQaReadinessV0",
+    "MobilePreviewPolicyV0",
+    "RemediatorReadinessV0",
+    "RemediationIntakeV0",
+    "RemediationPermissionsV0",
+    "RemediationReproductionV0",
+    "RemediationFailureTaxonomyV0",
+    "RemediationProofPlanV0",
+    "RemediationReportV0",
 ];
 
 pub const FORBIDDEN_ROOT_FILES: &[&str] = &[
@@ -149,6 +191,16 @@ mod tests {
         assert!(is_required_schema("ReleaseCandidateV0"));
         assert!(is_required_schema("EndToEndMissionV0"));
         assert!(is_required_schema("MissionCompletionGateV0"));
+    }
+
+    #[test]
+    fn required_schema_inventory_contains_s6_gateway_contracts() {
+        assert!(is_required_schema("GatewayPolicyV0"));
+        assert!(is_required_schema("McpAdapterRegistryV0"));
+        assert!(is_required_schema("ModelTopologyBoundaryV0"));
+        assert!(is_required_schema("ExternalAuthPolicyV0"));
+        assert!(is_required_schema("GitWorkerReadinessV0"));
+        assert!(is_required_schema("RemediatorReadinessV0"));
     }
 
     #[test]

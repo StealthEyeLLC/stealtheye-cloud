@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GatewaySessionPolicyV0",
+  "type": "object",
+  "required": ["schema_version"],
+  "properties": {
+    "schema_version": {"const": "GatewaySessionPolicyV0"}
+  },
+  "additionalProperties": true
+}

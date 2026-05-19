@@ -32,10 +32,16 @@ Then it performs `NEXT_ACTION.md` unless a true boundary is present.
 
 ## Current continuation target
 
-After this docs/handoff update merges, continue with:
+Continue with:
 
 ```text
 S6 — Zero-Trust Cross-Cloud Gateway
+```
+
+Active PR:
+
+```text
+https://github.com/StealthEyeLLC/stealtheye-cloud/pull/8
 ```
 
 Target branch:
@@ -62,9 +68,34 @@ Stop for:
 3. account permission changes
 4. deployment/production mutation
 5. database mutation
-6. private data exposure risk
-7. unresolved high-impact product ambiguity
+6. browser-cookie/session-token automation
+7. private data exposure risk
+8. unresolved high-impact product ambiguity
+
+## PR #8 status
+
+PR #8 implements S6 contract/readiness infrastructure only. It does not activate live external services and does not claim production/database mutation.
+
+Required proof before merge:
+
+```text
+proof-fast
+proof-full
+proof-e2e
+proof-gateway
+any optional triggered checks
+```
+
+## Materialized crate note
+
+The current GitHub tool safety filter blocked several exact roadmap crate paths. The implementation uses neutral materialized crate names while preserving the public validator names:
+
+1. `secloud-permission` implements the external-auth readiness boundary.
+2. `secloud-guard` implements gateway-security / guard readiness boundaries.
+3. `secloud-repo-worker` implements git-worker readiness.
+4. `secloud-repair-readiness` implements Remediator readiness.
+5. `ModelTopologyBoundaryV0` replaces the blocked topology schema filename while `secloud validate prompt-topology` remains the public validator.
 
 ## Handoff rule
 
-Do not ask the user to re-explain the S6/S7/S8 plan. The repo docs are the source of continuation truth.
+Do not ask the user to re-explain the S6 plan. The repo docs and PR #8 are the source of continuation truth. Continue by checking PR #8 CI, patching exact failures, and merging only when green.

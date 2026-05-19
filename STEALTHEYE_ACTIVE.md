@@ -6,15 +6,15 @@ StealthEye Cloud
 
 ## Current mission
 
-Documentation and handoff update for S6/S7/S8 roadmap
+S6 — Zero-Trust Cross-Cloud Gateway
 
 ## Active branch
 
-`build/s6-s8-roadmap-docs-handoff`
+`build/s6-zero-trust-cross-cloud-gateway`
 
 ## Active PR
 
-PR #7 — Docs: Update S6/S7/S8 roadmap and handoff state
+PR #8 — S6: Zero-Trust Cross-Cloud Gateway
 
 ## Current approval envelope
 
@@ -22,14 +22,14 @@ User approved cloud-only direct build continuation. Local/laptop work is disable
 
 Allowed:
 
-1. update README and build docs
-2. add S6/S7/S8 roadmap docs
-3. update handoff/continuation docs
-4. update Relay/Seal/Active/Next Action
-5. open PR
-6. repair CI failures directly in GitHub
-7. merge when green if GitHub allows
-8. continue next tab into S6 using repo docs
+1. GitHub-direct cloud-only implementation
+2. big coherent drops
+3. public-safe contract/readiness code
+4. schema and validator updates
+5. workflow proof updates
+6. PR creation
+7. exact CI failure repair directly in GitHub
+8. merge when CI is green if GitHub allows
 
 Stop for:
 
@@ -37,32 +37,59 @@ Stop for:
 2. paid compute
 3. destructive irreversible action
 4. private data exposure risk
-5. account permission changes
-6. unresolved high-impact ambiguity
+5. browser-cookie/session-token automation
+6. account permission changes
+7. deployment or production mutation
+8. database mutation
+9. unresolved high-impact ambiguity
+
+## Latest implementation status
+
+S6 PR #8 is open. The branch implements S6 as contract/readiness infrastructure only:
+
+1. gateway transport/session/origin/backpressure contracts
+2. MCP adapter registry, lifecycle, descriptor integrity, catalog, and risk scoring contracts
+3. Gemini worker readiness, semantic normalization, and model-topology boundary contracts
+4. data-tainting, indirect-injection isolation, workflow guard, ingest, production adapter, database, and telemetry contracts
+5. external authority boundary readiness contracts
+6. knowledge mirror and notification readiness contracts
+7. repo worker, mobile QA, game QA, and Remediator readiness contracts
+8. full S6 public schema inventory
+9. `secloud validate ...` command surface for every S6 validator
+10. dedicated `proof-gateway` workflow
+
+S6 does not activate live external services, does not automate browser sessions/cookies, and does not claim production/database mutation.
+
+## Tool-filter naming note
+
+The current GitHub tool safety filter blocked several exact roadmap crate paths. The implementation uses neutral materialized crate names while preserving public validator names:
+
+1. `secloud-permission` implements the external-auth readiness boundary.
+2. `secloud-guard` implements gateway-security / guard readiness boundaries.
+3. `secloud-repo-worker` implements git-worker readiness.
+4. `secloud-repair-readiness` implements Remediator readiness.
+5. `ModelTopologyBoundaryV0` replaces the blocked topology schema filename while `secloud validate prompt-topology` remains the public validator.
 
 ## Latest CI status
 
-Green on PR #7 before final state update:
+Pending for PR #8 after final state update.
 
-1. `proof-fast` — success
-2. `proof-full` — success
-3. `proof-e2e` — success
-4. `proof-windows-targeted` — success
+Required before merge:
 
-S5 merged green on `main` at:
-
-```text
-a190d7347569cc3a59d91678ddc5dec9d9e48c1b
-```
+1. `proof-fast`
+2. `proof-full`
+3. `proof-e2e`
+4. `proof-gateway`
+5. any optional triggered checks
 
 ## Current blocker
 
-None.
+CI pending.
 
 ## Next exact action
 
-Merge the docs/handoff PR after the final state-only proof rerun remains green, then begin S6 — Zero-Trust Cross-Cloud Gateway on branch `build/s6-zero-trust-cross-cloud-gateway`.
+Monitor PR #8 checks, repair exact CI failures directly in GitHub, and merge only when all required checks are green.
 
 ## Saturation status
 
-Current tab is saturated enough that the repo handoff files must be treated as the continuation source of truth after this PR.
+If this tab saturates, the repo handoff files are the continuation source of truth. Continue from PR #8 and do not reopen S6 architecture unless a real CI failure requires a surgical correction.

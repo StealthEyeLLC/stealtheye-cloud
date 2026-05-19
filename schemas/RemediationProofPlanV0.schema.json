@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RemediationProofPlanV0",
+  "type": "object",
+  "required": ["schema_version"],
+  "properties": {"schema_version": {"const": "RemediationProofPlanV0"}},
+  "additionalProperties": true
+}
