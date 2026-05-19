@@ -2,7 +2,9 @@
 
 ## 1. Resume Command
 
-Resume StealthEye Cloud from this Relay. Use the latest Seal as checkpoint truth, obey the Active approval envelope, do not reopen frozen decisions, and perform `NEXT_ACTION.md` unless a true boundary is required.
+Resume this StealthEye Cloud mission from this Relay. Use the latest Seal as truth, obey the Active Approval Envelope, do not reopen frozen decisions, and perform the Next Exact Action unless a boundary is required.
+
+Continuation target: after this docs/handoff PR merges green, begin S6 — Zero-Trust Cross-Cloud Gateway on `build/s6-zero-trust-cross-cloud-gateway`.
 
 ## 2. Current Mission
 
@@ -76,9 +78,9 @@ Base: `main`
 
 None.
 
-## 13. Worker State
+## 13. Codex / Worker State
 
-No external worker task active. S6 will add worker readiness contracts only.
+No Codex worker task active. No external worker task active. S6 will add worker readiness contracts only.
 
 ## 14. Browser State
 
