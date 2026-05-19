@@ -14,7 +14,7 @@ Documentation and handoff update for S6/S7/S8 roadmap
 
 ## Active PR
 
-Pending.
+PR #7 — Docs: Update S6/S7/S8 roadmap and handoff state
 
 ## Current approval envelope
 
@@ -42,21 +42,18 @@ Stop for:
 
 ## Latest CI status
 
+Green on PR #7 before final state update:
+
+1. `proof-fast` — success
+2. `proof-full` — success
+3. `proof-e2e` — success
+4. `proof-windows-targeted` — success
+
 S5 merged green on `main` at:
 
 ```text
 a190d7347569cc3a59d91678ddc5dec9d9e48c1b
 ```
-
-Verified S5 gates:
-
-1. `proof-fast` — success
-2. `proof-full` — success
-3. `proof-browser` — success
-4. `proof-e2e` — success
-5. `proof-windows-targeted` — success
-
-Current docs/handoff branch CI not run yet.
 
 ## Current blocker
 
@@ -64,7 +61,7 @@ None.
 
 ## Next exact action
 
-Open the docs/handoff PR, prove it green, merge it, then begin S6 — Zero-Trust Cross-Cloud Gateway on branch `build/s6-zero-trust-cross-cloud-gateway`.
+Merge the docs/handoff PR after the final state-only proof rerun remains green, then begin S6 — Zero-Trust Cross-Cloud Gateway on branch `build/s6-zero-trust-cross-cloud-gateway`.
 
 ## Saturation status
 
