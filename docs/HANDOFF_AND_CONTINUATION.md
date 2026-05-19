@@ -32,22 +32,33 @@ Then it performs `NEXT_ACTION.md` unless a true boundary is present.
 
 ## Current continuation target
 
-Continue with:
+Begin:
 
 ```text
-S6 — Zero-Trust Cross-Cloud Gateway
+S7 — First Real Activations
 ```
 
-Active PR:
+S6 completion truth:
 
 ```text
-https://github.com/StealthEyeLLC/stealtheye-cloud/pull/8
+PR #8 merged: S6 — Zero-Trust Cross-Cloud Gateway
+Merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
 ```
 
-Target branch:
+Verified green before S6 merge:
 
 ```text
-build/s6-zero-trust-cross-cloud-gateway
+proof-fast
+proof-full
+proof-e2e
+proof-gateway
+proof-windows-targeted
+```
+
+Next implementation branch:
+
+```text
+build/s7-first-real-activations
 ```
 
 ## Current operating envelope
@@ -66,29 +77,17 @@ Stop for:
 1. secrets
 2. paid compute
 3. account permission changes
-4. deployment/production mutation
-5. database mutation
+4. production deployment without explicit approval
+5. database mutation without explicit approval
 6. browser-cookie/session-token automation
 7. private data exposure risk
 8. unresolved high-impact product ambiguity
 
-## PR #8 status
+## S6 final status
 
-PR #8 implements S6 contract/readiness infrastructure only. It does not activate live external services and does not claim production/database mutation.
+S6 is complete and merged. It implemented contract/readiness infrastructure only. It did not activate live external services and did not claim production/database mutation.
 
-Required proof before merge:
-
-```text
-proof-fast
-proof-full
-proof-e2e
-proof-gateway
-any optional triggered checks
-```
-
-## Materialized crate note
-
-The current GitHub tool safety filter blocked several exact roadmap crate paths. The implementation uses neutral materialized crate names while preserving the public validator names:
+S6 materialized crate note:
 
 1. `secloud-permission` implements the external-auth readiness boundary.
 2. `secloud-guard` implements gateway-security / guard readiness boundaries.
@@ -96,6 +95,8 @@ The current GitHub tool safety filter blocked several exact roadmap crate paths.
 4. `secloud-repair-readiness` implements Remediator readiness.
 5. `ModelTopologyBoundaryV0` replaces the blocked topology schema filename while `secloud validate prompt-topology` remains the public validator.
 
-## Handoff rule
+## S7 handoff rule
 
-Do not ask the user to re-explain the S6 plan. The repo docs and PR #8 are the source of continuation truth. Continue by checking PR #8 CI, patching exact failures, and merging only when green.
+Do not ask the user to re-explain the S7 plan. Use the repo docs and merged S6 substrate as continuation truth. Start S7 on `build/s7-first-real-activations` only after this post-S6 state cleanup is merged green.
+
+Do not reopen S6 architecture unless the user explicitly asks.
