@@ -14,7 +14,7 @@ S5 — Full Hardening, Public Release Candidate, and First End-to-End Mission
 
 ## Active PR
 
-Pending.
+PR #6 — S5: Hardening, release candidate, and first end-to-end mission
 
 ## Current approval envelope
 
@@ -43,11 +43,17 @@ Stop for:
 
 ## Latest CI status
 
-S5 CI not run yet. S4 merged green.
+Green on PR #6 before final state update:
+
+1. `proof-fast` — success
+2. `proof-full` — success
+3. `proof-browser` — success
+4. `proof-e2e` — success
+5. `proof-windows-targeted` — success
 
 ## Latest browser status
 
-S4 browser proof merged green. S5 keeps proof-browser as a release-candidate gate.
+Green. S5 keeps proof-browser as a release-candidate gate.
 
 ## Current blocker
 
@@ -55,7 +61,7 @@ None.
 
 ## Next exact action
 
-Open S5 PR, run public GitHub proof workflows including proof-e2e, repair failures directly in GitHub, and merge when green.
+Merge S5 after the final state-only proof rerun remains green, then finalize the public release-candidate handoff and decide the next major build wave.
 
 ## Saturation status
 
