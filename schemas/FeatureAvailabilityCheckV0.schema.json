@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FeatureAvailabilityCheckV0",
+  "type": "object",
+  "required": ["schema_version", "check_id", "mission_id", "feature", "available", "summary"],
+  "properties": {
+    "schema_version": {"const": "FeatureAvailabilityCheckV0"},
+    "check_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "feature": {"type": "string", "minLength": 1},
+    "available": {"type": "boolean"},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
