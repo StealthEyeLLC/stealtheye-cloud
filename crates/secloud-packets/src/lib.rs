@@ -1,8 +1,8 @@
-//! Packet inventory for StealthEye Cloud S0.
+//! Packet inventory for StealthEye Cloud.
 //!
-//! S0 keeps packet definitions dependency-light. Later drops may add full
-//! serde-backed structs, but the public names and validation posture are
-//! established here.
+//! The public schema inventory is intentionally dependency-light. It gives CI
+//! a fast way to prove that the repo exposes every packet contract required by
+//! the current build spine.
 
 pub const REQUIRED_PACKET_SCHEMAS: &[&str] = &[
     "StealthEyeRelayV0",
@@ -20,6 +20,45 @@ pub const REQUIRED_PACKET_SCHEMAS: &[&str] = &[
     "CodexTaskPacketV0",
     "CapabilityRegistryV0",
     "ToolRegistryV0",
+    "MissionExecutorDispatchV0",
+    "AuthorityQueueV0",
+    "OutputShelfV0",
+    "AtomicDropPackageV0",
+    "FileSetBundleV0",
+    "DropPlanV0",
+    "DropValidationV0",
+    "DropApplyReportV0",
+    "GitHubEvidencePackV0",
+    "PrEvidenceCardV0",
+    "FailureCardV0",
+    "OperatorStateV0",
+    "StealthEyeAutonomyStatusV0",
+    "BrowserRunRequestV0",
+    "BrowserArtifactIndexV0",
+    "BrowserRepairPacketV0",
+    "BrowserReplayPackV0",
+    "BrowserRouteSmokeV0",
+    "BrowserConsoleFailureV0",
+    "BrowserNetworkFailureV0",
+    "BrowserScreenshotRefV0",
+    "BrowserDomSketchV0",
+    "VisualEvidenceCardV0",
+    "ExplorationToReplayCandidateV0",
+    "ToolIdentityV0",
+    "ToolCapabilityV0",
+    "ToolPermissionEnvelopeV0",
+    "ToolResultEnvelopeV0",
+    "ToolHealthV0",
+    "ToolCapabilitySearchV0",
+    "ToolPackManifestV0",
+    "StealthEyeCapabilitiesV0",
+    "StealthEyeWorkersV0",
+    "CodexResultImportV0",
+    "CodexUsageSnapshotV0",
+    "DeepResearchTaskPacketV0",
+    "ResearchResultImportV0",
+    "AgentModeTaskPacketV0",
+    "FeatureAvailabilityCheckV0",
 ];
 
 pub const FORBIDDEN_ROOT_FILES: &[&str] = &[
@@ -56,6 +95,13 @@ mod tests {
     fn required_schema_inventory_contains_relay_and_seal() {
         assert!(is_required_schema("StealthEyeRelayV0"));
         assert!(is_required_schema("StealthEyeSealV0"));
+    }
+
+    #[test]
+    fn required_schema_inventory_contains_s3_control_and_worker_contracts() {
+        assert!(is_required_schema("ToolPermissionEnvelopeV0"));
+        assert!(is_required_schema("StealthEyeWorkersV0"));
+        assert!(is_required_schema("FeatureAvailabilityCheckV0"));
     }
 
     #[test]
