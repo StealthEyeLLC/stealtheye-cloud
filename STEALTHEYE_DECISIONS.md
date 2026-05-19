@@ -7,7 +7,7 @@
 3. StealthEye Cloud is no-local by default.
 4. ChatGPT 5.5 Thinking is the primary intelligence.
 5. GitHub Actions is the default execution/proof body.
-6. Browser body is first-class after S0/S1.
+6. Browser body is first-class.
 7. Rust owns durable core and validators.
 8. TypeScript owns browser automation.
 9. JSON Schema owns packet contracts.
@@ -22,6 +22,14 @@
 18. Use Codex as worker lane only, not as primary brain.
 19. Do not claim hidden ChatGPT background autonomy.
 20. Public repo must remain public-safe.
+21. S0 through S5 are merged green and form the first no-local release-candidate spine.
+22. S6 is **Zero-Trust Cross-Cloud Gateway**.
+23. S7 is **First Real Activations**.
+24. S8 is **StealthEye Cloud Remediator**.
+25. No placeholder features, fake integrations, or mock success paths labeled real.
+26. S6 readiness lanes must ship real contracts, schemas, validators, docs, and proof gates.
+27. S7/S8 active lanes must perform the real action and produce proof artifacts.
+28. Browser cookie extraction, consumer session rehydration, 2FA bypass, SMS verification automation, and billing-bypass framing are forbidden.
 
 ## Do not reopen
 
@@ -32,6 +40,9 @@
 5. Forbidden file policy.
 6. Big-drop build doctrine.
 7. Public proof-kernel split.
+8. S6/S7/S8 names and phase purposes unless user explicitly changes them.
+9. No-placeholder / no-fake-build rule.
+10. Remediator naming.
 
 ## Forbidden files
 
