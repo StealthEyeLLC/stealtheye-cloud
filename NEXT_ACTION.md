@@ -1,18 +1,35 @@
 # Next Action
 
-S8 — StealthEye Cloud Remediator is merged green.
+S9 is selected as the next mission.
 
-Latest S8 truth:
+Selected mission:
 
 ```text
-PR #13
-Merge SHA: 12081b4d311844b62aecafb5ff045414e94a4a7c
+S9 — One-Drop Build Accelerator
 ```
 
-Immediate next action:
+Current setup branch:
 
 ```text
-Choose or define S9, then begin it from current main in a new build/s9-* branch.
+build/s9-one-drop-build-accelerator-setup
+```
+
+Immediate setup action:
+
+```text
+Open and prove the S9 setup PR, merge when green, then start S9 implementation in a brand-new tab.
+```
+
+S9 implementation branch after setup merges:
+
+```text
+build/s9-one-drop-build-accelerator
+```
+
+S9 implementation prompt source:
+
+```text
+docs/PROMPTS/NEXT_TAB_PROMPT.md
 ```
 
 Do not reopen:
@@ -22,16 +39,11 @@ S6 architecture
 S7 architecture
 S8 architecture
 S8 proof-driven remediation claim rule
-```
-
-S8 proof rule remains locked:
-
-```text
-A repo is not remediated until the failing behavior is reproduced, a bounded patch is applied, and proof gates pass. If failure cannot be reproduced, emit diagnosis-only status and do not claim remediation.
+S9 selected name and purpose
 ```
 
 Boundary:
 
 ```text
-No secrets, no paid compute, no production deployment, no database mutation, and no browser-cookie/session-token automation. Commercial quote/risk artifacts do not activate billing.
+No secrets, no paid compute, no production deployment, no database mutation, no account permission changes, and no browser-cookie/session-token automation.
 ```
