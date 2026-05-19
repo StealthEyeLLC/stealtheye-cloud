@@ -6,15 +6,15 @@ StealthEye Cloud
 
 ## Current mission
 
-S3 — MCP/App Control Plane, Tool Registry, Skills, Workers, and Background Capability Reality
+S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public Proof Canvas
 
 ## Active branch
 
-`build/s3-mcp-app-control-workers`
+`build/s4-learning-search-hypothesis-proof-viewer`
 
 ## Active PR
 
-PR #4 — S3: Control plane, tool registry, skills, workers, and background reality
+Pending.
 
 ## Current approval envelope
 
@@ -23,10 +23,10 @@ User approved cloud-only direct build continuation. Local/laptop work is disable
 Allowed:
 
 1. use GitHub-only implementation
-2. add public-safe S3 control-plane files
-3. add control and worker registry crates
-4. add tool/worker/background schemas and docs
-5. add Skill folders and validation
+2. add public-safe S4 learning/search/hypothesis/proof-viewer files
+3. add S4 Rust validation crates
+4. add S4 schemas and docs
+5. add proof canvas page and browser proof
 6. update GitHub Actions proof workflows
 7. open PR
 8. repair CI failures directly in GitHub
@@ -43,15 +43,11 @@ Stop for:
 
 ## Latest CI status
 
-Green on PR #4 before final state update:
-
-1. `proof-fast` — success
-2. `proof-full` — success
-3. `proof-windows-targeted` — success
+S4 CI not run yet. S3 merged green.
 
 ## Latest browser status
 
-S2 browser proof merged green. S3 does not add new browser runtime behavior.
+S2 browser proof merged green. S4 adds proof-canvas browser proof coverage.
 
 ## Current blocker
 
@@ -59,7 +55,7 @@ None.
 
 ## Next exact action
 
-Merge S3 after the final state-only proof rerun remains green, then begin S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public Proof Canvas.
+Open S4 PR, run public GitHub proof workflows including proof-browser, repair failures directly in GitHub, and merge when green.
 
 ## Saturation status
 
