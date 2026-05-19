@@ -8,13 +8,7 @@ pub const PROOF_VIEWER_PACKET_SCHEMAS: &[&str] = &[
 ];
 
 pub const PROOF_PANEL_KINDS: &[&str] = &[
-    "mission",
-    "ci",
-    "browser",
-    "seal",
-    "relay",
-    "worker",
-    "decision",
+    "mission", "ci", "browser", "seal", "relay", "worker", "decision",
 ];
 
 pub fn is_viewer_schema(name: &str) -> bool {
