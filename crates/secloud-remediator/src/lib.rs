@@ -231,7 +231,10 @@ mod tests {
             proof_gates_passed: true,
             report_emitted: true,
         };
-        assert_eq!(classify_remediation_attempt(attempt), RemediationStatus::DiagnosisOnly);
+        assert_eq!(
+            classify_remediation_attempt(attempt),
+            RemediationStatus::DiagnosisOnly
+        );
         assert!(!can_claim_remediated(attempt));
     }
 
@@ -243,7 +246,10 @@ mod tests {
             proof_gates_passed: true,
             report_emitted: true,
         };
-        assert_eq!(classify_remediation_attempt(attempt), RemediationStatus::Remediated);
+        assert_eq!(
+            classify_remediation_attempt(attempt),
+            RemediationStatus::Remediated
+        );
         assert!(can_claim_remediated(attempt));
     }
 
@@ -255,16 +261,23 @@ mod tests {
             proof_gates_passed: false,
             report_emitted: true,
         };
-        assert_eq!(classify_remediation_attempt(attempt), RemediationStatus::Blocked);
+        assert_eq!(
+            classify_remediation_attempt(attempt),
+            RemediationStatus::Blocked
+        );
         assert!(!can_claim_remediated(attempt));
     }
 
     #[test]
     fn boundaries_preserve_public_safe_operation() {
-        assert!(has_remediation_boundary("no_browser_cookie_session_automation"));
+        assert!(has_remediation_boundary(
+            "no_browser_cookie_session_automation"
+        ));
         assert!(has_remediation_boundary("no_secrets"));
         assert!(has_remediation_boundary("no_paid_compute"));
         assert!(has_remediation_boundary("no_database_mutation"));
-        assert!(has_remediation_boundary("commercial_quote_does_not_activate_billing"));
+        assert!(has_remediation_boundary(
+            "commercial_quote_does_not_activate_billing"
+        ));
     }
 }
