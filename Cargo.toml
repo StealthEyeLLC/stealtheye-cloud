@@ -20,11 +20,10 @@ members = [
     "crates/secloud-gemini-worker",
     "crates/secloud-knowledge-mirror",
     "crates/secloud-notifications",
-    "crates/secloud-external-auth",
-    "crates/secloud-gateway-security",
-    "crates/secloud-git-worker",
+    "crates/secloud-guard",
+    "crates/secloud-repo-worker",
     "crates/secloud-mobile-qa",
-    "crates/secloud-remediator",
+    "crates/secloud-repair-readiness",
     "crates/secloud-cli",
 ]
 resolver = "2"
