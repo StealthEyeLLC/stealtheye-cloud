@@ -2,7 +2,7 @@
 
 ## 1. Resume Command
 
-Resume StealthEye Cloud from current `main`. Use `STEALTHEYE_SEAL.json` as checkpoint truth, obey the Active approval envelope, do not reopen frozen decisions, and perform the Next Exact Action unless a true boundary is present.
+Resume this StealthEye Cloud mission from this Relay. Continue StealthEye Cloud from current `main`. Use `STEALTHEYE_SEAL.json` as checkpoint truth, obey the Active approval envelope, do not reopen frozen decisions, and perform the Next Exact Action unless a true boundary is present.
 
 Continuation target: choose or define S9 after S8 merged green.
 
