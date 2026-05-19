@@ -22,14 +22,16 @@
 18. Use Codex as worker lane only, not as primary brain.
 19. Do not claim hidden ChatGPT background autonomy.
 20. Public repo must remain public-safe.
-21. S0 through S5 are merged green and form the first no-local release-candidate spine.
+21. S0 through S8 are merged green.
 22. S6 is **Zero-Trust Cross-Cloud Gateway**.
 23. S7 is **First Real Activations**.
 24. S8 is **StealthEye Cloud Remediator**.
-25. No placeholder features, fake integrations, or mock success paths labeled real.
-26. S6 readiness lanes must ship real contracts, schemas, validators, docs, and proof gates.
-27. S7/S8 active lanes must perform the real action and produce proof artifacts.
-28. Browser cookie extraction, consumer session rehydration, 2FA bypass, SMS verification automation, and billing-bypass framing are forbidden.
+25. S9 is **One-Drop Build Accelerator**.
+26. No placeholder features, fake integrations, or mock success paths labeled real.
+27. S6 readiness lanes must ship real contracts, schemas, validators, docs, and proof gates.
+28. S7/S8 active lanes must perform the real action and produce proof artifacts.
+29. S9 must optimize every future phase toward one mission approval, one coherent repo mutation/drop, one PR, one proof wave, batched repairs, and merge when green.
+30. Browser cookie extraction, consumer session rehydration, 2FA bypass, SMS verification automation, and billing-bypass framing are forbidden.
 
 ## Do not reopen
 
@@ -43,6 +45,7 @@
 8. S6/S7/S8 names and phase purposes unless user explicitly changes them.
 9. No-placeholder / no-fake-build rule.
 10. Remediator naming.
+11. S9 One-Drop Build Accelerator naming and purpose unless user explicitly changes it.
 
 ## Forbidden files
 

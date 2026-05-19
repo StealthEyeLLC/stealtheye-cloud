@@ -6,7 +6,7 @@ It is optimized for one active ChatGPT tab until saturation, public free CI proo
 
 ## Current build state
 
-Current status: **S0–S8 merged green**.
+Current status: **S0–S8 merged green; S9 selected as next mission**.
 
 Completed spine:
 
@@ -22,13 +22,22 @@ S7 — First Real Activations
 S8 — StealthEye Cloud Remediator
 ```
 
-S8 activated:
+S9 next mission:
 
 ```text
-StealthEye Cloud Remediator
+S9 — One-Drop Build Accelerator
 ```
 
-A repo is not remediated until failing behavior is reproduced, a bounded patch is applied, and proof gates pass. If failure cannot be reproduced, Remediator emits diagnosis-only status and does not claim remediation.
+S9’s purpose is to make every future phase/project operate as close as possible to:
+
+```text
+one mission approval
+→ one coherent repo mutation/drop
+→ one PR
+→ one proof wave
+→ batched repairs
+→ merge when green
+```
 
 ## Recent completion truth
 
@@ -37,6 +46,7 @@ S6 PR #8 merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
 Post-S6 cleanup PR #9 merge SHA: a5e6eccc37067cf264fd8859c69fc412da855bb8
 S7 PR #11 merge SHA: d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
 S8 PR #13 merge SHA: 12081b4d311844b62aecafb5ff045414e94a4a7c
+Post-S8 cleanup PR #14 merge SHA: e45b0e75fc9b1f8a9e1ed09db90d69037fe9c11d
 ```
 
 ## Start here
@@ -51,12 +61,10 @@ S8 PR #13 merge SHA: 12081b4d311844b62aecafb5ff045414e94a4a7c
 
 - `docs/StealthEye_Cloud_Final_Technical_Specification.md`
 - `docs/StealthEye_Cloud_Build_Plan.md`
-- `docs/S6_S7_S8_ROADMAP.md`
-- `docs/S6_ZERO_TRUST_CROSS_CLOUD_GATEWAY.md`
-- `docs/S7_FIRST_REAL_ACTIVATIONS.md`
 - `docs/S8_STEALTHEYE_CLOUD_REMEDIATOR.md`
-- `docs/S8_FINAL_REPORT.md`
+- `docs/S9_ONE_DROP_BUILD_ACCELERATOR.md`
 - `docs/HANDOFF_AND_CONTINUATION.md`
+- `docs/PROMPTS/NEXT_TAB_PROMPT.md`
 
 ## Current proof workflows
 
@@ -75,6 +83,7 @@ S8 PR #13 merge SHA: 12081b4d311844b62aecafb5ff045414e94a4a7c
 ```text
 one active ChatGPT tab until saturation
 Relay + Seal + Active + Next Action at handoff
+mission-level approval, not per-file approval
 GitHub branch + PR per coherent drop
 CI proof before merge
 repair exact failures only
