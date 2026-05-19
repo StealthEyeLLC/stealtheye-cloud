@@ -22,3 +22,6 @@ secloud-learning = { path = "../secloud-learning" }
 secloud-search = { path = "../secloud-search" }
 secloud-hypothesis = { path = "../secloud-hypothesis" }
 secloud-proof-viewer = { path = "../secloud-proof-viewer" }
+secloud-hardening = { path = "../secloud-hardening" }
+secloud-release = { path = "../secloud-release" }
+secloud-e2e = { path = "../secloud-e2e" }
