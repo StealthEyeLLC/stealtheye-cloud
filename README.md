@@ -6,7 +6,7 @@ It is optimized for one active ChatGPT tab until saturation, public free CI proo
 
 ## Current build state
 
-Current status before S8 merge: **S0–S7 merged green; S8 implementation branch active**.
+Current status: **S0–S8 merged green**.
 
 Completed spine:
 
@@ -19,15 +19,10 @@ S4 — Self-improving Skills, past-session search, hypothesis racing, and public
 S5 — Full hardening, public release candidate, and first end-to-end mission
 S6 — Zero-Trust Cross-Cloud Gateway
 S7 — First Real Activations
+S8 — StealthEye Cloud Remediator
 ```
 
-Active branch:
-
-```text
-build/s8-remediator-mode
-```
-
-S8 activates:
+S8 activated:
 
 ```text
 StealthEye Cloud Remediator
@@ -41,6 +36,7 @@ A repo is not remediated until failing behavior is reproduced, a bounded patch i
 S6 PR #8 merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
 Post-S6 cleanup PR #9 merge SHA: a5e6eccc37067cf264fd8859c69fc412da855bb8
 S7 PR #11 merge SHA: d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
+S8 PR #13 merge SHA: 12081b4d311844b62aecafb5ff045414e94a4a7c
 ```
 
 ## Start here

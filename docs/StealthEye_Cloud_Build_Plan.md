@@ -4,17 +4,17 @@
 
 This document is the current build plan for `StealthEyeLLC/stealtheye-cloud`.
 
-Current verified state before S8 merge:
+Current verified state:
 
 ```text
-S0–S7 merged green
+S0–S8 merged green
 S6 PR #8 merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
 Post-S6 cleanup PR #9 merge SHA: a5e6eccc37067cf264fd8859c69fc412da855bb8
 S7 PR #11 merge SHA: d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
-S8 branch: build/s8-remediator-mode
+S8 PR #13 merge SHA: 12081b4d311844b62aecafb5ff045414e94a4a7c
 ```
 
-S8 implementation package activates:
+S8 activated:
 
 ```text
 S8 — StealthEye Cloud Remediator
@@ -69,7 +69,7 @@ The next tab resumes by reading those files in that order, then performing `NEXT
 
 ## 3. Completed Build Spine
 
-S0 through S7 are merged green.
+S0 through S8 are merged green.
 
 ### S6 — Zero-Trust Cross-Cloud Gateway
 
@@ -87,17 +87,11 @@ Purpose: activated mobile browser game preview/playtest proof, notification dry-
 
 S7 did not use browser-cookie/session-token automation, commit or print secrets, use paid compute, deploy production systems, mutate databases, or perform live external mirror sync.
 
-## 4. Active Build Wave
-
 ### S8 — StealthEye Cloud Remediator
 
-Status: implementation branch active.
+Status: merged.
 
-Branch:
-
-```text
-build/s8-remediator-mode
-```
+Purpose: activated proof-driven Remediator Mode.
 
 Crate:
 
@@ -111,9 +105,9 @@ Workflow:
 .github/workflows/proof-remediator.yml
 ```
 
-S8 activates Remediator Mode as a proof-driven remediation system. A repo is not remediated until the failing behavior is reproduced, a bounded patch is applied, and proof gates pass. If failure cannot be reproduced, Remediator emits diagnosis-only status and does not claim remediation.
+S8 activated a public-safe remediation proof body. A repo is not remediated until the failing behavior is reproduced, a bounded patch is applied, and proof gates pass. If failure cannot be reproduced, Remediator emits diagnosis-only status and does not claim remediation.
 
-### Required S8 modules
+### S8 modules
 
 ```text
 intake
@@ -131,25 +125,23 @@ report
 quote_risk
 ```
 
-### S8 acceptance
+### S8 acceptance passed
 
-S8 passes when:
+S8 passed with green:
 
-1. Remediator intake validates
-2. permission envelope validates
-3. reality-map contracts validate
-4. command discovery contracts validate
-5. environment contracts validate
-6. reproduction contracts validate
-7. failure taxonomy validates
-8. localization validates
-9. repair strategy validates
-10. patch tournament validates
-11. proof plan validates
-12. remediation report validates
-13. commercial quote/risk artifacts validate without activating billing
-14. `proof-remediator` is green
-15. docs and handoff artifacts are updated
+1. `proof-fast`
+2. `proof-full`
+3. `proof-e2e`
+4. `proof-gateway`
+5. `proof-browser`
+6. `proof-mobile`
+7. `proof-activations`
+8. `proof-remediator`
+9. `proof-windows-targeted`
+
+## 4. Active Build Wave
+
+No active build wave is selected after S8. Choose or define S9 before implementation.
 
 ## 5. Stop Conditions
 
@@ -169,4 +161,4 @@ Do not stop for routine continuation, docs updates, CI repair, validator wiring,
 
 ## 6. Immediate Next Action
 
-Open the S8 PR, let CI run, inspect all failures before patching, batch repair exact failures only, and merge when green.
+Choose or define S9, then begin it from current `main` in a new `build/s9-*` branch.

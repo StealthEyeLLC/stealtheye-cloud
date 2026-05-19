@@ -6,17 +6,17 @@ StealthEye Cloud
 
 ## Current mission
 
-S8 — StealthEye Cloud Remediator
+S8 — StealthEye Cloud Remediator is merged.
 
 ## Active branch
 
 ```text
-build/s8-remediator-mode
+main
 ```
 
 ## Active PR
 
-Pending creation.
+None.
 
 ## Current approval envelope
 
@@ -47,9 +47,9 @@ Stop for:
 
 ## Latest implementation status
 
-S8 implementation package is prepared on `build/s8-remediator-mode`.
+S8 merged green through PR #13.
 
-S8 adds active Remediator Mode with:
+S8 added active Remediator Mode with:
 
 1. `crates/secloud-remediator`
 2. active S8 packet schemas
@@ -57,14 +57,20 @@ S8 adds active Remediator Mode with:
 4. `.github/workflows/proof-remediator.yml`
 5. synthetic broken-repo proof that reproduces failure, applies a bounded patch, reruns proof green, emits reports, and preserves diagnosis-only behavior when reproduction is impossible
 
+S8 merge SHA:
+
+```text
+12081b4d311844b62aecafb5ff045414e94a4a7c
+```
+
 ## Current blocker
 
-None. PR and CI are next.
+None.
 
 ## Next exact action
 
-Open one PR from `build/s8-remediator-mode` to `main`, run the first CI wave, inspect all failures before patching, batch repair exact failures only, and merge when green.
+Choose or define S9, then begin it from current `main` in a new `build/s9-*` branch. Do not reopen S6, S7, or S8 architecture unless the user explicitly asks.
 
 ## Saturation status
 
-If this tab saturates, the repo handoff files are the continuation source of truth. Continue S8 from the active branch and do not reopen S6 or S7 architecture unless the user explicitly asks.
+If this tab saturates, the repo handoff files are the continuation source of truth. Continue from current `main`, with S0–S8 merged green.
