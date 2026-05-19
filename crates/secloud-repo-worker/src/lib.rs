@@ -3,10 +3,8 @@
 //! This crate models repository worker readiness without mutating repository
 //! state. S6 proves contracts only; activation belongs to later phases.
 
-pub const REPO_WORKER_PACKET_SCHEMAS: &[&str] = &[
-    "GitWorkerReadinessV0",
-    "RepoWorkerPermissionEnvelopeV0",
-];
+pub const REPO_WORKER_PACKET_SCHEMAS: &[&str] =
+    &["GitWorkerReadinessV0", "RepoWorkerPermissionEnvelopeV0"];
 
 pub const REQUIRED_REPO_WORKER_CHECKS: &[&str] = &[
     "read_only_default",
