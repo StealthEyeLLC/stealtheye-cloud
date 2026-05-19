@@ -16,13 +16,25 @@ Broken repo in. Reproduced failure, bounded patch, green proof, remediation repo
 build/s8-remediator-mode
 ```
 
-## Crate
+## Active crate
 
 ```text
 crates/secloud-remediator
 ```
 
-## Required modules
+## Core rule
+
+A repo is not remediated until all three facts are true:
+
+1. the failing behavior is reproduced;
+2. a bounded patch is applied;
+3. proof gates pass after the patch.
+
+If failure is not reproduced, Remediator may produce diagnosis, but it must not claim remediation.
+
+## Implemented S8 modules
+
+S8 implements active public-safe contracts and validators for:
 
 ```text
 intake
@@ -37,42 +49,27 @@ repair_strategy
 patch_tournament
 proof_plan
 report
-quote
+quote_risk
 ```
 
-## Core rule
+## Real proof body
 
-A repo is not remediated until the failing behavior is reproduced, a bounded patch is applied, and proof gates pass.
+S8 adds a deterministic public-safe proof script:
 
-If failure is not reproduced, Remediator may produce diagnosis but must not claim remediation.
+```text
+scripts/s8-remediator-proof.mjs
+scripts/check-s8-remediator-artifacts.mjs
+```
 
-## Required capabilities
+The proof script creates a synthetic broken repo under `.stealtheye/remediator/workspaces/synthetic-broken-repo`, reproduces a failing `node --test` command, applies a bounded one-line patch, reruns proof green, emits a remediation report, emits a commercial quote/risk artifact with billing disabled, and emits a diagnosis-only artifact proving unreproduced failures cannot be called remediated.
 
-1. intake classifier
-2. permission envelope
-3. repo reality map
-4. command discovery
-5. environment synthesis
-6. failure reproduction
-7. failure taxonomy
-8. localization engine
-9. repair strategy selection
-10. patch tournament
-11. proof plan
-12. CI remediation mode
-13. browser/mobile/game remediation mode
-14. Rust remediation mode
-15. TypeScript/PWA remediation mode
-16. dependency remediation mode
-17. public/private safety split
-18. remediation report
-19. commercial quote/risk pack without activating billing
-
-## Required workflow
+## Workflow
 
 ```text
 .github/workflows/proof-remediator.yml
 ```
+
+The workflow runs Rust format/check/test, Remediator crate tests, Clippy for the Remediator crate, every S8 validator, the Remediator proof script, artifact validation, and artifact upload.
 
 ## Required validators
 
@@ -93,6 +90,42 @@ secloud validate remediation-report
 secloud validate remediation-commercial
 ```
 
+## Required packet schemas
+
+```text
+RemediatorReadinessV0
+RemediationIntakeV0
+RemediationPermissionsV0
+RemediationRealityMapV0
+RemediationCommandDiscoveryV0
+RemediationEnvironmentV0
+RemediationReproductionV0
+RemediationFailureTaxonomyV0
+RemediationLocalizationV0
+RemediationRepairStrategyV0
+RemediationPatchTournamentV0
+RemediationProofPlanV0
+RemediationReportV0
+RemediationCommercialV0
+RemediatorExecutionReceiptV0
+```
+
+## Boundaries preserved
+
+S8 does not activate secrets, paid compute, production deployment, database mutation, browser-cookie/session-token automation, or billing.
+
+Commercial quote/risk output is an artifact only. It cannot activate billing.
+
 ## Acceptance
 
-S8 passes when Remediator performs a real remediation flow with reproduced failure, bounded patch, green proof, and a remediation report, or explicitly emits diagnosis-only status when reproduction is impossible.
+S8 passes when:
+
+1. Remediator active contracts compile;
+2. all S8 packet schemas exist;
+3. every S8 validator passes;
+4. the proof-remediator workflow reproduces the synthetic failure;
+5. the proof-remediator workflow applies the bounded patch;
+6. the proof-remediator workflow reruns proof green;
+7. remediation and diagnosis-only reports are emitted;
+8. commercial quote/risk artifact exists with `billing_activated: false`;
+9. CI is green before merge.

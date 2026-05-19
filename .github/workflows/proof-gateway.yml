@@ -111,7 +111,7 @@ jobs:
       - name: Validate telemetry redaction
         run: cargo run -p secloud-cli -- validate telemetry-redaction
 
-      - name: Validate Remediator readiness
+      - name: Validate active Remediator Mode
         run: cargo run -p secloud-cli -- validate remediator
 
       - name: Validate remediation intake
@@ -120,17 +120,38 @@ jobs:
       - name: Validate remediation permissions
         run: cargo run -p secloud-cli -- validate remediation-permissions
 
+      - name: Validate remediation reality map
+        run: cargo run -p secloud-cli -- validate remediation-reality-map
+
+      - name: Validate remediation command discovery
+        run: cargo run -p secloud-cli -- validate remediation-command-discovery
+
+      - name: Validate remediation environment
+        run: cargo run -p secloud-cli -- validate remediation-environment
+
       - name: Validate remediation reproduction
         run: cargo run -p secloud-cli -- validate remediation-reproduction
 
       - name: Validate remediation failure taxonomy
         run: cargo run -p secloud-cli -- validate remediation-failure-taxonomy
 
+      - name: Validate remediation localization
+        run: cargo run -p secloud-cli -- validate remediation-localization
+
+      - name: Validate remediation repair strategy
+        run: cargo run -p secloud-cli -- validate remediation-repair-strategy
+
+      - name: Validate remediation patch tournament
+        run: cargo run -p secloud-cli -- validate remediation-patch-tournament
+
       - name: Validate remediation proof plan
         run: cargo run -p secloud-cli -- validate remediation-proof-plan
 
       - name: Validate remediation report
         run: cargo run -p secloud-cli -- validate remediation-report
+
+      - name: Validate remediation commercial
+        run: cargo run -p secloud-cli -- validate remediation-commercial
 
       - name: Doctor
         run: cargo run -p secloud-cli -- doctor

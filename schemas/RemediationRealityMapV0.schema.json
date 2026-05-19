@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RemediationRealityMapV0",
+  "type": "object",
+  "required": ["schema_version", "files_observed", "languages", "candidate_entrypoints"],
+  "properties": {
+    "schema_version": {"const": "RemediationRealityMapV0"},
+    "files_observed": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "languages": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "candidate_entrypoints": {"type": "array", "items": {"type": "string"}},
+    "private_material_detected": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

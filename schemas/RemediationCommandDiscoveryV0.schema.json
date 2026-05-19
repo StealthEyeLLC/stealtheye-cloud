@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RemediationCommandDiscoveryV0",
+  "type": "object",
+  "required": ["schema_version", "discovered_commands", "selected_reproduction_command", "bounded"],
+  "properties": {
+    "schema_version": {"const": "RemediationCommandDiscoveryV0"},
+    "discovered_commands": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "selected_reproduction_command": {"type": "string", "minLength": 1},
+    "bounded": {"const": true},
+    "secret_dependent": {"const": false}
+  },
+  "additionalProperties": false
+}

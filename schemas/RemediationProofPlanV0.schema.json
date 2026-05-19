@@ -2,7 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "RemediationProofPlanV0",
   "type": "object",
-  "required": ["schema_version"],
-  "properties": {"schema_version": {"const": "RemediationProofPlanV0"}},
-  "additionalProperties": true
+  "required": ["schema_version", "gates", "requires_reproduction", "requires_bounded_patch", "requires_green_proof"],
+  "properties": {
+    "schema_version": {"const": "RemediationProofPlanV0"},
+    "gates": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "requires_reproduction": {"const": true},
+    "requires_bounded_patch": {"const": true},
+    "requires_green_proof": {"const": true}
+  },
+  "additionalProperties": false
 }

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RemediationRepairStrategyV0",
+  "type": "object",
+  "required": ["schema_version", "selected_strategy", "requires_reproduction"],
+  "properties": {
+    "schema_version": {"const": "RemediationRepairStrategyV0"},
+    "selected_strategy": {"enum": ["minimal_patch", "config_correction", "test_aligned_fix", "dependency_pin_or_update", "diagnosis_only"]},
+    "requires_reproduction": {"const": true},
+    "rationale": {"type": "string"}
+  },
+  "additionalProperties": false
+}

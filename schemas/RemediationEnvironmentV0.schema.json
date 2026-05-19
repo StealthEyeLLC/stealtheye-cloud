@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RemediationEnvironmentV0",
+  "type": "object",
+  "required": ["schema_version", "runtime", "platform", "paid_compute_required"],
+  "properties": {
+    "schema_version": {"const": "RemediationEnvironmentV0"},
+    "runtime": {"type": "string", "minLength": 1},
+    "platform": {"type": "string", "minLength": 1},
+    "paid_compute_required": {"const": false},
+    "environment_notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

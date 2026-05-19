@@ -6,7 +6,7 @@ This file gives ChatGPT and future agent workers a fast map of the StealthEye Cl
 
 ## Current phase
 
-S0–S5 merged green. Current branch updates docs and handoff for the S6/S7/S8 build wave.
+S0–S7 are merged green. S8 — StealthEye Cloud Remediator is active on `build/s8-remediator-mode`.
 
 ## Root files
 
@@ -38,8 +38,21 @@ S0–S5 merged green. Current branch updates docs and handoff for the S6/S7/S8 b
 - `crates/secloud-hardening/` — hardening/check contracts
 - `crates/secloud-release/` — release-candidate contracts
 - `crates/secloud-e2e/` — first end-to-end mission contracts
+- `crates/secloud-gateway/` — gateway readiness and policy contracts
+- `crates/secloud-mcp-adapters/` — adapter readiness contracts
+- `crates/secloud-gemini-worker/` — model worker readiness contracts
+- `crates/secloud-knowledge-mirror/` — knowledge mirror contracts
+- `crates/secloud-notifications/` — notification contracts
+- `crates/secloud-permission/` — external auth and permission boundaries
+- `crates/secloud-guard/` — guard/taint/production boundary contracts
+- `crates/secloud-repo-worker/` — repo worker readiness contracts
+- `crates/secloud-mobile-qa/` — mobile/game QA readiness contracts
+- `crates/secloud-repair-readiness/` — S6 Remediator readiness contracts
+- `crates/secloud-activations/` — S7 active capability contracts
+- `crates/secloud-remediator/` — S8 active Remediator Mode contracts
 - `crates/secloud-cli/` — `secloud` CLI validators
 - `schemas/` — public JSON Schema contracts
+- `scripts/` — public-safe activation and Remediator proof scripts
 - `browser/playwright/` — browser proof tests and artifact validation
 - `public/proof/` — public proof canvas
 - `docs/` — canonical specs, build plan, phase docs, and handoff docs
@@ -51,22 +64,17 @@ S0–S5 merged green. Current branch updates docs and handoff for the S6/S7/S8 b
 - `proof-fast.yml` — fast Linux proof
 - `proof-full.yml` — fuller Linux proof with clippy
 - `proof-browser.yml` — Playwright/browser/proof-canvas proof
+- `proof-mobile.yml` — mobile Playwright proof
 - `proof-e2e.yml` — release-candidate end-to-end proof
+- `proof-gateway.yml` — gateway/readiness/guard/Remediator validator proof
+- `proof-activations.yml` — S7 active capability proof
+- `proof-remediator.yml` — S8 active Remediator Mode proof
 - `proof-windows-targeted.yml` — targeted Windows proof
 
-## Next build wave docs
-
-- `docs/S6_S7_S8_ROADMAP.md`
-- `docs/S6_ZERO_TRUST_CROSS_CLOUD_GATEWAY.md`
-- `docs/S7_FIRST_REAL_ACTIVATIONS.md`
-- `docs/S8_STEALTHEYE_CLOUD_REMEDIATOR.md`
-- `docs/HANDOFF_AND_CONTINUATION.md`
-- `docs/TECHNICAL_SPEC_STATUS_ADDENDUM.md`
-
-## Next implementation branch
+## Active implementation branch
 
 ```text
-build/s6-zero-trust-cross-cloud-gateway
+build/s8-remediator-mode
 ```
 
 ## Forbidden files

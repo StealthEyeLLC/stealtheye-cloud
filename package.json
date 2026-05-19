@@ -10,7 +10,9 @@
     "proof:mobile:summary": "node browser/playwright/scripts/check-mobile-artifacts.mjs",
     "proof:notification": "node scripts/s7-notification-activation.mjs",
     "proof:mirror": "node scripts/s7-knowledge-mirror-export.mjs",
-    "proof:activations:summary": "node scripts/check-s7-activation-artifacts.mjs"
+    "proof:activations:summary": "node scripts/check-s7-activation-artifacts.mjs",
+    "proof:remediator": "node scripts/s8-remediator-proof.mjs",
+    "proof:remediator:summary": "node scripts/check-s8-remediator-artifacts.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",

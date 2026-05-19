@@ -10,15 +10,13 @@ S8 — StealthEye Cloud Remediator
 
 ## Active branch
 
-None yet. Next branch should be:
-
 ```text
 build/s8-remediator-mode
 ```
 
 ## Active PR
 
-None.
+Pending creation.
 
 ## Current approval envelope
 
@@ -49,55 +47,24 @@ Stop for:
 
 ## Latest implementation status
 
-S7 — First Real Activations is complete and merged.
+S8 implementation package is prepared on `build/s8-remediator-mode`.
 
-Merged PR:
+S8 adds active Remediator Mode with:
 
-```text
-PR #11 — S7: First Real Activations
-```
-
-S7 merge SHA:
-
-```text
-d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
-```
-
-Verified green before merge:
-
-1. `proof-fast`
-2. `proof-full`
-3. `proof-e2e`
-4. `proof-gateway`
-5. `proof-browser`
-6. `proof-mobile`
-7. `proof-activations`
-8. `proof-windows-targeted`
-
-S7 activated:
-
-1. Mobile Browser Game Preview and Playtest Activation
-2. Notification Lane Activation
-3. Knowledge Mirror Export Activation
-
-S7 preserved boundaries:
-
-1. no browser-cookie/session-token automation
-2. no secrets committed or printed
-3. no paid compute
-4. no production deployment
-5. no database mutation
-6. no live external mirror sync
-7. notification real dispatch requires explicit secret plus enable flag
+1. `crates/secloud-remediator`
+2. active S8 packet schemas
+3. CLI validators for every required S8 module
+4. `.github/workflows/proof-remediator.yml`
+5. synthetic broken-repo proof that reproduces failure, applies a bounded patch, reruns proof green, emits reports, and preserves diagnosis-only behavior when reproduction is impossible
 
 ## Current blocker
 
-None.
+None. PR and CI are next.
 
 ## Next exact action
 
-Begin S8 — StealthEye Cloud Remediator on branch `build/s8-remediator-mode` after this post-S7 state cleanup is merged green.
+Open one PR from `build/s8-remediator-mode` to `main`, run the first CI wave, inspect all failures before patching, batch repair exact failures only, and merge when green.
 
 ## Saturation status
 
-If this tab saturates, the repo handoff files are the continuation source of truth. Continue from S8 and do not reopen S6 or S7 architecture unless the user explicitly asks.
+If this tab saturates, the repo handoff files are the continuation source of truth. Continue S8 from the active branch and do not reopen S6 or S7 architecture unless the user explicitly asks.

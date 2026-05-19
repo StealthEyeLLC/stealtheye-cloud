@@ -1,0 +1,118 @@
+name: proof-remediator
+
+on:
+  push:
+    branches:
+      - main
+      - 'build/**'
+      - 'repair/**'
+    paths:
+      - 'crates/secloud-remediator/**'
+      - 'crates/secloud-cli/**'
+      - 'crates/secloud-packets/**'
+      - 'schemas/Remediation*.schema.json'
+      - 'schemas/Remediator*.schema.json'
+      - 'scripts/s8-remediator-proof.mjs'
+      - 'scripts/check-s8-remediator-artifacts.mjs'
+      - '.github/workflows/proof-remediator.yml'
+      - 'package.json'
+      - 'docs/S8_STEALTHEYE_CLOUD_REMEDIATOR.md'
+      - 'docs/S8_FINAL_REPORT.md'
+  pull_request:
+    paths:
+      - 'crates/secloud-remediator/**'
+      - 'crates/secloud-cli/**'
+      - 'crates/secloud-packets/**'
+      - 'schemas/Remediation*.schema.json'
+      - 'schemas/Remediator*.schema.json'
+      - 'scripts/s8-remediator-proof.mjs'
+      - 'scripts/check-s8-remediator-artifacts.mjs'
+      - '.github/workflows/proof-remediator.yml'
+      - 'package.json'
+      - 'docs/S8_STEALTHEYE_CLOUD_REMEDIATOR.md'
+      - 'docs/S8_FINAL_REPORT.md'
+  workflow_dispatch:
+
+jobs:
+  proof-remediator:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Format
+        run: cargo fmt --all -- --check
+
+      - name: Check
+        run: cargo check --workspace
+
+      - name: Test Remediator contracts
+        run: cargo test -p secloud-remediator
+
+      - name: Clippy Remediator contracts
+        run: cargo clippy -p secloud-remediator -- -D warnings
+
+      - name: Validate active Remediator Mode
+        run: cargo run -p secloud-cli -- validate remediator
+
+      - name: Validate remediation intake
+        run: cargo run -p secloud-cli -- validate remediation-intake
+
+      - name: Validate remediation permissions
+        run: cargo run -p secloud-cli -- validate remediation-permissions
+
+      - name: Validate remediation reality map
+        run: cargo run -p secloud-cli -- validate remediation-reality-map
+
+      - name: Validate remediation command discovery
+        run: cargo run -p secloud-cli -- validate remediation-command-discovery
+
+      - name: Validate remediation environment
+        run: cargo run -p secloud-cli -- validate remediation-environment
+
+      - name: Validate remediation reproduction
+        run: cargo run -p secloud-cli -- validate remediation-reproduction
+
+      - name: Validate remediation failure taxonomy
+        run: cargo run -p secloud-cli -- validate remediation-failure-taxonomy
+
+      - name: Validate remediation localization
+        run: cargo run -p secloud-cli -- validate remediation-localization
+
+      - name: Validate remediation repair strategy
+        run: cargo run -p secloud-cli -- validate remediation-repair-strategy
+
+      - name: Validate remediation patch tournament
+        run: cargo run -p secloud-cli -- validate remediation-patch-tournament
+
+      - name: Validate remediation proof plan
+        run: cargo run -p secloud-cli -- validate remediation-proof-plan
+
+      - name: Validate remediation report
+        run: cargo run -p secloud-cli -- validate remediation-report
+
+      - name: Validate remediation commercial
+        run: cargo run -p secloud-cli -- validate remediation-commercial
+
+      - name: Run S8 Remediator proof
+        run: npm run proof:remediator
+
+      - name: Validate S8 Remediator artifacts
+        run: npm run proof:remediator:summary
+
+      - name: Upload Remediator artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s8-remediator-artifacts
+          path: .stealtheye/remediator/
