@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HypothesisRaceV0",
+  "type": "object",
+  "required": ["schema_version", "race_id", "mission_id", "hypothesis", "candidate_branches", "stop_conditions"],
+  "properties": {
+    "schema_version": {"const": "HypothesisRaceV0"},
+    "race_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "hypothesis": {"type": "string", "minLength": 1},
+    "candidate_branches": {"type": "array", "items": {"type": "string"}},
+    "stop_conditions": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
