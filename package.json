@@ -12,7 +12,9 @@
     "proof:mirror": "node scripts/s7-knowledge-mirror-export.mjs",
     "proof:activations:summary": "node scripts/check-s7-activation-artifacts.mjs",
     "proof:remediator": "node scripts/s8-remediator-proof.mjs",
-    "proof:remediator:summary": "node scripts/check-s8-remediator-artifacts.mjs"
+    "proof:remediator:summary": "node scripts/check-s8-remediator-artifacts.mjs",
+    "proof:build-accelerator": "node scripts/s9-build-accelerator-proof.mjs",
+    "proof:build-accelerator:summary": "node scripts/check-s9-build-accelerator-artifacts.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",

@@ -2,57 +2,37 @@
 
 ## 1. Resume Command
 
-Resume this StealthEye Cloud mission from this Relay. Continue StealthEye Cloud from the S9 setup state. Use `STEALTHEYE_SEAL.json` as checkpoint truth, obey the Active approval envelope, do not reopen frozen decisions, and perform the Next Exact Action unless a true boundary is present.
-
-Continuation target: prove and merge the S9 setup PR, then start S9 implementation in a brand-new tab from `build/s9-one-drop-build-accelerator`.
+Resume this StealthEye Cloud mission from this Relay. Continue S9 — One-Drop Build Accelerator implementation from `build/s9-one-drop-build-accelerator`. Use `STEALTHEYE_SEAL.json` as checkpoint truth, obey the Active approval envelope, do not reopen frozen decisions, and perform the Next Exact Action unless a true boundary is present.
 
 ## 2. Current Mission
 
-S9 — One-Drop Build Accelerator setup.
+S9 — One-Drop Build Accelerator implementation.
 
 ## 3. Current State
 
 S0 through S8 are merged green.
 
-S8 PR:
+S9 implementation branch:
 
 ```text
-#13
+build/s9-one-drop-build-accelerator
 ```
 
-S8 merge SHA:
-
-```text
-12081b4d311844b62aecafb5ff045414e94a4a7c
-```
-
-Post-S8 cleanup PR #14 merge SHA:
-
-```text
-e45b0e75fc9b1f8a9e1ed09db90d69037fe9c11d
-```
-
-S9 is selected as:
-
-```text
-S9 — One-Drop Build Accelerator
-```
+S9 adds a real build-acceleration layer: build accelerator crate, schema contracts, CLI/doctor validators, proof workflow, proof artifacts, docs, future phase prompt artifact, state consistency checks, no-cleanup-PR checks, batch repair checks, mission approval envelope checks, build velocity report checks, and no-silent-downgrade checks.
 
 ## 4. Latest Verified Result
 
-S8 activated Remediator Mode with a real public-safe proof-driven remediation system.
-
-S9 setup adds the roadmap/spec/handoff state needed for the next implementation tab.
+The S9 branch is prepared for PR proof. CI result is pending until the PR proof wave runs.
 
 ## 5. Active Approval Envelope
 
-Allowed: GitHub-direct documentation/state setup, PR creation, exact CI repair, and merge when green.
+Allowed: GitHub-direct S9 implementation, coherent branch update, PR creation, CI proof inspection, exact batch repairs, docs/state updates, and merge when green.
 
-Stop for: secrets, paid compute, private data exposure risk, deployment/production mutation without explicit approval, database mutation without explicit approval, account permission changes, browser-cookie/session-token automation, or unresolved high-impact ambiguity.
+Stop for: secrets, paid compute, private data exposure risk, deployment/production mutation without explicit approval, database mutation without explicit approval, account permission changes, browser-cookie/session-token automation, destructive irreversible action, or unresolved high-impact ambiguity.
 
 ## 6. Next Exact Action
 
-Open and prove the S9 setup PR from `build/s9-one-drop-build-accelerator-setup`, merge when green, then start S9 implementation in a brand-new tab from `build/s9-one-drop-build-accelerator` using `docs/PROMPTS/NEXT_TAB_PROMPT.md`.
+Open the S9 implementation PR, run the proof wave, inspect all failures before patching, batch exact repairs if needed, and merge when green.
 
 ## 7. Decisions That Must Not Drift
 
@@ -63,7 +43,7 @@ Open and prove the S9 setup PR from `build/s9-one-drop-build-accelerator-setup`,
 5. S9 name: One-Drop Build Accelerator.
 6. No placeholder features or fake integrations.
 7. No remediation claim unless failure was reproduced, bounded patch was applied, and proof gates passed.
-8. S9 must optimize toward one mission approval, one coherent repo mutation/drop, one PR, one proof wave, batched repairs, and merge when green.
+8. S9 optimizes process friction only; it must not weaken validators, schema coverage, proof gates, safety boundaries, or merge discipline.
 9. No Claude/Copilot/Cursor/soul files.
 10. No browser-cookie/session-token automation.
 11. Relay/Seal/Active/Next Action is the mandatory handoff spine.
@@ -74,40 +54,37 @@ Do not reopen S6/S7/S8 naming, no-fake-build rule, Remediator naming, S9 naming/
 
 ## 9. Open Questions / Boundaries
 
-No open blocker. S9 has been selected by the user. Implementation must begin only after the S9 setup PR merges green.
+No open blocker.
 
 ## 10. Required Files / Repos / Branches
 
 Repo: `StealthEyeLLC/stealtheye-cloud`
 
-Current setup branch:
-
-```text
-build/s9-one-drop-build-accelerator-setup
-```
-
-Next implementation branch:
+Implementation branch:
 
 ```text
 build/s9-one-drop-build-accelerator
 ```
 
-Required S9 setup files include:
+Required S9 implementation files include:
 
-1. `docs/S9_ONE_DROP_BUILD_ACCELERATOR.md`
-2. `docs/PROMPTS/NEXT_TAB_PROMPT.md`
-3. `docs/StealthEye_Cloud_Build_Plan.md`
-4. `STEALTHEYE_ACTIVE.md`
-5. `STEALTHEYE_RELAY.md`
-6. `STEALTHEYE_RELAY.json`
-7. `STEALTHEYE_SEAL.json`
-8. `NEXT_ACTION.md`
+1. `crates/secloud-build-accelerator/src/lib.rs`
+2. `.github/workflows/proof-build-accelerator.yml`
+3. `scripts/s9-build-accelerator-proof.mjs`
+4. `scripts/check-s9-build-accelerator-artifacts.mjs`
+5. `docs/ONE_DROP_BUILD_MODE.md`
+6. `docs/MISSION_APPROVAL_ENVELOPE.md`
+7. `docs/BATCH_REPAIR_POLICY.md`
+8. `docs/MERGE_AWARE_HANDOFF.md`
+9. `docs/PHASE_TEMPLATE_SYSTEM.md`
+10. `docs/PROMPTS/FUTURE_PHASE_DEFAULT_PROMPT.md`
+11. `docs/S9_FINAL_REPORT.md`
 
 ## 11. Latest Seal
 
 Latest Seal: `STEALTHEYE_SEAL.json`
 
-Latest Seal ID: `seal-s9-one-drop-build-accelerator-setup`
+Latest Seal ID: `seal-s9-one-drop-build-accelerator-implementation`
 
 ## 12. Failure / Blocker State
 
@@ -119,7 +96,7 @@ No Codex worker used. No external worker used. GitHub Actions remains the proof 
 
 ## 14. Browser State
 
-No browser runtime changes in S9 setup. No browser-cookie/session-token automation was used.
+No browser runtime changes in S9 implementation. No browser-cookie/session-token automation was used.
 
 ## 15. Public / Private Boundary
 

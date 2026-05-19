@@ -2,6 +2,16 @@ use std::env;
 use std::fs;
 use std::path::Path;
 
+use secloud_build_accelerator::{
+    has_batch_repair_rule, has_friction_metric, has_future_phase_contract_rule,
+    has_human_attention_rule, has_lifecycle_state, has_merge_handoff_rule,
+    has_no_silent_downgrade_rule, has_one_drop_step, has_proof_selection_rule, has_recovery_rule,
+    has_registration_guard, has_required_doc, has_required_prompt_artifact,
+    has_state_consistency_rule, has_tool_fallback_rule, has_velocity_metric,
+    is_boundary_action_class, is_build_accelerator_schema, is_build_accelerator_validation_target,
+    is_routine_action_class, BUILD_ACCELERATOR_PACKET_SCHEMAS,
+    BUILD_ACCELERATOR_VALIDATION_TARGETS,
+};
 use secloud_control::{classify_tool_name, ALLOWED_TOOL_NAMES, BLOCKED_TOOL_NAMES};
 use secloud_e2e::{has_required_step, is_e2e_schema, E2E_PACKET_SCHEMAS, REQUIRED_E2E_STEPS};
 use secloud_gateway::{
@@ -54,7 +64,7 @@ use secloud_seal::validate_seal_json_text;
 use secloud_search::{is_allowed_corpus, is_search_schema, SEARCH_PACKET_SCHEMAS};
 use secloud_workers::{is_real_surface, is_worker_schema, WORKER_PACKET_SCHEMAS};
 
-const VALIDATION_TARGETS: &[&str] = &[
+const BASE_VALIDATION_TARGETS: &[&str] = &[
     "relay",
     "seal",
     "active",
@@ -200,6 +210,9 @@ fn validate_target(target: &str) -> Result<String, String> {
         "remediation-proof-plan" => validate_remediation_proof_plan(),
         "remediation-report" => validate_remediation_report(),
         "remediation-commercial" => validate_remediation_commercial(),
+        target if is_build_accelerator_validation_target(target) => {
+            validate_build_accelerator_target(target)
+        }
         _ => {
             print_help();
             Err(format!("unknown validation target: {target}"))
@@ -211,13 +224,19 @@ fn print_help() {
     println!("secloud commands:");
     println!("  secloud doctor");
     println!("  secloud status");
-    for target in VALIDATION_TARGETS {
+    for target in BASE_VALIDATION_TARGETS {
+        println!("  secloud validate {target}");
+    }
+    for target in BUILD_ACCELERATOR_VALIDATION_TARGETS {
         println!("  secloud validate {target}");
     }
 }
 
 fn doctor() -> Result<String, String> {
-    for target in VALIDATION_TARGETS {
+    for target in BASE_VALIDATION_TARGETS {
+        validate_target(target)?;
+    }
+    for target in BUILD_ACCELERATOR_VALIDATION_TARGETS {
         validate_target(target)?;
     }
     Ok("doctor checks passed".to_string())
@@ -269,14 +288,6 @@ fn validate_file_contains(path: &str, needles: &[&str]) -> Result<String, String
     }
 }
 
-fn validate_schemas() -> Result<String, String> {
-    if !Path::new("schemas").exists() {
-        return Err("schemas directory missing".to_string());
-    }
-    validate_schema_files(REQUIRED_PACKET_SCHEMAS)?;
-    Ok("required schemas are present".to_string())
-}
-
 fn validate_schema_files(schema_names: &[&str]) -> Result<(), String> {
     for schema in schema_names {
         let path = Path::new("schemas").join(format!("{schema}.schema.json"));
@@ -304,6 +315,15 @@ fn require_all(
         require(&format!("{label}:{value}"), predicate(value))?;
     }
     Ok(())
+}
+
+fn validate_schemas() -> Result<String, String> {
+    if !Path::new("schemas").exists() {
+        return Err("schemas directory missing".to_string());
+    }
+    validate_schema_files(REQUIRED_PACKET_SCHEMAS)?;
+    validate_schema_files(BUILD_ACCELERATOR_PACKET_SCHEMAS)?;
+    Ok("required schemas are present".to_string())
 }
 
 fn validate_root_files() -> Result<String, String> {
@@ -1146,4 +1166,229 @@ fn validate_remediation_commercial() -> Result<String, String> {
         has_remediation_boundary("commercial_quote_does_not_activate_billing"),
     )?;
     Ok("remediation commercial contracts are valid".to_string())
+}
+
+fn validate_build_accelerator_target(target: &str) -> Result<String, String> {
+    validate_schema_files(BUILD_ACCELERATOR_PACKET_SCHEMAS)?;
+    require(target, is_build_accelerator_validation_target(target))?;
+    require(
+        "OneDropPlanV0",
+        is_build_accelerator_schema("OneDropPlanV0"),
+    )?;
+
+    match target {
+        "one-drop" => require_all(
+            "one-drop-step",
+            &[
+                "mission_approval",
+                "coherent_repo_mutation",
+                "one_pr",
+                "one_proof_wave",
+                "batched_repairs",
+                "merge_when_green",
+            ],
+            has_one_drop_step,
+        )?,
+        "mission-approval" | "approval-compression" | "no-midpoint-ask" => {
+            require_all(
+                "routine-action",
+                &[
+                    "safe_file_update",
+                    "pr_creation",
+                    "ci_inspection",
+                    "exact_failure_repair",
+                    "merge_when_green",
+                ],
+                is_routine_action_class,
+            )?;
+            require_all(
+                "boundary-action",
+                &[
+                    "secrets",
+                    "paid_compute",
+                    "database_mutation",
+                    "browser_cookie_session_automation",
+                    "unresolved_high_impact_ambiguity",
+                ],
+                is_boundary_action_class,
+            )?;
+        }
+        "tool-call-bundling" | "tool-fallback" => require_all(
+            "tool-fallback-rule",
+            &[
+                "prefer_git_tree_batch",
+                "fall_back_to_contents_api",
+                "fall_back_to_pr_patch",
+                "stop_at_true_boundary",
+            ],
+            has_tool_fallback_rule,
+        )?,
+        "repo-mutation-batch" => require_all(
+            "one-drop-step",
+            &["preflight_state_snapshot", "coherent_repo_mutation"],
+            has_one_drop_step,
+        )?,
+        "batch-repair" | "repair-cause-memory" => require_all(
+            "batch-repair-rule",
+            &[
+                "inspect_all_failures_before_patch",
+                "group_related_repairs",
+                "patch_exact_failures_only",
+                "rerun_after_batch",
+            ],
+            has_batch_repair_rule,
+        )?,
+        "merge-aware-handoff" | "no-cleanup-pr" => require_all(
+            "merge-handoff-rule",
+            &[
+                "pre_merge_truth_template",
+                "post_merge_truth_template",
+                "merge_sha_resolution_field",
+                "no_stale_pending_language",
+                "next_action_survives_merge",
+            ],
+            has_merge_handoff_rule,
+        )?,
+        "state-consistency" | "obsolete-text" | "doc-conflicts" => require_all(
+            "state-consistency-rule",
+            &[
+                "readme_build_plan_match",
+                "active_relay_seal_match",
+                "next_action_matches_phase",
+                "no_obsolete_phase_reference",
+                "no_duplicate_conflicting_doc_truth",
+            ],
+            has_state_consistency_rule,
+        )?,
+        "phase-truth" | "branch-lifecycle" | "pr-lifecycle" => require_all(
+            "lifecycle-state",
+            &[
+                "planned",
+                "branch_active",
+                "pr_open",
+                "ci_running",
+                "repairing",
+                "green",
+                "merged",
+                "blocked",
+            ],
+            has_lifecycle_state,
+        )?,
+        "proof-selector" | "required-checks" | "workflow-path-filter" | "ci-wave-counter" => {
+            require_all(
+                "proof-selection-rule",
+                &[
+                    "touched_surface_declared",
+                    "required_checks_manifested",
+                    "path_filters_simulated",
+                    "unexpected_skip_detected",
+                    "ci_wave_counted",
+                ],
+                has_proof_selection_rule,
+            )?;
+        }
+        "validator-registration" | "schema-inventory" | "workspace-registration" => require_all(
+            "registration-guard",
+            &[
+                "validator_registered",
+                "schema_inventory_registered",
+                "workspace_member_registered",
+                "cli_dependency_registered",
+                "workflow_registered",
+            ],
+            has_registration_guard,
+        )?,
+        "merge-readiness-red-team" | "no-silent-downgrade" => require_all(
+            "no-silent-downgrade-rule",
+            &[
+                "required_validator_not_removed",
+                "required_schema_not_removed",
+                "required_workflow_not_removed",
+                "proof_gate_not_weakened",
+                "safety_boundary_not_relaxed",
+            ],
+            has_no_silent_downgrade_rule,
+        )?,
+        "build-velocity" => require_all(
+            "velocity-metric",
+            &[
+                "mission_approvals",
+                "repo_mutation_batches",
+                "pull_requests",
+                "ci_waves",
+                "repair_commits",
+                "cleanup_prs_avoided",
+            ],
+            has_velocity_metric,
+        )?,
+        "confirmation-friction" | "human-availability" => {
+            require_all(
+                "friction-metric",
+                &[
+                    "routine_confirmations_avoided",
+                    "true_boundaries_detected",
+                    "tool_calls_batched",
+                    "human_attention_events",
+                ],
+                has_friction_metric,
+            )?;
+            require_all(
+                "human-attention-rule",
+                &[
+                    "mission_approval_reuse",
+                    "no_midpoint_ask_for_routine_action",
+                    "friction_event_recorded",
+                    "low_attention_workday_supported",
+                ],
+                has_human_attention_rule,
+            )?;
+        }
+        "existing-work-reuse" | "partial-completion-recovery" => require_all(
+            "recovery-rule",
+            &[
+                "existing_branch_reuse_checked",
+                "existing_pr_reuse_checked",
+                "partial_drop_recovery_plan",
+                "saturation_handoff_prompt",
+            ],
+            has_recovery_rule,
+        )?,
+        "capability-activation-ledger" | "future-phase-contract" => require_all(
+            "future-phase-contract-rule",
+            &[
+                "one_drop_default",
+                "mission_approval_default",
+                "proof_plan_required",
+                "state_update_required",
+                "final_report_required",
+                "next_tab_prompt_required",
+            ],
+            has_future_phase_contract_rule,
+        )?,
+        "next-tab-prompt" => {
+            for path in [
+                "docs/PROMPTS/NEXT_TAB_PROMPT.md",
+                "docs/PROMPTS/FUTURE_PHASE_DEFAULT_PROMPT.md",
+            ] {
+                require(
+                    path,
+                    has_required_prompt_artifact(path) && Path::new(path).exists(),
+                )?;
+            }
+        }
+        _ => {}
+    }
+
+    for path in [
+        "docs/ONE_DROP_BUILD_MODE.md",
+        "docs/MISSION_APPROVAL_ENVELOPE.md",
+        "docs/BATCH_REPAIR_POLICY.md",
+        "docs/MERGE_AWARE_HANDOFF.md",
+        "docs/PHASE_TEMPLATE_SYSTEM.md",
+        "docs/S9_FINAL_REPORT.md",
+    ] {
+        require(path, has_required_doc(path) && Path::new(path).exists())?;
+    }
+
+    Ok(format!("S9 build accelerator target {target} is valid"))
 }

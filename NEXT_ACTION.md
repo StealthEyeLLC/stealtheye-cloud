@@ -1,35 +1,33 @@
 # Next Action
 
-S9 is selected as the next mission.
-
-Selected mission:
+Current mission:
 
 ```text
 S9 — One-Drop Build Accelerator
 ```
 
-Current setup branch:
-
-```text
-build/s9-one-drop-build-accelerator-setup
-```
-
-Immediate setup action:
-
-```text
-Open and prove the S9 setup PR, merge when green, then start S9 implementation in a brand-new tab.
-```
-
-S9 implementation branch after setup merges:
+Current implementation branch:
 
 ```text
 build/s9-one-drop-build-accelerator
 ```
 
-S9 implementation prompt source:
+Immediate next action:
 
 ```text
-docs/PROMPTS/NEXT_TAB_PROMPT.md
+Open the S9 implementation PR, run the proof wave, inspect all failures before patching, batch exact repairs if needed, and merge when green.
+```
+
+S9 proof workflow:
+
+```text
+.github/workflows/proof-build-accelerator.yml
+```
+
+merge-aware next action after S9 is green and merged:
+
+```text
+Continue from current main and define S10 or the next selected mission using S9 one-drop mode. Record exact merge metadata only if truth requires it.
 ```
 
 Do not reopen:
@@ -46,4 +44,10 @@ Boundary:
 
 ```text
 No secrets, no paid compute, no production deployment, no database mutation, no account permission changes, and no browser-cookie/session-token automation.
+```
+
+No-weakening invariant:
+
+```text
+Fast mode reduces avoidable process friction only. It must not weaken validators, schemas, proof gates, safety boundaries, or merge discipline.
 ```

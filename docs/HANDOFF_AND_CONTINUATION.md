@@ -32,24 +32,18 @@ Then it performs `NEXT_ACTION.md` unless a true boundary is present.
 
 ## Current continuation target
 
-S9 is selected and is being set up for implementation.
+S9 — One-Drop Build Accelerator implementation.
 
-Setup branch:
-
-```text
-build/s9-one-drop-build-accelerator-setup
-```
-
-Implementation branch after setup merges:
+Implementation branch:
 
 ```text
 build/s9-one-drop-build-accelerator
 ```
 
-Prompt artifact:
+Current proof workflow:
 
 ```text
-docs/PROMPTS/NEXT_TAB_PROMPT.md
+.github/workflows/proof-build-accelerator.yml
 ```
 
 ## Current operating envelope
@@ -85,9 +79,9 @@ S8 is complete and merged through PR #13 at merge SHA `12081b4d311844b62aecafb5f
 
 S8 added `crates/secloud-remediator`, active S8 validators, `proof-remediator`, and a synthetic broken-repo remediation proof that reproduces failure, applies a bounded patch, reruns proof green, emits remediation artifacts, and preserves diagnosis-only handling for unreproduced failures.
 
-## S9 setup status
+## S9 implementation status
 
-S9 is selected as **One-Drop Build Accelerator**.
+S9 is the active implementation mission.
 
 S9 exists to make future phases and projects operate as close as possible to:
 
@@ -100,8 +94,12 @@ one mission approval
 → merge when green
 ```
 
+S9 implementation includes build accelerator contracts, schemas, CLI/doctor validators, proof workflow, build velocity and friction artifacts, state consistency checks, no-cleanup-PR checks, batch repair checks, mission approval envelope checks, no-silent-downgrade checks, and the future phase default prompt.
+
 ## S9 handoff rule
 
-Do not ask the user to re-explain S0–S8 or the S9 objective. Use the repo docs, S9 spec, and prompt artifact as continuation truth.
+Do not ask the user to re-explain S0–S8 or the S9 objective. Use the repo docs, S9 spec, and prompt artifacts as continuation truth.
 
 Do not reopen S6, S7, or S8 architecture unless the user explicitly asks.
+
+Fast mode reduces avoidable process friction only. It must not weaken validators, schemas, proof gates, safety boundaries, or merge discipline.
