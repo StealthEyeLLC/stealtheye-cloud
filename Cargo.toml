@@ -20,6 +20,7 @@ members = [
     "crates/secloud-gemini-worker",
     "crates/secloud-knowledge-mirror",
     "crates/secloud-notifications",
+    "crates/secloud-permission",
     "crates/secloud-guard",
     "crates/secloud-repo-worker",
     "crates/secloud-mobile-qa",
