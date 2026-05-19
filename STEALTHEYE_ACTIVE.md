@@ -14,7 +14,7 @@ S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public
 
 ## Active PR
 
-Pending.
+PR #5 — S4: Learning, search, hypothesis racing, and public proof canvas
 
 ## Current approval envelope
 
@@ -43,11 +43,16 @@ Stop for:
 
 ## Latest CI status
 
-S4 CI not run yet. S3 merged green.
+Green on PR #5 before final state update:
+
+1. `proof-fast` — success
+2. `proof-full` — success
+3. `proof-browser` — success
+4. `proof-windows-targeted` — success
 
 ## Latest browser status
 
-S2 browser proof merged green. S4 adds proof-canvas browser proof coverage.
+Green. S4 proof-browser validates the original browser body and the public proof canvas panel surface.
 
 ## Current blocker
 
@@ -55,7 +60,7 @@ None.
 
 ## Next exact action
 
-Open S4 PR, run public GitHub proof workflows including proof-browser, repair failures directly in GitHub, and merge when green.
+Merge S4 after the final state-only proof rerun remains green, then begin S5 — Full Hardening, Public Release Candidate, and First End-to-End Mission.
 
 ## Saturation status
 
