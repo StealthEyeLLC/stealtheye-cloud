@@ -5,8 +5,8 @@ use std::path::Path;
 use secloud_build_accelerator::{
     has_batch_repair_rule, has_friction_metric, has_future_phase_contract_rule,
     has_human_attention_rule, has_lifecycle_state, has_merge_handoff_rule,
-    has_no_silent_downgrade_rule, has_one_drop_step, has_proof_selection_rule,
-    has_recovery_rule, has_registration_guard, has_required_doc, has_required_prompt_artifact,
+    has_no_silent_downgrade_rule, has_one_drop_step, has_proof_selection_rule, has_recovery_rule,
+    has_registration_guard, has_required_doc, has_required_prompt_artifact,
     has_state_consistency_rule, has_tool_fallback_rule, has_velocity_metric,
     is_boundary_action_class, is_build_accelerator_schema, is_build_accelerator_validation_target,
     is_routine_action_class, BUILD_ACCELERATOR_PACKET_SCHEMAS,
@@ -1171,7 +1171,10 @@ fn validate_remediation_commercial() -> Result<String, String> {
 fn validate_build_accelerator_target(target: &str) -> Result<String, String> {
     validate_schema_files(BUILD_ACCELERATOR_PACKET_SCHEMAS)?;
     require(target, is_build_accelerator_validation_target(target))?;
-    require("OneDropPlanV0", is_build_accelerator_schema("OneDropPlanV0"))?;
+    require(
+        "OneDropPlanV0",
+        is_build_accelerator_schema("OneDropPlanV0"),
+    )?;
 
     match target {
         "one-drop" => require_all(
