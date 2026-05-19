@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SearchResultCardV0",
+  "type": "object",
+  "required": ["schema_version", "result_id", "search_id", "source", "summary"],
+  "properties": {
+    "schema_version": {"const": "SearchResultCardV0"},
+    "result_id": {"type": "string", "minLength": 1},
+    "search_id": {"type": "string", "minLength": 1},
+    "source": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}
