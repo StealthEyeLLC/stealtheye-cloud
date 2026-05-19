@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MobilePreviewPolicyV0",
+  "type": "object",
+  "required": ["schema_version"],
+  "properties": {"schema_version": {"const": "MobilePreviewPolicyV0"}},
+  "additionalProperties": true
+}
