@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HardeningCheckV0",
+  "type": "object",
+  "required": ["schema_version", "check_id", "mission_id", "check_name", "status", "summary"],
+  "properties": {
+    "schema_version": {"const": "HardeningCheckV0"},
+    "check_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "check_name": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

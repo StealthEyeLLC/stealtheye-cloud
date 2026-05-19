@@ -63,3 +63,12 @@ jobs:
 
       - name: Validate Proof Viewer
         run: cargo run -p secloud-cli -- validate proof-viewer
+
+      - name: Validate Hardening
+        run: cargo run -p secloud-cli -- validate hardening
+
+      - name: Validate Release
+        run: cargo run -p secloud-cli -- validate release
+
+      - name: Validate E2E
+        run: cargo run -p secloud-cli -- validate e2e

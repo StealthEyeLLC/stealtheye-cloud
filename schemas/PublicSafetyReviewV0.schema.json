@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PublicSafetyReviewV0",
+  "type": "object",
+  "required": ["schema_version", "review_id", "mission_id", "public_safe", "summary"],
+  "properties": {
+    "schema_version": {"const": "PublicSafetyReviewV0"},
+    "review_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "public_safe": {"type": "boolean"},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

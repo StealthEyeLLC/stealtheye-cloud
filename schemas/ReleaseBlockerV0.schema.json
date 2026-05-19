@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseBlockerV0",
+  "type": "object",
+  "required": ["schema_version", "blocker_id", "mission_id", "severity", "summary"],
+  "properties": {
+    "schema_version": {"const": "ReleaseBlockerV0"},
+    "blocker_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "severity": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

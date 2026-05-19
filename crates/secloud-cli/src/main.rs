@@ -3,11 +3,18 @@ use std::fs;
 use std::path::Path;
 
 use secloud_control::{classify_tool_name, ALLOWED_TOOL_NAMES, BLOCKED_TOOL_NAMES};
+use secloud_e2e::{has_required_step, is_e2e_schema, E2E_PACKET_SCHEMAS, REQUIRED_E2E_STEPS};
+use secloud_hardening::{
+    has_required_check, is_hardening_schema, HARDENING_PACKET_SCHEMAS, REQUIRED_HARDENING_CHECKS,
+};
 use secloud_hypothesis::{is_hypothesis_schema, is_stop_condition, HYPOTHESIS_PACKET_SCHEMAS};
 use secloud_learning::{has_promotion_rule, is_learning_schema, LEARNING_PACKET_SCHEMAS};
 use secloud_packets::{FORBIDDEN_ROOT_FILES, REQUIRED_PACKET_SCHEMAS, REQUIRED_ROOT_FILES};
 use secloud_proof_viewer::{is_panel_kind, is_viewer_schema, PROOF_VIEWER_PACKET_SCHEMAS};
 use secloud_relay::validate_relay_markdown;
+use secloud_release::{
+    is_release_schema, is_required_artifact, RELEASE_PACKET_SCHEMAS, REQUIRED_RELEASE_ARTIFACTS,
+};
 use secloud_seal::validate_seal_json_text;
 use secloud_search::{is_allowed_corpus, is_search_schema, SEARCH_PACKET_SCHEMAS};
 use secloud_workers::{is_real_surface, is_worker_schema, WORKER_PACKET_SCHEMAS};
@@ -37,6 +44,9 @@ fn main() {
         [cmd, target] if cmd == "validate" && target == "search" => validate_search(),
         [cmd, target] if cmd == "validate" && target == "hypothesis" => validate_hypothesis(),
         [cmd, target] if cmd == "validate" && target == "proof-viewer" => validate_proof_viewer(),
+        [cmd, target] if cmd == "validate" && target == "hardening" => validate_hardening(),
+        [cmd, target] if cmd == "validate" && target == "release" => validate_release(),
+        [cmd, target] if cmd == "validate" && target == "e2e" => validate_e2e(),
         _ => {
             print_help();
             Err("unknown command".to_string())
@@ -72,6 +82,9 @@ fn print_help() {
     println!("  secloud validate search");
     println!("  secloud validate hypothesis");
     println!("  secloud validate proof-viewer");
+    println!("  secloud validate hardening");
+    println!("  secloud validate release");
+    println!("  secloud validate e2e");
 }
 
 fn doctor() -> Result<String, String> {
@@ -87,6 +100,9 @@ fn doctor() -> Result<String, String> {
     validate_search()?;
     validate_hypothesis()?;
     validate_proof_viewer()?;
+    validate_hardening()?;
+    validate_release()?;
+    validate_e2e()?;
     Ok("doctor checks passed".to_string())
 }
 
@@ -313,4 +329,46 @@ fn validate_proof_viewer() -> Result<String, String> {
         return Err("proof viewer panels must include browser".to_string());
     }
     Ok("proof viewer contracts are valid".to_string())
+}
+
+fn validate_hardening() -> Result<String, String> {
+    validate_schema_files(HARDENING_PACKET_SCHEMAS)?;
+    if !is_hardening_schema("ReleaseReadinessV0") {
+        return Err("hardening registry must include ReleaseReadinessV0".to_string());
+    }
+    for check in REQUIRED_HARDENING_CHECKS {
+        if !has_required_check(check) {
+            return Err(format!("missing hardening check: {check}"));
+        }
+    }
+    Ok("hardening contracts are valid".to_string())
+}
+
+fn validate_release() -> Result<String, String> {
+    validate_schema_files(RELEASE_PACKET_SCHEMAS)?;
+    if !is_release_schema("ReleaseCandidateV0") {
+        return Err("release registry must include ReleaseCandidateV0".to_string());
+    }
+    for artifact in REQUIRED_RELEASE_ARTIFACTS {
+        if !is_required_artifact(artifact) {
+            return Err(format!("release registry missing artifact: {artifact}"));
+        }
+        if !Path::new(artifact).exists() {
+            return Err(format!("release artifact missing from repo: {artifact}"));
+        }
+    }
+    Ok("release contracts are valid".to_string())
+}
+
+fn validate_e2e() -> Result<String, String> {
+    validate_schema_files(E2E_PACKET_SCHEMAS)?;
+    if !is_e2e_schema("EndToEndMissionV0") {
+        return Err("e2e registry must include EndToEndMissionV0".to_string());
+    }
+    for step in REQUIRED_E2E_STEPS {
+        if !has_required_step(step) {
+            return Err(format!("missing e2e step: {step}"));
+        }
+    }
+    Ok("e2e contracts are valid".to_string())
 }

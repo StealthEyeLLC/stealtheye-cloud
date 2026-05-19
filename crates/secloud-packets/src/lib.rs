@@ -77,6 +77,19 @@ pub const REQUIRED_PACKET_SCHEMAS: &[&str] = &[
     "ProofPanelV0",
     "ProofArtifactRefV0",
     "ProofViewerBuildV0",
+    "HardeningCheckV0",
+    "ReleaseReadinessV0",
+    "PublicSafetyReviewV0",
+    "CostGuardSnapshotV0",
+    "ProofGateMatrixV0",
+    "ReleaseCandidateV0",
+    "ReleaseEvidenceIndexV0",
+    "PublicProofSummaryV0",
+    "ReleaseBlockerV0",
+    "EndToEndMissionV0",
+    "EndToEndStepV0",
+    "EndToEndProofSummaryV0",
+    "MissionCompletionGateV0",
 ];
 
 pub const FORBIDDEN_ROOT_FILES: &[&str] = &[
@@ -128,6 +141,14 @@ mod tests {
         assert!(is_required_schema("PastSessionSearchV0"));
         assert!(is_required_schema("HypothesisRaceV0"));
         assert!(is_required_schema("ProofCanvasManifestV0"));
+    }
+
+    #[test]
+    fn required_schema_inventory_contains_s5_release_and_e2e_contracts() {
+        assert!(is_required_schema("ReleaseReadinessV0"));
+        assert!(is_required_schema("ReleaseCandidateV0"));
+        assert!(is_required_schema("EndToEndMissionV0"));
+        assert!(is_required_schema("MissionCompletionGateV0"));
     }
 
     #[test]
