@@ -1,23 +1,23 @@
 {
   "schema_version": "StealthEyeRelayV0",
-  "relay_id": "relay-s8-remediator-branch-active",
-  "created_at": "2026-05-19T15:35:00Z",
+  "relay_id": "relay-s8-remediator-merged",
+  "created_at": "2026-05-19T16:08:00Z",
   "product_name": "StealthEye Cloud",
   "mission_id": "s8-remediator-mode",
   "mission_title": "S8 — StealthEye Cloud Remediator",
-  "mission_status": "active_branch_pending_pr",
+  "mission_status": "merged_green",
   "active_repo": "StealthEyeLLC/stealtheye-cloud",
-  "active_branch": "build/s8-remediator-mode",
+  "active_branch": "main",
   "active_pr": null,
   "active_pr_url": null,
-  "latest_seal_id": "seal-s8-remediator-branch-active",
-  "latest_ci_status": "pending_first_ci_wave",
-  "latest_browser_status": "unchanged_from_s7",
+  "latest_seal_id": "seal-s8-remediator-merged",
+  "latest_ci_status": "green_before_merge",
+  "latest_browser_status": "green_before_merge",
   "current_approval": "user-approved-s8-fast-mode-cloud-only-with-boundary-stops",
   "completed_milestone": {
-    "mission_id": "s7-first-real-activations",
-    "pr": 11,
-    "merge_sha": "d814507740b1ab9a58dd5a2e9a4e079e21bf1d78"
+    "mission_id": "s8-remediator-mode",
+    "pr": 13,
+    "merge_sha": "12081b4d311844b62aecafb5ff045414e94a4a7c"
   },
   "active_s8_capability": {
     "crate": "crates/secloud-remediator",
@@ -43,7 +43,7 @@
       "remediation-commercial"
     ]
   },
-  "next_action": "Open one PR from build/s8-remediator-mode to main, let the first CI wave run, inspect all failures before patching, batch repair exact failures only, and merge when green.",
+  "next_action": "Choose or define S9, then begin it from current main in a new build/s9-* branch. Do not reopen S6, S7, or S8 architecture unless the user explicitly asks.",
   "blocked_reason": null,
   "do_not_reopen": [
     "S6/S7/S8 naming",
@@ -56,8 +56,9 @@
     "forbidden session automation",
     "S6 readiness/enforcement substrate",
     "S7 activated lane proof",
-    "S6/S7 architecture and proof"
+    "S8 Remediator proof-driven claim rule",
+    "S6/S7/S8 architecture and proof"
   ],
-  "safety_boundary": "S8 may activate Remediator Mode only where repo policy, S6/S7 enforcement substrate, explicit approvals, and public-safe boundaries allow it. No secrets, no paid compute, no production deployment, no database mutation, and no browser-cookie/session-token automation.",
-  "resume_prompt": "Resume StealthEye Cloud from this Relay. Continue S8 on build/s8-remediator-mode, open or inspect the S8 PR, run/inspect CI, batch repair exact failures only, and merge when green."
+  "safety_boundary": "Future work must remain public-safe unless explicitly approved. No secrets, no paid compute, no production deployment, no database mutation, and no browser-cookie/session-token automation.",
+  "resume_prompt": "Resume StealthEye Cloud from current main. S0-S8 are merged green. Choose or define S9, then begin it in a new build/s9-* branch if approved."
 }

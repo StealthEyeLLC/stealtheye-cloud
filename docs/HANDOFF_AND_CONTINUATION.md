@@ -32,16 +32,12 @@ Then it performs `NEXT_ACTION.md` unless a true boundary is present.
 
 ## Current continuation target
 
-Continue:
+S8 is merged green. Continue by choosing or defining S9.
+
+Active branch:
 
 ```text
-S8 — StealthEye Cloud Remediator
-```
-
-Active implementation branch:
-
-```text
-build/s8-remediator-mode
+main
 ```
 
 ## Current operating envelope
@@ -70,12 +66,14 @@ Stop for:
 
 S7 is complete and merged. It activated mobile browser playtest proof, notification dry-run/conditional dispatch, and knowledge mirror export. It did not commit or print secrets, use paid compute, deploy production systems, mutate databases, perform live external mirror sync, or automate browser sessions/cookies.
 
-## S8 active status
+## S8 final status
 
-S8 implementation package is active. It adds `crates/secloud-remediator`, active S8 validators, `proof-remediator`, and a synthetic broken-repo remediation proof that reproduces failure, applies a bounded patch, reruns proof green, emits remediation artifacts, and preserves diagnosis-only handling for unreproduced failures.
+S8 is complete and merged through PR #13 at merge SHA `12081b4d311844b62aecafb5ff045414e94a4a7c`.
 
-## S8 handoff rule
+S8 added `crates/secloud-remediator`, active S8 validators, `proof-remediator`, and a synthetic broken-repo remediation proof that reproduces failure, applies a bounded patch, reruns proof green, emits remediation artifacts, and preserves diagnosis-only handling for unreproduced failures.
 
-Do not ask the user to re-explain the S8 plan. Use the repo docs and merged S6/S7 substrate as continuation truth. Continue S8 on `build/s8-remediator-mode`.
+## S9 handoff rule
 
-Do not reopen S6 or S7 architecture unless the user explicitly asks.
+Do not ask the user to re-explain S0–S8. Use the repo docs and merged S6/S7/S8 substrate as continuation truth.
+
+Do not reopen S6, S7, or S8 architecture unless the user explicitly asks.

@@ -2,35 +2,51 @@
 
 ## 1. Resume Command
 
-Resume this StealthEye Cloud mission from this Relay. Use `STEALTHEYE_SEAL.json` as checkpoint truth, obey the Active approval envelope, do not reopen frozen decisions, and perform the Next Exact Action unless a true boundary is present.
+Resume this StealthEye Cloud mission from this Relay. Continue StealthEye Cloud from current `main`. Use `STEALTHEYE_SEAL.json` as checkpoint truth, obey the Active approval envelope, do not reopen frozen decisions, and perform the Next Exact Action unless a true boundary is present.
 
-Continuation target: finish S8 — StealthEye Cloud Remediator from `build/s8-remediator-mode`.
+Continuation target: choose or define S9 after S8 merged green.
 
 ## 2. Current Mission
 
-S8 — StealthEye Cloud Remediator.
+S8 — StealthEye Cloud Remediator is complete and merged.
 
 ## 3. Current State
 
-S0 through S7 are merged green. S8 implementation package is active on:
+S0 through S8 are merged green.
+
+S8 PR:
 
 ```text
-build/s8-remediator-mode
+#13
 ```
 
-S7 merge SHA:
+S8 merge SHA:
 
 ```text
-d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
+12081b4d311844b62aecafb5ff045414e94a4a7c
 ```
-
-S8 PR is #13 and CI is in repair.
 
 ## 4. Latest Verified Result
 
-S7 is complete and merged. It activated mobile browser playtest proof, notification dry-run/conditional dispatch, and knowledge mirror export.
+S8 activated Remediator Mode with a real public-safe proof-driven remediation system.
 
-S8 currently has a repair commit for first-wave CI failures: Rust format and required Relay section numbering.
+S8 includes:
+
+1. intake
+2. permissions
+3. reality map
+4. command discovery
+5. environment synthesis
+6. reproduction
+7. failure taxonomy
+8. localization
+9. repair strategy
+10. patch tournament
+11. proof plan
+12. report
+13. quote/risk commercial artifact
+
+The Remediator proof body creates a synthetic broken repo, reproduces a failing test, applies a bounded one-line patch, reruns proof green, emits remediation artifacts, and emits diagnosis-only status when reproduction is impossible.
 
 ## 5. Active Approval Envelope
 
@@ -40,7 +56,7 @@ Stop for: secrets, paid compute, private data exposure risk, deployment/producti
 
 ## 6. Next Exact Action
 
-Let CI rerun on PR #13, inspect all failures before further patching, batch repair exact failures only, and merge when green.
+Choose or define S9, then begin it from current `main` in a new `build/s9-*` branch. Do not reopen S6, S7, or S8 architecture unless the user explicitly asks.
 
 ## 7. Decisions That Must Not Drift
 
@@ -57,19 +73,19 @@ Let CI rerun on PR #13, inspect all failures before further patching, batch repa
 
 ## 8. Do Not Reopen
 
-Do not reopen S6/S7/S8 naming, no-fake-build rule, Remediator naming, S0-S7 proof, or S6/S7 architecture unless the user explicitly changes them.
+Do not reopen S6/S7/S8 naming, no-fake-build rule, Remediator naming, S0-S8 proof, or S6/S7/S8 architecture unless the user explicitly changes them.
 
 ## 9. Open Questions / Boundaries
 
-No active blocker. Stop only for approval-envelope boundaries.
+S9 is not selected in the repo handoff. User/product direction is needed before starting S9 implementation.
 
 ## 10. Required Files / Repos / Branches
 
 Repo: `StealthEyeLLC/stealtheye-cloud`
 
-Active implementation branch: `build/s8-remediator-mode`
+Active branch: `main`
 
-Required S8 files include:
+S8 files include:
 
 1. `crates/secloud-remediator/src/lib.rs`
 2. `.github/workflows/proof-remediator.yml`
@@ -86,19 +102,19 @@ Required S8 files include:
 
 Latest Seal: `STEALTHEYE_SEAL.json`
 
-Latest Seal ID: `seal-s8-remediator-branch-active`
+Latest Seal ID: `seal-s8-remediator-merged`
 
 ## 12. Failure / Blocker State
 
-First-wave failures were Rust formatting and Relay section numbering. Repair commit is applied; rerun is pending.
+No active blocker. S8 CI was green before merge.
 
 ## 13. Codex / Worker State
 
-No Codex worker used. No external worker used. GitHub Actions is the current proof body.
+No Codex worker used. No external worker used. GitHub Actions was the proof body.
 
 ## 14. Browser State
 
-Browser proof and mobile proof were green in first CI wave. No browser-cookie/session-token automation was used.
+Browser proof and mobile proof were green. No browser-cookie/session-token automation was used.
 
 ## 15. Public / Private Boundary
 

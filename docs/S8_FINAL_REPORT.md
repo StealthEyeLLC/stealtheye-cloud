@@ -2,13 +2,12 @@
 
 ## Status
 
-S8 implementation package is complete on branch:
+S8 is merged green.
 
 ```text
-build/s8-remediator-mode
+PR #13
+Merge SHA: 12081b4d311844b62aecafb5ff045414e94a4a7c
 ```
-
-Merge requires green CI.
 
 ## Implemented capability
 
@@ -90,7 +89,7 @@ Existing remediation schemas were upgraded from minimal readiness shells into st
 7. Diagnosis-only status cannot claim remediation.
 8. A repo is not remediated unless reproduction, bounded patch, and green proof are all true.
 
-## Expected green gates
+## Green gates before merge
 
 ```text
 proof-fast
@@ -106,4 +105,4 @@ proof-windows-targeted
 
 ## Next action after S8 merge
 
-After S8 merges green, update handoff truth only if required by the next mission. Do not reopen S6 or S7 architecture.
+Choose or define S9, then begin it from current `main` in a new `build/s9-*` branch. Do not reopen S6, S7, or S8 architecture.
