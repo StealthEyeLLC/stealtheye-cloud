@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StealthEyeCapabilitiesV0",
+  "type": "object",
+  "required": ["schema_version", "capabilities", "blocked_claims"],
+  "properties": {
+    "schema_version": {"const": "StealthEyeCapabilitiesV0"},
+    "capabilities": {"type": "array", "items": {"type": "string"}},
+    "blocked_claims": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
