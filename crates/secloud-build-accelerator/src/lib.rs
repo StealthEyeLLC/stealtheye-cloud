@@ -256,7 +256,8 @@ pub fn evaluate_build_run(summary: BuildRunSummary) -> BuildAccelerationVerdict 
     if summary.true_boundary_hit {
         return BuildAccelerationVerdict::BlockedByBoundary;
     }
-    if !summary.mission_approved || summary.pull_requests == 0 || summary.repo_mutation_batches == 0 {
+    if !summary.mission_approved || summary.pull_requests == 0 || summary.repo_mutation_batches == 0
+    {
         return BuildAccelerationVerdict::Invalid;
     }
     if summary.repo_mutation_batches == 1
@@ -359,7 +360,8 @@ mod tests {
         include_str!("../../../schemas/MissionApprovalEnvelopeV0.schema.json");
     const STATE_REPORT_SCHEMA: &str =
         include_str!("../../../schemas/StateConsistencyReportV0.schema.json");
-    const VELOCITY_SCHEMA: &str = include_str!("../../../schemas/BuildVelocityReportV0.schema.json");
+    const VELOCITY_SCHEMA: &str =
+        include_str!("../../../schemas/BuildVelocityReportV0.schema.json");
 
     #[test]
     fn schema_inventory_contains_required_s9_contracts() {
@@ -395,12 +397,16 @@ mod tests {
         assert!(is_boundary_action_class("secrets"));
         assert!(is_boundary_action_class("database_mutation"));
         assert!(!is_routine_action_class("secrets"));
-        assert!(!is_routine_action_class("browser_cookie_session_automation"));
+        assert!(!is_routine_action_class(
+            "browser_cookie_session_automation"
+        ));
     }
 
     #[test]
     fn no_silent_downgrade_rules_preserve_validator_strength() {
-        assert!(has_no_silent_downgrade_rule("required_validator_not_removed"));
+        assert!(has_no_silent_downgrade_rule(
+            "required_validator_not_removed"
+        ));
         assert!(has_no_silent_downgrade_rule("proof_gate_not_weakened"));
         assert!(has_no_silent_downgrade_rule("safety_boundary_not_relaxed"));
     }
@@ -416,7 +422,10 @@ mod tests {
             cleanup_prs_needed: 0,
             true_boundary_hit: false,
         };
-        assert_eq!(evaluate_build_run(summary), BuildAccelerationVerdict::Accelerated);
+        assert_eq!(
+            evaluate_build_run(summary),
+            BuildAccelerationVerdict::Accelerated
+        );
     }
 
     #[test]
@@ -430,6 +439,9 @@ mod tests {
             cleanup_prs_needed: 1,
             true_boundary_hit: false,
         };
-        assert_eq!(evaluate_build_run(summary), BuildAccelerationVerdict::NeedsBatching);
+        assert_eq!(
+            evaluate_build_run(summary),
+            BuildAccelerationVerdict::NeedsBatching
+        );
     }
 }
