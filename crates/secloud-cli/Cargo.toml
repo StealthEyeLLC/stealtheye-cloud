@@ -25,3 +25,13 @@ secloud-proof-viewer = { path = "../secloud-proof-viewer" }
 secloud-hardening = { path = "../secloud-hardening" }
 secloud-release = { path = "../secloud-release" }
 secloud-e2e = { path = "../secloud-e2e" }
+secloud-gateway = { path = "../secloud-gateway" }
+secloud-mcp-adapters = { path = "../secloud-mcp-adapters" }
+secloud-gemini-worker = { path = "../secloud-gemini-worker" }
+secloud-knowledge-mirror = { path = "../secloud-knowledge-mirror" }
+secloud-notifications = { path = "../secloud-notifications" }
+secloud-permission = { path = "../secloud-permission" }
+secloud-guard = { path = "../secloud-guard" }
+secloud-repo-worker = { path = "../secloud-repo-worker" }
+secloud-mobile-qa = { path = "../secloud-mobile-qa" }
+secloud-repair-readiness = { path = "../secloud-repair-readiness" }
