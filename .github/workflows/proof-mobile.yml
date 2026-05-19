@@ -1,0 +1,59 @@
+name: proof-mobile
+
+on:
+  push:
+    branches:
+      - main
+      - 'build/**'
+      - 'repair/**'
+    paths:
+      - 'browser/playwright/mobile.config.ts'
+      - 'browser/playwright/mobile-tests/**'
+      - 'browser/playwright/scripts/check-mobile-artifacts.mjs'
+      - 'public/previews/**'
+      - 'package.json'
+      - '.github/workflows/proof-mobile.yml'
+      - 'schemas/MobilePlaytestActivationV0.schema.json'
+      - 'docs/S7_FIRST_REAL_ACTIVATIONS.md'
+  pull_request:
+    paths:
+      - 'browser/playwright/mobile.config.ts'
+      - 'browser/playwright/mobile-tests/**'
+      - 'browser/playwright/scripts/check-mobile-artifacts.mjs'
+      - 'public/previews/**'
+      - 'package.json'
+      - '.github/workflows/proof-mobile.yml'
+      - 'schemas/MobilePlaytestActivationV0.schema.json'
+      - 'docs/S7_FIRST_REAL_ACTIVATIONS.md'
+  workflow_dispatch:
+
+jobs:
+  proof-mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Mobile proof
+        run: npm run proof:mobile
+
+      - name: Validate mobile artifacts
+        run: npm run proof:mobile:summary
+
+      - name: Upload mobile artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s7-mobile-proof-artifacts
+          path: .stealtheye/mobile/

@@ -4,7 +4,7 @@
 
 Resume this StealthEye Cloud mission from this Relay. Use `STEALTHEYE_SEAL.json` as checkpoint truth, obey the Active approval envelope, do not reopen frozen decisions, and perform the Next Exact Action unless a true boundary is present.
 
-Continuation target: begin S7 — First Real Activations after this post-S6 state cleanup is merged.
+Continuation target: continue S7 — First Real Activations on `build/s7-first-real-activations`.
 
 ## 2. Current Mission
 
@@ -20,36 +20,31 @@ S6 merge SHA:
 dcaf60dce2b466178c3cff1ee4545d06f3e5075f
 ```
 
-S6 verified green before merge:
+Post-S6 cleanup PR #9 merge SHA:
 
-1. `proof-fast`
-2. `proof-full`
-3. `proof-e2e`
-4. `proof-gateway`
-5. `proof-windows-targeted`
+```text
+a5e6eccc37067cf264fd8859c69fc412da855bb8
+```
 
-No S7 branch is active yet. Next branch should be:
+S7 branch is active:
 
 ```text
 build/s7-first-real-activations
 ```
 
+S7 PR is pending creation from the active branch.
+
 ## 4. Latest Verified Result
 
-S6 is complete and merged. It implemented readiness/enforcement infrastructure only:
+S6 is complete and merged. It implemented readiness/enforcement infrastructure only and did not activate live external services, automate browser sessions/cookies, or mutate production/database systems.
 
-1. gateway transport/session/origin/backpressure contracts
-2. MCP adapter registry, lifecycle, descriptor integrity, catalog, and risk scoring contracts
-3. Gemini worker readiness, semantic normalization, and model-topology boundary contracts
-4. data-tainting, indirect-injection isolation, workflow guard, ingest, production adapter, database, and telemetry contracts
-5. external authority boundary readiness contracts
-6. knowledge mirror and notification readiness contracts
-7. repo worker, mobile QA, game QA, and Remediator readiness contracts
-8. full S6 public schema inventory
-9. `secloud validate ...` command surface for every S6 validator
-10. dedicated `proof-gateway` workflow
+S7 implementation package activates three public-safe lanes:
 
-S6 did not activate live external services, automate browser sessions/cookies, or mutate production/database systems.
+1. Mobile Browser Game Preview and Playtest Activation
+2. Notification Lane Activation
+3. Knowledge Mirror Export Activation
+
+S7 proof is pending the first CI wave.
 
 ## 5. Active Approval Envelope
 
@@ -61,9 +56,7 @@ Stop for: secrets, paid compute, private data exposure risk, deployment/producti
 
 ## 6. Next Exact Action
 
-Next Exact Action: create `build/s7-first-real-activations` from current `main` and begin S7 — First Real Activations after this post-S6 state cleanup is merged green.
-
-S7 must use the S6 readiness/enforcement substrate and must not reopen S6 architecture.
+Open one PR from `build/s7-first-real-activations` to `main`, let the first CI wave run, inspect all failures before patching, batch repair exact failures only, and merge when green.
 
 ## 7. Decisions That Must Not Drift
 
@@ -84,15 +77,17 @@ Do not reopen S6/S7/S8 naming, no-fake-build rule, Remediator naming, neutral ma
 
 ## 9. Open Questions / Boundaries
 
-No active S6 blocker. S7 has not started. Stop only for approval-envelope boundaries.
+No active blocker. Notification real dispatch remains dry-run unless an explicit webhook secret and enable flag are configured.
 
 ## 10. Required Files / Repos / Branches
 
 Repo: `StealthEyeLLC/stealtheye-cloud`
 
-Current cleanup branch: `build/s6-post-merge-state`
+Active implementation branch:
 
-Next implementation branch: `build/s7-first-real-activations`
+```text
+build/s7-first-real-activations
+```
 
 Base: `main`
 
@@ -109,19 +104,19 @@ Required handoff files:
 
 Latest Seal: `STEALTHEYE_SEAL.json`
 
-Latest Seal ID: `seal-s6-merged-s7-next`
+Latest Seal ID: `seal-s7-first-real-activations-active`
 
 ## 12. Failure / Blocker State
 
-Failure / Blocker State: none for S6. This branch only repairs stale post-merge handoff truth on `main`.
+Failure / Blocker State: none. First CI wave pending.
 
 ## 13. Codex / Worker State
 
-No Codex worker task active. No external worker task active. S7 has not started.
+No Codex worker task active. No external worker task active.
 
 ## 14. Browser State
 
-No browser runtime automation is active. Browser-cookie/session-token automation remains forbidden.
+Browser proof is GitHub Actions / Playwright only. No browser-cookie/session-token automation is active.
 
 ## 15. Public / Private Boundary
 

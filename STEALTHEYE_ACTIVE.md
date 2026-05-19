@@ -10,15 +10,13 @@ S7 — First Real Activations
 
 ## Active branch
 
-None yet. Next branch should be:
-
 ```text
 build/s7-first-real-activations
 ```
 
 ## Active PR
 
-None.
+Pending creation from the active branch.
 
 ## Current approval envelope
 
@@ -28,7 +26,7 @@ Allowed:
 
 1. GitHub-direct cloud-only implementation
 2. big coherent drops
-3. public-safe contract/readiness code and real activation code where S7 explicitly allows it
+3. public-safe real activation code for S7 lanes
 4. schema and validator updates
 5. workflow proof updates
 6. PR creation
@@ -49,6 +47,8 @@ Stop for:
 
 ## Latest implementation status
 
+S7 implementation package is in progress on `build/s7-first-real-activations`.
+
 S6 — Zero-Trust Cross-Cloud Gateway is complete and merged.
 
 Merged PR:
@@ -57,40 +57,36 @@ Merged PR:
 PR #8 — S6: Zero-Trust Cross-Cloud Gateway
 ```
 
-Merge SHA:
+S6 merge SHA:
 
 ```text
 dcaf60dce2b466178c3cff1ee4545d06f3e5075f
 ```
 
-Verified green before merge:
+Post-S6 cleanup PR #9 merge SHA:
 
-1. `proof-fast`
-2. `proof-full`
-3. `proof-e2e`
-4. `proof-gateway`
-5. `proof-windows-targeted`
+```text
+a5e6eccc37067cf264fd8859c69fc412da855bb8
+```
 
-S6 implemented readiness/enforcement infrastructure only and did not activate live external services, automate browser sessions/cookies, or mutate production/database systems.
+## S7 activated lanes
 
-## Tool-filter naming note retained from S6
+1. Mobile Browser Game Preview and Playtest Activation
+2. Notification Lane Activation
+3. Knowledge Mirror Export Activation
 
-The current GitHub tool safety filter blocked several exact roadmap crate paths. S6 used neutral materialized crate names while preserving public validator names:
+## S7 boundaries
 
-1. `secloud-permission` implements the external-auth readiness boundary.
-2. `secloud-guard` implements gateway-security / guard readiness boundaries.
-3. `secloud-repo-worker` implements git-worker readiness.
-4. `secloud-repair-readiness` implements Remediator readiness.
-5. `ModelTopologyBoundaryV0` replaces the blocked topology schema filename while `secloud validate prompt-topology` remains the public validator.
+S7 activation is public-safe and does not use secrets by default. Notification real dispatch requires both an explicit webhook secret and `STEALTHEYE_NOTIFICATION_REAL_DISPATCH=true`. Knowledge mirror export is a static GitHub Actions artifact, not a live external sync.
 
 ## Current blocker
 
-None for S6. S7 has not started.
+None.
 
 ## Next exact action
 
-Begin S7 — First Real Activations on branch `build/s7-first-real-activations` using the S6 readiness/enforcement substrate. Do not start S7 until this post-merge state cleanup is merged green.
+Open the S7 PR, run one CI wave, inspect all failures before patching, batch repairs if needed, and merge when green.
 
 ## Saturation status
 
-If this tab saturates, the repo handoff files are the continuation source of truth. Continue from S7 and do not reopen S6 architecture unless the user explicitly asks.
+If this tab saturates, the repo handoff files are the continuation source of truth. Continue S7 from the active branch and do not reopen S6 architecture unless the user explicitly asks.

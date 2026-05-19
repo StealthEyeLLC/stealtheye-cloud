@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>StealthEye Cloud S7 Mobile Playtest</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; min-height: 100vh; background: #07090f; color: #f4f7fb; display: grid; place-items: center; touch-action: none; }
+    main { width: min(92vw, 460px); border: 1px solid #2e7df6; border-radius: 22px; padding: 20px; background: linear-gradient(180deg, #121827, #080b12); box-shadow: 0 20px 60px rgba(0, 0, 0, .45); }
+    h1 { margin: 0 0 8px; font-size: 1.25rem; }
+    p { color: #b9c4d5; }
+    #arena { position: relative; height: 260px; border-radius: 18px; overflow: hidden; background: radial-gradient(circle at 30% 20%, #1d3c70, #111827 60%); border: 1px solid #25344f; }
+    #ship { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; border-radius: 16px; transform: translate(-50%, -50%); background: #f4f7fb; box-shadow: 0 0 26px rgba(46, 125, 246, .85); }
+    #status { min-height: 24px; font-variant-numeric: tabular-nums; }
+    button { width: 100%; min-height: 48px; border: 0; border-radius: 14px; margin-top: 14px; background: #2e7df6; color: white; font-weight: 800; font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <main data-stealtheye="s7-mobile-playtest">
+    <h1>StealthEye Cloud S7 Mobile Playtest</h1>
+    <p>Tap and swipe inside the arena. This static preview exists for CI-backed mobile proof without deployment, cookies, secrets, or session automation.</p>
+    <section id="arena" aria-label="mobile playtest arena">
+      <div id="ship" aria-label="playtest marker"></div>
+    </section>
+    <p id="status" aria-live="polite">ready</p>
+    <button id="reset" type="button">Reset</button>
+  </main>
+  <script>
+    const arena = document.getElementById('arena');
+    const ship = document.getElementById('ship');
+    const status = document.getElementById('status');
+    const reset = document.getElementById('reset');
+    const state = { x: 50, y: 50, taps: 0, swipes: 0, startX: 0, startY: 0 };
+    const render = () => {
+      ship.style.left = `${state.x}%`;
+      ship.style.top = `${state.y}%`;
+      status.textContent = `tap=${state.taps} swipe=${state.swipes} x=${state.x.toFixed(1)} y=${state.y.toFixed(1)}`;
+      window.__STEALTHEYE_MOBILE_STATE__ = { ...state, status: status.textContent };
+    };
+    const clamp = (value) => Math.max(8, Math.min(92, value));
+    const pointToPercent = (event) => {
+      const rect = arena.getBoundingClientRect();
+      return {
+        x: clamp(((event.clientX - rect.left) / rect.width) * 100),
+        y: clamp(((event.clientY - rect.top) / rect.height) * 100)
+      };
+    };
+    arena.addEventListener('pointerdown', (event) => {
+      const point = pointToPercent(event);
+      state.startX = point.x;
+      state.startY = point.y;
+      state.x = point.x;
+      state.y = point.y;
+      state.taps += 1;
+      render();
+    });
+    arena.addEventListener('pointerup', (event) => {
+      const point = pointToPercent(event);
+      const moved = Math.abs(point.x - state.startX) + Math.abs(point.y - state.startY);
+      if (moved > 12) state.swipes += 1;
+      state.x = point.x;
+      state.y = point.y;
+      render();
+    });
+    reset.addEventListener('click', () => {
+      state.x = 50; state.y = 50; state.taps = 0; state.swipes = 0; render();
+    });
+    render();
+  </script>
+</body>
+</html>

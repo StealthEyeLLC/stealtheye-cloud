@@ -1,42 +1,41 @@
 # Next Action
 
-Begin **S7 — First Real Activations** after this post-S6 state cleanup is merged.
-
-S6 completion truth:
-
-```text
-PR #8 merged: S6 — Zero-Trust Cross-Cloud Gateway
-Merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
-```
-
-Verified green before S6 merge:
-
-```text
-proof-fast
-proof-full
-proof-e2e
-proof-gateway
-proof-windows-targeted
-```
-
-Next branch:
+Continue **S7 — First Real Activations** on:
 
 ```text
 build/s7-first-real-activations
 ```
 
-Immediate work for the next implementation tab:
+Immediate work:
 
-1. Read the canonical handoff files.
-2. Create `build/s7-first-real-activations` from current `main`.
-3. Implement S7 as real activations using the S6 readiness/enforcement substrate.
-4. Do not reopen S6 architecture.
-5. Do not add placeholders or fake external activation.
-6. Do not use browser-cookie/session-token automation.
-7. Merge S7 only when CI is green.
+1. Open one PR from `build/s7-first-real-activations` to `main`.
+2. Let the first CI wave run.
+3. Inspect all failures before patching.
+4. Batch repair exact failures only.
+5. Merge when green.
 
-S7 boundary:
+S7 activated lanes:
+
+1. Mobile Browser Game Preview and Playtest Activation
+2. Notification Lane Activation
+3. Knowledge Mirror Export Activation
+
+S7 proof workflows:
 
 ```text
-S7 may activate real capability only where the repo policy, S6 enforcement substrate, explicit approvals, and public-safe boundaries allow it. No secrets, no paid compute, no production deployment, and no database mutation without explicit approval.
+proof-mobile
+proof-activations
+```
+
+Boundary:
+
+```text
+No secrets, no paid compute, no production deployment, no database mutation, and no browser-cookie/session-token automation. Notification real dispatch requires explicit secret plus enable flag. Knowledge mirror export is a static public-safe GitHub artifact, not live external sync.
+```
+
+After S7 merges green, proceed to:
+
+```text
+S8 — StealthEye Cloud Remediator
+build/s8-remediator-mode
 ```

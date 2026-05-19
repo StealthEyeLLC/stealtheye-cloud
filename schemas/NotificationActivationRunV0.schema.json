@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NotificationActivationRunV0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "lane",
+    "mode",
+    "event",
+    "dispatch_status",
+    "redaction_status",
+    "secret_policy",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {"const": "NotificationActivationRunV0"},
+    "lane": {"const": "notification_lane"},
+    "mode": {"enum": ["dry_run", "real_dispatch"]},
+    "event": {"type": "string"},
+    "dispatch_status": {"type": "string"},
+    "redaction_status": {"const": "passed"},
+    "secret_policy": {"type": "string"},
+    "status": {"enum": ["success", "failure"]}
+  },
+  "additionalProperties": true
+}

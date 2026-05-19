@@ -1,0 +1,98 @@
+name: proof-activations
+
+on:
+  push:
+    branches:
+      - main
+      - 'build/**'
+      - 'repair/**'
+    paths:
+      - 'crates/secloud-activations/**'
+      - 'crates/secloud-packets/**'
+      - 'schemas/MobilePlaytestActivationV0.schema.json'
+      - 'schemas/NotificationActivationRunV0.schema.json'
+      - 'schemas/KnowledgeMirrorExportV0.schema.json'
+      - 'schemas/S7ActivationProofV0.schema.json'
+      - 'scripts/s7-notification-activation.mjs'
+      - 'scripts/s7-knowledge-mirror-export.mjs'
+      - 'scripts/check-s7-activation-artifacts.mjs'
+      - '.github/workflows/proof-activations.yml'
+      - 'package.json'
+      - 'docs/S7_FIRST_REAL_ACTIVATIONS.md'
+  pull_request:
+    paths:
+      - 'crates/secloud-activations/**'
+      - 'crates/secloud-packets/**'
+      - 'schemas/MobilePlaytestActivationV0.schema.json'
+      - 'schemas/NotificationActivationRunV0.schema.json'
+      - 'schemas/KnowledgeMirrorExportV0.schema.json'
+      - 'schemas/S7ActivationProofV0.schema.json'
+      - 'scripts/s7-notification-activation.mjs'
+      - 'scripts/s7-knowledge-mirror-export.mjs'
+      - 'scripts/check-s7-activation-artifacts.mjs'
+      - '.github/workflows/proof-activations.yml'
+      - 'package.json'
+      - 'docs/S7_FIRST_REAL_ACTIVATIONS.md'
+  workflow_dispatch:
+
+jobs:
+  proof-activations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Format
+        run: cargo fmt --all -- --check
+
+      - name: Check
+        run: cargo check --workspace
+
+      - name: Test activation contracts
+        run: cargo test -p secloud-activations
+
+      - name: Clippy activation contracts
+        run: cargo clippy -p secloud-activations -- -D warnings
+
+      - name: Validate schema inventory
+        run: cargo run -p secloud-cli -- validate schemas
+
+      - name: Notification activation proof
+        run: npm run proof:notification
+
+      - name: Knowledge mirror activation proof
+        run: npm run proof:mirror
+
+      - name: Validate S7 activation artifacts
+        run: npm run proof:activations:summary
+
+      - name: Upload notification artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s7-notification-artifacts
+          path: .stealtheye/notifications/
+
+      - name: Upload knowledge mirror artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s7-knowledge-mirror-artifacts
+          path: .stealtheye/mirror/
+
+      - name: Upload activation proof artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s7-activation-proof-artifacts
+          path: .stealtheye/activations/
