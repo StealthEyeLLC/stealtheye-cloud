@@ -24,7 +24,7 @@ S9 proof workflow:
 .github/workflows/proof-build-accelerator.yml
 ```
 
-Merge-aware next action after S9 is green and merged:
+merge-aware next action after S9 is green and merged:
 
 ```text
 Continue from current main and define S10 or the next selected mission using S9 one-drop mode. Record exact merge metadata only if truth requires it.
