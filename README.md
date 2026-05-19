@@ -6,7 +6,7 @@ It is optimized for one active ChatGPT tab until saturation, public free CI proo
 
 ## Current build state
 
-Current status: **S0–S7 merged green**.
+Current status before S8 merge: **S0–S7 merged green; S8 implementation branch active**.
 
 Completed spine:
 
@@ -21,44 +21,27 @@ S6 — Zero-Trust Cross-Cloud Gateway
 S7 — First Real Activations
 ```
 
-Latest verified merge:
+Active branch:
 
 ```text
-d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
+build/s8-remediator-mode
 ```
 
-Recent completion truth:
+S8 activates:
+
+```text
+StealthEye Cloud Remediator
+```
+
+A repo is not remediated until failing behavior is reproduced, a bounded patch is applied, and proof gates pass. If failure cannot be reproduced, Remediator emits diagnosis-only status and does not claim remediation.
+
+## Recent completion truth
 
 ```text
 S6 PR #8 merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
 Post-S6 cleanup PR #9 merge SHA: a5e6eccc37067cf264fd8859c69fc412da855bb8
 S7 PR #11 merge SHA: d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
 ```
-
-S7 was proven green before merge with:
-
-```text
-proof-fast — success
-proof-full — success
-proof-e2e — success
-proof-gateway — success
-proof-browser — success
-proof-mobile — success
-proof-activations — success
-proof-windows-targeted — success
-```
-
-## Next build wave
-
-The next locked mission is:
-
-```text
-S8 — StealthEye Cloud Remediator
-```
-
-S7 activated selected real working lanes using the S6 readiness/enforcement substrate. S8 activates Remediator Mode.
-
-No placeholders. No fake integrations. No docs-only feature claims. A lane is not called active until it performs the real action and proof gates validate it.
 
 ## Start here
 
@@ -76,7 +59,20 @@ No placeholders. No fake integrations. No docs-only feature claims. A lane is no
 - `docs/S6_ZERO_TRUST_CROSS_CLOUD_GATEWAY.md`
 - `docs/S7_FIRST_REAL_ACTIVATIONS.md`
 - `docs/S8_STEALTHEYE_CLOUD_REMEDIATOR.md`
+- `docs/S8_FINAL_REPORT.md`
 - `docs/HANDOFF_AND_CONTINUATION.md`
+
+## Current proof workflows
+
+- `proof-fast.yml`
+- `proof-full.yml`
+- `proof-browser.yml`
+- `proof-mobile.yml`
+- `proof-e2e.yml`
+- `proof-gateway.yml`
+- `proof-activations.yml`
+- `proof-remediator.yml`
+- `proof-windows-targeted.yml`
 
 ## Canonical operating model
 

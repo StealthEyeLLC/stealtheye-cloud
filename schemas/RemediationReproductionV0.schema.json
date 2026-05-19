@@ -2,7 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "RemediationReproductionV0",
   "type": "object",
-  "required": ["schema_version"],
-  "properties": {"schema_version": {"const": "RemediationReproductionV0"}},
-  "additionalProperties": true
+  "required": ["schema_version", "command", "reproduced", "exit_code", "evidence_excerpt"],
+  "properties": {
+    "schema_version": {"const": "RemediationReproductionV0"},
+    "command": {"type": "string", "minLength": 1},
+    "reproduced": {"type": "boolean"},
+    "exit_code": {"type": "integer"},
+    "evidence_excerpt": {"type": "string"},
+    "diagnosis_only_if_unreproduced": {"type": "boolean"}
+  },
+  "additionalProperties": false
 }

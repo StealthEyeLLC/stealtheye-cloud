@@ -128,10 +128,18 @@ pub const REQUIRED_PACKET_SCHEMAS: &[&str] = &[
     "RemediatorReadinessV0",
     "RemediationIntakeV0",
     "RemediationPermissionsV0",
+    "RemediationRealityMapV0",
+    "RemediationCommandDiscoveryV0",
+    "RemediationEnvironmentV0",
     "RemediationReproductionV0",
     "RemediationFailureTaxonomyV0",
+    "RemediationLocalizationV0",
+    "RemediationRepairStrategyV0",
+    "RemediationPatchTournamentV0",
     "RemediationProofPlanV0",
     "RemediationReportV0",
+    "RemediationCommercialV0",
+    "RemediatorExecutionReceiptV0",
     "MobilePlaytestActivationV0",
     "NotificationActivationRunV0",
     "KnowledgeMirrorExportV0",
@@ -213,6 +221,18 @@ mod tests {
         assert!(is_required_schema("NotificationActivationRunV0"));
         assert!(is_required_schema("KnowledgeMirrorExportV0"));
         assert!(is_required_schema("S7ActivationProofV0"));
+    }
+
+    #[test]
+    fn required_schema_inventory_contains_s8_remediator_contracts() {
+        assert!(is_required_schema("RemediationRealityMapV0"));
+        assert!(is_required_schema("RemediationCommandDiscoveryV0"));
+        assert!(is_required_schema("RemediationEnvironmentV0"));
+        assert!(is_required_schema("RemediationLocalizationV0"));
+        assert!(is_required_schema("RemediationRepairStrategyV0"));
+        assert!(is_required_schema("RemediationPatchTournamentV0"));
+        assert!(is_required_schema("RemediationCommercialV0"));
+        assert!(is_required_schema("RemediatorExecutionReceiptV0"));
     }
 
     #[test]

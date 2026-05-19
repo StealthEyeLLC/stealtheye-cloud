@@ -4,29 +4,17 @@
 
 This document is the current build plan for `StealthEyeLLC/stealtheye-cloud`.
 
-Current verified state:
+Current verified state before S8 merge:
 
 ```text
 S0–S7 merged green
 S6 PR #8 merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
 Post-S6 cleanup PR #9 merge SHA: a5e6eccc37067cf264fd8859c69fc412da855bb8
 S7 PR #11 merge SHA: d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
+S8 branch: build/s8-remediator-mode
 ```
 
-S7 completed First Real Activations and was verified before merge with these gates green:
-
-```text
-proof-fast
-proof-full
-proof-e2e
-proof-gateway
-proof-browser
-proof-mobile
-proof-activations
-proof-windows-targeted
-```
-
-The next locked build wave is:
+S8 implementation package activates:
 
 ```text
 S8 — StealthEye Cloud Remediator
@@ -55,19 +43,13 @@ A lane may be called `readiness` only when it builds real contracts, validators,
 
 A lane may be called `active` only when it performs the real action and CI/proof artifacts validate it.
 
-### 1.3 No watered-down builds
-
-Narrow scope by selecting fewer capabilities per drop, not by weakening architecture.
-
-Do not weaken tests, remove validators, hide failures, or fake green proof.
-
-### 1.4 Public-safe rule
+### 1.3 Public-safe rule
 
 The public repo contains only public-safe implementation and proof artifacts.
 
 Do not include secrets, private strategy, client data, private overlays, browser cookies, consumer session tokens, API keys, or paid-compute assumptions.
 
-### 1.5 Cloud-only execution rule
+### 1.4 Cloud-only execution rule
 
 The default operating mode is GitHub-direct and no-local. Local/laptop work is disabled unless explicitly requested or a catastrophe blocks cloud-only progress.
 
@@ -87,41 +69,7 @@ The next tab resumes by reading those files in that order, then performing `NEXT
 
 ## 3. Completed Build Spine
 
-### S0 — Foundation, Continuity, Packet Spine, and Cheap CI
-
-Status: merged.
-
-Purpose: canonical root files, Relay, Seal, Active, packet spine, forbidden-file policy, Rust workspace, and cheap CI.
-
-### S1 — Mission Executor, Atomic Drop Rail, Authority Queue, and GitHub Evidence
-
-Status: merged.
-
-Purpose: mission/drop representation, authority queue, output shelf, GitHub evidence, failure cards, and CI-backed repair loop.
-
-### S2 — Browser Body, Replay Proof, and Visual Evidence
-
-Status: merged.
-
-Purpose: Playwright browser proof, DOM/console/network/screenshot artifacts, replay contracts, and visual evidence surface.
-
-### S3 — MCP/App Control Plane, Tool Registry, Skills, Workers, and Background Capability Reality
-
-Status: merged.
-
-Purpose: closed high-level tool registry, blocked raw tools, Skill spine, worker/background reality, and control/worker validators.
-
-### S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public Proof Canvas
-
-Status: merged.
-
-Purpose: learning/search/hypothesis/proof-viewer crates, public proof canvas, S4 validators, and proof-canvas browser coverage.
-
-### S5 — Full Hardening, Public Release Candidate, and First End-to-End Mission
-
-Status: merged.
-
-Purpose: hardening/release/e2e crates, release-candidate docs, `proof-e2e`, and first public no-local release-candidate proof.
+S0 through S7 are merged green.
 
 ### S6 — Zero-Trust Cross-Cloud Gateway
 
@@ -139,31 +87,31 @@ Purpose: activated mobile browser game preview/playtest proof, notification dry-
 
 S7 did not use browser-cookie/session-token automation, commit or print secrets, use paid compute, deploy production systems, mutate databases, or perform live external mirror sync.
 
-## 4. Next Build Wave
+## 4. Active Build Wave
 
-## 4.1 S8 — StealthEye Cloud Remediator
+### S8 — StealthEye Cloud Remediator
 
-### Objective
+Status: implementation branch active.
 
-Activate Remediator Mode as a flagship proof-driven remediation system.
-
-Tagline:
-
-```text
-Broken repo in. Reproduced failure, bounded patch, green proof, remediation report out.
-```
-
-### Branch
+Branch:
 
 ```text
 build/s8-remediator-mode
 ```
 
-### Crate
+Crate:
 
 ```text
 crates/secloud-remediator
 ```
+
+Workflow:
+
+```text
+.github/workflows/proof-remediator.yml
+```
+
+S8 activates Remediator Mode as a proof-driven remediation system. A repo is not remediated until the failing behavior is reproduced, a bounded patch is applied, and proof gates pass. If failure cannot be reproduced, Remediator emits diagnosis-only status and does not claim remediation.
 
 ### Required S8 modules
 
@@ -180,15 +128,7 @@ repair_strategy
 patch_tournament
 proof_plan
 report
-quote
-```
-
-### Required S8 workflow
-
-Add:
-
-```text
-.github/workflows/proof-remediator.yml
+quote_risk
 ```
 
 ### S8 acceptance
@@ -199,30 +139,19 @@ S8 passes when:
 2. permission envelope validates
 3. reality-map contracts validate
 4. command discovery contracts validate
-5. reproduction contracts validate
-6. failure taxonomy validates
-7. proof plan validates
-8. remediation report validates
-9. commercial quote/risk artifacts validate without activating billing
-10. `proof-remediator` is green
-11. docs and handoff artifacts are updated
+5. environment contracts validate
+6. reproduction contracts validate
+7. failure taxonomy validates
+8. localization validates
+9. repair strategy validates
+10. patch tournament validates
+11. proof plan validates
+12. remediation report validates
+13. commercial quote/risk artifacts validate without activating billing
+14. `proof-remediator` is green
+15. docs and handoff artifacts are updated
 
-## 5. Activation Rules
-
-S6 readiness lanes are not active capabilities.
-
-S7/S8 active lanes must do real work.
-
-Examples:
-
-```text
-Mobile QA Readiness Layer = S6 readiness
-Mobile Browser Game Preview and Playtest Activation = S7 active capability
-Remediator Readiness = S6 readiness
-Remediator Mode = S8 active capability
-```
-
-## 6. Stop Conditions
+## 5. Stop Conditions
 
 Stop for:
 
@@ -238,16 +167,6 @@ Stop for:
 
 Do not stop for routine continuation, docs updates, CI repair, validator wiring, state updates, or handoff generation.
 
-## 7. Immediate Next Action
+## 6. Immediate Next Action
 
-Begin:
-
-```text
-S8 — StealthEye Cloud Remediator
-```
-
-Target branch:
-
-```text
-build/s8-remediator-mode
-```
+Open the S8 PR, let CI run, inspect all failures before patching, batch repair exact failures only, and merge when green.

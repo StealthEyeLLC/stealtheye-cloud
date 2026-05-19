@@ -26,6 +26,7 @@ members = [
     "crates/secloud-mobile-qa",
     "crates/secloud-repair-readiness",
     "crates/secloud-activations",
+    "crates/secloud-remediator",
     "crates/secloud-cli",
 ]
 resolver = "2"

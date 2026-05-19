@@ -2,7 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "RemediationReportV0",
   "type": "object",
-  "required": ["schema_version"],
-  "properties": {"schema_version": {"const": "RemediationReportV0"}},
-  "additionalProperties": true
+  "required": ["schema_version", "status", "failure_reproduced", "bounded_patch_applied", "proof_gates_passed", "claim"],
+  "properties": {
+    "schema_version": {"const": "RemediationReportV0"},
+    "status": {"enum": ["diagnosis_only", "remediated", "blocked"]},
+    "failure_reproduced": {"type": "boolean"},
+    "bounded_patch_applied": {"type": "boolean"},
+    "proof_gates_passed": {"type": "boolean"},
+    "claim": {"type": "string", "minLength": 1},
+    "artifact_paths": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
 }

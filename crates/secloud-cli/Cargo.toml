@@ -35,3 +35,4 @@ secloud-guard = { path = "../secloud-guard" }
 secloud-repo-worker = { path = "../secloud-repo-worker" }
 secloud-mobile-qa = { path = "../secloud-mobile-qa" }
 secloud-repair-readiness = { path = "../secloud-repair-readiness" }
+secloud-remediator = { path = "../secloud-remediator" }

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RemediationLocalizationV0",
+  "type": "object",
+  "required": ["schema_version", "suspect_files", "signals"],
+  "properties": {
+    "schema_version": {"const": "RemediationLocalizationV0"},
+    "suspect_files": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "signals": {"type": "array", "items": {"enum": ["failing_command", "stderr_excerpt", "changed_file_hint", "minimal_reproduction_path"]}, "minItems": 1}
+  },
+  "additionalProperties": false
+}

@@ -2,7 +2,12 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "RemediationFailureTaxonomyV0",
   "type": "object",
-  "required": ["schema_version"],
-  "properties": {"schema_version": {"const": "RemediationFailureTaxonomyV0"}},
-  "additionalProperties": true
+  "required": ["schema_version", "failure_class", "confidence", "reproduction_required"],
+  "properties": {
+    "schema_version": {"const": "RemediationFailureTaxonomyV0"},
+    "failure_class": {"enum": ["test_failure", "compile_failure", "lint_failure", "browser_failure", "runtime_failure", "dependency_failure", "unknown_unreproduced"]},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "reproduction_required": {"const": true}
+  },
+  "additionalProperties": false
 }

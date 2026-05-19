@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RemediationPatchTournamentV0",
+  "type": "object",
+  "required": ["schema_version", "candidates", "winner", "winning_candidate_passed_proof"],
+  "properties": {
+    "schema_version": {"const": "RemediationPatchTournamentV0"},
+    "candidates": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "winner": {"type": "string", "minLength": 1},
+    "winning_candidate_passed_proof": {"const": true},
+    "rejected_unproven_candidates": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

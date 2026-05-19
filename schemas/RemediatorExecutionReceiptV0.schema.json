@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RemediatorExecutionReceiptV0",
+  "type": "object",
+  "required": ["schema_version", "receipt_id", "status", "artifacts"],
+  "properties": {
+    "schema_version": {"const": "RemediatorExecutionReceiptV0"},
+    "receipt_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["diagnosis_only", "remediated", "blocked"]},
+    "artifacts": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "proof_summary": {"type": "string"}
+  },
+  "additionalProperties": false
+}

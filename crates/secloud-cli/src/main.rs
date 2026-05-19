@@ -41,9 +41,11 @@ use secloud_relay::validate_relay_markdown;
 use secloud_release::{
     is_release_schema, is_required_artifact, RELEASE_PACKET_SCHEMAS, REQUIRED_RELEASE_ARTIFACTS,
 };
-use secloud_repair_readiness::{
-    has_repair_boundary, has_repair_module, is_repair_readiness_schema,
-    REPAIR_READINESS_PACKET_SCHEMAS,
+use secloud_remediator::{
+    has_command_discovery_rule, has_environment_rule, has_failure_taxonomy_class,
+    has_localization_signal, has_patch_tournament_rule, has_proof_requirement,
+    has_remediation_boundary, has_remediator_module, has_repair_strategy, is_commercial_artifact,
+    is_remediator_schema, REMEDIATOR_PACKET_SCHEMAS,
 };
 use secloud_repo_worker::{
     has_repo_worker_check, is_repo_worker_schema, REPO_WORKER_PACKET_SCHEMAS,
@@ -51,6 +53,66 @@ use secloud_repo_worker::{
 use secloud_seal::validate_seal_json_text;
 use secloud_search::{is_allowed_corpus, is_search_schema, SEARCH_PACKET_SCHEMAS};
 use secloud_workers::{is_real_surface, is_worker_schema, WORKER_PACKET_SCHEMAS};
+
+const VALIDATION_TARGETS: &[&str] = &[
+    "relay",
+    "seal",
+    "active",
+    "decisions",
+    "schemas",
+    "root",
+    "skills",
+    "capabilities",
+    "workers",
+    "control",
+    "learning",
+    "search",
+    "hypothesis",
+    "proof-viewer",
+    "hardening",
+    "release",
+    "e2e",
+    "gateway",
+    "gateway-transport",
+    "mcp-adapters",
+    "adapter-type-state",
+    "adapter-integrity",
+    "adapter-catalog",
+    "gemini-worker",
+    "normalization",
+    "prompt-topology",
+    "data-tainting",
+    "injection-isolation",
+    "backpressure",
+    "external-auth",
+    "workflow-security",
+    "knowledge-mirror",
+    "semantic-snapshot",
+    "notifications",
+    "git-worker",
+    "mobile-qa",
+    "game-qa",
+    "document-ingest",
+    "web-ingest",
+    "production-adapters",
+    "database-boundary",
+    "telemetry-adapters",
+    "telemetry-redaction",
+    "remediator",
+    "remediation-intake",
+    "remediation-permissions",
+    "remediation-reality-map",
+    "remediation-command-discovery",
+    "remediation-environment",
+    "remediation-reproduction",
+    "remediation-failure-taxonomy",
+    "remediation-localization",
+    "remediation-repair-strategy",
+    "remediation-patch-tournament",
+    "remediation-proof-plan",
+    "remediation-report",
+    "remediation-commercial",
+];
 
 fn main() {
     let args: Vec<String> = env::args().skip(1).collect();
@@ -127,10 +189,17 @@ fn validate_target(target: &str) -> Result<String, String> {
         "remediator" => validate_remediator(),
         "remediation-intake" => validate_remediation_intake(),
         "remediation-permissions" => validate_remediation_permissions(),
+        "remediation-reality-map" => validate_remediation_reality_map(),
+        "remediation-command-discovery" => validate_remediation_command_discovery(),
+        "remediation-environment" => validate_remediation_environment(),
         "remediation-reproduction" => validate_remediation_reproduction(),
         "remediation-failure-taxonomy" => validate_remediation_failure_taxonomy(),
+        "remediation-localization" => validate_remediation_localization(),
+        "remediation-repair-strategy" => validate_remediation_repair_strategy(),
+        "remediation-patch-tournament" => validate_remediation_patch_tournament(),
         "remediation-proof-plan" => validate_remediation_proof_plan(),
         "remediation-report" => validate_remediation_report(),
+        "remediation-commercial" => validate_remediation_commercial(),
         _ => {
             print_help();
             Err(format!("unknown validation target: {target}"))
@@ -146,59 +215,6 @@ fn print_help() {
         println!("  secloud validate {target}");
     }
 }
-
-const VALIDATION_TARGETS: &[&str] = &[
-    "relay",
-    "seal",
-    "active",
-    "decisions",
-    "schemas",
-    "root",
-    "skills",
-    "capabilities",
-    "workers",
-    "control",
-    "learning",
-    "search",
-    "hypothesis",
-    "proof-viewer",
-    "hardening",
-    "release",
-    "e2e",
-    "gateway",
-    "gateway-transport",
-    "mcp-adapters",
-    "adapter-type-state",
-    "adapter-integrity",
-    "adapter-catalog",
-    "gemini-worker",
-    "normalization",
-    "prompt-topology",
-    "data-tainting",
-    "injection-isolation",
-    "backpressure",
-    "external-auth",
-    "workflow-security",
-    "knowledge-mirror",
-    "semantic-snapshot",
-    "notifications",
-    "git-worker",
-    "mobile-qa",
-    "game-qa",
-    "document-ingest",
-    "web-ingest",
-    "production-adapters",
-    "database-boundary",
-    "telemetry-adapters",
-    "telemetry-redaction",
-    "remediator",
-    "remediation-intake",
-    "remediation-permissions",
-    "remediation-reproduction",
-    "remediation-failure-taxonomy",
-    "remediation-proof-plan",
-    "remediation-report",
-];
 
 fn doctor() -> Result<String, String> {
     for target in VALIDATION_TARGETS {
@@ -254,8 +270,7 @@ fn validate_file_contains(path: &str, needles: &[&str]) -> Result<String, String
 }
 
 fn validate_schemas() -> Result<String, String> {
-    let root = Path::new("schemas");
-    if !root.exists() {
+    if !Path::new("schemas").exists() {
         return Err("schemas directory missing".to_string());
     }
     validate_schema_files(REQUIRED_PACKET_SCHEMAS)?;
@@ -849,98 +864,286 @@ fn validate_telemetry_redaction() -> Result<String, String> {
 }
 
 fn validate_remediator() -> Result<String, String> {
-    validate_schema_files(REPAIR_READINESS_PACKET_SCHEMAS)?;
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
     require(
         "RemediatorReadinessV0",
-        is_repair_readiness_schema("RemediatorReadinessV0"),
+        is_remediator_schema("RemediatorReadinessV0"),
     )?;
     require_all(
-        "repair-module",
+        "remediator-module",
         &[
             "intake",
             "permissions",
+            "reality_map",
+            "command_discovery",
+            "environment",
             "reproduction",
             "failure_taxonomy",
+            "localization",
+            "repair_strategy",
+            "patch_tournament",
             "proof_plan",
             "report",
+            "quote_risk",
         ],
-        has_repair_module,
+        has_remediator_module,
     )?;
-    require(
-        "activation_deferred_to_s8",
-        has_repair_boundary("activation_deferred_to_s8"),
+    require_all(
+        "remediator-boundary",
+        &[
+            "no_claim_without_reproduction",
+            "no_patch_without_reproduced_failure",
+            "bounded_patch_only",
+            "proof_gates_required",
+            "diagnosis_only_when_unreproduced",
+            "no_browser_cookie_session_automation",
+            "no_secrets",
+            "no_paid_compute",
+            "no_production_deployment",
+            "no_database_mutation",
+            "commercial_quote_does_not_activate_billing",
+        ],
+        has_remediation_boundary,
     )?;
-    Ok("Remediator readiness contracts are valid".to_string())
+    Ok("active Remediator Mode contracts are valid".to_string())
 }
 
 fn validate_remediation_intake() -> Result<String, String> {
-    validate_schema_files(REPAIR_READINESS_PACKET_SCHEMAS)?;
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
     require(
         "RemediationIntakeV0",
-        is_repair_readiness_schema("RemediationIntakeV0"),
+        is_remediator_schema("RemediationIntakeV0"),
     )?;
-    require("intake", has_repair_module("intake"))?;
+    require("intake", has_remediator_module("intake"))?;
     Ok("remediation intake contracts are valid".to_string())
 }
 
 fn validate_remediation_permissions() -> Result<String, String> {
-    validate_schema_files(REPAIR_READINESS_PACKET_SCHEMAS)?;
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
     require(
         "RemediationPermissionsV0",
-        is_repair_readiness_schema("RemediationPermissionsV0"),
+        is_remediator_schema("RemediationPermissionsV0"),
     )?;
-    require("permissions", has_repair_module("permissions"))?;
-    require(
-        "no_secret_required_for_readiness",
-        has_repair_boundary("no_secret_required_for_readiness"),
-    )?;
+    require("permissions", has_remediator_module("permissions"))?;
+    require("no_secrets", has_remediation_boundary("no_secrets"))?;
     Ok("remediation permission contracts are valid".to_string())
 }
 
+fn validate_remediation_reality_map() -> Result<String, String> {
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
+    require(
+        "RemediationRealityMapV0",
+        is_remediator_schema("RemediationRealityMapV0"),
+    )?;
+    require("reality_map", has_remediator_module("reality_map"))?;
+    Ok("remediation reality map contracts are valid".to_string())
+}
+
+fn validate_remediation_command_discovery() -> Result<String, String> {
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
+    require(
+        "RemediationCommandDiscoveryV0",
+        is_remediator_schema("RemediationCommandDiscoveryV0"),
+    )?;
+    require(
+        "command_discovery",
+        has_remediator_module("command_discovery"),
+    )?;
+    require_all(
+        "command-discovery-rule",
+        &[
+            "inspect_declared_scripts",
+            "prefer_existing_verify_entrypoint",
+            "bounded_command_set",
+            "no_secret_commands",
+        ],
+        has_command_discovery_rule,
+    )?;
+    Ok("remediation command discovery contracts are valid".to_string())
+}
+
+fn validate_remediation_environment() -> Result<String, String> {
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
+    require(
+        "RemediationEnvironmentV0",
+        is_remediator_schema("RemediationEnvironmentV0"),
+    )?;
+    require("environment", has_remediator_module("environment"))?;
+    require_all(
+        "environment-rule",
+        &[
+            "detect_language_runtime",
+            "synthesize_minimal_environment",
+            "avoid_paid_compute",
+            "record_platform_assumptions",
+        ],
+        has_environment_rule,
+    )?;
+    Ok("remediation environment contracts are valid".to_string())
+}
+
 fn validate_remediation_reproduction() -> Result<String, String> {
-    validate_schema_files(REPAIR_READINESS_PACKET_SCHEMAS)?;
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
     require(
         "RemediationReproductionV0",
-        is_repair_readiness_schema("RemediationReproductionV0"),
+        is_remediator_schema("RemediationReproductionV0"),
     )?;
-    require("reproduction", has_repair_module("reproduction"))?;
+    require("reproduction", has_remediator_module("reproduction"))?;
     require(
-        "no_patch_without_reproduction_plan",
-        has_repair_boundary("no_patch_without_reproduction_plan"),
+        "failing_behavior_reproduced",
+        has_proof_requirement("failing_behavior_reproduced"),
+    )?;
+    require(
+        "no_claim_without_reproduction",
+        has_remediation_boundary("no_claim_without_reproduction"),
     )?;
     Ok("remediation reproduction contracts are valid".to_string())
 }
 
 fn validate_remediation_failure_taxonomy() -> Result<String, String> {
-    validate_schema_files(REPAIR_READINESS_PACKET_SCHEMAS)?;
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
     require(
         "RemediationFailureTaxonomyV0",
-        is_repair_readiness_schema("RemediationFailureTaxonomyV0"),
+        is_remediator_schema("RemediationFailureTaxonomyV0"),
     )?;
-    require("failure_taxonomy", has_repair_module("failure_taxonomy"))?;
+    require(
+        "failure_taxonomy",
+        has_remediator_module("failure_taxonomy"),
+    )?;
+    require_all(
+        "failure-taxonomy-class",
+        &[
+            "test_failure",
+            "compile_failure",
+            "lint_failure",
+            "browser_failure",
+            "runtime_failure",
+            "dependency_failure",
+            "unknown_unreproduced",
+        ],
+        has_failure_taxonomy_class,
+    )?;
     Ok("remediation failure taxonomy contracts are valid".to_string())
 }
 
+fn validate_remediation_localization() -> Result<String, String> {
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
+    require(
+        "RemediationLocalizationV0",
+        is_remediator_schema("RemediationLocalizationV0"),
+    )?;
+    require("localization", has_remediator_module("localization"))?;
+    require_all(
+        "localization-signal",
+        &[
+            "failing_command",
+            "stderr_excerpt",
+            "changed_file_hint",
+            "minimal_reproduction_path",
+        ],
+        has_localization_signal,
+    )?;
+    Ok("remediation localization contracts are valid".to_string())
+}
+
+fn validate_remediation_repair_strategy() -> Result<String, String> {
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
+    require(
+        "RemediationRepairStrategyV0",
+        is_remediator_schema("RemediationRepairStrategyV0"),
+    )?;
+    require("repair_strategy", has_remediator_module("repair_strategy"))?;
+    require_all(
+        "repair-strategy",
+        &[
+            "minimal_patch",
+            "config_correction",
+            "test_aligned_fix",
+            "dependency_pin_or_update",
+            "diagnosis_only",
+        ],
+        has_repair_strategy,
+    )?;
+    Ok("remediation repair strategy contracts are valid".to_string())
+}
+
+fn validate_remediation_patch_tournament() -> Result<String, String> {
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
+    require(
+        "RemediationPatchTournamentV0",
+        is_remediator_schema("RemediationPatchTournamentV0"),
+    )?;
+    require(
+        "patch_tournament",
+        has_remediator_module("patch_tournament"),
+    )?;
+    require_all(
+        "patch-tournament-rule",
+        &[
+            "candidate_patch_bounded",
+            "candidate_patch_reversible",
+            "selects_first_green_candidate",
+            "rejects_unproven_candidate",
+        ],
+        has_patch_tournament_rule,
+    )?;
+    Ok("remediation patch tournament contracts are valid".to_string())
+}
+
 fn validate_remediation_proof_plan() -> Result<String, String> {
-    validate_schema_files(REPAIR_READINESS_PACKET_SCHEMAS)?;
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
     require(
         "RemediationProofPlanV0",
-        is_repair_readiness_schema("RemediationProofPlanV0"),
+        is_remediator_schema("RemediationProofPlanV0"),
     )?;
-    require("proof_plan", has_repair_module("proof_plan"))?;
+    require("proof_plan", has_remediator_module("proof_plan"))?;
+    require_all(
+        "proof-requirement",
+        &[
+            "failing_behavior_reproduced",
+            "bounded_patch_applied",
+            "proof_gates_passed",
+            "remediation_report_emitted",
+        ],
+        has_proof_requirement,
+    )?;
     Ok("remediation proof plan contracts are valid".to_string())
 }
 
 fn validate_remediation_report() -> Result<String, String> {
-    validate_schema_files(REPAIR_READINESS_PACKET_SCHEMAS)?;
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
     require(
         "RemediationReportV0",
-        is_repair_readiness_schema("RemediationReportV0"),
+        is_remediator_schema("RemediationReportV0"),
     )?;
-    require("report", has_repair_module("report"))?;
+    require("report", has_remediator_module("report"))?;
     require(
-        "diagnosis_is_not_completed_repair",
-        has_repair_boundary("diagnosis_is_not_completed_repair"),
+        "diagnosis_only_when_unreproduced",
+        has_remediation_boundary("diagnosis_only_when_unreproduced"),
     )?;
     Ok("remediation report contracts are valid".to_string())
+}
+
+fn validate_remediation_commercial() -> Result<String, String> {
+    validate_schema_files(REMEDIATOR_PACKET_SCHEMAS)?;
+    require(
+        "RemediationCommercialV0",
+        is_remediator_schema("RemediationCommercialV0"),
+    )?;
+    require("quote_risk", has_remediator_module("quote_risk"))?;
+    require_all(
+        "commercial-artifact",
+        &[
+            "quote_range",
+            "risk_band",
+            "scope_assumptions",
+            "billing_not_activated",
+        ],
+        is_commercial_artifact,
+    )?;
+    require(
+        "commercial_quote_does_not_activate_billing",
+        has_remediation_boundary("commercial_quote_does_not_activate_billing"),
+    )?;
+    Ok("remediation commercial contracts are valid".to_string())
 }

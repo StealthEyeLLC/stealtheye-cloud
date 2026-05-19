@@ -2,7 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "RemediationPermissionsV0",
   "type": "object",
-  "required": ["schema_version"],
-  "properties": {"schema_version": {"const": "RemediationPermissionsV0"}},
-  "additionalProperties": true
+  "required": [
+    "schema_version",
+    "allowed_actions",
+    "forbidden_actions",
+    "requires_explicit_approval_for"
+  ],
+  "properties": {
+    "schema_version": {"const": "RemediationPermissionsV0"},
+    "allowed_actions": {"type": "array", "items": {"enum": ["read_repo", "discover_commands", "run_bounded_proof", "apply_bounded_patch", "emit_report"]}},
+    "forbidden_actions": {"type": "array", "items": {"enum": ["read_secrets", "browser_cookie_session_automation", "paid_compute", "production_deployment", "database_mutation"]}},
+    "requires_explicit_approval_for": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
 }

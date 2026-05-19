@@ -2,7 +2,20 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "RemediationIntakeV0",
   "type": "object",
-  "required": ["schema_version"],
-  "properties": {"schema_version": {"const": "RemediationIntakeV0"}},
-  "additionalProperties": true
+  "required": [
+    "schema_version",
+    "repo_ref",
+    "reported_failure",
+    "requested_scope",
+    "intake_kind"
+  ],
+  "properties": {
+    "schema_version": {"const": "RemediationIntakeV0"},
+    "repo_ref": {"type": "string", "minLength": 1},
+    "reported_failure": {"type": "string", "minLength": 1},
+    "requested_scope": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "intake_kind": {"enum": ["ci_failure", "browser_failure", "runtime_failure", "dependency_failure", "unknown"]},
+    "public_safe": {"type": "boolean"}
+  },
+  "additionalProperties": false
 }

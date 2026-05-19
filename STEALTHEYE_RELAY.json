@@ -1,40 +1,49 @@
 {
   "schema_version": "StealthEyeRelayV0",
-  "relay_id": "relay-s7-merged-s8-next",
-  "created_at": "2026-05-19T14:35:00Z",
+  "relay_id": "relay-s8-remediator-branch-active",
+  "created_at": "2026-05-19T15:35:00Z",
   "product_name": "StealthEye Cloud",
   "mission_id": "s8-remediator-mode",
   "mission_title": "S8 — StealthEye Cloud Remediator",
-  "mission_status": "ready_to_start_after_post_s7_state_cleanup",
+  "mission_status": "active_branch_pending_pr",
   "active_repo": "StealthEyeLLC/stealtheye-cloud",
-  "active_branch": null,
+  "active_branch": "build/s8-remediator-mode",
   "active_pr": null,
   "active_pr_url": null,
-  "latest_seal_id": "seal-s7-merged-s8-next",
-  "latest_ci_status": "s7_merged_green",
-  "latest_browser_status": "s7_proof_browser_and_mobile_green",
-  "current_approval": "user-approved-cloud-only-continuation-with-boundary-stops",
+  "latest_seal_id": "seal-s8-remediator-branch-active",
+  "latest_ci_status": "pending_first_ci_wave",
+  "latest_browser_status": "unchanged_from_s7",
+  "current_approval": "user-approved-s8-fast-mode-cloud-only-with-boundary-stops",
   "completed_milestone": {
     "mission_id": "s7-first-real-activations",
     "pr": 11,
-    "merge_sha": "d814507740b1ab9a58dd5a2e9a4e079e21bf1d78",
-    "verified_checks": [
-      "proof-fast",
-      "proof-full",
-      "proof-e2e",
-      "proof-gateway",
-      "proof-browser",
-      "proof-mobile",
-      "proof-activations",
-      "proof-windows-targeted"
+    "merge_sha": "d814507740b1ab9a58dd5a2e9a4e079e21bf1d78"
+  },
+  "active_s8_capability": {
+    "crate": "crates/secloud-remediator",
+    "workflow": ".github/workflows/proof-remediator.yml",
+    "proof_scripts": [
+      "scripts/s8-remediator-proof.mjs",
+      "scripts/check-s8-remediator-artifacts.mjs"
     ],
-    "activated_lanes": [
-      "mobile_browser_game_preview",
-      "notification_lane",
-      "knowledge_mirror_export"
+    "validators": [
+      "remediator",
+      "remediation-intake",
+      "remediation-permissions",
+      "remediation-reality-map",
+      "remediation-command-discovery",
+      "remediation-environment",
+      "remediation-reproduction",
+      "remediation-failure-taxonomy",
+      "remediation-localization",
+      "remediation-repair-strategy",
+      "remediation-patch-tournament",
+      "remediation-proof-plan",
+      "remediation-report",
+      "remediation-commercial"
     ]
   },
-  "next_action": "After this post-S7 state cleanup is merged, create build/s8-remediator-mode from current main and begin S8 — StealthEye Cloud Remediator.",
+  "next_action": "Open one PR from build/s8-remediator-mode to main, let the first CI wave run, inspect all failures before patching, batch repair exact failures only, and merge when green.",
   "blocked_reason": null,
   "do_not_reopen": [
     "S6/S7/S8 naming",
@@ -47,21 +56,8 @@
     "forbidden session automation",
     "S6 readiness/enforcement substrate",
     "S7 activated lane proof",
-    "neutral materialized crate workaround",
     "S6/S7 architecture and proof"
   ],
-  "required_files": [
-    "AGENTS.md",
-    "STEALTHEYE_ACTIVE.md",
-    "STEALTHEYE_DECISIONS.md",
-    "STEALTHEYE_RELAY.md",
-    "STEALTHEYE_RELAY.json",
-    "STEALTHEYE_SEAL.json",
-    "NEXT_ACTION.md",
-    "docs/S8_STEALTHEYE_CLOUD_REMEDIATOR.md",
-    "docs/HANDOFF_AND_CONTINUATION.md"
-  ],
-  "s8_target_branch": "build/s8-remediator-mode",
-  "safety_boundary": "S8 may activate Remediator Mode only where repo policy, S6/S7 enforcement substrate, explicit approvals, and public-safe boundaries allow it. No secrets, no paid compute, no production deployment, no database mutation, and no browser-cookie/session-token automation without explicit approval where applicable.",
-  "resume_prompt": "Resume StealthEye Cloud from this Relay. Confirm S7 PR #11 is merged at d814507740b1ab9a58dd5a2e9a4e079e21bf1d78, verify this post-S7 state cleanup is merged, then start S8 on build/s8-remediator-mode without reopening S6/S7."
+  "safety_boundary": "S8 may activate Remediator Mode only where repo policy, S6/S7 enforcement substrate, explicit approvals, and public-safe boundaries allow it. No secrets, no paid compute, no production deployment, no database mutation, and no browser-cookie/session-token automation.",
+  "resume_prompt": "Resume StealthEye Cloud from this Relay. Continue S8 on build/s8-remediator-mode, open or inspect the S8 PR, run/inspect CI, batch repair exact failures only, and merge when green."
 }

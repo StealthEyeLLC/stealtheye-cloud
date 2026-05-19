@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RemediationCommercialV0",
+  "type": "object",
+  "required": ["schema_version", "quote_range", "risk_band", "scope_assumptions", "billing_activated"],
+  "properties": {
+    "schema_version": {"const": "RemediationCommercialV0"},
+    "quote_range": {"type": "string", "minLength": 1},
+    "risk_band": {"enum": ["low", "medium", "high", "unknown"]},
+    "scope_assumptions": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "billing_activated": {"const": false}
+  },
+  "additionalProperties": false
+}
