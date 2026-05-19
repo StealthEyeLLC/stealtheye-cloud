@@ -32,12 +32,24 @@ Then it performs `NEXT_ACTION.md` unless a true boundary is present.
 
 ## Current continuation target
 
-S8 is merged green. Continue by choosing or defining S9.
+S9 is selected and is being set up for implementation.
 
-Active branch:
+Setup branch:
 
 ```text
-main
+build/s9-one-drop-build-accelerator-setup
+```
+
+Implementation branch after setup merges:
+
+```text
+build/s9-one-drop-build-accelerator
+```
+
+Prompt artifact:
+
+```text
+docs/PROMPTS/NEXT_TAB_PROMPT.md
 ```
 
 ## Current operating envelope
@@ -50,6 +62,7 @@ Allowed:
 4. CI proof before merge
 5. exact failure repair
 6. merge when green if approved envelope allows it
+7. mission-level approval for routine actions
 
 Stop for:
 
@@ -72,8 +85,23 @@ S8 is complete and merged through PR #13 at merge SHA `12081b4d311844b62aecafb5f
 
 S8 added `crates/secloud-remediator`, active S8 validators, `proof-remediator`, and a synthetic broken-repo remediation proof that reproduces failure, applies a bounded patch, reruns proof green, emits remediation artifacts, and preserves diagnosis-only handling for unreproduced failures.
 
+## S9 setup status
+
+S9 is selected as **One-Drop Build Accelerator**.
+
+S9 exists to make future phases and projects operate as close as possible to:
+
+```text
+one mission approval
+→ one coherent repo mutation/drop
+→ one PR
+→ one proof wave
+→ batched repairs
+→ merge when green
+```
+
 ## S9 handoff rule
 
-Do not ask the user to re-explain S0–S8. Use the repo docs and merged S6/S7/S8 substrate as continuation truth.
+Do not ask the user to re-explain S0–S8 or the S9 objective. Use the repo docs, S9 spec, and prompt artifact as continuation truth.
 
 Do not reopen S6, S7, or S8 architecture unless the user explicitly asks.
