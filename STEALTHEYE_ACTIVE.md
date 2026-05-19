@@ -6,15 +6,15 @@ StealthEye Cloud
 
 ## Current mission
 
-S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public Proof Canvas
+S5 — Full Hardening, Public Release Candidate, and First End-to-End Mission
 
 ## Active branch
 
-`build/s4-learning-search-hypothesis-proof-viewer`
+`build/s5-hardening-release-e2e`
 
 ## Active PR
 
-PR #5 — S4: Learning, search, hypothesis racing, and public proof canvas
+Pending.
 
 ## Current approval envelope
 
@@ -23,10 +23,10 @@ User approved cloud-only direct build continuation. Local/laptop work is disable
 Allowed:
 
 1. use GitHub-only implementation
-2. add public-safe S4 learning/search/hypothesis/proof-viewer files
-3. add S4 Rust validation crates
-4. add S4 schemas and docs
-5. add proof canvas page and browser proof
+2. add public-safe S5 hardening/release/e2e files
+3. add S5 Rust validation crates
+4. add S5 schemas and docs
+5. add dedicated e2e proof workflow
 6. update GitHub Actions proof workflows
 7. open PR
 8. repair CI failures directly in GitHub
@@ -43,16 +43,11 @@ Stop for:
 
 ## Latest CI status
 
-Green on PR #5 before final state update:
-
-1. `proof-fast` — success
-2. `proof-full` — success
-3. `proof-browser` — success
-4. `proof-windows-targeted` — success
+S5 CI not run yet. S4 merged green.
 
 ## Latest browser status
 
-Green. S4 proof-browser validates the original browser body and the public proof canvas panel surface.
+S4 browser proof merged green. S5 keeps proof-browser as a release-candidate gate.
 
 ## Current blocker
 
@@ -60,7 +55,7 @@ None.
 
 ## Next exact action
 
-Merge S4 after the final state-only proof rerun remains green, then begin S5 — Full Hardening, Public Release Candidate, and First End-to-End Mission.
+Open S5 PR, run public GitHub proof workflows including proof-e2e, repair failures directly in GitHub, and merge when green.
 
 ## Saturation status
 
