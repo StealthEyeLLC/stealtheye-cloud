@@ -1,41 +1,45 @@
 # Next Action
 
-Continue **S7 — First Real Activations** on:
+Begin **S8 — StealthEye Cloud Remediator** after this post-S7 state cleanup is merged.
+
+S7 completion truth:
 
 ```text
-build/s7-first-real-activations
+PR #11 merged: S7 — First Real Activations
+Merge SHA: d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
 ```
 
-Immediate work:
-
-1. Open one PR from `build/s7-first-real-activations` to `main`.
-2. Let the first CI wave run.
-3. Inspect all failures before patching.
-4. Batch repair exact failures only.
-5. Merge when green.
-
-S7 activated lanes:
-
-1. Mobile Browser Game Preview and Playtest Activation
-2. Notification Lane Activation
-3. Knowledge Mirror Export Activation
-
-S7 proof workflows:
+Verified green before S7 merge:
 
 ```text
+proof-fast
+proof-full
+proof-e2e
+proof-gateway
+proof-browser
 proof-mobile
 proof-activations
+proof-windows-targeted
 ```
 
-Boundary:
+Next branch:
 
 ```text
-No secrets, no paid compute, no production deployment, no database mutation, and no browser-cookie/session-token automation. Notification real dispatch requires explicit secret plus enable flag. Knowledge mirror export is a static public-safe GitHub artifact, not live external sync.
-```
-
-After S7 merges green, proceed to:
-
-```text
-S8 — StealthEye Cloud Remediator
 build/s8-remediator-mode
+```
+
+Immediate work for the next implementation tab:
+
+1. Read the canonical handoff files.
+2. Create `build/s8-remediator-mode` from current `main`.
+3. Implement S8 as Remediator Mode using the S6/S7 substrate.
+4. Do not reopen S6 or S7 architecture.
+5. Do not add placeholders or fake external activation.
+6. Do not use browser-cookie/session-token automation.
+7. Merge S8 only when CI is green.
+
+S8 boundary:
+
+```text
+S8 may activate Remediator Mode only where the repo policy, S6/S7 enforcement substrate, explicit approvals, and public-safe boundaries allow it. No secrets, no paid compute, no production deployment, and no database mutation without explicit approval.
 ```

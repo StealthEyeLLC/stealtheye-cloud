@@ -35,30 +35,33 @@ Then it performs `NEXT_ACTION.md` unless a true boundary is present.
 Begin:
 
 ```text
-S7 — First Real Activations
+S8 — StealthEye Cloud Remediator
 ```
 
-S6 completion truth:
+S7 completion truth:
 
 ```text
-PR #8 merged: S6 — Zero-Trust Cross-Cloud Gateway
-Merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
+PR #11 merged: S7 — First Real Activations
+Merge SHA: d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
 ```
 
-Verified green before S6 merge:
+Verified green before S7 merge:
 
 ```text
 proof-fast
 proof-full
 proof-e2e
 proof-gateway
+proof-browser
+proof-mobile
+proof-activations
 proof-windows-targeted
 ```
 
 Next implementation branch:
 
 ```text
-build/s7-first-real-activations
+build/s8-remediator-mode
 ```
 
 ## Current operating envelope
@@ -83,20 +86,12 @@ Stop for:
 7. private data exposure risk
 8. unresolved high-impact product ambiguity
 
-## S6 final status
+## S7 final status
 
-S6 is complete and merged. It implemented contract/readiness infrastructure only. It did not activate live external services and did not claim production/database mutation.
+S7 is complete and merged. It activated mobile browser playtest proof, notification dry-run/conditional dispatch, and knowledge mirror export. It did not commit or print secrets, use paid compute, deploy production systems, mutate databases, perform live external mirror sync, or automate browser sessions/cookies.
 
-S6 materialized crate note:
+## S8 handoff rule
 
-1. `secloud-permission` implements the external-auth readiness boundary.
-2. `secloud-guard` implements gateway-security / guard readiness boundaries.
-3. `secloud-repo-worker` implements git-worker readiness.
-4. `secloud-repair-readiness` implements Remediator readiness.
-5. `ModelTopologyBoundaryV0` replaces the blocked topology schema filename while `secloud validate prompt-topology` remains the public validator.
+Do not ask the user to re-explain the S8 plan. Use the repo docs and merged S6/S7 substrate as continuation truth. Start S8 on `build/s8-remediator-mode` only after this post-S7 state cleanup is merged green.
 
-## S7 handoff rule
-
-Do not ask the user to re-explain the S7 plan. Use the repo docs and merged S6 substrate as continuation truth. Start S7 on `build/s7-first-real-activations` only after this post-S6 state cleanup is merged green.
-
-Do not reopen S6 architecture unless the user explicitly asks.
+Do not reopen S6 or S7 architecture unless the user explicitly asks.

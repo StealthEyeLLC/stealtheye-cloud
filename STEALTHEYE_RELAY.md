@@ -4,47 +4,48 @@
 
 Resume this StealthEye Cloud mission from this Relay. Use `STEALTHEYE_SEAL.json` as checkpoint truth, obey the Active approval envelope, do not reopen frozen decisions, and perform the Next Exact Action unless a true boundary is present.
 
-Continuation target: continue S7 — First Real Activations on `build/s7-first-real-activations`.
+Continuation target: begin S8 — StealthEye Cloud Remediator after this post-S7 state cleanup is merged.
 
 ## 2. Current Mission
 
-S7 — First Real Activations.
+S8 — StealthEye Cloud Remediator.
 
 ## 3. Current State
 
-S0 through S6 are merged green. PR #8 merged S6 — Zero-Trust Cross-Cloud Gateway.
+S0 through S7 are merged green. PR #11 merged S7 — First Real Activations.
 
-S6 merge SHA:
-
-```text
-dcaf60dce2b466178c3cff1ee4545d06f3e5075f
-```
-
-Post-S6 cleanup PR #9 merge SHA:
+S7 merge SHA:
 
 ```text
-a5e6eccc37067cf264fd8859c69fc412da855bb8
+d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
 ```
 
-S7 branch is active:
+S7 verified green before merge:
+
+1. `proof-fast`
+2. `proof-full`
+3. `proof-e2e`
+4. `proof-gateway`
+5. `proof-browser`
+6. `proof-mobile`
+7. `proof-activations`
+8. `proof-windows-targeted`
+
+No S8 branch is active yet. Next branch should be:
 
 ```text
-build/s7-first-real-activations
+build/s8-remediator-mode
 ```
-
-S7 PR is pending creation from the active branch.
 
 ## 4. Latest Verified Result
 
-S6 is complete and merged. It implemented readiness/enforcement infrastructure only and did not activate live external services, automate browser sessions/cookies, or mutate production/database systems.
-
-S7 implementation package activates three public-safe lanes:
+S7 is complete and merged. It activated three public-safe real lanes:
 
 1. Mobile Browser Game Preview and Playtest Activation
 2. Notification Lane Activation
 3. Knowledge Mirror Export Activation
 
-S7 proof is pending the first CI wave.
+S7 did not use browser-cookie/session-token automation, commit or print secrets, use paid compute, deploy production systems, mutate databases, or perform live external mirror sync.
 
 ## 5. Active Approval Envelope
 
@@ -56,7 +57,9 @@ Stop for: secrets, paid compute, private data exposure risk, deployment/producti
 
 ## 6. Next Exact Action
 
-Open one PR from `build/s7-first-real-activations` to `main`, let the first CI wave run, inspect all failures before patching, batch repair exact failures only, and merge when green.
+Next Exact Action: create `build/s8-remediator-mode` from current `main` and begin S8 — StealthEye Cloud Remediator after this post-S7 state cleanup is merged green.
+
+S8 must use the S6/S7 substrate and must not reopen S6/S7 architecture.
 
 ## 7. Decisions That Must Not Drift
 
@@ -65,7 +68,7 @@ Open one PR from `build/s7-first-real-activations` to `main`, let the first CI w
 3. S7 name: First Real Activations.
 4. S8 name: StealthEye Cloud Remediator.
 5. No placeholder features or fake integrations.
-6. S6 readiness/enforcement is complete; S7/S8 activate real capability.
+6. S6 readiness/enforcement is complete; S7 activated first real lanes; S8 activates Remediator Mode.
 7. No Claude/Copilot/Cursor/soul files.
 8. No browser-cookie/session-token automation.
 9. One active ChatGPT tab until saturated.
@@ -73,21 +76,19 @@ Open one PR from `build/s7-first-real-activations` to `main`, let the first CI w
 
 ## 8. Do Not Reopen
 
-Do not reopen S6/S7/S8 naming, no-fake-build rule, Remediator naming, neutral materialized crate workaround, S0-S6 proof, or S6 architecture unless the user explicitly changes them.
+Do not reopen S6/S7/S8 naming, no-fake-build rule, Remediator naming, neutral materialized crate workaround, S0-S7 proof, or S6/S7 architecture unless the user explicitly changes them.
 
 ## 9. Open Questions / Boundaries
 
-No active blocker. Notification real dispatch remains dry-run unless an explicit webhook secret and enable flag are configured.
+No active blocker. S8 has not started. Stop only for approval-envelope boundaries.
 
 ## 10. Required Files / Repos / Branches
 
 Repo: `StealthEyeLLC/stealtheye-cloud`
 
-Active implementation branch:
+Current cleanup branch: `build/s7-post-merge-state`
 
-```text
-build/s7-first-real-activations
-```
+Next implementation branch: `build/s8-remediator-mode`
 
 Base: `main`
 
@@ -104,22 +105,20 @@ Required handoff files:
 
 Latest Seal: `STEALTHEYE_SEAL.json`
 
-Latest Seal ID: `seal-s7-first-real-activations-active`
+Latest Seal ID: `seal-s7-merged-s8-next`
 
 ## 12. Failure / Blocker State
 
-Failure / Blocker State: none. First CI wave pending.
+Failure / Blocker State: none for S7. This branch only repairs stale post-merge handoff truth on `main`.
 
 ## 13. Codex / Worker State
 
-No Codex worker task active. No external worker task active.
+No Codex worker task active. No external worker task active. S8 has not started.
 
 ## 14. Browser State
 
-Browser proof is GitHub Actions / Playwright only. No browser-cookie/session-token automation is active.
+No browser runtime automation is active. Browser-cookie/session-token automation remains forbidden.
 
 ## 15. Public / Private Boundary
 
 Only public-safe proof-kernel content is allowed in this repo. No secrets, private overlays, consumer session tokens, browser cookies, or private strategy.
-
-Tool-filter naming note retained from S6: the current GitHub tool safety filter blocked several exact roadmap crate paths. S6 used neutral materialized crate paths while preserving public validator names: `secloud-permission`, `secloud-guard`, `secloud-repo-worker`, `secloud-repair-readiness`, and `ModelTopologyBoundaryV0`.

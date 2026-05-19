@@ -7,25 +7,28 @@ This document is the current build plan for `StealthEyeLLC/stealtheye-cloud`.
 Current verified state:
 
 ```text
-S0–S6 merged green
+S0–S7 merged green
 S6 PR #8 merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
 Post-S6 cleanup PR #9 merge SHA: a5e6eccc37067cf264fd8859c69fc412da855bb8
+S7 PR #11 merge SHA: d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
 ```
 
-S6 completed the zero-trust cross-cloud gateway readiness/enforcement substrate and was verified before merge with these gates green:
+S7 completed First Real Activations and was verified before merge with these gates green:
 
 ```text
 proof-fast
 proof-full
 proof-e2e
 proof-gateway
+proof-browser
+proof-mobile
+proof-activations
 proof-windows-targeted
 ```
 
 The next locked build wave is:
 
 ```text
-S7 — First Real Activations
 S8 — StealthEye Cloud Remediator
 ```
 
@@ -128,52 +131,17 @@ Purpose: zero-trust readiness/enforcement substrate for gateway transport/sessio
 
 S6 did not activate live external services, automate browser sessions/cookies, or mutate production/database systems.
 
+### S7 — First Real Activations
+
+Status: merged.
+
+Purpose: activated mobile browser game preview/playtest proof, notification dry-run/conditional dispatch, and knowledge mirror export.
+
+S7 did not use browser-cookie/session-token automation, commit or print secrets, use paid compute, deploy production systems, mutate databases, or perform live external mirror sync.
+
 ## 4. Next Build Wave
 
-## 4.1 S7 — First Real Activations
-
-### Objective
-
-Activate selected working lanes. S7 capabilities must perform real actions and produce proof artifacts.
-
-### Branch
-
-```text
-build/s7-first-real-activations
-```
-
-### Recommended S7 package
-
-S7 should activate:
-
-1. Mobile Browser Game Preview and Playtest Activation
-2. Notification Lane Activation
-3. Knowledge Mirror Export Activation
-
-Optional follow-on S7 tracks:
-
-1. Gemini Worker Lane Activation
-2. Document/Web Ingest Activation
-3. Vercel Preview Adapter Activation
-4. Supabase Read-Only Schema Inspect Activation
-5. Telemetry Intake Activation
-6. Git Worker Activation
-7. Android Emulator QA Activation
-
-### S7 acceptance
-
-S7 passes when the activated lanes perform real actions:
-
-1. mobile preview/playtest link exists when mobile preview is activated
-2. mobile QA artifacts exist
-3. notification dispatch works when a configured secret exists, with dry-run proof otherwise
-4. knowledge mirror bundle and semantic snapshot are generated
-5. redaction passes
-6. all activation validators pass
-7. relevant proof workflows are green
-8. docs state exactly which lanes are active and which are not
-
-## 4.2 S8 — StealthEye Cloud Remediator
+## 4.1 S8 — StealthEye Cloud Remediator
 
 ### Objective
 
@@ -275,11 +243,11 @@ Do not stop for routine continuation, docs updates, CI repair, validator wiring,
 Begin:
 
 ```text
-S7 — First Real Activations
+S8 — StealthEye Cloud Remediator
 ```
 
 Target branch:
 
 ```text
-build/s7-first-real-activations
+build/s8-remediator-mode
 ```
