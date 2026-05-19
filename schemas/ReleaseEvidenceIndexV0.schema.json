@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseEvidenceIndexV0",
+  "type": "object",
+  "required": ["schema_version", "index_id", "mission_id", "evidence"],
+  "properties": {
+    "schema_version": {"const": "ReleaseEvidenceIndexV0"},
+    "index_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "evidence": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
