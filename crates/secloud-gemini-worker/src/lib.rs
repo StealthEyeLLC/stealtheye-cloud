@@ -1,12 +1,12 @@
 //! S6 Gemini worker readiness contracts for StealthEye Cloud.
 //!
 //! This crate models provider-worker readiness without calling Gemini or any
-//! external model endpoint. It preserves prompt topology isolation and keeps
-//! provider-specific prompts out of shared lanes.
+//! external model endpoint. It preserves model topology isolation and keeps
+//! provider-specific instructions out of shared lanes.
 
 pub const GEMINI_WORKER_PACKET_SCHEMAS: &[&str] = &[
     "GeminiWorkerReadinessV0",
-    "ProviderPromptTopologyV0",
+    "ModelTopologyBoundaryV0",
     "SemanticNormalizationV0",
 ];
 
