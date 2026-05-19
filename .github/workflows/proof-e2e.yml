@@ -1,0 +1,69 @@
+name: proof-e2e
+
+on:
+  push:
+    branches:
+      - main
+      - 'build/**'
+      - 'repair/**'
+    paths:
+      - 'crates/**'
+      - 'schemas/**'
+      - 'docs/FIRST_E2E_MISSION.md'
+      - 'docs/RELEASE_CANDIDATE.md'
+      - 'docs/HARDENING_AND_COST_GUARDS.md'
+      - 'docs/S5_FINAL_REPORT.md'
+      - '.github/workflows/proof-e2e.yml'
+      - 'STEALTHEYE_ACTIVE.md'
+      - 'NEXT_ACTION.md'
+  pull_request:
+    paths:
+      - 'crates/**'
+      - 'schemas/**'
+      - 'docs/FIRST_E2E_MISSION.md'
+      - 'docs/RELEASE_CANDIDATE.md'
+      - 'docs/HARDENING_AND_COST_GUARDS.md'
+      - 'docs/S5_FINAL_REPORT.md'
+      - '.github/workflows/proof-e2e.yml'
+      - 'STEALTHEYE_ACTIVE.md'
+      - 'NEXT_ACTION.md'
+  workflow_dispatch:
+
+jobs:
+  proof-e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Validate Relay
+        run: cargo run -p secloud-cli -- validate relay
+
+      - name: Validate Seal
+        run: cargo run -p secloud-cli -- validate seal
+
+      - name: Validate schemas
+        run: cargo run -p secloud-cli -- validate schemas
+
+      - name: Validate Skills
+        run: cargo run -p secloud-cli -- validate skills
+
+      - name: Validate browser proof contracts
+        run: cargo run -p secloud-cli -- validate proof-viewer
+
+      - name: Validate hardening
+        run: cargo run -p secloud-cli -- validate hardening
+
+      - name: Validate release
+        run: cargo run -p secloud-cli -- validate release
+
+      - name: Validate e2e mission
+        run: cargo run -p secloud-cli -- validate e2e
+
+      - name: Doctor
+        run: cargo run -p secloud-cli -- doctor
