@@ -6,9 +6,9 @@ It is optimized for one active ChatGPT tab until saturation, public free CI proo
 
 ## Current build state
 
-Current status: **S0–S5 merged green**.
+Current status: **S0–S6 merged green**.
 
-Release-candidate spine:
+Completed spine:
 
 ```text
 S0 — Foundation, continuity, packet spine, and cheap CI
@@ -17,21 +17,29 @@ S2 — Browser body, replay proof, and visual evidence
 S3 — MCP/App control plane, tool registry, Skills, workers, and background capability reality
 S4 — Self-improving Skills, past-session search, hypothesis racing, and public proof canvas
 S5 — Full hardening, public release candidate, and first end-to-end mission
+S6 — Zero-Trust Cross-Cloud Gateway
 ```
 
 Latest verified merge:
 
 ```text
-a190d7347569cc3a59d91678ddc5dec9d9e48c1b
+a5e6eccc37067cf264fd8859c69fc412da855bb8
 ```
 
-S5 proved the first public no-local StealthEye Cloud release-candidate spine with:
+S6 completion truth:
+
+```text
+S6 PR #8 merge SHA: dcaf60dce2b466178c3cff1ee4545d06f3e5075f
+Post-S6 cleanup PR #9 merge SHA: a5e6eccc37067cf264fd8859c69fc412da855bb8
+```
+
+S6 and post-S6 cleanup were proven with:
 
 ```text
 proof-fast — success
 proof-full — success
-proof-browser — success
 proof-e2e — success
+proof-gateway — success
 proof-windows-targeted — success
 ```
 
@@ -40,12 +48,11 @@ proof-windows-targeted — success
 The next locked wave is:
 
 ```text
-S6 — Zero-Trust Cross-Cloud Gateway
 S7 — First Real Activations
 S8 — StealthEye Cloud Remediator
 ```
 
-S6 builds the real enforcement/readiness substrate. S7 activates selected real working lanes. S8 activates Remediator Mode.
+S7 activates selected real working lanes using the S6 readiness/enforcement substrate. S8 activates Remediator Mode.
 
 No placeholders. No fake integrations. No docs-only feature claims. A lane is not called active until it performs the real action and proof gates validate it.
 
