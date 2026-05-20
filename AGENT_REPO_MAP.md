@@ -6,12 +6,18 @@ This file gives ChatGPT and future agent workers a fast map of the StealthEye Cl
 
 ## Current phase
 
-S0–S11 are merged. No active implementation mission is open.
+S0–S11 are merged. S12 — One-Accept Mission Gauntlet is selected.
 
-## Current branch
+## Current prep branch
 
 ```text
-main
+plan/s12-one-accept-mission-gauntlet
+```
+
+## Next implementation branch
+
+```text
+build/s12-one-accept-mission-gauntlet
 ```
 
 ## Latest completed mission
@@ -32,10 +38,16 @@ Merge SHA:
 da07e96c466f54086143a34422c47a60f6de1d2e
 ```
 
+## Selected next mission
+
+```text
+S12 — One-Accept Mission Gauntlet
+```
+
 ## Next action
 
 ```text
-Await the next operator-selected mission. Do not start S12 until the operator chooses it.
+Implement S12 — One-Accept Mission Gauntlet from docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md.
 ```
 
 ## Root files
@@ -54,7 +66,7 @@ Await the next operator-selected mission. Do not start S12 until the operator ch
 ## Current implementation folders
 
 - `crates/secloud-packets/` — packet type names and schema inventory
-- `crates/secloud-build-accelerator/` — S9 one-drop build accelerator contracts and S11 validator rail registration
+- `crates/secloud-build-accelerator/` — S9 one-drop build accelerator contracts and validator rail registration
 - `crates/secloud-assistant-optimizer/` — S10 assistant/operator optimization contracts
 - `crates/secloud-mission-executor/` — S11 one-accept mission executor contracts
 - `crates/secloud-cli/` — `secloud` CLI validators
@@ -75,6 +87,21 @@ Await the next operator-selected mission. Do not start S12 until the operator ch
 - `scripts/check-s11-mission-executor-artifacts.mjs` — S11 artifact checker
 - `.stealtheye/mission-executor/` — S11 proof/state artifact output directory
 - `docs/S11_FINAL_REPORT.md` — final implementation report
+
+## Planned S12 implementation surface
+
+- `docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md` — one S12 planning document
+- `crates/secloud-mission-gauntlet/` — S12 gauntlet contracts
+- `crates/secloud-connector-leverage/` — S12 connector leverage contracts
+- `.github/workflows/stealtheye-command-dispatch.yml` — issue/comment command dispatch bridge
+- `.github/workflows/proof-mission-gauntlet.yml` — S12 proof workflow
+- `scripts/s12-mission-gauntlet-proof.mjs` — S12 proof artifact generator
+- `scripts/check-s12-mission-gauntlet-artifacts.mjs` — S12 artifact checker
+- `.stealtheye/mission-gauntlet/` — S12 proof/state artifact output directory
+- `.stealtheye/command-outbox/` — command-dispatch result outbox
+- `docs/S12_FINAL_REPORT.md` — final implementation report
+
+No prompt doc and no subsystem document forest.
 
 ## Current proof workflows
 
@@ -98,7 +125,7 @@ S9 PR #16 merge SHA: a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
 S10 PR #19 merge SHA: fd2bcda27a281fb080aaef472bd87123e4fe02b6
 S11 prep PR #20 merge SHA: b416eadbdf5770dc9be75c716c032700d2f8e6f9
 S11 PR #21 merge SHA: da07e96c466f54086143a34422c47a60f6de1d2e
-Post-S10 direct truth commit: 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2, not separately CI-verified
+Direct post-S11 truth commit: 8988e32fc61e2824dcc19eef30da2894112ea9f9, present but not proven
 ```
 
 ## Forbidden files

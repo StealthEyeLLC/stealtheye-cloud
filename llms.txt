@@ -21,26 +21,33 @@
 - S10 spec: `docs/S10_ASSISTANT_OPTIMIZATION_LAYER.md`
 - S11 spec: `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md`
 - S11 report: `docs/S11_FINAL_REPORT.md`
+- S12 plan: `docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md`
 
 ## Current phase
 
-S0–S11 are merged. No active implementation mission is open.
+S0–S11 are merged. S12 — One-Accept Mission Gauntlet is selected.
 
 ## Latest completed mission
 
 S11 — One-Accept Mission Executor, merged through PR #21 at `da07e96c466f54086143a34422c47a60f6de1d2e`.
 
-## S11 result
-
-S11 built a real GitHub-native mission executor so one approved mission lease can complete routine repo/build/proof/repair/merge work without repeated operator confirmations.
-
 ## Important caveat
 
-Direct post-merge truth commits are not proven unless a fresh proof run verifies the resulting main HEAD.
+Direct post-S11 truth commit `8988e32fc61e2824dcc19eef30da2894112ea9f9` is present but not proven because no fresh workflow runs or combined statuses are visible for that commit through the connector.
 
-## Next action
+## S12 goal
 
-Await the next operator-selected mission. Do not start S12 until the operator chooses it.
+Prove and harden S11 by running real bounded missions through the one-accept executor, adding a connector leverage layer for high-frequency proof/mission/repo actions, closing GitHub token/workflow/merge gaps, mirroring mission receipts safely through MCP-style resources, and proving one initial approval with zero routine midpoint approvals.
+
+## S12 implementation branch
+
+```text
+build/s12-one-accept-mission-gauntlet
+```
+
+## Planning rule
+
+Future phase planning uses one planning document maximum unless the user explicitly asks for more. No prompt docs unless explicitly requested.
 
 ## Do not use
 

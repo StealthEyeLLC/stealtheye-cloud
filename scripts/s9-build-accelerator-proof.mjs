@@ -79,7 +79,11 @@ const stalePatterns = [
   'Open the S9 implementation PR',
   'S10 is selected for setup',
   'No S10 implementation has started',
-  'S10 setup docs PR'
+  'S10 setup docs PR',
+  'S11 is selected as the next build',
+  'S11 implementation is active',
+  'Open the S11 implementation PR',
+  'Do not start S12 until the operator chooses it'
 ];
 const staleFindings = [];
 for (const [rel, text] of Object.entries(docsText)) {
@@ -90,35 +94,39 @@ for (const [rel, text] of Object.entries(docsText)) {
 
 const s9MergeSha = 'a5540d1fe77a0752a6a32b086a66b7b4bbec33ec';
 const s10MergeSha = 'fd2bcda27a281fb080aaef472bd87123e4fe02b6';
-const postS10TruthSha = '7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2';
-const s11Name = 'S11 — One-Accept Mission Executor';
+const s11MergeSha = 'da07e96c466f54086143a34422c47a60f6de1d2e';
+const postS11TruthSha = '8988e32fc61e2824dcc19eef30da2894112ea9f9';
+const s12Name = 'S12 — One-Accept Mission Gauntlet';
 const currentTruthOk =
-  docsText['STEALTHEYE_ACTIVE.md'].includes('S0–S10 are merged') &&
-  docsText['STEALTHEYE_ACTIVE.md'].includes(s10MergeSha) &&
-  docsText['STEALTHEYE_ACTIVE.md'].includes(s11Name);
+  docsText['STEALTHEYE_ACTIVE.md'].includes('S0–S11') &&
+  docsText['STEALTHEYE_ACTIVE.md'].includes(s11MergeSha) &&
+  docsText['STEALTHEYE_ACTIVE.md'].includes(s12Name) &&
+  docsText['STEALTHEYE_ACTIVE.md'].includes(postS11TruthSha);
 const sealRecordsCurrentHandoff =
-  docsText['STEALTHEYE_SEAL.json'].includes('s11-one-accept-mission-executor') &&
-  docsText['STEALTHEYE_SEAL.json'].includes(postS10TruthSha);
+  docsText['STEALTHEYE_SEAL.json'].includes('s12-one-accept-mission-gauntlet') &&
+  docsText['STEALTHEYE_SEAL.json'].includes(postS11TruthSha);
 const nextActionPointsForward =
-  docsText['NEXT_ACTION.md'].includes('docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md') &&
-  docsText['NEXT_ACTION.md'].includes('build/s11-one-accept-mission-executor');
+  docsText['NEXT_ACTION.md'].includes('docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md') &&
+  docsText['NEXT_ACTION.md'].includes('build/s12-one-accept-mission-gauntlet');
 
 const consistencyChecks = [
-  { name: 'readme records s0-s10 merged', passed: docsText['README.md'].includes('S0–S10 merged') },
-  { name: 'readme records s10 merge sha', passed: docsText['README.md'].includes(s10MergeSha) },
-  { name: 'readme records s11 selected', passed: docsText['README.md'].includes(s11Name) },
-  { name: 'readme records post-s10 caveat', passed: docsText['README.md'].includes(postS10TruthSha) && docsText['README.md'].includes('not separately CI-verified') },
+  { name: 'readme records s0-s11 merged', passed: docsText['README.md'].includes('S0–S11 merged') },
+  { name: 'readme records s11 merge sha', passed: docsText['README.md'].includes(s11MergeSha) },
+  { name: 'readme records s12 selected', passed: docsText['README.md'].includes(s12Name) },
+  { name: 'readme records post-s11 caveat', passed: docsText['README.md'].includes(postS11TruthSha) && docsText['README.md'].includes('present but not proven') },
   { name: 'build plan records s9 crate', passed: docsText['docs/StealthEye_Cloud_Build_Plan.md'].includes('crates/secloud-build-accelerator') },
-  { name: 'build plan records s11 selected', passed: docsText['docs/StealthEye_Cloud_Build_Plan.md'].includes(s11Name) },
-  { name: 'active records current s11 selected truth', passed: currentTruthOk },
+  { name: 'build plan records s12 selected', passed: docsText['docs/StealthEye_Cloud_Build_Plan.md'].includes(s12Name) },
+  { name: 'active records current s12 selected truth', passed: currentTruthOk },
   { name: 'relay records s9 merge sha', passed: docsText['STEALTHEYE_RELAY.md'].includes(s9MergeSha) },
   { name: 'relay records s10 merge sha', passed: docsText['STEALTHEYE_RELAY.md'].includes(s10MergeSha) },
-  { name: 'relay records s11 selected', passed: docsText['STEALTHEYE_RELAY.md'].includes(s11Name) },
-  { name: 'relay json records s11 selected', passed: docsText['STEALTHEYE_RELAY.json'].includes('s11-one-accept-mission-executor') },
-  { name: 'seal records current s11 handoff truth', passed: sealRecordsCurrentHandoff },
-  { name: 'next action points to s11 implementation', passed: nextActionPointsForward },
+  { name: 'relay records s11 merge sha', passed: docsText['STEALTHEYE_RELAY.md'].includes(s11MergeSha) },
+  { name: 'relay records s12 selected', passed: docsText['STEALTHEYE_RELAY.md'].includes(s12Name) },
+  { name: 'relay json records s12 selected', passed: docsText['STEALTHEYE_RELAY.json'].includes('s12-one-accept-mission-gauntlet') },
+  { name: 'seal records current s12 handoff truth', passed: sealRecordsCurrentHandoff },
+  { name: 'next action points to s12 implementation', passed: nextActionPointsForward },
   { name: 's9 one-drop mode remains documented', passed: docsText['README.md'].includes('one mission approval') && docsText['README.md'].includes('merge when green') }
 ];
+const failedConsistencyChecks = consistencyChecks.filter((check) => !check.passed);
 
 const buildVelocityReport = {
   schema_version: 'BuildVelocityReportV0',
@@ -150,10 +158,11 @@ const confirmationFrictionLedger = {
 const stateConsistencyReport = {
   schema_version: 'StateConsistencyReportV0',
   id: 's9-state-consistency-report',
-  status: staleFindings.length === 0 && consistencyChecks.every((check) => check.passed) ? 'passed' : 'failed',
+  status: staleFindings.length === 0 && failedConsistencyChecks.length === 0 ? 'passed' : 'failed',
   consistency_checks: consistencyChecks,
+  failed_consistency_checks: failedConsistencyChecks,
   stale_findings: staleFindings,
-  invariants: ['Active/Relay/Seal/Next Action align on current phase truth', 'S11 selected truth is recorded without weakening S9 proof']
+  invariants: ['Active/Relay/Seal/Next Action align on current phase truth', 'S12 selected truth is recorded without weakening S9 proof']
 };
 
 const noCleanupPrReport = {
@@ -161,8 +170,8 @@ const noCleanupPrReport = {
   id: 's9-no-cleanup-pr-report',
   status: staleFindings.length === 0 ? 'passed' : 'failed',
   stale_patterns: staleFindings,
-  merge_aware_next_action: 'After compact S11 prep merges green, implement S11 from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md.',
-  invariants: ['no stale S9/S10 setup language', 'post-merge next action is explicit']
+  merge_aware_next_action: 'After compact S12 prep merges green, implement S12 from docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md.',
+  invariants: ['no stale S9/S10/S11 setup language', 'post-merge next action is explicit']
 };
 
 const proofSummary = {
@@ -173,6 +182,8 @@ const proofSummary = {
   missing_schemas: missingSchemas,
   missing_markers: missingMarkers,
   forbidden_present: forbiddenPresent,
+  failed_consistency_checks: failedConsistencyChecks,
+  stale_findings: staleFindings,
   artifacts: [
     '.stealtheye/build-accelerator/build-velocity-report.json',
     '.stealtheye/build-accelerator/confirmation-friction-ledger.json',

@@ -29,6 +29,21 @@ Use this order when facts conflict:
 7. `STEALTHEYE_RELAY.md` / `.json`
 8. older chat memory
 
+## Default operating mode
+
+When planning, evaluating, enumerating, choosing, researching, or prepping a StealthEye phase, automatically apply:
+
+1. source-grounded full pass if repo/files are involved
+2. web research if the topic is current, technical, protocol/security/GitHub-related, or uncertain
+3. inventory before recommendation
+4. enumerate options, upgrades, and failure modes
+5. rank by leverage/friction
+6. define proof path and acceptance criteria
+7. list non-goals
+8. give the minimum complete version
+9. do not act unless the operator explicitly says execute, prep, or build
+10. use one planning document maximum if repo prep is requested
+
 ## Build doctrine
 
 Build in big, final-form drops. Do not create toy/prototype versions of core systems. A valid drop includes implementation, schemas, tests/fixtures, docs, workflows, state updates, and proof gates.
@@ -45,7 +60,7 @@ Stop only for secrets, passwords, paid compute, destructive irreversible action,
 
 ## Stack
 
-- Rust owns durable core, schemas, validators, CLI, packets, Relay, Seal, memory, mission executor, proof models, build accelerator, S10 assistant optimizer contracts, and S11 mission executor contracts.
+- Rust owns durable core, schemas, validators, CLI, packets, Relay, Seal, memory, mission executor, mission gauntlet, connector leverage, proof models, build accelerator, S10 assistant optimizer contracts, and S11 mission executor contracts.
 - TypeScript owns browser proof and browser observation.
 - JSON Schema owns public packet contracts.
 - Markdown owns agent-readable state and docs.
@@ -77,34 +92,34 @@ Do not create or rely on:
 
 ## Current state
 
-S0 through S10 are merged. S10 — Assistant Optimization Layer is complete.
+S0 through S11 are merged. S11 — One-Accept Mission Executor is complete.
 
-S10 PR #19 merged at:
+S11 PR #21 merged at:
 
 ```text
-fd2bcda27a281fb080aaef472bd87123e4fe02b6
+da07e96c466f54086143a34422c47a60f6de1d2e
 ```
 
-Important caveat: the direct post-S10 truth commit `7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2` did not spawn a fresh Actions run through the connector, so that direct truth commit is not separately CI-verified.
+Important caveat: direct post-merge truth commit `8988e32fc61e2824dcc19eef30da2894112ea9f9` is present but not proven because no fresh workflow runs or combined statuses are visible for that commit through the connector.
 
 ## Selected next mission
 
 ```text
-S11 — One-Accept Mission Executor
+S12 — One-Accept Mission Gauntlet
 ```
 
-## S11 objective
+## S12 objective
 
-Build a real GitHub-native mission executor so one approved mission lease can complete routine repo/build/proof/repair/merge work without repeated operator confirmations.
+Prove and harden S11 by running real bounded missions through the one-accept executor, adding a connector leverage layer for high-frequency proof/mission/repo actions, closing GitHub token/workflow/merge gaps, mirroring mission receipts safely through MCP-style resources, and proving one initial approval with zero routine midpoint approvals.
 
-## S11 planning doc
+## S12 planning doc
 
 ```text
-docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md
+docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md
 ```
 
 ## Next implementation branch
 
 ```text
-build/s11-one-accept-mission-executor
+build/s12-one-accept-mission-gauntlet
 ```
