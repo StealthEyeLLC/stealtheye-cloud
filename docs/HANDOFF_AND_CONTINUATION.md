@@ -32,75 +32,23 @@ Then it performs `NEXT_ACTION.md` unless a true boundary is present.
 
 ## Current continuation target
 
-S10 setup docs.
-
-Setup branch:
-
-```text
-build/s10-assistant-optimization-layer-setup
-```
-
-If the setup is already merged, continue from current `main` and begin S10 implementation using:
-
-```text
-docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md
-```
+Define or choose S11.
 
 ## S9 final status
 
 S9 is complete and merged through PR #16 at merge SHA `a5540d1fe77a0752a6a32b086a66b7b4bbec33ec`.
 
-S9 — One-Drop Build Accelerator makes future phases and projects operate as close as possible to:
+## S10 final status
 
-```text
-one mission approval
-→ one coherent repo mutation/drop
-→ one PR
-→ one proof wave
-→ batched repairs
-→ merge when green
-```
+S10 is complete and merged through PR #19 at merge SHA `fd2bcda27a281fb080aaef472bd87123e4fe02b6`.
 
-S9 merged green after these workflows passed:
+S10 — Assistant Optimization Layer adds assistant/operator optimization contracts, schemas, fixtures, proof artifacts, and proof workflow without claiming hidden autonomy.
 
-```text
-proof-fast
-proof-full
-proof-browser
-proof-mobile
-proof-e2e
-proof-gateway
-proof-activations
-proof-remediator
-proof-build-accelerator
-proof-windows-targeted
-```
+## S11 handoff rule
 
-## S10 selected status
+Do not ask the user to re-explain S0–S10. Use repo docs and Relay/Seal/Active/Next Action as continuation truth.
 
-S10 is selected as:
-
-```text
-S10 — Assistant Optimization Layer
-```
-
-S10 setup branch is docs/state/prompt only. No S10 implementation has started.
-
-S10 implementation branch after setup merges:
-
-```text
-build/s10-assistant-optimization-layer
-```
-
-S10 exists to make the active ChatGPT/StealthEye Cloud tab faster, less needy, more reliable across tabs, better at context loading, better at tool use, better at recovery, better at proof reasoning, and better at minimizing operator attention burden.
-
-## S10 implementation handoff rule
-
-The implementation tab must read `docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md` and all files listed in that prompt before building.
-
-Do not ask the user to re-explain S0–S9 or the S10 objective. Use the repo docs, S10 spec, S10 support docs, and prompt artifact as continuation truth.
-
-Do not reopen S6, S7, S8, or S9 architecture unless the user explicitly asks.
+Do not reopen S6, S7, S8, S9, or S10 architecture unless the user explicitly asks.
 
 Fast mode reduces avoidable process friction only. It must not weaken validators, schemas, proof gates, safety boundaries, or merge discipline.
 

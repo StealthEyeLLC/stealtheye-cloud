@@ -16,7 +16,7 @@ const requiredFiles = [
   'docs/PHASE_TEMPLATE_SYSTEM.md',
   'docs/PROMPTS/NEXT_TAB_PROMPT.md',
   'docs/PROMPTS/FUTURE_PHASE_DEFAULT_PROMPT.md',
-  'docs/S9_FINAL_REPORT.md',
+  'docs/S9_FINAL_REPORT.md'
 ];
 
 const schemaNames = [
@@ -31,7 +31,7 @@ const schemaNames = [
   'NoSilentDowngradePolicyV0',
   'FuturePhaseDefaultContractV0',
   'BuildVelocityReportV0',
-  'S9BuildAcceleratorProofV0',
+  'S9BuildAcceleratorProofV0'
 ];
 
 const requiredMarkers = [
@@ -41,7 +41,7 @@ const requiredMarkers = [
   ['docs/MERGE_AWARE_HANDOFF.md', 'no-cleanup-PR'],
   ['docs/PHASE_TEMPLATE_SYSTEM.md', 'Future phase default contract'],
   ['docs/S9_FINAL_REPORT.md', 'No validator weakening'],
-  ['docs/PROMPTS/FUTURE_PHASE_DEFAULT_PROMPT.md', 'one coherent repo mutation/drop'],
+  ['docs/PROMPTS/FUTURE_PHASE_DEFAULT_PROMPT.md', 'one coherent repo mutation/drop']
 ];
 
 function readText(rel) {
@@ -63,7 +63,7 @@ const docs = [
   'STEALTHEYE_RELAY.md',
   'STEALTHEYE_RELAY.json',
   'STEALTHEYE_SEAL.json',
-  'NEXT_ACTION.md',
+  'NEXT_ACTION.md'
 ];
 const docsText = Object.fromEntries(docs.map((rel) => [rel, readText(rel)]));
 
@@ -76,7 +76,7 @@ const stalePatterns = [
   'Open and prove the S9 setup PR',
   'S9 implementation branch is active',
   'Pending creation from the S9 implementation branch',
-  'Open the S9 implementation PR',
+  'Open the S9 implementation PR'
 ];
 const staleFindings = [];
 for (const [rel, text] of Object.entries(docsText)) {
@@ -86,26 +86,24 @@ for (const [rel, text] of Object.entries(docsText)) {
 }
 
 const s9MergeSha = 'a5540d1fe77a0752a6a32b086a66b7b4bbec33ec';
-const s10SetupOrPostS9Truth =
-  docsText['STEALTHEYE_ACTIVE.md'].includes('S10 setup docs') ||
-  docsText['STEALTHEYE_ACTIVE.md'].includes('Post-S9 truth cleanup');
-const sealRecordsCurrentHandoff =
-  docsText['STEALTHEYE_SEAL.json'].includes('s10-assistant-optimization-layer-setup') ||
-  docsText['STEALTHEYE_SEAL.json'].includes('post-s9-truth-cleanup');
-const nextActionPointsForward =
-  docsText['NEXT_ACTION.md'].includes('S10_IMPLEMENTATION_PROMPT.md') ||
-  docsText['NEXT_ACTION.md'].includes('Define or choose S10');
+const s10MergeSha = 'fd2bcda27a281fb080aaef472bd87123e4fe02b6';
+const currentTruthOk =
+  docsText['STEALTHEYE_ACTIVE.md'].includes('S0–S10 are merged green') &&
+  docsText['STEALTHEYE_ACTIVE.md'].includes(s10MergeSha);
+const sealRecordsCurrentHandoff = docsText['STEALTHEYE_SEAL.json'].includes(s10MergeSha);
+const nextActionPointsForward = docsText['NEXT_ACTION.md'].includes('Define or choose S11');
 
 const consistencyChecks = [
-  { name: 'readme records s0-s9 green', passed: docsText['README.md'].includes('S0–S9 merged green') },
-  { name: 'readme records no s10 implementation', passed: docsText['README.md'].includes('No S10 implementation has started') },
+  { name: 'readme records s0-s10 green', passed: docsText['README.md'].includes('S0–S10 merged green') },
+  { name: 'readme records s10 merge sha', passed: docsText['README.md'].includes(s10MergeSha) },
   { name: 'build plan records s9 crate', passed: docsText['docs/StealthEye_Cloud_Build_Plan.md'].includes('crates/secloud-build-accelerator') },
-  { name: 'active records current post-s9 or s10 setup truth', passed: s10SetupOrPostS9Truth },
+  { name: 'active records current s10 merged truth', passed: currentTruthOk },
   { name: 'relay records s9 merge sha', passed: docsText['STEALTHEYE_RELAY.md'].includes(s9MergeSha) },
-  { name: 'relay json records s9 merge sha', passed: docsText['STEALTHEYE_RELAY.json'].includes(s9MergeSha) },
+  { name: 'relay records s10 merge sha', passed: docsText['STEALTHEYE_RELAY.md'].includes(s10MergeSha) },
+  { name: 'relay json records s10 merge sha', passed: docsText['STEALTHEYE_RELAY.json'].includes(s10MergeSha) },
   { name: 'seal records current handoff truth', passed: sealRecordsCurrentHandoff },
   { name: 'next action points to current forward work', passed: nextActionPointsForward },
-  { name: 's9 one-drop mode remains documented', passed: docsText['README.md'].includes('one mission approval') && docsText['README.md'].includes('merge when green') },
+  { name: 's9 one-drop mode remains documented', passed: docsText['README.md'].includes('one mission approval') && docsText['README.md'].includes('merge when green') }
 ];
 
 const buildVelocityReport = {
@@ -118,14 +116,9 @@ const buildVelocityReport = {
     pull_requests_target: 1,
     proof_waves_target: 1,
     batch_repairs_required: true,
-    cleanup_prs_target: 0,
+    cleanup_prs_target: 0
   },
-  invariants: [
-    'fast mode compresses routine confirmations only',
-    'validators are not weakened',
-    'proof gates are not skipped',
-    'merge still requires green CI',
-  ],
+  invariants: ['fast mode compresses routine confirmations only', 'validators are not weakened', 'proof gates are not skipped', 'merge still requires green CI']
 };
 
 const confirmationFrictionLedger = {
@@ -135,9 +128,9 @@ const confirmationFrictionLedger = {
   events: [
     { class: 'routine_confirmation_avoided', action: 'safe file creation/update after mission approval' },
     { class: 'routine_confirmation_avoided', action: 'PR creation after coherent branch drop' },
-    { class: 'true_boundary_preserved', action: 'standard public-safe boundaries remain hard stops' },
+    { class: 'true_boundary_preserved', action: 'standard public-safe boundaries remain hard stops' }
   ],
-  invariants: ['no midpoint ask for routine action', 'true boundaries remain hard stops'],
+  invariants: ['no midpoint ask for routine action', 'true boundaries remain hard stops']
 };
 
 const stateConsistencyReport = {
@@ -146,7 +139,7 @@ const stateConsistencyReport = {
   status: staleFindings.length === 0 && consistencyChecks.every((check) => check.passed) ? 'passed' : 'failed',
   consistency_checks: consistencyChecks,
   stale_findings: staleFindings,
-  invariants: ['Active/Relay/Seal/Next Action align on current phase truth', 'no stale S9 setup or active-PR language remains'],
+  invariants: ['Active/Relay/Seal/Next Action align on current phase truth', 'S10 merged truth is recorded without weakening S9 proof']
 };
 
 const noCleanupPrReport = {
@@ -154,8 +147,8 @@ const noCleanupPrReport = {
   id: 's9-no-cleanup-pr-report',
   status: staleFindings.length === 0 ? 'passed' : 'failed',
   stale_patterns: staleFindings,
-  merge_aware_next_action: 'After setup or cleanup merges green, continue from current main and perform the current Next Action.',
-  invariants: ['no stale S9 setup language', 'post-merge next action is explicit'],
+  merge_aware_next_action: 'After S10 merges green, continue from current main and define or choose S11.',
+  invariants: ['no stale S9 setup language', 'post-merge next action is explicit']
 };
 
 const proofSummary = {
@@ -170,9 +163,9 @@ const proofSummary = {
     '.stealtheye/build-accelerator/build-velocity-report.json',
     '.stealtheye/build-accelerator/confirmation-friction-ledger.json',
     '.stealtheye/build-accelerator/state-consistency-report.json',
-    '.stealtheye/build-accelerator/no-cleanup-pr-report.json',
+    '.stealtheye/build-accelerator/no-cleanup-pr-report.json'
   ],
-  invariants: ['No validator weakening', 'No proof weakening', 'No boundary relaxation'],
+  invariants: ['No validator weakening', 'No proof weakening', 'No boundary relaxation']
 };
 
 const artifacts = {
@@ -180,7 +173,7 @@ const artifacts = {
   'confirmation-friction-ledger.json': confirmationFrictionLedger,
   'state-consistency-report.json': stateConsistencyReport,
   'no-cleanup-pr-report.json': noCleanupPrReport,
-  's9-build-accelerator-proof.json': proofSummary,
+  's9-build-accelerator-proof.json': proofSummary
 };
 
 for (const [name, value] of Object.entries(artifacts)) {
