@@ -448,7 +448,9 @@ pub fn has_future_phase_contract_rule(rule: &str) -> bool {
 }
 
 pub fn has_required_doc(path: &str) -> bool {
-    REQUIRED_S9_DOCS.contains(&path) || REQUIRED_S11_DOCS.contains(&path) || REQUIRED_S12_DOCS.contains(&path)
+    REQUIRED_S9_DOCS.contains(&path)
+        || REQUIRED_S11_DOCS.contains(&path)
+        || REQUIRED_S12_DOCS.contains(&path)
 }
 
 pub fn has_required_prompt_artifact(path: &str) -> bool {
@@ -518,11 +520,15 @@ mod tests {
     use super::*;
 
     const ONE_DROP_SCHEMA: &str = include_str!("../../../schemas/OneDropPlanV0.schema.json");
-    const MISSION_APPROVAL_SCHEMA: &str = include_str!("../../../schemas/MissionApprovalEnvelopeV0.schema.json");
-    const STATE_REPORT_SCHEMA: &str = include_str!("../../../schemas/StateConsistencyReportV0.schema.json");
-    const VELOCITY_SCHEMA: &str = include_str!("../../../schemas/BuildVelocityReportV0.schema.json");
+    const MISSION_APPROVAL_SCHEMA: &str =
+        include_str!("../../../schemas/MissionApprovalEnvelopeV0.schema.json");
+    const STATE_REPORT_SCHEMA: &str =
+        include_str!("../../../schemas/StateConsistencyReportV0.schema.json");
+    const VELOCITY_SCHEMA: &str =
+        include_str!("../../../schemas/BuildVelocityReportV0.schema.json");
     const S11_LEASE_SCHEMA: &str = include_str!("../../../schemas/MissionLeaseV0.schema.json");
-    const S12_GAUNTLET_SCHEMA: &str = include_str!("../../../schemas/MissionGauntletSuiteV0.schema.json");
+    const S12_GAUNTLET_SCHEMA: &str =
+        include_str!("../../../schemas/MissionGauntletSuiteV0.schema.json");
 
     #[test]
     fn schema_inventory_contains_required_s9_s11_s12_contracts() {
@@ -557,15 +563,21 @@ mod tests {
         assert!(is_boundary_action_class("database_mutation"));
         assert!(is_boundary_action_class("github_permission_bypass"));
         assert!(!is_routine_action_class("secrets"));
-        assert!(!is_routine_action_class("browser_cookie_session_automation"));
+        assert!(!is_routine_action_class(
+            "browser_cookie_session_automation"
+        ));
     }
 
     #[test]
     fn no_silent_downgrade_rules_preserve_validator_strength() {
-        assert!(has_no_silent_downgrade_rule("required_validator_not_removed"));
+        assert!(has_no_silent_downgrade_rule(
+            "required_validator_not_removed"
+        ));
         assert!(has_no_silent_downgrade_rule("proof_gate_not_weakened"));
         assert!(has_no_silent_downgrade_rule("safety_boundary_not_relaxed"));
-        assert!(has_no_silent_downgrade_rule("no_unverified_truth_commit_policy"));
+        assert!(has_no_silent_downgrade_rule(
+            "no_unverified_truth_commit_policy"
+        ));
         assert!(has_no_silent_downgrade_rule("s0_s11_gates_not_weakened"));
     }
 
@@ -580,7 +592,10 @@ mod tests {
             cleanup_prs_needed: 0,
             true_boundary_hit: false,
         };
-        assert_eq!(evaluate_build_run(summary), BuildAccelerationVerdict::Accelerated);
+        assert_eq!(
+            evaluate_build_run(summary),
+            BuildAccelerationVerdict::Accelerated
+        );
     }
 
     #[test]
@@ -594,6 +609,9 @@ mod tests {
             cleanup_prs_needed: 1,
             true_boundary_hit: false,
         };
-        assert_eq!(evaluate_build_run(summary), BuildAccelerationVerdict::NeedsBatching);
+        assert_eq!(
+            evaluate_build_run(summary),
+            BuildAccelerationVerdict::NeedsBatching
+        );
     }
 }
