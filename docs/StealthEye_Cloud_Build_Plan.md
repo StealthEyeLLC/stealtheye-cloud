@@ -51,6 +51,14 @@ S11 — One-Accept Mission Executor
 S12 — One-Accept Mission Gauntlet
 ```
 
+## S9 retained implementation surface
+
+S9 remains complete and its proof-required crate marker is retained:
+
+```text
+crates/secloud-build-accelerator
+```
+
 ## S11 implemented surface
 
 ```text
