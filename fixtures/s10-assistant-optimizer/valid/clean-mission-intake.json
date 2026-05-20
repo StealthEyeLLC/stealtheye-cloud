@@ -1,0 +1,7 @@
+{
+  "schema_version": "MissionIntakePacketV0",
+  "id": "clean-mission-intake",
+  "status": "passed",
+  "evidence": ["mission type, scope, approval envelope, proof surface, and boundaries classified"],
+  "invariants": ["question minimization preserved", "true boundaries scanned"]
+}
