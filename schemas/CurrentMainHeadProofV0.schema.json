@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CurrentMainHeadProofV0",
+  "type": "object",
+  "required": ["schema_version", "head_sha", "fresh"],
+  "properties": {
+    "schema_version": { "const": "CurrentMainHeadProofV0" },
+    "head_sha": { "type": "string" },
+    "fresh": { "type": "boolean" },
+    "workflow_runs_checked": { "type": "array", "items": { "type": "string" } },
+    "truth_commit_caveat_closed": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}
