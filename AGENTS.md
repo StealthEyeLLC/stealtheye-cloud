@@ -33,15 +33,19 @@ Use this order when facts conflict:
 
 Build in big, final-form drops. Do not create toy/prototype versions of core systems. A valid drop includes implementation, schemas, tests/fixtures, docs, workflows, state updates, and proof gates.
 
+## Planning doctrine
+
+Planning must stay compact. For each future S phase, use one planning document maximum unless the user explicitly asks for more. Do not create a document forest. Do not create prompt docs unless explicitly requested. Give implementation prompts directly in chat when the user asks for prompts.
+
 ## Approval doctrine
 
 After mission approval, do not ask whether to continue, rerun safe CI, update tests, update docs, repair a compile/test failure, or generate handoff artifacts. Continue until green, blocked, saturated, or a true boundary is reached.
 
-Stop only for secrets, passwords, paid compute, destructive irreversible action, private data exposure risk, account permission changes, production deployment, database mutation, browser-cookie/session-token automation, or unresolved high-impact ambiguity.
+Stop only for secrets, passwords, paid compute, destructive irreversible action, private data exposure risk, account permission changes, production deployment, database mutation, browser-cookie/session-token automation, unresolved high-impact ambiguity, or a GitHub permission/ruleset boundary.
 
 ## Stack
 
-- Rust owns durable core, schemas, validators, CLI, packets, Relay, Seal, memory, mission executor, proof models, build accelerator, and S10 assistant optimizer contracts.
+- Rust owns durable core, schemas, validators, CLI, packets, Relay, Seal, memory, mission executor, proof models, build accelerator, S10 assistant optimizer contracts, and S11 mission executor contracts.
 - TypeScript owns browser proof and browser observation.
 - JSON Schema owns public packet contracts.
 - Markdown owns agent-readable state and docs.
@@ -73,16 +77,34 @@ Do not create or rely on:
 
 ## Current state
 
-S0 through S9 are merged green. S9 — One-Drop Build Accelerator is complete.
+S0 through S10 are merged. S10 — Assistant Optimization Layer is complete.
 
-S10 is selected as **S10 — Assistant Optimization Layer**. The setup branch updates docs, state, and the implementation prompt only. No S10 implementation has started.
+S10 PR #19 merged at:
 
-## S10 setup objective
+```text
+fd2bcda27a281fb080aaef472bd87123e4fe02b6
+```
 
-Prepare the repo for S10 implementation by documenting the Assistant Optimization Layer and creating the next-tab implementation prompt. The next execution tab must read the S10 docs before building.
+Important caveat: the direct post-S10 truth commit `7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2` did not spawn a fresh Actions run through the connector, so that direct truth commit is not separately CI-verified.
+
+## Selected next mission
+
+```text
+S11 — One-Accept Mission Executor
+```
+
+## S11 objective
+
+Build a real GitHub-native mission executor so one approved mission lease can complete routine repo/build/proof/repair/merge work without repeated operator confirmations.
+
+## S11 planning doc
+
+```text
+docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md
+```
 
 ## Next implementation branch
 
 ```text
-build/s10-assistant-optimization-layer
+build/s11-one-accept-mission-executor
 ```
