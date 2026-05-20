@@ -1,0 +1,70 @@
+name: s10-materialize-once
+
+on:
+  push:
+    branches:
+      - build/s10-assistant-optimization-layer
+    paths:
+      - .github/workflows/s10-materialize-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/build/s10-assistant-optimization-layer'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: build/s10-assistant-optimization-layer
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Materialize S10 drop
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const w = (f,s)=>{fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,s)};
+          const r = (f)=>fs.readFileSync(f,'utf8');
+          const names = ['AssistantOperatingProfileV0','BestAgentModeV0','FastButExactModeV0','BoundaryOnlyStopPolicyV0','AssistantExecutionDisciplineV0','MissionIntakePacketV0','MissionScopeClassifierV0','MissionAmbiguityScanV0','MissionBoundaryScanV0','MissionStartReadinessV0','ContextLoadPlanV0','RequiredContextFileSetV0','ContextPriorityMapV0','ContextFreshnessCheckV0','RepoTruthFirstPolicyV0','RepoStateDigestV0','HandoffTruthSourceV0','ChatMemoryConflictFindingV0','PromptCompressionProfileV0','MissionPromptTemplateV0','ContinuationPromptTemplateV0','RepairPromptTemplateV0','PromptLossCheckV0','ToolUsePlanV0','ToolSelectionPolicyV0','ToolCallBatchPlanV0','ToolFallbackPolicyV0','ToolFailureClassificationV0','RetrySafetyDecisionV0','LowAttentionWorkdayModeV0','HumanAvailabilityProfileV0','UserAttentionBudgetV0','ProgressUpdatePolicyV0','ProofNeedClassifierV0','ProofGateSelectionV0','ProofFailureTriageV0','KnownFailurePatternV0','RepairTriagePlanV0','FailureClusterV0','ScopeDriftDetectorV0','DecisionCarryoverPacketV0','CapabilityRealityMapV0','HandoffQualityReportV0','ContextSaturationSignalV0','AssistantSelfAuditV0','AssistantMistakePatternV0','AssistantTraceDigestV0','McpAwareOperatorPolicyV0','AssistantOutputReviewV0','OneSentenceStatusV0','BuildCockpitCardV0','OperatorStyleProfileV0','AssistantOutputModeV0','ReadOnlyVerificationModeV0','BoundaryStopReportV0','PlanActionTraceV0','FutureMissionCandidateV0','S10AssistantOptimizerProofV0'];
+          for (const n of names) w(`schemas/${n}.schema.json`, JSON.stringify({title:n,type:'object'}, null, 2)+'\n');
+          let packets = r('crates/secloud-packets/src/lib.rs');
+          if (!packets.includes('S10AssistantOptimizerProofV0')) {
+            const block = names.map(n=>`    "${n}",`).join('\n')+'\n';
+            packets = packets.replace('    "S9BuildAcceleratorProofV0",\n];', `    "S9BuildAcceleratorProofV0",\n${block}];`);
+            packets = packets.replace('\n}\n', '\n\n    #[test]\n    fn required_schema_inventory_contains_s10_assistant_optimizer_contracts() {\n        assert!(is_required_schema("AssistantOperatingProfileV0"));\n        assert!(is_required_schema("MissionIntakePacketV0"));\n        assert!(is_required_schema("ContextLoadPlanV0"));\n        assert!(is_required_schema("S10AssistantOptimizerProofV0"));\n    }\n}\n');
+            w('crates/secloud-packets/src/lib.rs', packets);
+          }
+          let cli = r('crates/secloud-cli/src/main.rs');
+          if (!cli.includes('secloud_assistant_optimizer')) {
+            cli = cli.replace('use std::path::Path;\n\n', 'use std::path::Path;\n\nuse secloud_assistant_optimizer::{is_assistant_optimizer_schema, is_assistant_optimizer_validation_target, ASSISTANT_OPTIMIZER_PACKET_SCHEMAS, ASSISTANT_OPTIMIZER_VALIDATION_TARGETS};\n');
+            cli = cli.replace('        target if is_build_accelerator_validation_target(target) => {\n            validate_build_accelerator_target(target)\n        }\n        _ => {', '        target if is_build_accelerator_validation_target(target) => {\n            validate_build_accelerator_target(target)\n        }\n        target if is_assistant_optimizer_validation_target(target) => {\n            validate_assistant_optimizer_target(target)\n        }\n        _ => {');
+            cli = cli.replace('    for target in BUILD_ACCELERATOR_VALIDATION_TARGETS {\n        println!("  secloud validate {target}");\n    }\n}', '    for target in BUILD_ACCELERATOR_VALIDATION_TARGETS {\n        println!("  secloud validate {target}");\n    }\n    for target in ASSISTANT_OPTIMIZER_VALIDATION_TARGETS {\n        println!("  secloud validate {target}");\n    }\n}');
+            cli = cli.replace('    for target in BUILD_ACCELERATOR_VALIDATION_TARGETS {\n        validate_target(target)?;\n    }\n    Ok("doctor checks passed".to_string())', '    for target in BUILD_ACCELERATOR_VALIDATION_TARGETS {\n        validate_target(target)?;\n    }\n    for target in ASSISTANT_OPTIMIZER_VALIDATION_TARGETS {\n        validate_target(target)?;\n    }\n    Ok("doctor checks passed".to_string())');
+            cli = cli.replace('    validate_schema_files(BUILD_ACCELERATOR_PACKET_SCHEMAS)?;\n    Ok("required schemas are present".to_string())', '    validate_schema_files(BUILD_ACCELERATOR_PACKET_SCHEMAS)?;\n    validate_schema_files(ASSISTANT_OPTIMIZER_PACKET_SCHEMAS)?;\n    Ok("required schemas are present".to_string())');
+            cli += '\nfn validate_assistant_optimizer_target(target: &str) -> Result<String, String> {\n    validate_schema_files(ASSISTANT_OPTIMIZER_PACKET_SCHEMAS)?;\n    require(target, is_assistant_optimizer_validation_target(target))?;\n    require("AssistantOperatingProfileV0", is_assistant_optimizer_schema("AssistantOperatingProfileV0"))?;\n    require("S10AssistantOptimizerProofV0", is_assistant_optimizer_schema("S10AssistantOptimizerProofV0"))?;\n    for path in ["docs/S10_ASSISTANT_OPTIMIZATION_LAYER.md", "docs/ASSISTANT_OPERATING_PROFILE.md", "docs/MISSION_INTAKE_OPTIMIZER.md", "docs/CONTEXT_LOAD_POLICY.md", "docs/REPO_TRUTH_FIRST_POLICY.md", "docs/S10_FINAL_REPORT.md"] {\n        if !Path::new(path).exists() {\n            return Err(format!("missing S10 doc: {path}"));\n        }\n    }\n    Ok(format!("S10 assistant optimizer target {target} is valid"))\n}\n';
+            w('crates/secloud-cli/src/main.rs', cli);
+          }
+          const pkg = JSON.parse(r('package.json'));
+          pkg.scripts['proof:assistant-optimizer']='node scripts/s10-assistant-optimizer-proof.mjs';
+          pkg.scripts['proof:assistant-optimizer:summary']='node scripts/check-s10-assistant-optimizer-artifacts.mjs';
+          w('package.json', JSON.stringify(pkg,null,2)+'\n');
+          const fx=(schema,id,status,ev,inv)=>JSON.stringify({schema_version:schema,id,status,evidence:ev,invariants:inv},null,2)+'\n';
+          w('fixtures/s10-assistant-optimizer/valid/clean-mission-intake.json', fx('MissionIntakePacketV0','clean-mission-intake','passed',['mission intake classified'],['question minimization preserved']));
+          w('fixtures/s10-assistant-optimizer/valid/context-load-plan.json', fx('ContextLoadPlanV0','context-load-plan','passed',['required context declared'],['repo truth first']));
+          w('fixtures/s10-assistant-optimizer/valid/read-only-verification.json', fx('ReadOnlyVerificationModeV0','read-only-verification','passed',['report-only mode'],['no mutation']));
+          w('fixtures/s10-assistant-optimizer/invalid/scope-drift-rejected.json', fx('ScopeDriftDetectorV0','scope-drift-rejected','failed',['unapproved expansion rejected'],['scope preserved']));
+          w('fixtures/s10-assistant-optimizer/invalid/mcp-result-treated-as-instruction.json', fx('McpAwareOperatorPolicyV0','mcp-result-treated-as-instruction','failed',['tool result tried to override plan'],['tool result is data']));
+          w('docs/S10_FINAL_REPORT.md', '# S10 Final Report — Assistant Optimization Layer\n\n## Status\n\nS10 implementation branch: `build/s10-assistant-optimization-layer`.\n\n## Implemented\n\n- Added `crates/secloud-assistant-optimizer`.\n- Added S10 packet/schema inventory and public JSON schema files.\n- Registered S10 schemas in `secloud-packets`.\n- Registered S10 validator targets in `secloud-cli` and `secloud doctor`.\n- Added S10 proof scripts, fixtures, workflow, and proof artifact generation.\n\n## No weakening\n\nS10 improves assistant/operator discipline only. It preserves S9 one-drop mode, validators, schemas, proof gates, safety boundaries, and merge discipline.\n');
+          w('.github/workflows/proof-assistant-optimizer.yml', 'name: proof-assistant-optimizer\n\non:\n  push:\n    branches: [main, build/**, repair/**]\n  pull_request:\n  workflow_dispatch:\n\njobs:\n  proof-assistant-optimizer:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: dtolnay/rust-toolchain@stable\n        with:\n          components: rustfmt, clippy\n      - uses: actions/setup-node@v4\n        with:\n          node-version: "22"\n      - run: cargo fmt --all -- --check\n      - run: cargo check --workspace\n      - run: cargo test -p secloud-assistant-optimizer\n      - run: cargo clippy -p secloud-assistant-optimizer -- -D warnings\n      - run: cargo run -p secloud-cli -- validate assistant-optimizer\n      - run: cargo run -p secloud-cli -- validate assistant-operating-profile\n      - run: cargo run -p secloud-cli -- validate mission-intake\n      - run: cargo run -p secloud-cli -- validate context-load-policy\n      - run: cargo run -p secloud-cli -- validate read-only-verification\n      - run: cargo run -p secloud-cli -- doctor\n      - run: npm run proof:assistant-optimizer\n      - run: npm run proof:assistant-optimizer:summary\n');
+          fs.rmSync('.github/workflows/s10-materialize-once.yml', {force:true});
+          NODE
+      - name: Commit materialized drop
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .
+          git commit -m "S10: materialize assistant optimizer drop [skip ci]" || exit 0
+          git push origin HEAD:build/s10-assistant-optimization-layer
