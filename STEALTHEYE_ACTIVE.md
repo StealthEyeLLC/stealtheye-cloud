@@ -6,31 +6,45 @@ StealthEye Cloud
 
 ## Current mission
 
-Post-S10 merge truth. S10 — Assistant Optimization Layer is complete and merged green.
+S11 planning/prep. S11 — One-Accept Mission Executor is selected as the next build. S11 implementation has not started.
 
 ## Active branch
 
 ```text
-main
+plan/s11-one-accept-mission-executor
 ```
 
 ## Active PR
 
-None.
+Pending creation from the S11 prep branch.
 
 ## Current approval envelope
 
-User approved S10 implementation using S9 one-drop mode. S10 PR #19 was merged after the required proof wave was green.
+User approved updating S11 and prepping the repo for S11 without going overboard.
+
+Allowed in this prep mission:
+
+1. one S11 planning document
+2. minimal canonical status/handoff updates
+3. one PR
+4. proof inspection
+5. exact repairs if a real proof/status failure appears
+6. merge when green if safe
+
+Forbidden in this prep mission:
+
+1. no S11 implementation crate
+2. no S11 schemas
+3. no S11 validators
+4. no mission-executor workflow
+5. no prompt doc
+6. no subsystem document forest
+7. no hidden autonomy claims
+8. no validator/proof weakening
 
 ## Latest implementation status
 
-S0–S10 are merged green.
-
-S9 PR #16 merge SHA:
-
-```text
-a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
-```
+S0–S10 are merged.
 
 S10 PR #19 merge SHA:
 
@@ -38,9 +52,7 @@ S10 PR #19 merge SHA:
 fd2bcda27a281fb080aaef472bd87123e4fe02b6
 ```
 
-S10 added `crates/secloud-assistant-optimizer`, S10 schema files, S10 proof scripts, S10 fixtures, `proof-assistant-optimizer`, package scripts, and `docs/S10_FINAL_REPORT.md`.
-
-Green before S10 merge:
+S10 green before merge:
 
 ```text
 proof-fast
@@ -56,14 +68,36 @@ proof-assistant-optimizer
 proof-windows-targeted
 ```
 
+Post-S10 caveat:
+
+```text
+The direct post-merge truth commit 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2 did not spawn a fresh Actions run through the connector and is not separately CI-verified.
+```
+
+## Selected next mission
+
+```text
+S11 — One-Accept Mission Executor
+```
+
 ## Current blocker
 
 None.
 
 ## Next exact action
 
-Define or choose S11.
+Merge this compact S11 prep PR green, then implement S11 from:
+
+```text
+docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md
+```
+
+Implementation branch:
+
+```text
+build/s11-one-accept-mission-executor
+```
 
 ## Saturation status
 
-If this tab saturates, the next tab should resume from Relay/Seal/Active/Next Action and define or choose S11 unless the user gives a new task.
+If this tab saturates, the next tab should resume from Relay/Seal/Active/Next Action and finish the compact S11 prep PR unless it is already merged.

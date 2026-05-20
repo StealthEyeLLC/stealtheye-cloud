@@ -6,18 +6,24 @@ This file gives ChatGPT and future agent workers a fast map of the StealthEye Cl
 
 ## Current phase
 
-S0–S10 are merged green. S10 — Assistant Optimization Layer is complete.
+S0–S10 are merged. S10 — Assistant Optimization Layer is complete. S11 — One-Accept Mission Executor is selected.
 
-## Current branch
+## Current prep branch
 
 ```text
-main
+plan/s11-one-accept-mission-executor
+```
+
+## Next implementation branch
+
+```text
+build/s11-one-accept-mission-executor
 ```
 
 ## Next action
 
 ```text
-Define or choose S11.
+Implement S11 — One-Accept Mission Executor from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md.
 ```
 
 ## Root files
@@ -48,6 +54,18 @@ Define or choose S11.
 - `.github/workflows/` — public proof workflows
 - `.stealtheye/` — state, Relay, Seal, packet, Skill, and worker artifacts
 
+## Planned S11 implementation surface
+
+- `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md` — one S11 planning document
+- `crates/secloud-mission-executor/` — S11 mission executor contracts
+- `.github/workflows/mission-executor.yml` — one-accept mission execution workflow
+- `.github/workflows/proof-mission-executor.yml` — S11 proof workflow
+- `scripts/s11-mission-executor-proof.mjs` — S11 proof script
+- `.stealtheye/mission-executor/` — S11 proof/state artifacts
+- `docs/S11_FINAL_REPORT.md` — final implementation report
+
+No prompt doc and no subsystem document forest.
+
 ## Current proof workflows
 
 - `proof-fast.yml`
@@ -67,6 +85,7 @@ Define or choose S11.
 ```text
 S9 PR #16 merge SHA: a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
 S10 PR #19 merge SHA: fd2bcda27a281fb080aaef472bd87123e4fe02b6
+Post-S10 direct truth commit: 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2, not separately CI-verified
 ```
 
 ## Forbidden files
