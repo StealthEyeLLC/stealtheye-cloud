@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PromptToScriptFirewallV0",
+  "type": "object",
+  "required": ["schema_version", "model_output_shell_sink_allowed", "schema_only_command_plan"],
+  "properties": {
+    "schema_version": { "const": "PromptToScriptFirewallV0" },
+    "model_output_shell_sink_allowed": { "const": false },
+    "schema_only_command_plan": { "const": true },
+    "blocked_sinks": { "type": "array", "items": { "type": "string" } },
+    "allowlist": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}
