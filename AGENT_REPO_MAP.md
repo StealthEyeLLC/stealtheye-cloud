@@ -6,7 +6,13 @@ This file gives ChatGPT and future agent workers a fast map of the StealthEye Cl
 
 ## Current phase
 
-S0–S8 are merged green. S9 — One-Drop Build Accelerator is active on `build/s9-one-drop-build-accelerator`.
+S0–S9 are merged green. S9 — One-Drop Build Accelerator is complete. No S10 implementation has started.
+
+## Next action
+
+```text
+Define or choose S10.
+```
 
 ## Root files
 
@@ -73,10 +79,17 @@ S0–S8 are merged green. S9 — One-Drop Build Accelerator is active on `build/
 - `proof-build-accelerator.yml` — S9 one-drop build accelerator proof
 - `proof-windows-targeted.yml` — targeted Windows proof
 
-## Active implementation branch
+## Completed S9 implementation branch
 
 ```text
 build/s9-one-drop-build-accelerator
+```
+
+## S9 merge truth
+
+```text
+PR #16
+a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
 ```
 
 ## Forbidden files

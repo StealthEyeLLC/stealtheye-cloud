@@ -6,55 +6,43 @@ StealthEye Cloud
 
 ## Current mission
 
-S9 — One-Drop Build Accelerator implementation.
+Post-S9 truth cleanup. S9 — One-Drop Build Accelerator is complete. No S10 implementation has started.
 
 ## Active branch
 
 ```text
-build/s9-one-drop-build-accelerator
+build/post-s9-truth-cleanup
 ```
 
 ## Active PR
 
-Pending creation from the S9 implementation branch.
+Pending creation from the post-S9 truth cleanup branch.
 
 ## Current approval envelope
 
-User approved S9 as a mission-level implementation pass. Local/laptop work is disabled unless catastrophe or explicit user instruction.
-
-Allowed:
-
-1. GitHub-direct cloud-only S9 implementation
-2. one coherent branch update/drop
-3. one PR
-4. CI/proof inspection
-5. exact batch repair commits
-6. docs/state updates inside the mission scope
-7. merge when green
-
-Stop for:
-
-1. secrets
-2. paid compute
-3. destructive irreversible action
-4. private data exposure risk
-5. browser-cookie/session-token automation
-6. account permission changes
-7. production deployment without explicit approval
-8. database mutation without explicit approval
-9. unresolved high-impact ambiguity
+User approved a small post-S9 truth cleanup only: one cleanup branch, one coherent cleanup drop, one PR, one CI/proof wave, exact repairs only if needed, and merge when green.
 
 ## Latest implementation status
 
-S0–S8 are merged green.
+S0–S9 are merged green.
 
-S9 implementation is active and includes the build accelerator crate, S9 schemas, CLI validators, doctor integration, proof workflow, proof artifacts, docs, prompt artifacts, state consistency checks, no-cleanup-PR checks, batch repair checks, mission approval envelope checks, build velocity report checks, and future phase default contract checks.
+S9 PR #16 merged.
 
-S9 implementation branch:
+S9 merge SHA:
+
+```text
+a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
+```
+
+S9 One-Drop Build Accelerator is complete.
+
+Completed S9 implementation branch:
 
 ```text
 build/s9-one-drop-build-accelerator
 ```
+
+No S10 implementation has started.
 
 ## Current blocker
 
@@ -62,12 +50,12 @@ None.
 
 ## Next exact action
 
-Open the S9 implementation PR, run the proof wave, inspect all failures before patching, batch exact repairs if needed, and merge when green.
+Define or choose S10.
 
-## Merge-aware continuation
+## merge-aware continuation
 
-After S9 merges green, continue from current `main` and define S10 or the next selected mission using S9 one-drop mode. If merge metadata cannot be resolved automatically, record only the missing merge metadata without changing S9 implementation truth.
+After this cleanup PR merges green, continue from current `main` and define or choose S10. Do not begin S10 implementation inside the cleanup PR.
 
 ## Saturation status
 
-If this tab saturates, the next tab should resume from Relay/Seal/Active/Next Action and continue the S9 PR proof/repair/merge path unless a true boundary is present.
+If this tab saturates, the next tab should resume from Relay/Seal/Active/Next Action and continue only the post-S9 truth cleanup PR proof/repair/merge path unless it is already merged green.
