@@ -6,24 +6,24 @@ It is optimized for one active ChatGPT tab until saturation, public free CI proo
 
 ## Current build state
 
-Current status: **S0–S10 merged. S11 — One-Accept Mission Executor is in implementation on `build/s11-one-accept-mission-executor`.**
+Current status: **S0–S11 merged.**
 
 Latest completed mission:
 
 ```text
-S10 — Assistant Optimization Layer
+S11 — One-Accept Mission Executor
 ```
 
-S10 PR:
+S11 PR:
 
 ```text
-#19
+#21
 ```
 
-S10 merge SHA:
+S11 merge SHA:
 
 ```text
-fd2bcda27a281fb080aaef472bd87123e4fe02b6
+da07e96c466f54086143a34422c47a60f6de1d2e
 ```
 
 S11 prep PR:
@@ -38,19 +38,9 @@ S11 prep merge SHA:
 b416eadbdf5770dc9be75c716c032700d2f8e6f9
 ```
 
-Important caveat solved by S11 policy:
+## S11 result
 
-```text
-S10 PR #19 was green before merge. A direct post-merge truth commit was made afterward at 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2. That direct post-merge truth commit did not spawn a fresh Actions run through the connector, so it is not separately CI-verified.
-
-S11 adds PostMergeProofFreshnessGateV0: no direct post-merge truth commit counts as proven unless a fresh workflow_dispatch proof run verifies the resulting main HEAD.
-```
-
-## S9/S11 approval model
-
-S9 preserves one-drop mode with one mission approval, batched repairs, and merge when green.
-
-S11 extends that into one-accept mission execution:
+S11 implemented a GitHub-native one-accept mission executor:
 
 ```text
 initial mission approval: 1
@@ -58,7 +48,7 @@ routine midpoint approvals: 0
 human stops: true boundaries only
 ```
 
-## S11 implementation surface
+Implemented surface:
 
 ```text
 crates/secloud-mission-executor
@@ -70,10 +60,24 @@ scripts/check-s11-mission-executor-artifacts.mjs
 docs/S11_FINAL_REPORT.md
 ```
 
+## S9/S11 approval model
+
+S9 preserves one-drop mode with one mission approval, batched repairs, and merge when green.
+
+S11 extends that into one-accept mission execution.
+
+## Post-merge proof freshness rule
+
+```text
+No direct post-merge truth commit counts as proven unless a fresh proof run verifies the resulting main HEAD.
+```
+
+This README is part of the direct post-merge truth update and must be verified on the resulting main HEAD before being treated as proven.
+
 ## Next action
 
 ```text
-Open the S11 implementation PR from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md, run the relevant proof lanes, inspect and patch only real failures, and merge when green.
+Await the next operator-selected mission. Do not start S12 until the operator chooses it.
 ```
 
 ## Forbidden files

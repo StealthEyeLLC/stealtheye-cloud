@@ -6,18 +6,36 @@ This file gives ChatGPT and future agent workers a fast map of the StealthEye Cl
 
 ## Current phase
 
-S0–S10 are merged. S11 — One-Accept Mission Executor is in implementation.
+S0–S11 are merged. No active implementation mission is open.
 
-## Current implementation branch
+## Current branch
 
 ```text
-build/s11-one-accept-mission-executor
+main
+```
+
+## Latest completed mission
+
+```text
+S11 — One-Accept Mission Executor
+```
+
+Implementation PR:
+
+```text
+#21
+```
+
+Merge SHA:
+
+```text
+da07e96c466f54086143a34422c47a60f6de1d2e
 ```
 
 ## Next action
 
 ```text
-Open the S11 implementation PR, run proof, batch-repair only real failures, and merge when green.
+Await the next operator-selected mission. Do not start S12 until the operator chooses it.
 ```
 
 ## Root files
@@ -58,8 +76,6 @@ Open the S11 implementation PR, run proof, batch-repair only real failures, and 
 - `.stealtheye/mission-executor/` — S11 proof/state artifact output directory
 - `docs/S11_FINAL_REPORT.md` — final implementation report
 
-No prompt doc and no subsystem document forest.
-
 ## Current proof workflows
 
 - `proof-fast.yml`
@@ -81,6 +97,7 @@ No prompt doc and no subsystem document forest.
 S9 PR #16 merge SHA: a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
 S10 PR #19 merge SHA: fd2bcda27a281fb080aaef472bd87123e4fe02b6
 S11 prep PR #20 merge SHA: b416eadbdf5770dc9be75c716c032700d2f8e6f9
+S11 PR #21 merge SHA: da07e96c466f54086143a34422c47a60f6de1d2e
 Post-S10 direct truth commit: 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2, not separately CI-verified
 ```
 

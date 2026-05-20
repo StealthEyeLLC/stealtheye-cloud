@@ -2,13 +2,15 @@
 
 ## Status
 
-S11 implementation is complete on the implementation branch pending PR proof and merge.
+S11 is merged.
 
 ```text
 Mission: S11 — One-Accept Mission Executor
-Branch: build/s11-one-accept-mission-executor
+Implementation branch: build/s11-one-accept-mission-executor
 Prep PR: #20
 Prep merge SHA: b416eadbdf5770dc9be75c716c032700d2f8e6f9
+Implementation PR: #21
+Merge SHA: da07e96c466f54086143a34422c47a60f6de1d2e
 ```
 
 ## Purpose
@@ -60,20 +62,7 @@ One approved `MissionLeaseV0` authorizes only routine public-safe repository wor
 9. rerun proof through the workflow surface
 10. merge when green if the lease and GitHub permissions allow it
 
-The lease never authorizes:
-
-1. secrets
-2. paid compute
-3. production deployment
-4. database mutation
-5. account permission changes
-6. private data exposure
-7. browser-cookie/session-token automation
-8. destructive irreversible action
-9. scope expansion
-10. unapproved external posting
-11. legal/compliance signoff
-12. GitHub permission bypass
+The lease never authorizes secrets, paid compute, production deployment, database mutation, account permission changes, private data exposure, browser-cookie/session-token automation, destructive irreversible action, scope expansion, unapproved external posting, legal/compliance signoff, or GitHub permission bypass.
 
 ## Validators
 
@@ -119,36 +108,7 @@ S11 proof generates and validates:
 .stealtheye/mission-executor/mission-executor-proof.json
 ```
 
-## Post-S10 caveat resolution
-
-S11 explicitly resolves the post-S10 caveat.
-
-Rule:
-
-```text
-No direct post-merge truth commit counts as proven unless a fresh workflow_dispatch proof run verifies the resulting main HEAD.
-```
-
-Policy:
-
-```text
-Include truth/state updates before merge whenever possible. If a direct post-merge truth update is unavoidable, trigger fresh proof on main and record CurrentMainHeadProofV0.
-```
-
-The S11 proof emits `PostMergeProofFreshnessGateV0` with:
-
-```text
-direct_main_mutation_requires_workflow_dispatch: true
-unverified_truth_commit_allowed: false
-```
-
-## No-weakening statement
-
-S11 does not weaken S0–S10 validators, schema coverage, workflow proof, safety boundaries, or merge discipline. S11 adds the mission-executor proof lane and extends the existing validator rail without deleting existing validators or proof scripts.
-
-## PR proof requirements
-
-Before merge, the S11 PR must be green for the relevant proof lanes, including:
+## Green before merge
 
 ```text
 proof-fast
@@ -159,8 +119,21 @@ proof-build-accelerator
 proof-assistant-optimizer
 proof-mission-executor
 proof-windows-targeted
+proof-mobile
+proof-remediator
+proof-activations
 ```
+
+`proof-browser` was still in progress at merge time and was not a touched-surface required S11 gate.
+
+## Post-merge proof freshness
+
+This report is part of the direct post-merge truth update. S11 policy requires the resulting main HEAD to receive fresh proof before this update counts as proven.
+
+## No-weakening statement
+
+S11 did not weaken S0–S10 validators, schema coverage, workflow proof, safety boundaries, or merge discipline. S11 added the mission-executor proof lane and extended the existing validator rail without deleting existing validators or proof scripts.
 
 ## Next action
 
-Open the S11 PR, inspect all proof results, patch only real failures, and merge when green.
+Await the next operator-selected mission. Do not start S12 until the operator chooses it.

@@ -6,48 +6,38 @@ StealthEye Cloud
 
 ## Current mission
 
-S11 — One-Accept Mission Executor implementation.
+S11 — One-Accept Mission Executor is merged.
 
 ## Active branch
 
 ```text
-build/s11-one-accept-mission-executor
+main
 ```
 
 ## Active PR
 
-PR #21 pending proof and merge.
+PR #21 merged.
 
 ## Current approval envelope
 
-User approved S11 implementation to solve approval spam with a real GitHub-native mission executor.
+No active implementation approval is open.
 
-Allowed in this mission:
-
-1. implement S11 executor contracts, schemas, validators, workflows, proof scripts, artifacts, docs, and state
-2. open one implementation PR
-3. run relevant CI/proof lanes
-4. inspect all failures before patching
-5. batch exact repairs only
-6. merge when green if safe
-
-Forbidden in this mission:
-
-1. no prompt doc
-2. no subsystem document forest
-3. no hidden autonomy claims
-4. no validator/proof/schema weakening
-5. no browser-cookie/session-token automation
-6. no secrets, paid compute, production deployment, database mutation, account permission changes, private data exposure, destructive irreversible action, or GitHub permission bypass
-
-## Latest implementation status
-
-S0–S10 are merged.
-
-S10 PR #19 merge SHA:
+## Latest completed mission
 
 ```text
-fd2bcda27a281fb080aaef472bd87123e4fe02b6
+S11 — One-Accept Mission Executor
+```
+
+S11 PR:
+
+```text
+#21
+```
+
+S11 merge SHA:
+
+```text
+da07e96c466f54086143a34422c47a60f6de1d2e
 ```
 
 S11 prep PR #20 merge SHA:
@@ -56,7 +46,28 @@ S11 prep PR #20 merge SHA:
 b416eadbdf5770dc9be75c716c032700d2f8e6f9
 ```
 
-S11 implementation adds:
+## Verified-before-merge proof lanes
+
+```text
+proof-fast
+proof-full
+proof-e2e
+proof-gateway
+proof-build-accelerator
+proof-assistant-optimizer
+proof-mission-executor
+proof-windows-targeted
+```
+
+Additional green lanes before merge:
+
+```text
+proof-mobile
+proof-remediator
+proof-activations
+```
+
+## S11 implementation surface
 
 ```text
 crates/secloud-mission-executor
@@ -68,11 +79,9 @@ scripts/check-s11-mission-executor-artifacts.mjs
 docs/S11_FINAL_REPORT.md
 ```
 
-## Post-S10 caveat rule
+## Post-merge caveat status
 
-```text
-No direct post-merge truth commit counts as proven unless a fresh workflow_dispatch proof run verifies the resulting main HEAD.
-```
+This file is part of the direct post-merge truth update. The resulting main HEAD must be freshly verified before this update counts as proven.
 
 ## Current blocker
 
@@ -81,9 +90,9 @@ None.
 ## Next exact action
 
 ```text
-Open the S11 implementation PR from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md, run the relevant proof lanes, inspect and patch only real failures, and merge when green.
+Await the next operator-selected mission. Do not start S12 until the operator chooses it.
 ```
 
-## Saturation status
+## Continuation note
 
-If this tab saturates before merge, the next tab should resume from Relay/Seal/Active/Next Action and continue the S11 PR proof/repair/merge path.
+If a new tab resumes from here, read Relay, Seal, Active, and Next Action first. S11 is complete; do not reopen S11 unless explicitly ordered.

@@ -2,15 +2,15 @@
 
 ## 1. Resume Command
 
-Resume this StealthEye Cloud mission from this Relay. S0–S10 are merged. S11 — One-Accept Mission Executor implementation is active on `build/s11-one-accept-mission-executor`. The next exact action is to open the S11 implementation PR from `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md`, run proof, inspect and patch only real failures, and merge when green.
+Resume StealthEye Cloud from main. S0–S11 are merged. S11 — One-Accept Mission Executor merged through PR #21 at merge SHA `da07e96c466f54086143a34422c47a60f6de1d2e`. The next exact action is to await the next operator-selected mission. Do not start S12 unless the operator chooses it.
 
 ## 2. Current Mission
 
-S11 — One-Accept Mission Executor implementation.
+No active implementation mission. S11 is complete.
 
 ## 3. Current State
 
-S0 through S10 are merged.
+S0 through S11 are merged.
 
 S9 PR #16 merge SHA:
 
@@ -30,27 +30,15 @@ S11 prep PR #20 merge SHA:
 b416eadbdf5770dc9be75c716c032700d2f8e6f9
 ```
 
-S11 implementation branch:
+S11 implementation PR #21 merge SHA:
 
 ```text
-build/s11-one-accept-mission-executor
-```
-
-S11 implementation surface:
-
-```text
-crates/secloud-mission-executor
-.github/workflows/mission-executor.yml
-.github/workflows/proof-mission-executor.yml
-scripts/s11-mission-executor-proof.mjs
-scripts/check-s11-mission-executor-artifacts.mjs
-.stealtheye/mission-executor/
-docs/S11_FINAL_REPORT.md
+da07e96c466f54086143a34422c47a60f6de1d2e
 ```
 
 ## 4. Latest Verified Result
 
-S11 prep merged green before merge across:
+S11 PR #21 was green before merge for:
 
 ```text
 proof-fast
@@ -59,21 +47,26 @@ proof-e2e
 proof-gateway
 proof-build-accelerator
 proof-assistant-optimizer
+proof-mission-executor
 proof-windows-targeted
 ```
 
-S11 implementation proof is pending PR #21 CI.
+Additional green lanes before merge:
 
-## 5. Active Approval Envelope
+```text
+proof-mobile
+proof-remediator
+proof-activations
+```
 
-Allowed: implement S11, open one PR, run relevant proof lanes, inspect all failures, batch exact repairs, and merge when green.
+## 5. Direct Post-Merge Truth Update
 
-Forbidden: hidden autonomy claims, prompt docs, subsystem document forest, validator/schema/proof weakening, browser-cookie/session-token automation, secrets, paid compute, production deployment, database mutation, account permission changes, private data exposure, destructive irreversible action, GitHub permission bypass.
+This Relay is part of the direct post-merge truth update. The resulting main HEAD must be freshly verified before this update counts as proven.
 
 ## 6. Next Exact Action
 
 ```text
-Open the S11 implementation PR from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md, run relevant proof lanes, inspect and patch only real failures, and merge when green.
+Await the next operator-selected mission. Do not start S12 until the operator chooses it.
 ```
 
 ## 7. Decisions That Must Not Drift
@@ -90,7 +83,7 @@ Open the S11 implementation PR from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md, run
 
 ## 8. Do Not Reopen
 
-Do not reopen S6/S7/S8/S9/S10/S11 naming, no-fake-build rule, Remediator naming, S9 one-drop mode, S10 no-hidden-autonomy rule, or S0–S10 proof unless the user explicitly changes them.
+Do not reopen S6/S7/S8/S9/S10/S11 naming, no-fake-build rule, Remediator naming, S9 one-drop mode, S10 no-hidden-autonomy rule, S11 one-accept purpose, or S0–S11 proof unless the operator explicitly changes them.
 
 ## 9. Open Questions / Boundaries
 
@@ -100,21 +93,21 @@ No active blocker.
 
 Repo: `StealthEyeLLC/stealtheye-cloud`
 
-Implementation branch:
+Current branch:
 
 ```text
-build/s11-one-accept-mission-executor
+main
 ```
 
 ## 11. Latest Seal
 
 Latest Seal: `STEALTHEYE_SEAL.json`
 
-Latest Seal ID: `seal-s11-one-accept-mission-executor-implementation-active`
+Latest Seal ID: `seal-s11-one-accept-mission-executor-merged`
 
 ## 12. Failure / Blocker State
 
-No active blocker. CI pending.
+No active blocker.
 
 ## 13. Codex / Worker State
 

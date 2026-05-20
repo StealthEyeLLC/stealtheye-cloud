@@ -2,10 +2,10 @@
 
 ## Status
 
-Current verified state:
+Current verified state before this direct post-merge truth update:
 
 ```text
-S0–S10 merged
+S0–S11 merged
 S9 PR #16 merged
 S9 merge SHA: a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
 S9 — One-Drop Build Accelerator: complete
@@ -14,22 +14,12 @@ S10 merge SHA: fd2bcda27a281fb080aaef472bd87123e4fe02b6
 S10 — Assistant Optimization Layer: complete
 S11 prep PR #20 merged
 S11 prep merge SHA: b416eadbdf5770dc9be75c716c032700d2f8e6f9
-S11 — One-Accept Mission Executor: implementation active on build/s11-one-accept-mission-executor
+S11 PR #21 merged
+S11 merge SHA: da07e96c466f54086143a34422c47a60f6de1d2e
+S11 — One-Accept Mission Executor: complete
 ```
 
-Important caveat now governed by S11:
-
-```text
-S10 PR #19 was green before merge. A direct post-merge truth commit was made afterward at 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2. That direct post-merge truth commit did not spawn a fresh Actions run through the connector, so it is not separately CI-verified.
-
-S11 adds PostMergeProofFreshnessGateV0. No direct post-merge truth commit counts as proven unless a fresh workflow_dispatch proof run verifies the resulting main HEAD.
-```
-
-Next action:
-
-```text
-Open the S11 implementation PR, run relevant proof lanes, inspect and patch only real failures, and merge when green.
-```
+This document is part of the direct post-merge truth update and must be freshly verified on the resulting main HEAD before it counts as proven.
 
 ## Completed build spine
 
@@ -45,6 +35,7 @@ S7 — First Real Activations
 S8 — StealthEye Cloud Remediator
 S9 — One-Drop Build Accelerator
 S10 — Assistant Optimization Layer
+S11 — One-Accept Mission Executor
 ```
 
 ## S9 retained implementation surface
@@ -55,17 +46,7 @@ S9 remains complete and its proof-required marker is retained:
 crates/secloud-build-accelerator
 ```
 
-## Active build spine entry
-
-```text
-S11 — One-Accept Mission Executor
-```
-
-## S11 purpose
-
-S11 exists to solve approval spam by building a real GitHub-native mission executor so one approved mission lease can complete routine repo/build/proof/repair/merge work without repeated operator confirmations.
-
-S11 implementation shape:
+## S11 implemented surface
 
 ```text
 crates/secloud-mission-executor
@@ -77,6 +58,18 @@ scripts/check-s11-mission-executor-artifacts.mjs
 docs/S11_FINAL_REPORT.md
 ```
 
+## S11 result
+
+S11 built a real GitHub-native mission executor path with:
+
+1. GitHub capability preflight.
+2. Mission lease and one-accept authority.
+3. Workflow-dispatch mission executor.
+4. Batch repo mutation model.
+5. Branch, PR, proof, repair, and merge controllers.
+6. Post-merge proof freshness gate.
+7. Boundary stop, journal, idempotency, and approval-count proof.
+
 S11 acceptance metric:
 
 ```text
@@ -85,14 +78,8 @@ routine midpoint approvals: 0
 human stops: true boundaries only
 ```
 
-## S11 doctrine
-
-S11 must build real execution capability, not more prompt rules. It adds GitHub capability preflight, mission lease authority, workflow-dispatch execution, batch repo mutation, branch/PR/proof/repair/merge controllers, post-merge proof freshness, boundary stop, journal, idempotency, and approval-count proof.
-
-No prompt doc. No setup PR pattern. No subsystem document forest.
-
 ## Immediate next action
 
 ```text
-Open the S11 implementation PR and prove it green.
+Await the next operator-selected mission. Do not start S12 until the operator chooses it.
 ```
