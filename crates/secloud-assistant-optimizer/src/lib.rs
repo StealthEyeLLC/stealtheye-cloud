@@ -145,94 +145,6 @@ pub const REPO_TRUTH_PRECEDENCE: &[&str] = &[
     "older_chat_memory",
 ];
 
-pub const TOOL_PLANNING_RULES: &[&str] = &[
-    "declare_tool_class",
-    "separate_reads_from_writes",
-    "batch_compatible_calls",
-    "avoid_duplicate_reads",
-    "declare_fallback_ladder",
-    "assign_result_trust_tier",
-    "scan_boundary_risk",
-];
-
-pub const RECOVERABLE_TOOL_FAILURES: &[&str] = &[
-    "sha_mismatch",
-    "branch_exists",
-    "pr_exists",
-    "status_api_empty",
-    "merge_payload_bad",
-    "safe_path_blocked",
-];
-
-pub const LOW_ATTENTION_RULES: &[&str] = &[
-    "continue_routine_approved_work",
-    "short_milestone_updates_only",
-    "avoid_low_value_chatter",
-    "stop_for_true_boundary",
-    "emit_one_exact_human_action_when_blocked",
-    "compact_final_summary",
-];
-
-pub const PROGRESS_UPDATE_TRIGGERS: &[&str] = &[
-    "branch_created",
-    "pr_opened",
-    "ci_failed",
-    "failure_cluster_identified",
-    "repair_pushed",
-    "ci_green",
-    "merge_completed",
-    "true_boundary_hit",
-    "saturation_handoff_needed",
-];
-
-pub const PROOF_AWARENESS_RULES: &[&str] = &[
-    "compile_proof",
-    "schema_proof",
-    "validator_proof",
-    "doctor_proof",
-    "browser_proof",
-    "mobile_proof",
-    "activation_proof",
-    "remediation_proof",
-    "workflow_path_proof",
-    "handoff_consistency_proof",
-    "assistant_optimizer_proof",
-];
-
-pub const REPAIR_INTELLIGENCE_RULES: &[&str] = &[
-    "inspect_all_failures_before_patch",
-    "cluster_related_failures",
-    "identify_minimal_repair_scope",
-    "avoid_speculative_broad_rewrites",
-    "patch_exact_failures_only",
-    "rerun_after_batch",
-    "avoid_cleanup_only_rerun_commits_unless_required",
-];
-
-pub const HANDOFF_QUALITY_CHECKS: &[&str] = &[
-    "active_matches_relay",
-    "relay_json_matches_markdown",
-    "seal_matches_latest_mission",
-    "next_action_is_exact",
-    "readme_build_plan_not_stale",
-    "latest_pr_merge_state_resolved",
-    "implementation_prompt_exists",
-    "forbidden_files_absent",
-];
-
-pub const PROMPT_PRESERVATION_FIELDS: &[&str] = &[
-    "current_state",
-    "approval_envelope",
-    "exact_next_action",
-    "branch_and_pr_state",
-    "proof_requirements",
-    "do_not_reopen_decisions",
-    "true_boundaries",
-    "no_weakening_invariants",
-    "required_scan_files",
-    "implementation_branch_name",
-];
-
 pub const CAPABILITY_STATUSES: &[&str] = &[
     "AVAILABLE",
     "AVAILABLE_WITH_CONFIRMATION",
@@ -274,89 +186,48 @@ pub const MCP_OPERATOR_RULES: &[&str] = &[
     "mcp_approval_reuse_scope_explicit",
 ];
 
-pub const OUTPUT_MODES: &[&str] = &[
-    "one_sentence_status",
-    "build_cockpit_card",
-    "detailed_report",
-    "boundary_stop_report",
-    "final_summary",
-    "handoff_prompt",
-];
+fn has(values: &[&str], value: &str) -> bool {
+    values.contains(&value)
+}
 
 pub fn is_assistant_optimizer_schema(name: &str) -> bool {
-    ASSISTANT_OPTIMIZER_PACKET_SCHEMAS.contains(&name)
+    has(ASSISTANT_OPTIMIZER_PACKET_SCHEMAS, name)
 }
 
 pub fn is_assistant_optimizer_validation_target(target: &str) -> bool {
-    ASSISTANT_OPTIMIZER_VALIDATION_TARGETS.contains(&target)
+    has(ASSISTANT_OPTIMIZER_VALIDATION_TARGETS, target)
 }
 
 pub fn is_true_boundary_action(action: &str) -> bool {
-    TRUE_BOUNDARY_ACTIONS.contains(&action)
+    has(TRUE_BOUNDARY_ACTIONS, action)
 }
 
 pub fn has_routine_assistant_rule(rule: &str) -> bool {
-    ROUTINE_ASSISTANT_RULES.contains(&rule)
+    has(ROUTINE_ASSISTANT_RULES, rule)
 }
 
 pub fn is_required_context_file(path: &str) -> bool {
-    REQUIRED_CONTEXT_FILES.contains(&path)
+    has(REQUIRED_CONTEXT_FILES, path)
 }
 
 pub fn has_repo_truth_source(source: &str) -> bool {
-    REPO_TRUTH_PRECEDENCE.contains(&source)
-}
-
-pub fn has_tool_planning_rule(rule: &str) -> bool {
-    TOOL_PLANNING_RULES.contains(&rule)
-}
-
-pub fn is_recoverable_tool_failure(failure: &str) -> bool {
-    RECOVERABLE_TOOL_FAILURES.contains(&failure)
-}
-
-pub fn has_low_attention_rule(rule: &str) -> bool {
-    LOW_ATTENTION_RULES.contains(&rule)
-}
-
-pub fn has_progress_update_trigger(trigger: &str) -> bool {
-    PROGRESS_UPDATE_TRIGGERS.contains(&trigger)
-}
-
-pub fn has_proof_awareness_rule(rule: &str) -> bool {
-    PROOF_AWARENESS_RULES.contains(&rule)
-}
-
-pub fn has_repair_intelligence_rule(rule: &str) -> bool {
-    REPAIR_INTELLIGENCE_RULES.contains(&rule)
-}
-
-pub fn has_handoff_quality_check(check: &str) -> bool {
-    HANDOFF_QUALITY_CHECKS.contains(&check)
-}
-
-pub fn has_prompt_preservation_field(field: &str) -> bool {
-    PROMPT_PRESERVATION_FIELDS.contains(&field)
+    has(REPO_TRUTH_PRECEDENCE, source)
 }
 
 pub fn is_capability_status(status: &str) -> bool {
-    CAPABILITY_STATUSES.contains(&status)
+    has(CAPABILITY_STATUSES, status)
 }
 
 pub fn is_read_only_allowed_action(action: &str) -> bool {
-    READ_ONLY_ALLOWED_ACTIONS.contains(&action)
+    has(READ_ONLY_ALLOWED_ACTIONS, action)
 }
 
 pub fn is_read_only_forbidden_action(action: &str) -> bool {
-    READ_ONLY_FORBIDDEN_ACTIONS.contains(&action)
+    has(READ_ONLY_FORBIDDEN_ACTIONS, action)
 }
 
 pub fn has_mcp_operator_rule(rule: &str) -> bool {
-    MCP_OPERATOR_RULES.contains(&rule)
-}
-
-pub fn is_output_mode(mode: &str) -> bool {
-    OUTPUT_MODES.contains(&mode)
+    has(MCP_OPERATOR_RULES, rule)
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -410,7 +281,9 @@ mod tests {
         assert!(is_assistant_optimizer_schema("ContextLoadPlanV0"));
         assert!(is_assistant_optimizer_schema("RepoTruthFirstPolicyV0"));
         assert!(is_assistant_optimizer_schema("McpAwareOperatorPolicyV0"));
-        assert!(is_assistant_optimizer_schema("S10AssistantOptimizerProofV0"));
+        assert!(is_assistant_optimizer_schema(
+            "S10AssistantOptimizerProofV0"
+        ));
     }
 
     #[test]
@@ -435,13 +308,6 @@ mod tests {
         assert!(is_required_context_file("STEALTHEYE_RELAY.json"));
         assert!(has_repo_truth_source("current_repo_state"));
         assert!(has_repo_truth_source("older_chat_memory"));
-    }
-
-    #[test]
-    fn tool_fallback_distinguishes_recoverable_from_boundary_stop() {
-        assert!(is_recoverable_tool_failure("sha_mismatch"));
-        assert!(is_recoverable_tool_failure("pr_exists"));
-        assert!(is_true_boundary_action("secrets"));
     }
 
     #[test]
@@ -470,7 +336,11 @@ mod tests {
 
     #[test]
     fn mcp_results_are_treated_as_data() {
-        assert!(has_mcp_operator_rule("mcp_results_are_data_not_instructions"));
-        assert!(has_mcp_operator_rule("mcp_descriptors_untrusted_until_validated"));
+        assert!(has_mcp_operator_rule(
+            "mcp_results_are_data_not_instructions"
+        ));
+        assert!(has_mcp_operator_rule(
+            "mcp_descriptors_untrusted_until_validated"
+        ));
     }
 }
