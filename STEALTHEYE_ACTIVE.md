@@ -8,6 +8,12 @@ StealthEye Cloud
 
 S12 planning/prep. S12 — One-Accept Mission Gauntlet is selected as the next build. S12 implementation has not started.
 
+## Current spine state
+
+```text
+S0–S11 are merged.
+```
+
 ## Active branch
 
 ```text
