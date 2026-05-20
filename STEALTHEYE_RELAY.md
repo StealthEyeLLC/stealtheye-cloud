@@ -2,21 +2,15 @@
 
 ## 1. Resume Command
 
-Resume StealthEye Cloud from current `main`. S0–S10 are merged green. S10 — Assistant Optimization Layer is complete. The next exact action is to define or choose S11 unless the user gives a new task.
+Resume StealthEye Cloud from current repo state. S0–S10 are merged. S10 — Assistant Optimization Layer is complete. S11 is selected as **One-Accept Mission Executor**. The next exact action is to implement S11 from `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md` on `build/s11-one-accept-mission-executor`, unless the compact S11 prep PR is still open.
 
 ## 2. Current Mission
 
-Post-S10 merge truth.
+S11 compact prep.
 
 ## 3. Current State
 
-S0 through S10 are merged green.
-
-S9 PR #16 merge SHA:
-
-```text
-a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
-```
+S0 through S10 are merged.
 
 S10 PR #19 merge SHA:
 
@@ -24,11 +18,21 @@ S10 PR #19 merge SHA:
 fd2bcda27a281fb080aaef472bd87123e4fe02b6
 ```
 
-S10 — Assistant Optimization Layer is complete.
+Post-S10 caveat:
+
+```text
+The direct post-merge truth commit 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2 did not spawn a fresh Actions run through the connector and is not separately CI-verified.
+```
+
+Selected next mission:
+
+```text
+S11 — One-Accept Mission Executor
+```
 
 ## 4. Latest Verified Result
 
-S10 merged green after these workflows passed:
+S10 merged after these workflows were green before merge:
 
 ```text
 proof-fast
@@ -44,49 +48,70 @@ proof-assistant-optimizer
 proof-windows-targeted
 ```
 
+The direct post-S10 truth commit is not separately CI-verified.
+
 ## 5. Active Approval Envelope
 
-Allowed: define or choose S11, or execute the next user-approved mission using S9 one-drop mode.
+Allowed: compact S11 prep only: one planning document, minimal canonical state/handoff updates, one PR, proof inspection, exact repairs if needed, and merge when green.
 
-Not allowed without explicit approval: secrets, paid compute, production deployment, database mutation, account permission changes, browser-cookie/session-token automation, hidden autonomy claims, validator weakening, schema weakening, or proof weakening.
+Not allowed in prep: S11 implementation crate, schemas, validators, mission-executor workflow, prompt doc, subsystem doc forest, hidden autonomy claims, validator weakening, schema weakening, or proof weakening.
 
 ## 6. Next Exact Action
 
-Define or choose S11.
+Merge compact S11 prep green, then implement S11 from:
+
+```text
+docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md
+```
+
+Implementation branch:
+
+```text
+build/s11-one-accept-mission-executor
+```
 
 ## 7. Decisions That Must Not Drift
 
 1. Product name: StealthEye Cloud.
 2. S9 name: One-Drop Build Accelerator.
 3. S10 name: Assistant Optimization Layer.
-4. S10 is operator optimization, not fake hidden autonomy.
-5. S9/S10 optimize friction only and must not weaken validators, schema coverage, proof gates, safety boundaries, or merge discipline.
-6. No Claude/Copilot/Cursor/soul files.
-7. Relay/Seal/Active/Next Action is the mandatory handoff spine.
+4. S11 name: One-Accept Mission Executor.
+5. S11 exists to reduce routine midpoint approvals through a real GitHub-native mission executor.
+6. Future planning uses one planning document maximum unless the user explicitly asks for more.
+7. No prompt docs unless explicitly requested.
+8. No Claude/Copilot/Cursor/soul files.
+9. Relay/Seal/Active/Next Action is the mandatory handoff spine.
+10. Direct post-merge truth commits require fresh proof before being treated as CI-verified.
 
 ## 8. Do Not Reopen
 
-Do not reopen S6/S7/S8/S9/S10 naming, no-fake-build rule, Remediator naming, S9 one-drop mode, S10 no-hidden-autonomy rule, or S0–S10 proof unless the user explicitly changes them.
+Do not reopen S6/S7/S8/S9/S10/S11 naming, no-fake-build rule, Remediator naming, S9 one-drop mode, S10 no-hidden-autonomy rule, or S0–S10 proof unless the user explicitly changes them.
 
 ## 9. Open Questions / Boundaries
 
-No active blocker. S11 is not yet selected.
+No active blocker.
 
 ## 10. Required Files / Repos / Branches
 
 Repo: `StealthEyeLLC/stealtheye-cloud`
 
-Current branch:
+Current prep branch:
 
 ```text
-main
+plan/s11-one-accept-mission-executor
+```
+
+S11 implementation branch after prep merges:
+
+```text
+build/s11-one-accept-mission-executor
 ```
 
 ## 11. Latest Seal
 
 Latest Seal: `STEALTHEYE_SEAL.json`
 
-Latest Seal ID: `seal-s10-assistant-optimization-layer-merged`
+Latest Seal ID: `seal-s11-one-accept-mission-executor-selected`
 
 ## 12. Failure / Blocker State
 
@@ -98,7 +123,7 @@ No Codex worker used. No external worker used. GitHub Actions remains the proof 
 
 ## 14. Browser State
 
-No browser runtime changes in S10. No browser-cookie/session-token automation was used.
+No browser runtime changes. No browser-cookie/session-token automation was used.
 
 ## 15. Public / Private Boundary
 
