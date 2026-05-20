@@ -74,10 +74,8 @@ const stalePatterns = [
   'S9 setup PR',
   'S9 is selected as the next mission',
   'Open and prove the S9 setup PR',
-  'setup branch active',
-  'implementation branch is active',
+  'S9 implementation branch is active',
   'Pending creation from the S9 implementation branch',
-  'pending_pr_proof_wave',
   'Open the S9 implementation PR',
 ];
 const staleFindings = [];
@@ -88,16 +86,26 @@ for (const [rel, text] of Object.entries(docsText)) {
 }
 
 const s9MergeSha = 'a5540d1fe77a0752a6a32b086a66b7b4bbec33ec';
+const s10SetupOrPostS9Truth =
+  docsText['STEALTHEYE_ACTIVE.md'].includes('S10 setup docs') ||
+  docsText['STEALTHEYE_ACTIVE.md'].includes('Post-S9 truth cleanup');
+const sealRecordsCurrentHandoff =
+  docsText['STEALTHEYE_SEAL.json'].includes('s10-assistant-optimization-layer-setup') ||
+  docsText['STEALTHEYE_SEAL.json'].includes('post-s9-truth-cleanup');
+const nextActionPointsForward =
+  docsText['NEXT_ACTION.md'].includes('S10_IMPLEMENTATION_PROMPT.md') ||
+  docsText['NEXT_ACTION.md'].includes('Define or choose S10');
+
 const consistencyChecks = [
   { name: 'readme records s0-s9 green', passed: docsText['README.md'].includes('S0–S9 merged green') },
   { name: 'readme records no s10 implementation', passed: docsText['README.md'].includes('No S10 implementation has started') },
   { name: 'build plan records s9 crate', passed: docsText['docs/StealthEye_Cloud_Build_Plan.md'].includes('crates/secloud-build-accelerator') },
-  { name: 'active records post-s9 cleanup', passed: docsText['STEALTHEYE_ACTIVE.md'].includes('Post-S9 truth cleanup') },
+  { name: 'active records current post-s9 or s10 setup truth', passed: s10SetupOrPostS9Truth },
   { name: 'relay records s9 merge sha', passed: docsText['STEALTHEYE_RELAY.md'].includes(s9MergeSha) },
   { name: 'relay json records s9 merge sha', passed: docsText['STEALTHEYE_RELAY.json'].includes(s9MergeSha) },
-  { name: 'seal records post-s9 cleanup', passed: docsText['STEALTHEYE_SEAL.json'].includes('post-s9-truth-cleanup') },
-  { name: 'next action is define or choose s10', passed: docsText['NEXT_ACTION.md'].includes('Define or choose S10') },
-  { name: 'next action remains merge-aware', passed: docsText['NEXT_ACTION.md'].includes('merge-aware') },
+  { name: 'seal records current handoff truth', passed: sealRecordsCurrentHandoff },
+  { name: 'next action points to current forward work', passed: nextActionPointsForward },
+  { name: 's9 one-drop mode remains documented', passed: docsText['README.md'].includes('one mission approval') && docsText['README.md'].includes('merge when green') },
 ];
 
 const buildVelocityReport = {
@@ -138,7 +146,7 @@ const stateConsistencyReport = {
   status: staleFindings.length === 0 && consistencyChecks.every((check) => check.passed) ? 'passed' : 'failed',
   consistency_checks: consistencyChecks,
   stale_findings: staleFindings,
-  invariants: ['Active/Relay/Seal/Next Action align on post-S9 truth', 'no stale setup or active-PR language remains'],
+  invariants: ['Active/Relay/Seal/Next Action align on current phase truth', 'no stale S9 setup or active-PR language remains'],
 };
 
 const noCleanupPrReport = {
@@ -146,8 +154,8 @@ const noCleanupPrReport = {
   id: 's9-no-cleanup-pr-report',
   status: staleFindings.length === 0 ? 'passed' : 'failed',
   stale_patterns: staleFindings,
-  merge_aware_next_action: 'After the post-S9 truth cleanup merges green, define or choose S10 from current main.',
-  invariants: ['no stale setup language', 'post-merge next action is explicit'],
+  merge_aware_next_action: 'After setup or cleanup merges green, continue from current main and perform the current Next Action.',
+  invariants: ['no stale S9 setup language', 'post-merge next action is explicit'],
 };
 
 const proofSummary = {
