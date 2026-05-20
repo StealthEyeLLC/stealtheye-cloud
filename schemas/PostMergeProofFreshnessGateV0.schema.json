@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PostMergeProofFreshnessGateV0",
+  "type": "object",
+  "required": ["schema_version", "direct_main_mutation_requires_workflow_dispatch", "unverified_truth_commit_allowed"],
+  "properties": {
+    "schema_version": { "const": "PostMergeProofFreshnessGateV0" },
+    "direct_main_mutation_requires_workflow_dispatch": { "const": true },
+    "unverified_truth_commit_allowed": { "const": false },
+    "current_main_head_proof": { "type": ["object", "null"] }
+  },
+  "additionalProperties": true
+}

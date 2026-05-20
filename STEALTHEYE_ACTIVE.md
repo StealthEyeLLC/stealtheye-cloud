@@ -6,78 +6,66 @@ StealthEye Cloud
 
 ## Current mission
 
-S11 planning/prep. S11 — One-Accept Mission Executor is selected as the next build. S11 implementation has not started.
+S11 — One-Accept Mission Executor implementation.
 
 ## Active branch
 
 ```text
-plan/s11-one-accept-mission-executor
+build/s11-one-accept-mission-executor
 ```
 
 ## Active PR
 
-Pending creation from the S11 prep branch.
+Pending creation from the S11 implementation branch.
 
 ## Current approval envelope
 
-User approved updating S11 and prepping the repo for S11 without going overboard.
+User approved S11 implementation to solve approval spam with a real GitHub-native mission executor.
 
-Allowed in this prep mission:
+Allowed in this mission:
 
-1. one S11 planning document
-2. minimal canonical status/handoff updates
-3. one PR
-4. proof inspection
-5. exact repairs if a real proof/status failure appears
+1. implement S11 executor contracts, schemas, validators, workflows, proof scripts, artifacts, docs, and state
+2. open one implementation PR
+3. run relevant CI/proof lanes
+4. inspect all failures before patching
+5. batch exact repairs only
 6. merge when green if safe
 
-Forbidden in this prep mission:
+Forbidden in this mission:
 
-1. no S11 implementation crate
-2. no S11 schemas
-3. no S11 validators
-4. no mission-executor workflow
-5. no prompt doc
-6. no subsystem document forest
-7. no hidden autonomy claims
-8. no validator/proof weakening
+1. no prompt doc
+2. no subsystem document forest
+3. no hidden autonomy claims
+4. no validator/proof/schema weakening
+5. no browser-cookie/session-token automation
+6. no secrets, paid compute, production deployment, database mutation, account permission changes, private data exposure, destructive irreversible action, or GitHub permission bypass
 
 ## Latest implementation status
 
 S0–S10 are merged.
 
-S10 PR #19 merge SHA:
+S11 prep PR #20 merge SHA:
 
 ```text
-fd2bcda27a281fb080aaef472bd87123e4fe02b6
+b416eadbdf5770dc9be75c716c032700d2f8e6f9
 ```
 
-S10 green before merge:
+S11 implementation adds:
 
 ```text
-proof-fast
-proof-full
-proof-browser
-proof-mobile
-proof-e2e
-proof-gateway
-proof-activations
-proof-remediator
-proof-build-accelerator
-proof-assistant-optimizer
-proof-windows-targeted
+crates/secloud-mission-executor
+.github/workflows/mission-executor.yml
+.github/workflows/proof-mission-executor.yml
+scripts/s11-mission-executor-proof.mjs
+scripts/check-s11-mission-executor-artifacts.mjs
+.stealtheye/mission-executor/
+docs/S11_FINAL_REPORT.md
 ```
 
-Post-S10 caveat:
+## Post-S10 caveat rule
 
 ```text
-The direct post-merge truth commit 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2 did not spawn a fresh Actions run through the connector and is not separately CI-verified.
-```
-
-## Selected next mission
-
-```text
-S11 — One-Accept Mission Executor
+No direct post-merge truth commit counts as proven unless a fresh workflow_dispatch proof run verifies the resulting main HEAD.
 ```
 
 ## Current blocker
@@ -86,18 +74,10 @@ None.
 
 ## Next exact action
 
-Merge this compact S11 prep PR green, then implement S11 from:
-
 ```text
-docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md
-```
-
-Implementation branch:
-
-```text
-build/s11-one-accept-mission-executor
+Open the S11 implementation PR, run the relevant proof lanes, inspect and patch only real failures, and merge when green.
 ```
 
 ## Saturation status
 
-If this tab saturates, the next tab should resume from Relay/Seal/Active/Next Action and finish the compact S11 prep PR unless it is already merged.
+If this tab saturates before merge, the next tab should resume from Relay/Seal/Active/Next Action and continue the S11 PR proof/repair/merge path.

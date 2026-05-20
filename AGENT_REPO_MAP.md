@@ -6,15 +6,9 @@ This file gives ChatGPT and future agent workers a fast map of the StealthEye Cl
 
 ## Current phase
 
-S0–S10 are merged. S10 — Assistant Optimization Layer is complete. S11 — One-Accept Mission Executor is selected.
+S0–S10 are merged. S11 — One-Accept Mission Executor is in implementation.
 
-## Current prep branch
-
-```text
-plan/s11-one-accept-mission-executor
-```
-
-## Next implementation branch
+## Current implementation branch
 
 ```text
 build/s11-one-accept-mission-executor
@@ -23,7 +17,7 @@ build/s11-one-accept-mission-executor
 ## Next action
 
 ```text
-Implement S11 — One-Accept Mission Executor from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md.
+Open the S11 implementation PR, run proof, batch-repair only real failures, and merge when green.
 ```
 
 ## Root files
@@ -42,26 +36,26 @@ Implement S11 — One-Accept Mission Executor from docs/S11_ONE_ACCEPT_MISSION_E
 ## Current implementation folders
 
 - `crates/secloud-packets/` — packet type names and schema inventory
-- `crates/secloud-build-accelerator/` — S9 one-drop build accelerator contracts
+- `crates/secloud-build-accelerator/` — S9 one-drop build accelerator contracts and S11 validator rail registration
 - `crates/secloud-assistant-optimizer/` — S10 assistant/operator optimization contracts
+- `crates/secloud-mission-executor/` — S11 one-accept mission executor contracts
 - `crates/secloud-cli/` — `secloud` CLI validators
 - `schemas/` — public JSON Schema contracts
 - `scripts/` — public-safe proof scripts
-- `fixtures/s10-assistant-optimizer/` — S10 valid and invalid fixtures
 - `browser/playwright/` — browser proof tests and artifact validation
 - `public/proof/` — public proof canvas
-- `docs/` — canonical specs, build plan, phase docs, and handoff docs
-- `.github/workflows/` — public proof workflows
-- `.stealtheye/` — state, Relay, Seal, packet, Skill, and worker artifacts
+- `docs/` — canonical specs, build plan, phase docs, final reports, and handoff docs
+- `.github/workflows/` — public proof workflows and the mission executor workflow
+- `.stealtheye/` — state, Relay, Seal, packet, Skill, worker, and mission-executor artifacts
 
-## Planned S11 implementation surface
+## S11 implementation surface
 
-- `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md` — one S11 planning document
-- `crates/secloud-mission-executor/` — S11 mission executor contracts
-- `.github/workflows/mission-executor.yml` — one-accept mission execution workflow
+- `crates/secloud-mission-executor/` — S11 contract crate
+- `.github/workflows/mission-executor.yml` — workflow_dispatch one-accept executor
 - `.github/workflows/proof-mission-executor.yml` — S11 proof workflow
-- `scripts/s11-mission-executor-proof.mjs` — S11 proof script
-- `.stealtheye/mission-executor/` — S11 proof/state artifacts
+- `scripts/s11-mission-executor-proof.mjs` — S11 proof artifact generator
+- `scripts/check-s11-mission-executor-artifacts.mjs` — S11 artifact checker
+- `.stealtheye/mission-executor/` — S11 proof/state artifact output directory
 - `docs/S11_FINAL_REPORT.md` — final implementation report
 
 No prompt doc and no subsystem document forest.
@@ -78,6 +72,7 @@ No prompt doc and no subsystem document forest.
 - `proof-remediator.yml`
 - `proof-build-accelerator.yml`
 - `proof-assistant-optimizer.yml`
+- `proof-mission-executor.yml`
 - `proof-windows-targeted.yml`
 
 ## Recent merge truth
@@ -85,6 +80,7 @@ No prompt doc and no subsystem document forest.
 ```text
 S9 PR #16 merge SHA: a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
 S10 PR #19 merge SHA: fd2bcda27a281fb080aaef472bd87123e4fe02b6
+S11 prep PR #20 merge SHA: b416eadbdf5770dc9be75c716c032700d2f8e6f9
 Post-S10 direct truth commit: 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2, not separately CI-verified
 ```
 

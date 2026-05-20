@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PrControllerV0",
+  "type": "object",
+  "required": ["schema_version", "mode"],
+  "properties": {
+    "schema_version": { "const": "PrControllerV0" },
+    "mode": { "enum": ["create", "reuse", "boundary_stop"] },
+    "pr_number": { "type": ["integer", "null"] },
+    "head_branch": { "type": "string" }
+  },
+  "additionalProperties": true
+}

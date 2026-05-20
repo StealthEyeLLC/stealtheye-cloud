@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProofControllerV0",
+  "type": "object",
+  "required": ["schema_version", "required_checks", "current_head_sha"],
+  "properties": {
+    "schema_version": { "const": "ProofControllerV0" },
+    "required_checks": { "type": "array", "items": { "type": "string" } },
+    "current_head_sha": { "type": "string" },
+    "fresh": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MissionJournalV0",
+  "type": "object",
+  "required": ["schema_version", "events"],
+  "properties": {
+    "schema_version": { "const": "MissionJournalV0" },
+    "events": { "type": "array" },
+    "jsonl_path": { "type": "string" }
+  },
+  "additionalProperties": true
+}

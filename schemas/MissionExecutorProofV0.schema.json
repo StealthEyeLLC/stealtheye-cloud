@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MissionExecutorProofV0",
+  "type": "object",
+  "required": ["schema_version", "status", "approval_count", "post_merge_freshness_gate"],
+  "properties": {
+    "schema_version": { "const": "MissionExecutorProofV0" },
+    "status": { "enum": ["passed", "failed", "boundary_stop"] },
+    "approval_count": { "$ref": "ApprovalCountReportV0.schema.json" },
+    "post_merge_freshness_gate": { "type": "object" },
+    "artifacts": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

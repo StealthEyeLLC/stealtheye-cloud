@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProofRepairLoopV0",
+  "type": "object",
+  "required": ["schema_version", "retry_budget", "failure_clusters", "repair_batches"],
+  "properties": {
+    "schema_version": { "const": "ProofRepairLoopV0" },
+    "retry_budget": { "type": "integer", "minimum": 0 },
+    "failure_clusters": { "type": "array" },
+    "repair_batches": { "type": "array" },
+    "patch_exact_failures_only": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

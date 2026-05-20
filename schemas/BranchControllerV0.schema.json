@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BranchControllerV0",
+  "type": "object",
+  "required": ["schema_version", "mode", "branch"],
+  "properties": {
+    "schema_version": { "const": "BranchControllerV0" },
+    "mode": { "enum": ["create", "reuse", "boundary_stop"] },
+    "branch": { "type": "string" },
+    "idempotency_key": { "type": "string" }
+  },
+  "additionalProperties": true
+}

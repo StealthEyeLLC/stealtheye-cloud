@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MissionExecutorStateV0",
+  "type": "object",
+  "required": ["schema_version", "mission_id", "state"],
+  "properties": {
+    "schema_version": { "const": "MissionExecutorStateV0" },
+    "mission_id": { "type": "string" },
+    "state": { "enum": ["planned", "running", "green", "merged", "boundary_stop", "failed"] },
+    "idempotency_key": { "type": "string" }
+  },
+  "additionalProperties": true
+}
