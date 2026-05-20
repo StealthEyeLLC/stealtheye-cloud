@@ -16,7 +16,7 @@ build/s11-one-accept-mission-executor
 
 ## Active PR
 
-Pending creation from the S11 implementation branch.
+PR #21 pending proof and merge.
 
 ## Current approval envelope
 
@@ -43,6 +43,12 @@ Forbidden in this mission:
 ## Latest implementation status
 
 S0–S10 are merged.
+
+S10 PR #19 merge SHA:
+
+```text
+fd2bcda27a281fb080aaef472bd87123e4fe02b6
+```
 
 S11 prep PR #20 merge SHA:
 
@@ -75,7 +81,7 @@ None.
 ## Next exact action
 
 ```text
-Open the S11 implementation PR, run the relevant proof lanes, inspect and patch only real failures, and merge when green.
+Open the S11 implementation PR from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md, run the relevant proof lanes, inspect and patch only real failures, and merge when green.
 ```
 
 ## Saturation status

@@ -46,6 +46,18 @@ S10 PR #19 was green before merge. A direct post-merge truth commit was made aft
 S11 adds PostMergeProofFreshnessGateV0: no direct post-merge truth commit counts as proven unless a fresh workflow_dispatch proof run verifies the resulting main HEAD.
 ```
 
+## S9/S11 approval model
+
+S9 preserves one-drop mode with one mission approval, batched repairs, and merge when green.
+
+S11 extends that into one-accept mission execution:
+
+```text
+initial mission approval: 1
+routine midpoint approvals: 0
+human stops: true boundaries only
+```
+
 ## S11 implementation surface
 
 ```text
@@ -58,18 +70,10 @@ scripts/check-s11-mission-executor-artifacts.mjs
 docs/S11_FINAL_REPORT.md
 ```
 
-## S11 target operator experience
-
-```text
-initial mission approval: 1
-routine midpoint approvals: 0
-human stops: true boundaries only
-```
-
 ## Next action
 
 ```text
-Open the S11 implementation PR, run the relevant proof lanes, inspect and patch only real failures, and merge when green.
+Open the S11 implementation PR from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md, run the relevant proof lanes, inspect and patch only real failures, and merge when green.
 ```
 
 ## Forbidden files

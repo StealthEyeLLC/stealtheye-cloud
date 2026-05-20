@@ -2,7 +2,7 @@
 
 ## 1. Resume Command
 
-Resume this StealthEye Cloud mission from this Relay. S0–S10 are merged. S11 — One-Accept Mission Executor implementation is active on `build/s11-one-accept-mission-executor`. The next exact action is to open the S11 implementation PR, run proof, inspect and patch only real failures, and merge when green.
+Resume this StealthEye Cloud mission from this Relay. S0–S10 are merged. S11 — One-Accept Mission Executor implementation is active on `build/s11-one-accept-mission-executor`. The next exact action is to open the S11 implementation PR from `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md`, run proof, inspect and patch only real failures, and merge when green.
 
 ## 2. Current Mission
 
@@ -11,6 +11,18 @@ S11 — One-Accept Mission Executor implementation.
 ## 3. Current State
 
 S0 through S10 are merged.
+
+S9 PR #16 merge SHA:
+
+```text
+a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
+```
+
+S10 PR #19 merge SHA:
+
+```text
+fd2bcda27a281fb080aaef472bd87123e4fe02b6
+```
 
 S11 prep PR #20 merge SHA:
 
@@ -50,7 +62,7 @@ proof-assistant-optimizer
 proof-windows-targeted
 ```
 
-S11 implementation proof is pending PR creation and CI.
+S11 implementation proof is pending PR #21 CI.
 
 ## 5. Active Approval Envelope
 
@@ -61,7 +73,7 @@ Forbidden: hidden autonomy claims, prompt docs, subsystem document forest, valid
 ## 6. Next Exact Action
 
 ```text
-Open the S11 implementation PR, run relevant proof lanes, inspect and patch only real failures, and merge when green.
+Open the S11 implementation PR from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md, run relevant proof lanes, inspect and patch only real failures, and merge when green.
 ```
 
 ## 7. Decisions That Must Not Drift

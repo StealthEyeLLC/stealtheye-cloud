@@ -19,7 +19,7 @@ b416eadbdf5770dc9be75c716c032700d2f8e6f9
 Immediate next action:
 
 ```text
-Open the S11 implementation PR, run relevant proof lanes, inspect and patch only real failures, and merge when green.
+Open the S11 implementation PR from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md, run relevant proof lanes, inspect and patch only real failures, and merge when green.
 ```
 
 Do not reopen:

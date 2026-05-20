@@ -1,7 +1,7 @@
 {
   "schema_version": "StealthEyeSealV0",
   "seal_id": "seal-s11-one-accept-mission-executor-implementation-active",
-  "seal_type": "IMPLEMENTATION_CHECKPOINT",
+  "seal_type": "HANDOFF",
   "created_at": "2026-05-20T12:55:00Z",
   "product": "StealthEye Cloud",
   "mission_id": "s11-one-accept-mission-executor",
@@ -18,7 +18,7 @@
   "browser_status": "not_required",
   "worker_status": "github_actions_executor_body",
   "input_summary": "User approved implementing S11 to solve approval spam with one initial mission approval, zero routine midpoint approvals, and true-boundary stops only.",
-  "output_summary": "S11 implementation branch adds mission executor contracts, schemas, validator rail registration, workflow_dispatch executor, proof workflow, proof scripts, mission-executor artifacts, and final report.",
+  "output_summary": "S11 implementation branch adds mission executor contracts, schemas, validator rail registration, workflow_dispatch executor, proof workflow, proof scripts, mission-executor artifacts, and final report. Post-S10 direct truth commit 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2 is recorded as not separately CI-verified.",
   "post_s10_caveat_resolution": "No direct post-merge truth commit counts as proven unless a fresh workflow_dispatch proof run verifies the resulting main HEAD.",
   "next_action": "Open the S11 implementation PR, run relevant proof lanes, inspect and patch only real failures, and merge when green.",
   "boundary_status": "public_safe_no_hidden_autonomy_no_forbidden_actions",
