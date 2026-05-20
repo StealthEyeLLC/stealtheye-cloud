@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GauntletRunPlanV0",
+  "type": "object",
+  "required": ["schema_version", "mission_count", "mission_classes"],
+  "properties": {
+    "schema_version": { "const": "GauntletRunPlanV0" },
+    "mission_count": { "type": "integer", "minimum": 5 },
+    "mission_classes": { "type": "array", "minItems": 5, "items": { "type": "string" } },
+    "approval_budget": { "type": "object" },
+    "proof_freshness_required": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}
