@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GitHubCapabilityPreflightV0",
+  "type": "object",
+  "required": ["schema_version", "status", "checks"],
+  "properties": {
+    "schema_version": { "const": "GitHubCapabilityPreflightV0" },
+    "status": { "enum": ["passed", "boundary_stop", "failed"] },
+    "checks": { "type": "array", "items": { "type": "string" } },
+    "boundary_stop": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

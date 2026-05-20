@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MergeWhenGreenControllerV0",
+  "type": "object",
+  "required": ["schema_version", "merge_allowed", "required_checks_green"],
+  "properties": {
+    "schema_version": { "const": "MergeWhenGreenControllerV0" },
+    "merge_allowed": { "type": "boolean" },
+    "required_checks_green": { "type": "boolean" },
+    "boundary_stop": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

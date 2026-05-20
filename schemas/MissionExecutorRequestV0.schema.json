@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MissionExecutorRequestV0",
+  "type": "object",
+  "required": ["schema_version", "mission_id", "lease_path", "target_branch", "base_branch"],
+  "properties": {
+    "schema_version": { "const": "MissionExecutorRequestV0" },
+    "mission_id": { "type": "string" },
+    "lease_path": { "type": "string" },
+    "target_branch": { "type": "string" },
+    "base_branch": { "type": "string" },
+    "merge_when_green": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

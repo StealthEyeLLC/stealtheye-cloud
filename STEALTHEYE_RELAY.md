@@ -2,11 +2,11 @@
 
 ## 1. Resume Command
 
-Resume this StealthEye Cloud mission from this Relay. S0–S10 are merged. S10 — Assistant Optimization Layer is complete. S11 is selected as **One-Accept Mission Executor**. The next exact action is to implement S11 from `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md` on `build/s11-one-accept-mission-executor`, unless the compact S11 prep PR is still open.
+Resume this StealthEye Cloud mission from this Relay. S0–S10 are merged. S11 — One-Accept Mission Executor implementation is active on `build/s11-one-accept-mission-executor`. The next exact action is to open the S11 implementation PR from `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md`, run proof, inspect and patch only real failures, and merge when green.
 
 ## 2. Current Mission
 
-S11 compact prep.
+S11 — One-Accept Mission Executor implementation.
 
 ## 3. Current State
 
@@ -24,56 +24,56 @@ S10 PR #19 merge SHA:
 fd2bcda27a281fb080aaef472bd87123e4fe02b6
 ```
 
-Post-S10 caveat:
+S11 prep PR #20 merge SHA:
 
 ```text
-The direct post-merge truth commit 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2 did not spawn a fresh Actions run through the connector and is not separately CI-verified.
+b416eadbdf5770dc9be75c716c032700d2f8e6f9
 ```
 
-Selected next mission:
+S11 implementation branch:
 
 ```text
-S11 — One-Accept Mission Executor
+build/s11-one-accept-mission-executor
+```
+
+S11 implementation surface:
+
+```text
+crates/secloud-mission-executor
+.github/workflows/mission-executor.yml
+.github/workflows/proof-mission-executor.yml
+scripts/s11-mission-executor-proof.mjs
+scripts/check-s11-mission-executor-artifacts.mjs
+.stealtheye/mission-executor/
+docs/S11_FINAL_REPORT.md
 ```
 
 ## 4. Latest Verified Result
 
-S10 merged after these workflows were green before merge:
+S11 prep merged green before merge across:
 
 ```text
 proof-fast
 proof-full
-proof-browser
-proof-mobile
 proof-e2e
 proof-gateway
-proof-activations
-proof-remediator
 proof-build-accelerator
 proof-assistant-optimizer
 proof-windows-targeted
 ```
 
-The direct post-S10 truth commit is not separately CI-verified.
+S11 implementation proof is pending PR #21 CI.
 
 ## 5. Active Approval Envelope
 
-Allowed: compact S11 prep only: one planning document, minimal canonical state/handoff updates, one PR, proof inspection, exact repairs if needed, and merge when green.
+Allowed: implement S11, open one PR, run relevant proof lanes, inspect all failures, batch exact repairs, and merge when green.
 
-Not allowed in prep: S11 implementation crate, schemas, validators, mission-executor workflow, prompt doc, subsystem doc forest, hidden autonomy claims, validator weakening, schema weakening, or proof weakening.
+Forbidden: hidden autonomy claims, prompt docs, subsystem document forest, validator/schema/proof weakening, browser-cookie/session-token automation, secrets, paid compute, production deployment, database mutation, account permission changes, private data exposure, destructive irreversible action, GitHub permission bypass.
 
 ## 6. Next Exact Action
 
-Merge compact S11 prep green, then implement S11 from:
-
 ```text
-docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md
-```
-
-Implementation branch:
-
-```text
-build/s11-one-accept-mission-executor
+Open the S11 implementation PR from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md, run relevant proof lanes, inspect and patch only real failures, and merge when green.
 ```
 
 ## 7. Decisions That Must Not Drift
@@ -83,11 +83,10 @@ build/s11-one-accept-mission-executor
 3. S10 name: Assistant Optimization Layer.
 4. S11 name: One-Accept Mission Executor.
 5. S11 exists to reduce routine midpoint approvals through a real GitHub-native mission executor.
-6. Future planning uses one planning document maximum unless the user explicitly asks for more.
-7. No prompt docs unless explicitly requested.
-8. No Claude/Copilot/Cursor/soul files.
-9. Relay/Seal/Active/Next Action is the mandatory handoff spine.
-10. Direct post-merge truth commits require fresh proof before being treated as CI-verified.
+6. No prompt docs unless explicitly requested.
+7. No Claude/Copilot/Cursor/soul files.
+8. Relay/Seal/Active/Next Action is the mandatory handoff spine.
+9. Direct post-merge truth commits require fresh proof before being treated as CI-verified.
 
 ## 8. Do Not Reopen
 
@@ -101,13 +100,7 @@ No active blocker.
 
 Repo: `StealthEyeLLC/stealtheye-cloud`
 
-Current prep branch:
-
-```text
-plan/s11-one-accept-mission-executor
-```
-
-S11 implementation branch after prep merges:
+Implementation branch:
 
 ```text
 build/s11-one-accept-mission-executor
@@ -117,15 +110,15 @@ build/s11-one-accept-mission-executor
 
 Latest Seal: `STEALTHEYE_SEAL.json`
 
-Latest Seal ID: `seal-s11-one-accept-mission-executor-selected`
+Latest Seal ID: `seal-s11-one-accept-mission-executor-implementation-active`
 
 ## 12. Failure / Blocker State
 
-No active blocker.
+No active blocker. CI pending.
 
 ## 13. Codex / Worker State
 
-No Codex worker used. No external worker used. GitHub Actions remains the proof body.
+No Codex worker used. GitHub Actions remains the proof and executor body.
 
 ## 14. Browser State
 

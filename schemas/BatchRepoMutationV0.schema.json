@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BatchRepoMutationV0",
+  "type": "object",
+  "required": ["schema_version", "mutations"],
+  "properties": {
+    "schema_version": { "const": "BatchRepoMutationV0" },
+    "mutations": { "type": "array" },
+    "expected_sha_guards": { "type": "array" },
+    "atomic_commit_plan": { "type": "object" },
+    "rollback_snapshot": { "type": "object" }
+  },
+  "additionalProperties": true
+}

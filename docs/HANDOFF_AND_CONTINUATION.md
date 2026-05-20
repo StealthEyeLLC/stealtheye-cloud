@@ -32,7 +32,7 @@ Then it performs `NEXT_ACTION.md` unless a true boundary is present.
 
 ## Current continuation target
 
-Define or choose S11.
+S11 — One-Accept Mission Executor implementation on `build/s11-one-accept-mission-executor`.
 
 ## S9 final status
 
@@ -44,13 +44,21 @@ S10 is complete and merged through PR #19 at merge SHA `fd2bcda27a281fb080aaef47
 
 S10 — Assistant Optimization Layer adds assistant/operator optimization contracts, schemas, fixtures, proof artifacts, and proof workflow without claiming hidden autonomy.
 
+## S11 status
+
+S11 prep merged through PR #20 at merge SHA `b416eadbdf5770dc9be75c716c032700d2f8e6f9`.
+
+S11 implementation is active on `build/s11-one-accept-mission-executor` and adds the GitHub-native one-accept mission executor path.
+
 ## S11 handoff rule
 
 Do not ask the user to re-explain S0–S10. Use repo docs and Relay/Seal/Active/Next Action as continuation truth.
 
-Do not reopen S6, S7, S8, S9, or S10 architecture unless the user explicitly asks.
+Do not reopen S6, S7, S8, S9, S10, or S11 architecture unless the user explicitly asks.
 
 Fast mode reduces avoidable process friction only. It must not weaken validators, schemas, proof gates, safety boundaries, or merge discipline.
+
+Direct post-merge truth commits are not proven unless a fresh workflow_dispatch proof run verifies the resulting main HEAD.
 
 ## Boundary reminders
 

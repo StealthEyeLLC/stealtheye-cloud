@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IdempotencyKeyV0",
+  "type": "object",
+  "required": ["schema_version", "key", "dedup_receipt"],
+  "properties": {
+    "schema_version": { "const": "IdempotencyKeyV0" },
+    "key": { "type": "string" },
+    "dedup_receipt": { "type": "object" }
+  },
+  "additionalProperties": true
+}

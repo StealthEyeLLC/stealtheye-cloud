@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BoundaryStopV0",
+  "type": "object",
+  "required": ["schema_version", "boundary", "required_human_action"],
+  "properties": {
+    "schema_version": { "const": "BoundaryStopV0" },
+    "boundary": { "type": "string" },
+    "required_human_action": { "type": "string" },
+    "resume_after_boundary_plan": { "type": "object" }
+  },
+  "additionalProperties": true
+}

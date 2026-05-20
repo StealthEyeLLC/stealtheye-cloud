@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MissionLeaseV0",
+  "type": "object",
+  "required": ["schema_version", "mission_id", "initial_approval_count", "routine_midpoint_approvals", "approved_routine_actions", "forbidden_actions"],
+  "properties": {
+    "schema_version": { "const": "MissionLeaseV0" },
+    "mission_id": { "type": "string" },
+    "initial_approval_count": { "const": 1 },
+    "routine_midpoint_approvals": { "const": 0 },
+    "approved_routine_actions": { "type": "array", "items": { "type": "string" } },
+    "forbidden_actions": { "type": "array", "items": { "type": "string" } },
+    "merge_allowed": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

@@ -1,8 +1,9 @@
 //! S9 One-Drop Build Accelerator contracts for StealthEye Cloud.
 //!
 //! This crate reduces avoidable process friction while preserving proof strength.
-//! It does not authorize weaker validators, skipped proofs, secrets, paid compute,
-//! production deployment, database mutation, or browser-cookie/session-token automation.
+//! S11 extends the same validator rail with one-accept mission-executor validation
+//! targets so `secloud doctor` covers the approval-spam solution without weakening
+//! earlier S9 checks.
 
 pub const BUILD_ACCELERATOR_PACKET_SCHEMAS: &[&str] = &[
     "OneDropPlanV0",
@@ -40,6 +41,22 @@ pub const BUILD_ACCELERATOR_PACKET_SCHEMAS: &[&str] = &[
     "FuturePhaseDefaultContractV0",
     "BuildVelocityReportV0",
     "S9BuildAcceleratorProofV0",
+    "GitHubCapabilityPreflightV0",
+    "MissionLeaseV0",
+    "MissionExecutorRequestV0",
+    "BatchRepoMutationV0",
+    "BranchControllerV0",
+    "PrControllerV0",
+    "ProofControllerV0",
+    "ProofRepairLoopV0",
+    "MergeWhenGreenControllerV0",
+    "PostMergeProofFreshnessGateV0",
+    "BoundaryStopV0",
+    "MissionJournalV0",
+    "MissionExecutorStateV0",
+    "IdempotencyKeyV0",
+    "ApprovalCountReportV0",
+    "MissionExecutorProofV0",
 ];
 
 pub const BUILD_ACCELERATOR_VALIDATION_TARGETS: &[&str] = &[
@@ -77,6 +94,22 @@ pub const BUILD_ACCELERATOR_VALIDATION_TARGETS: &[&str] = &[
     "capability-activation-ledger",
     "future-phase-contract",
     "next-tab-prompt",
+    "mission-lease",
+    "mission-executor-request",
+    "github-capability-preflight",
+    "batch-repo-mutation",
+    "branch-controller",
+    "pr-controller",
+    "proof-controller",
+    "proof-repair-loop",
+    "merge-when-green",
+    "post-merge-proof-freshness",
+    "boundary-stop",
+    "mission-journal",
+    "mission-state",
+    "idempotency",
+    "approval-count-proof",
+    "mission-executor",
 ];
 
 pub const ONE_DROP_STEPS: &[&str] = &[
@@ -100,6 +133,13 @@ pub const ROUTINE_ACTION_CLASSES: &[&str] = &[
     "exact_failure_repair",
     "docs_state_update",
     "merge_when_green",
+    "read_repo",
+    "create_or_reuse_branch",
+    "batch_create_update_delete_files",
+    "open_or_reuse_pr",
+    "inspect_ci_and_logs",
+    "classify_proof_failures",
+    "rerun_proof",
 ];
 
 pub const BOUNDARY_ACTION_CLASSES: &[&str] = &[
@@ -112,6 +152,10 @@ pub const BOUNDARY_ACTION_CLASSES: &[&str] = &[
     "browser_cookie_session_automation",
     "destructive_irreversible_action",
     "unresolved_high_impact_ambiguity",
+    "scope_expansion",
+    "unapproved_external_posting",
+    "legal_compliance_signoff",
+    "github_permission_bypass",
 ];
 
 pub const BATCH_REPAIR_RULES: &[&str] = &[
@@ -120,6 +164,8 @@ pub const BATCH_REPAIR_RULES: &[&str] = &[
     "patch_exact_failures_only",
     "rerun_after_batch",
     "do_not_add_truth_only_rerun_commit_unless_required",
+    "retry_budget_required",
+    "known_failure_autopatch_only",
 ];
 
 pub const MERGE_HANDOFF_RULES: &[&str] = &[
@@ -128,6 +174,7 @@ pub const MERGE_HANDOFF_RULES: &[&str] = &[
     "merge_sha_resolution_field",
     "no_stale_pending_language",
     "next_action_survives_merge",
+    "direct_truth_commit_requires_fresh_main_proof",
 ];
 
 pub const STATE_CONSISTENCY_RULES: &[&str] = &[
@@ -136,6 +183,7 @@ pub const STATE_CONSISTENCY_RULES: &[&str] = &[
     "next_action_matches_phase",
     "no_obsolete_phase_reference",
     "no_duplicate_conflicting_doc_truth",
+    "s11_prep_truth_normalized",
 ];
 
 pub const LIFECYCLE_STATES: &[&str] = &[
@@ -147,6 +195,8 @@ pub const LIFECYCLE_STATES: &[&str] = &[
     "green",
     "merged",
     "blocked",
+    "boundary_stop",
+    "fresh_main_proof_required",
 ];
 
 pub const PROOF_SELECTION_RULES: &[&str] = &[
@@ -155,6 +205,8 @@ pub const PROOF_SELECTION_RULES: &[&str] = &[
     "path_filters_simulated",
     "unexpected_skip_detected",
     "ci_wave_counted",
+    "current_head_sha_recorded",
+    "freshness_checked",
 ];
 
 pub const REGISTRATION_GUARDS: &[&str] = &[
@@ -163,6 +215,7 @@ pub const REGISTRATION_GUARDS: &[&str] = &[
     "workspace_member_registered",
     "cli_dependency_registered",
     "workflow_registered",
+    "mission_executor_workflow_registered",
 ];
 
 pub const HUMAN_ATTENTION_RULES: &[&str] = &[
@@ -170,6 +223,8 @@ pub const HUMAN_ATTENTION_RULES: &[&str] = &[
     "no_midpoint_ask_for_routine_action",
     "friction_event_recorded",
     "low_attention_workday_supported",
+    "approval_count_report_required",
+    "routine_midpoint_approvals_zero",
 ];
 
 pub const TOOL_FALLBACK_RULES: &[&str] = &[
@@ -177,6 +232,7 @@ pub const TOOL_FALLBACK_RULES: &[&str] = &[
     "fall_back_to_contents_api",
     "fall_back_to_pr_patch",
     "stop_at_true_boundary",
+    "github_permission_boundary_stop",
 ];
 
 pub const RECOVERY_RULES: &[&str] = &[
@@ -184,6 +240,8 @@ pub const RECOVERY_RULES: &[&str] = &[
     "existing_pr_reuse_checked",
     "partial_drop_recovery_plan",
     "saturation_handoff_prompt",
+    "idempotency_key_checked",
+    "action_dedup_receipt_recorded",
 ];
 
 pub const NO_SILENT_DOWNGRADE_RULES: &[&str] = &[
@@ -192,6 +250,7 @@ pub const NO_SILENT_DOWNGRADE_RULES: &[&str] = &[
     "required_workflow_not_removed",
     "proof_gate_not_weakened",
     "safety_boundary_not_relaxed",
+    "no_unverified_truth_commit_policy",
 ];
 
 pub const FUTURE_PHASE_CONTRACT_RULES: &[&str] = &[
@@ -201,6 +260,7 @@ pub const FUTURE_PHASE_CONTRACT_RULES: &[&str] = &[
     "state_update_required",
     "final_report_required",
     "next_tab_prompt_required",
+    "one_accept_executor_available",
 ];
 
 pub const REQUIRED_S9_DOCS: &[&str] = &[
@@ -210,6 +270,11 @@ pub const REQUIRED_S9_DOCS: &[&str] = &[
     "docs/MERGE_AWARE_HANDOFF.md",
     "docs/PHASE_TEMPLATE_SYSTEM.md",
     "docs/S9_FINAL_REPORT.md",
+];
+
+pub const REQUIRED_S11_DOCS: &[&str] = &[
+    "docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md",
+    "docs/S11_FINAL_REPORT.md",
 ];
 
 pub const REQUIRED_S9_PROMPT_ARTIFACTS: &[&str] = &[
@@ -224,6 +289,7 @@ pub const VELOCITY_METRICS: &[&str] = &[
     "ci_waves",
     "repair_commits",
     "cleanup_prs_avoided",
+    "workflow_dispatch_runs",
 ];
 
 pub const FRICTION_METRICS: &[&str] = &[
@@ -231,6 +297,7 @@ pub const FRICTION_METRICS: &[&str] = &[
     "true_boundaries_detected",
     "tool_calls_batched",
     "human_attention_events",
+    "routine_midpoint_approvals",
 ];
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -336,7 +403,7 @@ pub fn has_future_phase_contract_rule(rule: &str) -> bool {
 }
 
 pub fn has_required_doc(path: &str) -> bool {
-    REQUIRED_S9_DOCS.contains(&path)
+    REQUIRED_S9_DOCS.contains(&path) || REQUIRED_S11_DOCS.contains(&path)
 }
 
 pub fn has_required_prompt_artifact(path: &str) -> bool {
@@ -351,6 +418,28 @@ pub fn has_friction_metric(metric: &str) -> bool {
     FRICTION_METRICS.contains(&metric)
 }
 
+pub fn is_s11_validation_target(target: &str) -> bool {
+    matches!(
+        target,
+        "mission-lease"
+            | "mission-executor-request"
+            | "github-capability-preflight"
+            | "batch-repo-mutation"
+            | "branch-controller"
+            | "pr-controller"
+            | "proof-controller"
+            | "proof-repair-loop"
+            | "merge-when-green"
+            | "post-merge-proof-freshness"
+            | "boundary-stop"
+            | "mission-journal"
+            | "mission-state"
+            | "idempotency"
+            | "approval-count-proof"
+            | "mission-executor"
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -362,6 +451,7 @@ mod tests {
         include_str!("../../../schemas/StateConsistencyReportV0.schema.json");
     const VELOCITY_SCHEMA: &str =
         include_str!("../../../schemas/BuildVelocityReportV0.schema.json");
+    const S11_LEASE_SCHEMA: &str = include_str!("../../../schemas/MissionLeaseV0.schema.json");
 
     #[test]
     fn schema_inventory_contains_required_s9_contracts() {
@@ -374,11 +464,24 @@ mod tests {
     }
 
     #[test]
+    fn schema_inventory_contains_required_s11_contracts() {
+        assert!(is_build_accelerator_schema("MissionLeaseV0"));
+        assert!(is_build_accelerator_schema("MissionExecutorRequestV0"));
+        assert!(is_build_accelerator_schema("ProofRepairLoopV0"));
+        assert!(is_build_accelerator_schema("PostMergeProofFreshnessGateV0"));
+        assert!(is_build_accelerator_schema("ApprovalCountReportV0"));
+        assert!(is_build_accelerator_schema("MissionExecutorProofV0"));
+        assert!(is_s11_validation_target("mission-lease"));
+        assert!(is_s11_validation_target("mission-executor"));
+    }
+
+    #[test]
     fn schema_files_are_materialized() {
         assert!(ONE_DROP_SCHEMA.contains("OneDropPlanV0"));
         assert!(MISSION_APPROVAL_SCHEMA.contains("MissionApprovalEnvelopeV0"));
         assert!(STATE_REPORT_SCHEMA.contains("StateConsistencyReportV0"));
         assert!(VELOCITY_SCHEMA.contains("BuildVelocityReportV0"));
+        assert!(S11_LEASE_SCHEMA.contains("MissionLeaseV0"));
     }
 
     #[test]
@@ -394,8 +497,10 @@ mod tests {
     fn mission_approval_does_not_cover_true_boundaries() {
         assert!(is_routine_action_class("safe_file_update"));
         assert!(is_routine_action_class("ci_inspection"));
+        assert!(is_routine_action_class("read_repo"));
         assert!(is_boundary_action_class("secrets"));
         assert!(is_boundary_action_class("database_mutation"));
+        assert!(is_boundary_action_class("github_permission_bypass"));
         assert!(!is_routine_action_class("secrets"));
         assert!(!is_routine_action_class(
             "browser_cookie_session_automation"
@@ -409,6 +514,9 @@ mod tests {
         ));
         assert!(has_no_silent_downgrade_rule("proof_gate_not_weakened"));
         assert!(has_no_silent_downgrade_rule("safety_boundary_not_relaxed"));
+        assert!(has_no_silent_downgrade_rule(
+            "no_unverified_truth_commit_policy"
+        ));
     }
 
     #[test]

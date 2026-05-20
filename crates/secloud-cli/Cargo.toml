@@ -38,3 +38,4 @@ secloud-repair-readiness = { path = "../secloud-repair-readiness" }
 secloud-remediator = { path = "../secloud-remediator" }
 secloud-build-accelerator = { path = "../secloud-build-accelerator" }
 secloud-assistant-optimizer = { path = "../secloud-assistant-optimizer" }
+secloud-mission-executor = { path = "../secloud-mission-executor" }

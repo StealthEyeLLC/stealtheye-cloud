@@ -32,90 +32,63 @@ Use one active ChatGPT tab until saturation. At saturation, update Relay, Seal, 
 8. S7 — First Real Activations
 9. S8 — StealthEye Cloud Remediator
 10. S9 — One-Drop Build Accelerator
+11. S10 — Assistant Optimization Layer
 
-## Selected next mission
+## Active mission
 
 ```text
-S10 — Assistant Optimization Layer
+S11 — One-Accept Mission Executor
 ```
 
-S10 is selected for setup. No S10 implementation has started.
-
-S10 optimizes the assistant/operator layer so ChatGPT uses the S9 one-drop rail with better mission intake, context loading, repo-truth handling, tool planning, fallback recovery, proof reasoning, low-attention operation, handoff quality, read-only verification, and self-audit.
-
-## S10 setup branch
+S11 is in implementation on:
 
 ```text
-build/s10-assistant-optimization-layer-setup
+build/s11-one-accept-mission-executor
 ```
 
-## S10 implementation branch after setup merges
+## S11 mission
+
+S11 solves approval spam by building a GitHub-native mission executor. One approved `MissionLeaseV0` should cover routine repo/build/proof/repair/merge work inside scope.
+
+Target operator experience:
 
 ```text
-build/s10-assistant-optimization-layer
+initial mission approval: 1
+routine midpoint approvals: 0
+human stops: true boundaries only
 ```
 
-## S10 implementation prompt
+## S11 implementation shape
 
 ```text
-docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md
+crates/secloud-mission-executor
+.github/workflows/mission-executor.yml
+.github/workflows/proof-mission-executor.yml
+scripts/s11-mission-executor-proof.mjs
+scripts/check-s11-mission-executor-artifacts.mjs
+.stealtheye/mission-executor/
+docs/S11_FINAL_REPORT.md
 ```
 
-## S10 implementation scan pack
-
-Before implementing S10, read:
+## S11 validation targets
 
 ```text
-AGENTS.md
-STEALTHEYE_DECISIONS.md
-STEALTHEYE_ACTIVE.md
-STEALTHEYE_RELAY.md
-STEALTHEYE_RELAY.json
-STEALTHEYE_SEAL.json
-NEXT_ACTION.md
-README.md
-AGENT_REPO_MAP.md
-llms.txt
-llms-full.txt
-docs/StealthEye_Cloud_Build_Plan.md
-docs/HANDOFF_AND_CONTINUATION.md
-docs/S9_ONE_DROP_BUILD_ACCELERATOR.md
-docs/ONE_DROP_BUILD_MODE.md
-docs/MISSION_APPROVAL_ENVELOPE.md
-docs/BATCH_REPAIR_POLICY.md
-docs/MERGE_AWARE_HANDOFF.md
-docs/PHASE_TEMPLATE_SYSTEM.md
-docs/S10_ASSISTANT_OPTIMIZATION_LAYER.md
-docs/ASSISTANT_OPERATING_PROFILE.md
-docs/MISSION_INTAKE_OPTIMIZER.md
-docs/CONTEXT_LOAD_POLICY.md
-docs/REPO_TRUTH_FIRST_POLICY.md
-docs/LOW_ATTENTION_WORKDAY_MODE.md
-docs/HANDOFF_QUALITY_GATE.md
-docs/TOOL_USE_PLANNER.md
-docs/TOOL_FALLBACK_POLICY.md
-docs/PROMPT_COMPRESSION.md
-docs/SCOPE_DRIFT_GUARD.md
-docs/PROOF_AWARENESS_LAYER.md
-docs/REPAIR_INTELLIGENCE_LAYER.md
-docs/READ_ONLY_VERIFICATION_MODE.md
-docs/ASSISTANT_SELF_AUDIT.md
-docs/CAPABILITY_REALITY_MAP.md
-docs/BUILD_COCKPIT_CARD.md
-docs/AGENT_OBSERVABILITY_TRACE_DIGEST.md
-docs/MCP_AWARE_OPERATOR_POLICY.md
-```
-
-## S10 implementation shape
-
-S10 implementation must add:
-
-```text
-crates/secloud-assistant-optimizer
-.github/workflows/proof-assistant-optimizer.yml
-scripts/s10-assistant-optimizer-proof.mjs
-scripts/check-s10-assistant-optimizer-artifacts.mjs
-.stealtheye/assistant-optimizer/
+mission-lease
+mission-executor-request
+github-capability-preflight
+batch-repo-mutation
+branch-controller
+pr-controller
+proof-controller
+proof-repair-loop
+merge-when-green
+post-merge-proof-freshness
+boundary-stop
+mission-journal
+mission-state
+idempotency
+approval-count-proof
+mission-executor
 ```
 
 ## Non-negotiables
@@ -128,3 +101,4 @@ scripts/check-s10-assistant-optimizer-artifacts.mjs
 - No per-file confirmation model.
 - No validator, schema, workflow, proof, safety, or merge-discipline weakening.
 - No browser-cookie/session-token automation.
+- No direct post-merge truth commit counts as proven without fresh workflow_dispatch proof on main.

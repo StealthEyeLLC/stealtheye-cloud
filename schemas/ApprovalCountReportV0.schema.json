@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ApprovalCountReportV0",
+  "type": "object",
+  "required": ["schema_version", "initial_mission_approval", "routine_midpoint_approvals"],
+  "properties": {
+    "schema_version": { "const": "ApprovalCountReportV0" },
+    "initial_mission_approval": { "const": 1 },
+    "routine_midpoint_approvals": { "const": 0 },
+    "human_stops": { "type": "array" }
+  },
+  "additionalProperties": true
+}

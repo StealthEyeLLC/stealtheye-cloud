@@ -1,0 +1,62 @@
+name: proof-mission-executor
+
+on:
+  push:
+    branches:
+      - main
+      - 'build/**'
+      - 'repair/**'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  proof-mission-executor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Format
+        run: cargo fmt --all -- --check
+      - name: Check
+        run: cargo check --workspace
+      - name: Test Mission Executor contracts
+        run: cargo test -p secloud-mission-executor
+      - name: Clippy Mission Executor contracts
+        run: cargo clippy -p secloud-mission-executor -- -D warnings
+      - name: Validate Mission Executor targets
+        run: |
+          cargo run -p secloud-cli -- validate github-capability-preflight
+          cargo run -p secloud-cli -- validate mission-lease
+          cargo run -p secloud-cli -- validate mission-executor-request
+          cargo run -p secloud-cli -- validate batch-repo-mutation
+          cargo run -p secloud-cli -- validate branch-controller
+          cargo run -p secloud-cli -- validate pr-controller
+          cargo run -p secloud-cli -- validate proof-controller
+          cargo run -p secloud-cli -- validate proof-repair-loop
+          cargo run -p secloud-cli -- validate merge-when-green
+          cargo run -p secloud-cli -- validate post-merge-proof-freshness
+          cargo run -p secloud-cli -- validate boundary-stop
+          cargo run -p secloud-cli -- validate mission-journal
+          cargo run -p secloud-cli -- validate mission-state
+          cargo run -p secloud-cli -- validate idempotency
+          cargo run -p secloud-cli -- validate approval-count-proof
+          cargo run -p secloud-cli -- validate mission-executor
+          cargo run -p secloud-cli -- doctor
+      - name: Run S11 mission executor proof
+        run: npm run proof:mission-executor
+      - name: Validate S11 mission executor artifacts
+        run: npm run proof:mission-executor:summary
+      - name: Upload Mission Executor artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s11-mission-executor-artifacts
+          path: .stealtheye/mission-executor/

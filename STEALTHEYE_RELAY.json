@@ -1,68 +1,58 @@
 {
   "schema_version": "StealthEyeRelayV0",
-  "relay_id": "relay-s11-one-accept-mission-executor-selected",
-  "created_at": "2026-05-20T10:45:00Z",
+  "relay_id": "relay-s11-one-accept-mission-executor-implementation-active",
+  "created_at": "2026-05-20T12:55:00Z",
   "product_name": "StealthEye Cloud",
-  "mission_id": "s11-one-accept-mission-executor-prep",
-  "mission_title": "S11 compact prep",
-  "mission_status": "selected_prep_active",
+  "mission_id": "s11-one-accept-mission-executor",
+  "mission_title": "S11 — One-Accept Mission Executor",
+  "mission_status": "implementation_active_pr_pending",
   "active_repo": "StealthEyeLLC/stealtheye-cloud",
-  "active_branch": "plan/s11-one-accept-mission-executor",
+  "active_branch": "build/s11-one-accept-mission-executor",
   "active_pr": null,
   "active_pr_url": null,
-  "latest_seal_id": "seal-s11-one-accept-mission-executor-selected",
-  "latest_ci_status": "pending_prep_pr_proof_wave",
+  "latest_seal_id": "seal-s11-one-accept-mission-executor-implementation-active",
+  "latest_ci_status": "pending_s11_pr_proof_wave",
   "latest_browser_status": "not_required",
-  "current_approval": "user-approved-compact-s11-prep-no-overbuild",
+  "current_approval": "user-approved-s11-one-accept-mission-executor-implementation",
   "completed_milestone": {
     "mission_id": "s10-assistant-optimization-layer",
     "title": "S10 — Assistant Optimization Layer",
     "pr": 19,
     "merge_sha": "fd2bcda27a281fb080aaef472bd87123e4fe02b6",
-    "status": "merged_green_before_post_merge_truth_commit",
-    "implementation_branch": "build/s10-assistant-optimization-layer",
-    "proof_workflows_green_before_merge": [
-      "proof-fast",
-      "proof-full",
-      "proof-browser",
-      "proof-mobile",
-      "proof-e2e",
-      "proof-gateway",
-      "proof-activations",
-      "proof-remediator",
-      "proof-build-accelerator",
-      "proof-assistant-optimizer",
-      "proof-windows-targeted"
-    ]
+    "status": "merged_green_before_post_merge_truth_commit"
+  },
+  "s11_prep": {
+    "pr": 20,
+    "merge_sha": "b416eadbdf5770dc9be75c716c032700d2f8e6f9",
+    "status": "merged_green"
   },
   "post_s10_caveat": {
     "direct_truth_commit": "7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2",
     "fresh_actions_run_spawned_by_connector": false,
     "ci_verified": false,
-    "required_s11_rule": "Direct post-merge truth commits require fresh workflow_dispatch proof on main before being treated as CI-verified."
+    "s11_rule": "Direct post-merge truth commits require fresh workflow_dispatch proof on main before being treated as CI-verified."
   },
-  "selected_next_mission": {
-    "mission_id": "s11-one-accept-mission-executor",
-    "title": "S11 — One-Accept Mission Executor",
-    "planning_doc": "docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md",
-    "implementation_branch": "build/s11-one-accept-mission-executor",
-    "status": "selected_not_started",
-    "purpose": "Build a real GitHub-native mission executor so one approved mission lease can complete routine repo/build/proof/repair/merge work without repeated operator confirmations."
-  },
-  "next_action": "Merge compact S11 prep green, then implement S11 from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md on build/s11-one-accept-mission-executor.",
+  "s11_implementation_surface": [
+    "crates/secloud-mission-executor",
+    ".github/workflows/mission-executor.yml",
+    ".github/workflows/proof-mission-executor.yml",
+    "scripts/s11-mission-executor-proof.mjs",
+    "scripts/check-s11-mission-executor-artifacts.mjs",
+    ".stealtheye/mission-executor/",
+    "docs/S11_FINAL_REPORT.md"
+  ],
+  "next_action": "Open the S11 implementation PR, run relevant proof lanes, inspect and patch only real failures, and merge when green.",
   "blocked_reason": null,
   "do_not_reopen": [
     "S6/S7/S8/S9/S10/S11 naming",
     "no-placeholder rule",
-    "Remediator naming",
     "S9 One-Drop Build Accelerator naming and purpose",
     "S10 Assistant Optimization Layer naming and purpose",
     "S10 no-hidden-autonomy rule",
     "S11 one-accept mission executor purpose",
-    "one-planning-document rule",
     "no prompt docs unless explicitly requested",
     "forbidden session automation"
   ],
-  "safety_boundary": "Future work must remain public-safe. No hidden autonomy, browser-cookie/session-token automation, secrets, paid compute, production deployment, database mutation, account permission changes, validator weakening, schema weakening, proof weakening, or GitHub permission bypass.",
-  "resume_prompt": "Resume StealthEye Cloud from current repo state. S11 is selected as One-Accept Mission Executor. If compact prep is merged, implement from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md on build/s11-one-accept-mission-executor."
+  "safety_boundary": "No hidden autonomy, browser-cookie/session-token automation, secrets, paid compute, production deployment, database mutation, account permission changes, private data exposure, destructive irreversible action, validator weakening, schema weakening, proof weakening, or GitHub permission bypass.",
+  "resume_prompt": "Resume StealthEye Cloud S11 from build/s11-one-accept-mission-executor. Open/continue the S11 PR, run proof, batch-repair only real failures, and merge when green."
 }

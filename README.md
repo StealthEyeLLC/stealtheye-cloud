@@ -6,7 +6,7 @@ It is optimized for one active ChatGPT tab until saturation, public free CI proo
 
 ## Current build state
 
-Current status: **S0–S10 merged. S10 — Assistant Optimization Layer is complete. S11 — One-Accept Mission Executor is selected for the next build.**
+Current status: **S0–S10 merged. S11 — One-Accept Mission Executor is in implementation on `build/s11-one-accept-mission-executor`.**
 
 Latest completed mission:
 
@@ -26,53 +26,54 @@ S10 merge SHA:
 fd2bcda27a281fb080aaef472bd87123e4fe02b6
 ```
 
-S10 added the assistant optimizer crate, S10 schema files, S10 proof scripts, S10 fixtures, `proof-assistant-optimizer`, package scripts, and `docs/S10_FINAL_REPORT.md`.
+S11 prep PR:
 
-Important caveat:
+```text
+#20
+```
+
+S11 prep merge SHA:
+
+```text
+b416eadbdf5770dc9be75c716c032700d2f8e6f9
+```
+
+Important caveat solved by S11 policy:
 
 ```text
 S10 PR #19 was green before merge. A direct post-merge truth commit was made afterward at 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2. That direct post-merge truth commit did not spawn a fresh Actions run through the connector, so it is not separately CI-verified.
+
+S11 adds PostMergeProofFreshnessGateV0: no direct post-merge truth commit counts as proven unless a fresh workflow_dispatch proof run verifies the resulting main HEAD.
 ```
 
-Selected next mission:
+## S9/S11 approval model
+
+S9 preserves one-drop mode with one mission approval, batched repairs, and merge when green.
+
+S11 extends that into one-accept mission execution:
 
 ```text
-S11 — One-Accept Mission Executor
+initial mission approval: 1
+routine midpoint approvals: 0
+human stops: true boundaries only
 ```
 
-S11 purpose:
+## S11 implementation surface
 
 ```text
-Build a real GitHub-native mission executor so one approved mission lease can complete routine repo/build/proof/repair/merge work without repeated operator confirmations.
-```
-
-S9 remains the active build operating mode:
-
-```text
-one mission approval
-→ one coherent repo mutation/drop
-→ one PR
-→ one proof wave
-→ batched repairs
-→ merge when green
-```
-
-S10 makes the assistant/operator layer use that rail better without claiming hidden autonomy or weakening validators, schemas, proof gates, safety boundaries, or merge discipline.
-
-S11 must turn that lower-friction operating model into a real one-accept execution path.
-
-## Recent completion truth
-
-```text
-S9 PR #16 merge SHA: a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
-S10 PR #19 merge SHA: fd2bcda27a281fb080aaef472bd87123e4fe02b6
-Post-S10 direct truth commit: 7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2, not separately CI-verified
+crates/secloud-mission-executor
+.github/workflows/mission-executor.yml
+.github/workflows/proof-mission-executor.yml
+scripts/s11-mission-executor-proof.mjs
+scripts/check-s11-mission-executor-artifacts.mjs
+.stealtheye/mission-executor/
+docs/S11_FINAL_REPORT.md
 ```
 
 ## Next action
 
 ```text
-Implement S11 — One-Accept Mission Executor from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md.
+Open the S11 implementation PR from docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md, run the relevant proof lanes, inspect and patch only real failures, and merge when green.
 ```
 
 ## Forbidden files
