@@ -195,7 +195,8 @@ mod tests {
     const SUITE_SCHEMA: &str = include_str!("../../../schemas/MissionGauntletSuiteV0.schema.json");
     const RUN_PLAN_SCHEMA: &str = include_str!("../../../schemas/GauntletRunPlanV0.schema.json");
     const RESULT_SCHEMA: &str = include_str!("../../../schemas/GauntletResultV0.schema.json");
-    const PROOF_SCHEMA: &str = include_str!("../../../schemas/S12MissionGauntletProofV0.schema.json");
+    const PROOF_SCHEMA: &str =
+        include_str!("../../../schemas/S12MissionGauntletProofV0.schema.json");
 
     #[test]
     fn schema_inventory_contains_required_s12_contracts() {
@@ -259,8 +260,12 @@ mod tests {
         assert!(is_required_artifact(
             ".stealtheye/mission-gauntlet/s12-proof.json"
         ));
-        assert!(is_required_artifact(".stealtheye/command-outbox/latest.json"));
-        assert!(has_required_gauntlet_check("command_dispatch_bridge_available"));
+        assert!(is_required_artifact(
+            ".stealtheye/command-outbox/latest.json"
+        ));
+        assert!(has_required_gauntlet_check(
+            "command_dispatch_bridge_available"
+        ));
         assert!(is_true_boundary_class("github_permission_bypass"));
     }
 }
