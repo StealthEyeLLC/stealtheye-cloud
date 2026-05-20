@@ -6,7 +6,7 @@ It is optimized for one active ChatGPT tab until saturation, public free CI proo
 
 ## Current build state
 
-Current status: **S0–S11 merged.**
+Current status: **S0–S11 merged. S12 — One-Accept Mission Gauntlet is selected for the next build.**
 
 Latest completed mission:
 
@@ -60,11 +60,31 @@ scripts/check-s11-mission-executor-artifacts.mjs
 docs/S11_FINAL_REPORT.md
 ```
 
+## S12 selected mission
+
+```text
+S12 — One-Accept Mission Gauntlet
+```
+
+S12 planning doc:
+
+```text
+docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md
+```
+
+S12 purpose:
+
+```text
+Prove and harden S11 by running real bounded missions through the one-accept executor, adding a connector leverage layer for high-frequency proof/mission/repo actions, closing GitHub token/workflow/merge gaps, mirroring mission receipts safely through MCP-style resources, and proving one initial approval with zero routine midpoint approvals.
+```
+
 ## S9/S11 approval model
 
 S9 preserves one-drop mode with one mission approval, batched repairs, and merge when green.
 
 S11 extends that into one-accept mission execution.
+
+S12 must prove and harden that path.
 
 ## Post-merge proof freshness rule
 
@@ -72,12 +92,18 @@ S11 extends that into one-accept mission execution.
 No direct post-merge truth commit counts as proven unless a fresh proof run verifies the resulting main HEAD.
 ```
 
-This README is part of the direct post-merge truth update and must be verified on the resulting main HEAD before being treated as proven.
+Current caveat:
+
+```text
+The direct post-S11 truth commit 8988e32fc61e2824dcc19eef30da2894112ea9f9 is present but not proven because no fresh workflow runs or combined statuses are visible for that commit through the connector.
+```
+
+S12 must include a command-dispatch or connector leverage path that can trigger and verify fresh main-head proof.
 
 ## Next action
 
 ```text
-Await the next operator-selected mission. Do not start S12 until the operator chooses it.
+Implement S12 — One-Accept Mission Gauntlet from docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md on branch build/s12-one-accept-mission-gauntlet.
 ```
 
 ## Forbidden files
