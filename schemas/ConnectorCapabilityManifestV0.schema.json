@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ConnectorCapabilityManifestV0",
+  "type": "object",
+  "required": ["schema_version", "supported", "unsupported", "surfaces"],
+  "properties": {
+    "schema_version": { "const": "ConnectorCapabilityManifestV0" },
+    "supported": { "type": "array", "items": { "type": "string" } },
+    "unsupported": { "type": "array", "items": { "type": "string" } },
+    "surfaces": { "type": "object" },
+    "native_workflow_dispatch_exposed": { "type": "boolean" },
+    "issue_comment_bridge_required": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}
