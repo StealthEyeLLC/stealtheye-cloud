@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GitHubCapabilityClosureV0",
+  "type": "object",
+  "required": ["schema_version", "can", "cannot", "github_app_need"],
+  "properties": {
+    "schema_version": { "const": "GitHubCapabilityClosureV0" },
+    "can": { "type": "array", "items": { "type": "string" } },
+    "cannot": { "type": "array", "items": { "type": "string" } },
+    "github_app_need": { "enum": ["not_required", "required_by_evidence", "unknown"] },
+    "evidence": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}
