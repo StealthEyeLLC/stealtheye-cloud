@@ -6,21 +6,42 @@ StealthEye Cloud
 
 ## Current mission
 
-S11 — One-Accept Mission Executor is merged.
+S12 planning/prep. S12 — One-Accept Mission Gauntlet is selected as the next build. S12 implementation has not started.
 
 ## Active branch
 
 ```text
-main
+plan/s12-one-accept-mission-gauntlet
 ```
 
 ## Active PR
 
-PR #21 merged.
+Pending creation from the S12 prep branch.
 
 ## Current approval envelope
 
-No active implementation approval is open.
+User approved repo prep for S12 after S11 completion.
+
+Allowed in this prep mission:
+
+1. one S12 planning document
+2. minimal canonical state/handoff/orientation updates
+3. one PR
+4. proof inspection
+5. exact repairs if a real proof/status failure appears
+6. merge when green if safe
+
+Forbidden in this prep mission:
+
+1. no S12 implementation crates
+2. no S12 schemas
+3. no S12 validators
+4. no command-dispatch workflow
+5. no proof-mission-gauntlet workflow
+6. no prompt doc
+7. no subsystem document forest
+8. no hidden autonomy claims
+9. no validator/proof/schema weakening
 
 ## Latest completed mission
 
@@ -79,20 +100,46 @@ scripts/check-s11-mission-executor-artifacts.mjs
 docs/S11_FINAL_REPORT.md
 ```
 
+## S12 selected mission
+
+```text
+S12 — One-Accept Mission Gauntlet
+```
+
+S12 planning doc:
+
+```text
+docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md
+```
+
+S12 implementation branch after prep merges:
+
+```text
+build/s12-one-accept-mission-gauntlet
+```
+
 ## Post-merge caveat status
 
-This file is part of the direct post-merge truth update. The resulting main HEAD must be freshly verified before this update counts as proven.
+Direct post-S11 truth commit:
+
+```text
+8988e32fc61e2824dcc19eef30da2894112ea9f9
+```
+
+The direct post-S11 truth commit is present but not proven because no fresh workflow runs or combined statuses are visible for that commit through the connector.
+
+S12 must add a command-dispatch or connector leverage path that can trigger and verify fresh main-head proof.
 
 ## Current blocker
 
-None.
+None for prep.
 
 ## Next exact action
 
 ```text
-Await the next operator-selected mission. Do not start S12 until the operator chooses it.
+Merge compact S12 prep green, then implement S12 from docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md on branch build/s12-one-accept-mission-gauntlet.
 ```
 
 ## Continuation note
 
-If a new tab resumes from here, read Relay, Seal, Active, and Next Action first. S11 is complete; do not reopen S11 unless explicitly ordered.
+If a new tab resumes from here, read Relay, Seal, Active, and Next Action first. S12 prep is active unless the S12 prep PR is already merged.
