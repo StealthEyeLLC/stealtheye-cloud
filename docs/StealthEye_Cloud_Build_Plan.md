@@ -47,6 +47,14 @@ S9 — One-Drop Build Accelerator
 S10 — Assistant Optimization Layer
 ```
 
+## S9 retained implementation surface
+
+S9 remains complete and its proof-required marker is retained:
+
+```text
+crates/secloud-build-accelerator
+```
+
 ## Active build spine entry
 
 ```text
@@ -79,15 +87,7 @@ human stops: true boundaries only
 
 ## S11 doctrine
 
-S11 must build real execution capability, not more prompt rules. It adds:
-
-1. GitHub capability preflight.
-2. Mission lease and one-accept authority.
-3. Workflow-dispatch mission executor.
-4. Batch repo mutation model.
-5. Branch, PR, proof, repair, and merge controllers.
-6. Post-merge proof freshness gate.
-7. Boundary stop, journal, idempotency, and approval-count proof.
+S11 must build real execution capability, not more prompt rules. It adds GitHub capability preflight, mission lease authority, workflow-dispatch execution, batch repo mutation, branch/PR/proof/repair/merge controllers, post-merge proof freshness, boundary stop, journal, idempotency, and approval-count proof.
 
 No prompt doc. No setup PR pattern. No subsystem document forest.
 
