@@ -1,19 +1,19 @@
 {
   "schema_version": "StealthEyeRelayV0",
-  "relay_id": "relay-s11-one-accept-mission-executor-merged",
-  "created_at": "2026-05-20T14:55:00Z",
+  "relay_id": "relay-s12-one-accept-mission-gauntlet-selected",
+  "created_at": "2026-05-20T15:40:00Z",
   "product_name": "StealthEye Cloud",
-  "mission_id": "s11-one-accept-mission-executor",
-  "mission_title": "S11 — One-Accept Mission Executor",
-  "mission_status": "merged",
+  "mission_id": "s12-one-accept-mission-gauntlet-prep",
+  "mission_title": "S12 compact prep",
+  "mission_status": "selected_prep_active",
   "active_repo": "StealthEyeLLC/stealtheye-cloud",
-  "active_branch": "main",
-  "active_pr": 21,
-  "active_pr_url": "https://github.com/StealthEyeLLC/stealtheye-cloud/pull/21",
-  "latest_seal_id": "seal-s11-one-accept-mission-executor-merged",
-  "latest_ci_status": "green_before_merge_post_merge_truth_requires_fresh_main_proof",
-  "latest_browser_status": "not_required_for_s11_touched_surface",
-  "current_approval": null,
+  "active_branch": "plan/s12-one-accept-mission-gauntlet",
+  "active_pr": null,
+  "active_pr_url": null,
+  "latest_seal_id": "seal-s12-one-accept-mission-gauntlet-selected",
+  "latest_ci_status": "pending_prep_pr_proof_wave",
+  "latest_browser_status": "not_required",
+  "current_approval": "user-approved-compact-s12-prep-no-overbuild",
   "completed_milestone": {
     "mission_id": "s11-one-accept-mission-executor",
     "title": "S11 — One-Accept Mission Executor",
@@ -26,45 +26,35 @@
     "merge_sha": "b416eadbdf5770dc9be75c716c032700d2f8e6f9",
     "status": "merged_green"
   },
-  "post_merge_truth_update": {
-    "required": true,
-    "fresh_main_head_proof_required": true,
-    "reason": "Relay/Seal/Active/Next Action must record PR #21 merge SHA after merge."
+  "post_s11_truth_caveat": {
+    "direct_truth_commit": "8988e32fc61e2824dcc19eef30da2894112ea9f9",
+    "fresh_actions_runs_visible_through_connector": false,
+    "combined_statuses_visible_through_connector": false,
+    "ci_verified": false,
+    "required_s12_rule": "S12 must add a command-dispatch or connector leverage path that can trigger and verify fresh main-head proof."
   },
-  "s11_implementation_surface": [
-    "crates/secloud-mission-executor",
-    ".github/workflows/mission-executor.yml",
-    ".github/workflows/proof-mission-executor.yml",
-    "scripts/s11-mission-executor-proof.mjs",
-    "scripts/check-s11-mission-executor-artifacts.mjs",
-    ".stealtheye/mission-executor/",
-    "docs/S11_FINAL_REPORT.md"
-  ],
-  "green_before_merge": [
-    "proof-fast",
-    "proof-full",
-    "proof-e2e",
-    "proof-gateway",
-    "proof-build-accelerator",
-    "proof-assistant-optimizer",
-    "proof-mission-executor",
-    "proof-windows-targeted",
-    "proof-mobile",
-    "proof-remediator",
-    "proof-activations"
-  ],
-  "next_action": "Await the next operator-selected mission. Do not start S12 until the operator chooses it.",
+  "selected_next_mission": {
+    "mission_id": "s12-one-accept-mission-gauntlet",
+    "title": "S12 — One-Accept Mission Gauntlet",
+    "planning_doc": "docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md",
+    "implementation_branch": "build/s12-one-accept-mission-gauntlet",
+    "status": "selected_not_started",
+    "purpose": "Prove and harden S11 by running real bounded missions through the one-accept executor, adding a connector leverage layer for high-frequency proof/mission/repo actions, closing GitHub token/workflow/merge gaps, mirroring mission receipts safely through MCP-style resources, and proving one initial approval with zero routine midpoint approvals."
+  },
+  "next_action": "Merge compact S12 prep green, then implement S12 from docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md on build/s12-one-accept-mission-gauntlet.",
   "blocked_reason": null,
   "do_not_reopen": [
-    "S6/S7/S8/S9/S10/S11 naming",
+    "S6/S7/S8/S9/S10/S11/S12 naming",
     "no-placeholder rule",
     "S9 One-Drop Build Accelerator naming and purpose",
     "S10 Assistant Optimization Layer naming and purpose",
     "S10 no-hidden-autonomy rule",
     "S11 one-accept mission executor purpose",
+    "S12 gauntlet purpose",
+    "one-planning-document rule",
     "no prompt docs unless explicitly requested",
     "forbidden session automation"
   ],
   "safety_boundary": "No hidden autonomy, browser-cookie/session-token automation, secrets, paid compute, production deployment, database mutation, account permission changes, private data exposure, destructive irreversible action, validator weakening, schema weakening, proof weakening, or GitHub permission bypass.",
-  "resume_prompt": "Resume StealthEye Cloud from main. S11 is merged. Await the next operator-selected mission."
+  "resume_prompt": "Resume StealthEye Cloud from current repo state. S12 is selected as One-Accept Mission Gauntlet. If compact prep is merged, implement from docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md on build/s12-one-accept-mission-gauntlet."
 }
