@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IssueCommentCommandDispatchV0",
+  "type": "object",
+  "required": ["schema_version", "command", "authorized", "closed_command_set"],
+  "properties": {
+    "schema_version": { "const": "IssueCommentCommandDispatchV0" },
+    "command": { "type": "string" },
+    "authorized": { "type": "boolean" },
+    "closed_command_set": { "type": "array", "items": { "type": "string" } },
+    "result": { "type": "string" }
+  },
+  "additionalProperties": true
+}

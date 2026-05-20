@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GauntletMissionV0",
+  "type": "object",
+  "required": ["schema_version", "mission_id", "mission_class", "approval_count_report"],
+  "properties": {
+    "schema_version": { "const": "GauntletMissionV0" },
+    "mission_id": { "type": "string" },
+    "mission_class": { "type": "string" },
+    "approval_count_report": { "type": "object" },
+    "result": { "type": "string" }
+  },
+  "additionalProperties": true
+}

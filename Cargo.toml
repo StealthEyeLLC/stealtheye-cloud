@@ -25,11 +25,12 @@ members = [
     "crates/secloud-repo-worker",
     "crates/secloud-mobile-qa",
     "crates/secloud-repair-readiness",
-    "crates/secloud-activations",
     "crates/secloud-remediator",
     "crates/secloud-build-accelerator",
     "crates/secloud-assistant-optimizer",
     "crates/secloud-mission-executor",
+    "crates/secloud-mission-gauntlet",
+    "crates/secloud-connector-leverage",
     "crates/secloud-cli",
 ]
 resolver = "2"

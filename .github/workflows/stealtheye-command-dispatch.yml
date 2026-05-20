@@ -1,0 +1,57 @@
+name: stealtheye-command-dispatch
+
+on:
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      command:
+        description: Closed StealthEye command
+        required: false
+        default: /stealtheye status
+
+permissions:
+  contents: read
+  actions: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  command-dispatch:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.comment.body, '/stealtheye ')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Emit command receipt
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          INPUT_COMMAND: ${{ inputs.command }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p .stealtheye/command-outbox
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const raw = process.env.INPUT_COMMAND || process.env.COMMENT_BODY || '/stealtheye status';
+          const closed = ['prove-main', 'run-proof', 'run-proof-set', 'start-mission', 'status'];
+          const commandName = raw.startsWith('/stealtheye ') ? raw.slice('/stealtheye '.length).split(/\s+/)[0] : '';
+          const receipt = {
+            schema_version: 'CommandResultOutboxV0',
+            event_name: process.env.EVENT_NAME || 'unknown',
+            status: closed.includes(commandName) ? 'accepted_closed_command' : 'rejected_unknown_command',
+            latest_command: raw,
+            normalized_command: commandName,
+            closed_command_set: closed,
+            result: 'Receipt-only parser. Closed commands are recorded as data.',
+            head_sha: process.env.HEAD_SHA || 'unknown'
+          };
+          fs.writeFileSync('.stealtheye/command-outbox/latest.json', JSON.stringify(receipt, null, 2) + '\n');
+          fs.appendFileSync('.stealtheye/command-outbox/history.jsonl', JSON.stringify(receipt) + '\n');
+          NODE
+      - name: Upload command outbox
+        uses: actions/upload-artifact@v4
+        with:
+          name: s12-command-outbox
+          path: .stealtheye/command-outbox/

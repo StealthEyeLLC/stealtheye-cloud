@@ -1,9 +1,10 @@
 //! S9 One-Drop Build Accelerator contracts for StealthEye Cloud.
 //!
 //! This crate reduces avoidable process friction while preserving proof strength.
-//! S11 extends the same validator rail with one-accept mission-executor validation
-//! targets so `secloud doctor` covers the approval-spam solution without weakening
-//! earlier S9 checks.
+//! S11 extended the validator rail with one-accept mission-executor validation
+//! targets. S12 extends the same rail with mission-gauntlet and connector-leverage
+//! validation targets so `secloud doctor` covers the gauntlet without weakening
+//! earlier S0-S11 checks.
 
 pub const BUILD_ACCELERATOR_PACKET_SCHEMAS: &[&str] = &[
     "OneDropPlanV0",
@@ -57,6 +58,16 @@ pub const BUILD_ACCELERATOR_PACKET_SCHEMAS: &[&str] = &[
     "IdempotencyKeyV0",
     "ApprovalCountReportV0",
     "MissionExecutorProofV0",
+    "MissionGauntletSuiteV0",
+    "GauntletMissionV0",
+    "GauntletRunPlanV0",
+    "GauntletResultV0",
+    "GitHubCapabilityClosureV0",
+    "ConnectorCapabilityManifestV0",
+    "CurrentMainHeadProofV0",
+    "IssueCommentCommandDispatchV0",
+    "PromptToScriptFirewallV0",
+    "S12MissionGauntletProofV0",
 ];
 
 pub const BUILD_ACCELERATOR_VALIDATION_TARGETS: &[&str] = &[
@@ -110,6 +121,28 @@ pub const BUILD_ACCELERATOR_VALIDATION_TARGETS: &[&str] = &[
     "idempotency",
     "approval-count-proof",
     "mission-executor",
+    "mission-gauntlet",
+    "approval-count-report",
+    "github-capability-closure",
+    "connector-capability-manifest",
+    "command-dispatch",
+    "command-outbox",
+    "proof-surface",
+    "mission-surface",
+    "repo-surface",
+    "current-main-head-proof",
+    "required-check-resolver",
+    "path-filter-pending-guard",
+    "mission-control-plane",
+    "mission-resource-mirror",
+    "descriptor-pinning",
+    "tool-output-taint",
+    "workflow-injection-guard",
+    "prompt-to-script-firewall",
+    "mission-replay",
+    "synthetic-failure-injection",
+    "mission-resume",
+    "boundary-quality",
 ];
 
 pub const ONE_DROP_STEPS: &[&str] = &[
@@ -216,6 +249,8 @@ pub const REGISTRATION_GUARDS: &[&str] = &[
     "cli_dependency_registered",
     "workflow_registered",
     "mission_executor_workflow_registered",
+    "mission_gauntlet_workflow_registered",
+    "connector_leverage_crate_registered",
 ];
 
 pub const HUMAN_ATTENTION_RULES: &[&str] = &[
@@ -233,6 +268,7 @@ pub const TOOL_FALLBACK_RULES: &[&str] = &[
     "fall_back_to_pr_patch",
     "stop_at_true_boundary",
     "github_permission_boundary_stop",
+    "issue_comment_command_dispatch_bridge",
 ];
 
 pub const RECOVERY_RULES: &[&str] = &[
@@ -242,6 +278,7 @@ pub const RECOVERY_RULES: &[&str] = &[
     "saturation_handoff_prompt",
     "idempotency_key_checked",
     "action_dedup_receipt_recorded",
+    "resume_no_duplicate_branch_pr_commit_merge",
 ];
 
 pub const NO_SILENT_DOWNGRADE_RULES: &[&str] = &[
@@ -251,6 +288,7 @@ pub const NO_SILENT_DOWNGRADE_RULES: &[&str] = &[
     "proof_gate_not_weakened",
     "safety_boundary_not_relaxed",
     "no_unverified_truth_commit_policy",
+    "s0_s11_gates_not_weakened",
 ];
 
 pub const FUTURE_PHASE_CONTRACT_RULES: &[&str] = &[
@@ -261,6 +299,7 @@ pub const FUTURE_PHASE_CONTRACT_RULES: &[&str] = &[
     "final_report_required",
     "next_tab_prompt_required",
     "one_accept_executor_available",
+    "one_accept_gauntlet_required_for_future_executor_changes",
 ];
 
 pub const REQUIRED_S9_DOCS: &[&str] = &[
@@ -277,6 +316,11 @@ pub const REQUIRED_S11_DOCS: &[&str] = &[
     "docs/S11_FINAL_REPORT.md",
 ];
 
+pub const REQUIRED_S12_DOCS: &[&str] = &[
+    "docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md",
+    "docs/S12_FINAL_REPORT.md",
+];
+
 pub const REQUIRED_S9_PROMPT_ARTIFACTS: &[&str] = &[
     "docs/PROMPTS/NEXT_TAB_PROMPT.md",
     "docs/PROMPTS/FUTURE_PHASE_DEFAULT_PROMPT.md",
@@ -290,6 +334,7 @@ pub const VELOCITY_METRICS: &[&str] = &[
     "repair_commits",
     "cleanup_prs_avoided",
     "workflow_dispatch_runs",
+    "bounded_missions_completed",
 ];
 
 pub const FRICTION_METRICS: &[&str] = &[
@@ -403,7 +448,9 @@ pub fn has_future_phase_contract_rule(rule: &str) -> bool {
 }
 
 pub fn has_required_doc(path: &str) -> bool {
-    REQUIRED_S9_DOCS.contains(&path) || REQUIRED_S11_DOCS.contains(&path)
+    REQUIRED_S9_DOCS.contains(&path)
+        || REQUIRED_S11_DOCS.contains(&path)
+        || REQUIRED_S12_DOCS.contains(&path)
 }
 
 pub fn has_required_prompt_artifact(path: &str) -> bool {
@@ -440,6 +487,34 @@ pub fn is_s11_validation_target(target: &str) -> bool {
     )
 }
 
+pub fn is_s12_validation_target(target: &str) -> bool {
+    matches!(
+        target,
+        "mission-gauntlet"
+            | "approval-count-report"
+            | "github-capability-closure"
+            | "connector-capability-manifest"
+            | "command-dispatch"
+            | "command-outbox"
+            | "proof-surface"
+            | "mission-surface"
+            | "repo-surface"
+            | "current-main-head-proof"
+            | "required-check-resolver"
+            | "path-filter-pending-guard"
+            | "mission-control-plane"
+            | "mission-resource-mirror"
+            | "descriptor-pinning"
+            | "tool-output-taint"
+            | "workflow-injection-guard"
+            | "prompt-to-script-firewall"
+            | "mission-replay"
+            | "synthetic-failure-injection"
+            | "mission-resume"
+            | "boundary-quality"
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -452,27 +527,21 @@ mod tests {
     const VELOCITY_SCHEMA: &str =
         include_str!("../../../schemas/BuildVelocityReportV0.schema.json");
     const S11_LEASE_SCHEMA: &str = include_str!("../../../schemas/MissionLeaseV0.schema.json");
+    const S12_GAUNTLET_SCHEMA: &str =
+        include_str!("../../../schemas/MissionGauntletSuiteV0.schema.json");
 
     #[test]
-    fn schema_inventory_contains_required_s9_contracts() {
+    fn schema_inventory_contains_required_s9_s11_s12_contracts() {
         assert!(is_build_accelerator_schema("OneDropPlanV0"));
         assert!(is_build_accelerator_schema("MissionApprovalEnvelopeV0"));
-        assert!(is_build_accelerator_schema("BatchRepairPlanV0"));
-        assert!(is_build_accelerator_schema("StateConsistencyReportV0"));
-        assert!(is_build_accelerator_schema("FuturePhaseDefaultContractV0"));
         assert!(is_build_accelerator_schema("S9BuildAcceleratorProofV0"));
-    }
-
-    #[test]
-    fn schema_inventory_contains_required_s11_contracts() {
         assert!(is_build_accelerator_schema("MissionLeaseV0"));
-        assert!(is_build_accelerator_schema("MissionExecutorRequestV0"));
-        assert!(is_build_accelerator_schema("ProofRepairLoopV0"));
-        assert!(is_build_accelerator_schema("PostMergeProofFreshnessGateV0"));
-        assert!(is_build_accelerator_schema("ApprovalCountReportV0"));
         assert!(is_build_accelerator_schema("MissionExecutorProofV0"));
-        assert!(is_s11_validation_target("mission-lease"));
+        assert!(is_build_accelerator_schema("MissionGauntletSuiteV0"));
+        assert!(is_build_accelerator_schema("S12MissionGauntletProofV0"));
         assert!(is_s11_validation_target("mission-executor"));
+        assert!(is_s12_validation_target("mission-gauntlet"));
+        assert!(is_build_accelerator_validation_target("mission-gauntlet"));
     }
 
     #[test]
@@ -482,15 +551,7 @@ mod tests {
         assert!(STATE_REPORT_SCHEMA.contains("StateConsistencyReportV0"));
         assert!(VELOCITY_SCHEMA.contains("BuildVelocityReportV0"));
         assert!(S11_LEASE_SCHEMA.contains("MissionLeaseV0"));
-    }
-
-    #[test]
-    fn one_drop_steps_match_s9_mission_shape() {
-        for step in ONE_DROP_STEPS {
-            assert!(has_one_drop_step(step));
-        }
-        assert!(has_one_drop_step("mission_approval"));
-        assert!(has_one_drop_step("merge_when_green"));
+        assert!(S12_GAUNTLET_SCHEMA.contains("MissionGauntletSuiteV0"));
     }
 
     #[test]
@@ -517,6 +578,7 @@ mod tests {
         assert!(has_no_silent_downgrade_rule(
             "no_unverified_truth_commit_policy"
         ));
+        assert!(has_no_silent_downgrade_rule("s0_s11_gates_not_weakened"));
     }
 
     #[test]

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MissionGauntletSuiteV0",
+  "type": "object",
+  "required": ["schema_version", "missions"],
+  "properties": {
+    "schema_version": { "const": "MissionGauntletSuiteV0" },
+    "missions": { "type": "array", "minItems": 5 },
+    "initial_approval_count": { "type": "integer", "minimum": 1, "maximum": 1 },
+    "routine_midpoint_approvals": { "type": "integer", "minimum": 0, "maximum": 0 }
+  },
+  "additionalProperties": true
+}
