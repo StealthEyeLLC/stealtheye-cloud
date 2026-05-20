@@ -10,12 +10,33 @@
 - Handoff: `STEALTHEYE_RELAY.md` and `STEALTHEYE_RELAY.json`
 - Latest checkpoint: `STEALTHEYE_SEAL.json`
 - Next action: `NEXT_ACTION.md`
+- Repo map: `AGENT_REPO_MAP.md`
 
 ## Specs
 
 - Final technical spec: `docs/StealthEye_Cloud_Final_Technical_Specification.md`
+- Status addendum: `docs/TECHNICAL_SPEC_STATUS_ADDENDUM.md`
 - Build plan: `docs/StealthEye_Cloud_Build_Plan.md`
+- S9 spec: `docs/S9_ONE_DROP_BUILD_ACCELERATOR.md`
+- S10 spec: `docs/S10_ASSISTANT_OPTIMIZATION_LAYER.md`
+- S10 implementation prompt: `docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md`
 
 ## Current phase
 
-S0 — Foundation, Continuity, Packet Spine, and Cheap CI.
+S0–S9 are merged green. S9 — One-Drop Build Accelerator is complete.
+
+S10 — Assistant Optimization Layer is selected for setup. No S10 implementation has started.
+
+## S10 implementation branch after setup merges
+
+```text
+build/s10-assistant-optimization-layer
+```
+
+## S10 scan pack
+
+Before implementing S10, read the S10 docs listed in `docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md`.
+
+## Do not use
+
+Do not create or rely on `CLAUDE.md`, `.github/copilot-instructions.md`, `.cursorrules`, `soul.md`, generic `MEMORY.md`, or generic `rules.md`.
