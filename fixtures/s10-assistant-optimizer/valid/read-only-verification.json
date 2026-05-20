@@ -1,0 +1,7 @@
+{
+  "schema_version": "ReadOnlyVerificationModeV0",
+  "id": "read-only-verification",
+  "status": "passed",
+  "evidence": ["inspection/report-only mode performs no mutation"],
+  "invariants": ["read-only mode blocks branch, commit, PR, workflow rerun, and merge mutation"]
+}

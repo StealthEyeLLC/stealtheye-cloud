@@ -1,0 +1,43 @@
+name: proof-assistant-optimizer
+
+on:
+  push:
+    branches:
+      - main
+      - 'build/**'
+      - 'repair/**'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  proof-assistant-optimizer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Format
+        run: cargo fmt --all -- --check
+      - name: Check
+        run: cargo check --workspace
+      - name: Test Assistant Optimizer contracts
+        run: cargo test -p secloud-assistant-optimizer
+      - name: Clippy Assistant Optimizer contracts
+        run: cargo clippy -p secloud-assistant-optimizer -- -D warnings
+      - name: Run S10 assistant optimizer proof
+        run: npm run proof:assistant-optimizer
+      - name: Validate S10 assistant optimizer artifacts
+        run: npm run proof:assistant-optimizer:summary
+      - name: Upload Assistant Optimizer artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s10-assistant-optimizer-artifacts
+          path: .stealtheye/assistant-optimizer/

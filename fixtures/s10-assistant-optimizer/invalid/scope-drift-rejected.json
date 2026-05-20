@@ -1,0 +1,7 @@
+{
+  "schema_version": "ScopeDriftDetectorV0",
+  "id": "scope-drift-rejected",
+  "status": "failed",
+  "evidence": ["unapproved novelty did not reduce friction, improve correctness, strengthen proof, improve continuation, or preserve safety"],
+  "invariants": ["scope drift is rejected"]
+}
