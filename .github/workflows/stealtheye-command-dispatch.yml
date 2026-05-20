@@ -32,30 +32,24 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p .stealtheye/command-outbox
-          COMMAND="${INPUT_COMMAND:-}"
-          if [ -z "$COMMAND" ]; then
-            COMMAND="$COMMENT_BODY"
-          fi
-          case "$COMMAND" in
-            "/stealtheye prove-main"*|"/stealtheye run-proof"*|"/stealtheye run-proof-set"*|"/stealtheye start-mission"*|"/stealtheye status"*)
-              STATUS="accepted_closed_command"
-              ;;
-            *)
-              STATUS="rejected_unknown_command"
-              ;;
-          esac
-          cat > .stealtheye/command-outbox/latest.json <<JSON
-          {
-            "schema_version": "CommandResultOutboxV0",
-            "event_name": "$EVENT_NAME",
-            "status": "$STATUS",
-            "latest_command": "$COMMAND",
-            "closed_command_set": ["prove-main", "run-proof", "run-proof-set", "start-mission", "status"],
-            "result": "CommandResultOutboxV0 receipt only; closed command parser does not execute arbitrary shell.",
-            "head_sha": "$HEAD_SHA"
-          }
-          JSON
-          cat .stealtheye/command-outbox/latest.json >> .stealtheye/command-outbox/history.jsonl
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const raw = process.env.INPUT_COMMAND || process.env.COMMENT_BODY || '/stealtheye status';
+          const closed = ['prove-main', 'run-proof', 'run-proof-set', 'start-mission', 'status'];
+          const commandName = raw.startsWith('/stealtheye ') ? raw.slice('/stealtheye '.length).split(/\s+/)[0] : '';
+          const receipt = {
+            schema_version: 'CommandResultOutboxV0',
+            event_name: process.env.EVENT_NAME || 'unknown',
+            status: closed.includes(commandName) ? 'accepted_closed_command' : 'rejected_unknown_command',
+            latest_command: raw,
+            normalized_command: commandName,
+            closed_command_set: closed,
+            result: 'Receipt-only parser. Closed commands are recorded as data.',
+            head_sha: process.env.HEAD_SHA || 'unknown'
+          };
+          fs.writeFileSync('.stealtheye/command-outbox/latest.json', JSON.stringify(receipt, null, 2) + '\n');
+          fs.appendFileSync('.stealtheye/command-outbox/history.jsonl', JSON.stringify(receipt) + '\n');
+          NODE
       - name: Upload command outbox
         uses: actions/upload-artifact@v4
         with:
