@@ -223,7 +223,10 @@ pub struct MissionLeaseSummary {
 }
 
 pub fn evaluate_mission_lease(summary: MissionLeaseSummary) -> MissionExecutorVerdict {
-    if summary.forbidden_actions_requested > 0 || summary.true_boundary_hit || summary.github_permission_blocked {
+    if summary.forbidden_actions_requested > 0
+        || summary.true_boundary_hit
+        || summary.github_permission_blocked
+    {
         return MissionExecutorVerdict::BoundaryStop;
     }
     if summary.direct_post_merge_truth_commit && !summary.fresh_main_head_proof_recorded {
@@ -240,8 +243,10 @@ mod tests {
     use super::*;
 
     const LEASE_SCHEMA: &str = include_str!("../../../schemas/MissionLeaseV0.schema.json");
-    const PREFLIGHT_SCHEMA: &str = include_str!("../../../schemas/GitHubCapabilityPreflightV0.schema.json");
-    const REQUEST_SCHEMA: &str = include_str!("../../../schemas/MissionExecutorRequestV0.schema.json");
+    const PREFLIGHT_SCHEMA: &str =
+        include_str!("../../../schemas/GitHubCapabilityPreflightV0.schema.json");
+    const REQUEST_SCHEMA: &str =
+        include_str!("../../../schemas/MissionExecutorRequestV0.schema.json");
     const PROOF_SCHEMA: &str = include_str!("../../../schemas/MissionExecutorProofV0.schema.json");
 
     #[test]
@@ -250,7 +255,9 @@ mod tests {
         assert!(is_mission_executor_schema("MissionExecutorRequestV0"));
         assert!(is_mission_executor_schema("ProofRepairLoopV0"));
         assert!(is_mission_executor_schema("PostMergeProofFreshnessGateV0"));
-        assert!(is_mission_executor_schema("NoUnverifiedTruthCommitPolicyV0"));
+        assert!(is_mission_executor_schema(
+            "NoUnverifiedTruthCommitPolicyV0"
+        ));
         assert!(is_mission_executor_schema("MissionExecutorProofV0"));
     }
 
@@ -283,7 +290,10 @@ mod tests {
             direct_post_merge_truth_commit: false,
             fresh_main_head_proof_recorded: false,
         };
-        assert_eq!(evaluate_mission_lease(summary), MissionExecutorVerdict::OneAcceptReady);
+        assert_eq!(
+            evaluate_mission_lease(summary),
+            MissionExecutorVerdict::OneAcceptReady
+        );
     }
 
     #[test]
@@ -297,14 +307,21 @@ mod tests {
             direct_post_merge_truth_commit: true,
             fresh_main_head_proof_recorded: false,
         };
-        assert_eq!(evaluate_mission_lease(summary), MissionExecutorVerdict::NeedsFreshMainProof);
+        assert_eq!(
+            evaluate_mission_lease(summary),
+            MissionExecutorVerdict::NeedsFreshMainProof
+        );
         assert!(requires_fresh_main_proof_for_direct_truth_commit(true));
     }
 
     #[test]
     fn required_artifacts_cover_demo_path() {
-        assert!(is_required_artifact(".stealtheye/mission-executor/mission-journal.jsonl"));
-        assert!(is_required_artifact(".stealtheye/mission-executor/approval-count-report.json"));
+        assert!(is_required_artifact(
+            ".stealtheye/mission-executor/mission-journal.jsonl"
+        ));
+        assert!(is_required_artifact(
+            ".stealtheye/mission-executor/approval-count-report.json"
+        ));
         assert!(has_capability_check("workflow_dispatch_available"));
         assert!(is_stop_condition("github_permission_boundary"));
     }
