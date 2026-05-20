@@ -19,23 +19,31 @@
 - Build plan: `docs/StealthEye_Cloud_Build_Plan.md`
 - S9 spec: `docs/S9_ONE_DROP_BUILD_ACCELERATOR.md`
 - S10 spec: `docs/S10_ASSISTANT_OPTIMIZATION_LAYER.md`
-- S10 implementation prompt: `docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md`
+- S11 plan: `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md`
 
 ## Current phase
 
-S0–S9 are merged green. S9 — One-Drop Build Accelerator is complete.
+S0–S10 are merged. S10 — Assistant Optimization Layer is complete.
 
-S10 — Assistant Optimization Layer is selected for setup. No S10 implementation has started.
+S11 — One-Accept Mission Executor is selected.
 
-## S10 implementation branch after setup merges
+## Important caveat
+
+S10 PR #19 was green before merge. A direct post-merge truth commit was made afterward at `7e500a4cb52eca01f9ebc2708d62e6ea70a74ee2`. That direct post-merge truth commit did not spawn a fresh Actions run through the connector and is not separately CI-verified.
+
+## S11 implementation branch
 
 ```text
-build/s10-assistant-optimization-layer
+build/s11-one-accept-mission-executor
 ```
 
-## S10 scan pack
+## S11 goal
 
-Before implementing S10, read the S10 docs listed in `docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md`.
+Build a real GitHub-native mission executor so one approved mission lease can complete routine repo/build/proof/repair/merge work without repeated operator confirmations.
+
+## Planning rule
+
+Future phase planning uses one planning document maximum unless the user explicitly asks for more. No prompt docs unless explicitly requested.
 
 ## Do not use
 
