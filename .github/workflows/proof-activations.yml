@@ -7,7 +7,9 @@ on:
       - 'build/**'
       - 'repair/**'
     paths:
-      - 'crates/secloud-activations/**'
+      - 'crates/secloud-notifications/**'
+      - 'crates/secloud-knowledge-mirror/**'
+      - 'crates/secloud-mobile-qa/**'
       - 'crates/secloud-packets/**'
       - 'schemas/MobilePlaytestActivationV0.schema.json'
       - 'schemas/NotificationActivationRunV0.schema.json'
@@ -21,7 +23,9 @@ on:
       - 'docs/S7_FIRST_REAL_ACTIVATIONS.md'
   pull_request:
     paths:
-      - 'crates/secloud-activations/**'
+      - 'crates/secloud-notifications/**'
+      - 'crates/secloud-knowledge-mirror/**'
+      - 'crates/secloud-mobile-qa/**'
       - 'crates/secloud-packets/**'
       - 'schemas/MobilePlaytestActivationV0.schema.json'
       - 'schemas/NotificationActivationRunV0.schema.json'
@@ -59,10 +63,10 @@ jobs:
         run: cargo check --workspace
 
       - name: Test activation contracts
-        run: cargo test -p secloud-activations
+        run: cargo test -p secloud-notifications -p secloud-knowledge-mirror -p secloud-mobile-qa
 
       - name: Clippy activation contracts
-        run: cargo clippy -p secloud-activations -- -D warnings
+        run: cargo clippy -p secloud-notifications -p secloud-knowledge-mirror -p secloud-mobile-qa -- -D warnings
 
       - name: Validate schema inventory
         run: cargo run -p secloud-cli -- validate schemas
