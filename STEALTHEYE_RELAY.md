@@ -42,6 +42,14 @@ S11 direct post-merge truth commit:
 8988e32fc61e2824dcc19eef30da2894112ea9f9
 ```
 
+The direct post-S11 truth commit is present but not proven because no fresh workflow runs or combined statuses are visible for that commit through the connector.
+
+Selected next mission:
+
+```text
+S12 — One-Accept Mission Gauntlet
+```
+
 ## 4. Latest Verified Result
 
 S11 PR #21 was green before merge for:
@@ -65,27 +73,19 @@ proof-remediator
 proof-activations
 ```
 
-## 5. Direct Post-Merge Truth Update
+## 5. Active Approval Envelope
 
-The direct post-S11 truth commit `8988e32fc61e2824dcc19eef30da2894112ea9f9` is present but not proven because no fresh workflow runs or combined statuses are visible for that commit through the connector.
+Allowed: compact S12 prep only: one planning document, minimal canonical state/handoff/orientation updates, one PR, proof inspection, exact repairs if needed, and merge when green.
 
-S12 must add a safe command-dispatch or connector leverage path that can trigger and verify fresh main-head proof.
+Not allowed in prep: S12 implementation crates, S12 schemas, S12 validators, command-dispatch workflow, proof-mission-gauntlet workflow, prompt doc, subsystem document forest, hidden autonomy claims, validator weakening, schema weakening, or proof weakening.
 
-## 6. S12 Selected Mission
-
-```text
-S12 — One-Accept Mission Gauntlet
-```
-
-S12 exists to prove and harden S11 by running real bounded missions through the one-accept executor, adding high-leverage connector surfaces, closing GitHub token/workflow/merge gaps, mirroring mission receipts safely through MCP-style resources, and proving one initial approval with zero routine midpoint approvals.
-
-## 7. Next Exact Action
+## 6. Next Exact Action
 
 ```text
 Merge compact S12 prep green, then implement S12 from docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md on branch build/s12-one-accept-mission-gauntlet.
 ```
 
-## 8. Decisions That Must Not Drift
+## 7. Decisions That Must Not Drift
 
 1. Product name: StealthEye Cloud.
 2. S9 name: One-Drop Build Accelerator.
@@ -98,15 +98,15 @@ Merge compact S12 prep green, then implement S12 from docs/S12_ONE_ACCEPT_MISSIO
 9. Relay/Seal/Active/Next Action is the mandatory handoff spine.
 10. Direct post-merge truth commits require fresh proof before being treated as CI-verified.
 
-## 9. Do Not Reopen
+## 8. Do Not Reopen
 
 Do not reopen S6/S7/S8/S9/S10/S11/S12 naming, no-fake-build rule, Remediator naming, S9 one-drop mode, S10 no-hidden-autonomy rule, S11 one-accept purpose, or S0–S11 proof unless the operator explicitly changes them.
 
-## 10. Open Questions / Boundaries
+## 9. Open Questions / Boundaries
 
 No active blocker for prep.
 
-## 11. Required Files / Repos / Branches
+## 10. Required Files / Repos / Branches
 
 Repo: `StealthEyeLLC/stealtheye-cloud`
 
@@ -122,24 +122,24 @@ S12 implementation branch after prep merges:
 build/s12-one-accept-mission-gauntlet
 ```
 
-## 12. Latest Seal
+## 11. Latest Seal
 
 Latest Seal: `STEALTHEYE_SEAL.json`
 
 Latest Seal ID: `seal-s12-one-accept-mission-gauntlet-selected`
 
-## 13. Failure / Blocker State
+## 12. Failure / Blocker State
 
 No active blocker for prep.
 
-## 14. Codex / Worker State
+## 13. Codex / Worker State
 
 No Codex worker used. GitHub Actions remains the proof and executor body.
 
-## 15. Browser State
+## 14. Browser State
 
 No browser runtime changes. No browser-cookie/session-token automation was used.
 
-## 16. Public / Private Boundary
+## 15. Public / Private Boundary
 
 Only public-safe proof-kernel content is allowed in this repo.
