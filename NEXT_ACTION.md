@@ -6,8 +6,8 @@ Current state:
 S0–S11 merged.
 S9 — One-Drop Build Accelerator is complete.
 S10 — Assistant Optimization Layer is complete.
-S11 prep PR #20 is merged.
-S11 — One-Accept Mission Executor is merged through PR #21.
+S11 — One-Accept Mission Executor is complete.
+S12 — One-Accept Mission Gauntlet is selected.
 ```
 
 S11 merge SHA:
@@ -16,22 +16,22 @@ S11 merge SHA:
 da07e96c466f54086143a34422c47a60f6de1d2e
 ```
 
-S11 implementation branch:
+S11 direct post-merge truth commit:
 
 ```text
-build/s11-one-accept-mission-executor
+8988e32fc61e2824dcc19eef30da2894112ea9f9
 ```
 
-S11 source doc:
+S12 planning doc:
 
 ```text
-docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md
+docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md
 ```
 
 Immediate next action:
 
 ```text
-Await the next operator-selected mission. Do not start S12 until the operator chooses it.
+Implement S12 — One-Accept Mission Gauntlet from docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md on branch build/s12-one-accept-mission-gauntlet.
 ```
 
 Do not reopen:
@@ -43,10 +43,11 @@ S8 architecture
 S9 selected name and purpose
 S10 selected name and purpose
 S11 selected name and purpose
+S12 selected name and purpose
 ```
 
 Post-merge truth rule:
 
 ```text
-This direct post-merge truth update must be freshly verified on the resulting main HEAD before it counts as proven.
+Direct post-merge truth commit 8988e32fc61e2824dcc19eef30da2894112ea9f9 remains present but not proven until fresh main-head proof is visible. S12 must add a command-dispatch or connector leverage path that can trigger and verify fresh main-head proof.
 ```
