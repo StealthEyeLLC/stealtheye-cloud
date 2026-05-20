@@ -96,7 +96,6 @@ const s9MergeSha = 'a5540d1fe77a0752a6a32b086a66b7b4bbec33ec';
 const s10MergeSha = 'fd2bcda27a281fb080aaef472bd87123e4fe02b6';
 const s11MergeSha = 'da07e96c466f54086143a34422c47a60f6de1d2e';
 const postS11TruthSha = '8988e32fc61e2824dcc19eef30da2894112ea9f9';
-const s11Name = 'S11 — One-Accept Mission Executor';
 const s12Name = 'S12 — One-Accept Mission Gauntlet';
 const currentTruthOk =
   docsText['STEALTHEYE_ACTIVE.md'].includes('S0–S11') &&
@@ -127,6 +126,7 @@ const consistencyChecks = [
   { name: 'next action points to s12 implementation', passed: nextActionPointsForward },
   { name: 's9 one-drop mode remains documented', passed: docsText['README.md'].includes('one mission approval') && docsText['README.md'].includes('merge when green') }
 ];
+const failedConsistencyChecks = consistencyChecks.filter((check) => !check.passed);
 
 const buildVelocityReport = {
   schema_version: 'BuildVelocityReportV0',
@@ -158,8 +158,9 @@ const confirmationFrictionLedger = {
 const stateConsistencyReport = {
   schema_version: 'StateConsistencyReportV0',
   id: 's9-state-consistency-report',
-  status: staleFindings.length === 0 && consistencyChecks.every((check) => check.passed) ? 'passed' : 'failed',
+  status: staleFindings.length === 0 && failedConsistencyChecks.length === 0 ? 'passed' : 'failed',
   consistency_checks: consistencyChecks,
+  failed_consistency_checks: failedConsistencyChecks,
   stale_findings: staleFindings,
   invariants: ['Active/Relay/Seal/Next Action align on current phase truth', 'S12 selected truth is recorded without weakening S9 proof']
 };
@@ -181,6 +182,8 @@ const proofSummary = {
   missing_schemas: missingSchemas,
   missing_markers: missingMarkers,
   forbidden_present: forbiddenPresent,
+  failed_consistency_checks: failedConsistencyChecks,
+  stale_findings: staleFindings,
   artifacts: [
     '.stealtheye/build-accelerator/build-velocity-report.json',
     '.stealtheye/build-accelerator/confirmation-friction-ledger.json',
