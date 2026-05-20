@@ -1,0 +1,53 @@
+name: proof-mission-gauntlet
+
+on:
+  push:
+    branches:
+      - main
+      - 'build/**'
+      - 'repair/**'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  proof-mission-gauntlet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Format
+        run: cargo fmt --all -- --check
+      - name: Check
+        run: cargo check --workspace
+      - name: Test Mission Gauntlet contracts
+        run: cargo test -p secloud-mission-gauntlet
+      - name: Test Connector Leverage contracts
+        run: cargo test -p secloud-connector-leverage
+      - name: Test Build Accelerator doctor rail
+        run: cargo test -p secloud-build-accelerator
+      - name: Validate Doctor rail
+        run: cargo run -p secloud-cli -- doctor
+      - name: Clippy Mission Gauntlet contracts
+        run: cargo clippy -p secloud-mission-gauntlet -- -D warnings
+      - name: Clippy Connector Leverage contracts
+        run: cargo clippy -p secloud-connector-leverage -- -D warnings
+      - name: Run S12 mission gauntlet proof
+        run: npm run proof:mission-gauntlet
+      - name: Validate S12 mission gauntlet artifacts
+        run: npm run proof:mission-gauntlet:summary
+      - name: Upload Mission Gauntlet artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s12-mission-gauntlet-artifacts
+          path: |
+            .stealtheye/mission-gauntlet/
+            .stealtheye/command-outbox/
