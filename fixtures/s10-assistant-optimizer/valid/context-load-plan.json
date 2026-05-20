@@ -1,0 +1,7 @@
+{
+  "schema_version": "ContextLoadPlanV0",
+  "id": "correct-context-load-plan",
+  "status": "passed",
+  "evidence": ["required files identified before implementation"],
+  "invariants": ["repo truth loaded before stale memory"]
+}
