@@ -6,7 +6,40 @@ It is optimized for one active ChatGPT tab until saturation, public free CI proo
 
 ## Current build state
 
-Current status: **S0–S8 merged green; S9 implementation active on `build/s9-one-drop-build-accelerator`**.
+Current status: **S0–S9 merged green. S9 — One-Drop Build Accelerator is complete. No S10 implementation has started.**
+
+Latest completed mission:
+
+```text
+S9 — One-Drop Build Accelerator
+```
+
+S9 PR:
+
+```text
+#16
+```
+
+S9 merge SHA:
+
+```text
+a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
+```
+
+S9 green before merge:
+
+```text
+proof-fast
+proof-full
+proof-browser
+proof-mobile
+proof-e2e
+proof-gateway
+proof-activations
+proof-remediator
+proof-build-accelerator
+proof-windows-targeted
+```
 
 Completed spine:
 
@@ -20,11 +53,6 @@ S5 — Full hardening, public release candidate, and first end-to-end mission
 S6 — Zero-Trust Cross-Cloud Gateway
 S7 — First Real Activations
 S8 — StealthEye Cloud Remediator
-```
-
-Active mission:
-
-```text
 S9 — One-Drop Build Accelerator
 ```
 
@@ -49,6 +77,7 @@ Post-S6 cleanup PR #9 merge SHA: a5e6eccc37067cf264fd8859c69fc412da855bb8
 S7 PR #11 merge SHA: d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
 S8 PR #13 merge SHA: 12081b4d311844b62aecafb5ff045414e94a4a7c
 Post-S8 cleanup PR #14 merge SHA: e45b0e75fc9b1f8a9e1ed09db90d69037fe9c11d
+S9 PR #16 merge SHA: a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
 ```
 
 ## Start here
@@ -58,6 +87,12 @@ Post-S8 cleanup PR #14 merge SHA: e45b0e75fc9b1f8a9e1ed09db90d69037fe9c11d
 3. Read `STEALTHEYE_ACTIVE.md`.
 4. Read `STEALTHEYE_RELAY.md` and `STEALTHEYE_SEAL.json` when resuming.
 5. Perform `NEXT_ACTION.md` unless a boundary is required.
+
+## Next action
+
+```text
+Define or choose S10.
+```
 
 ## Canonical docs
 

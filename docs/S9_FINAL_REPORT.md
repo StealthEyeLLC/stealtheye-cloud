@@ -2,7 +2,25 @@
 
 ## Status
 
-S9 implementation branch is active and merge-aware. Final merged status is resolved by the PR merge result.
+S9 — One-Drop Build Accelerator is complete and merged green.
+
+PR:
+
+```text
+#16
+```
+
+Merge SHA:
+
+```text
+a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
+```
+
+Completed implementation branch:
+
+```text
+build/s9-one-drop-build-accelerator
+```
 
 ## Implemented surface
 
@@ -18,14 +36,37 @@ S9 implementation branch is active and merge-aware. Final merged status is resol
 - no-cleanup-PR artifact
 - future phase default prompt
 
+## Green before merge
+
+```text
+proof-fast
+proof-full
+proof-browser
+proof-mobile
+proof-e2e
+proof-gateway
+proof-activations
+proof-remediator
+proof-build-accelerator
+proof-windows-targeted
+```
+
 ## No validator weakening
 
-No validator weakening is allowed or implemented. S9 adds explicit no-silent-downgrade contracts that require validators, schemas, workflows, proof gates, and safety boundaries to remain present and strong.
+No validator weakening was allowed or implemented. S9 adds explicit no-silent-downgrade contracts that require validators, schemas, workflows, proof gates, and safety boundaries to remain present and strong.
 
 ## Boundary preservation
 
-S9 does not authorize secrets, paid compute, private data exposure, account permission changes, production deployment, database mutation, browser-cookie/session-token automation, destructive irreversible actions, or unresolved high-impact ambiguity.
+S9 did not authorize restricted or unsafe actions. It only compressed avoidable process friction while preserving proof and approval boundaries.
 
 ## Proof
 
 The dedicated proof body is `.github/workflows/proof-build-accelerator.yml` plus `npm run proof:build-accelerator` and `npm run proof:build-accelerator:summary`.
+
+## Next action
+
+No S10 implementation has started.
+
+```text
+Define or choose S10.
+```

@@ -1,21 +1,23 @@
 # Next Action
 
-Current mission:
+Current state:
 
 ```text
-S9 — One-Drop Build Accelerator
+S0–S9 merged green.
+S9 — One-Drop Build Accelerator is complete.
+No S10 implementation has started.
 ```
 
-Current implementation branch:
+S9 PR:
 
 ```text
-build/s9-one-drop-build-accelerator
+#16
 ```
 
-Immediate next action:
+S9 merge SHA:
 
 ```text
-Open the S9 implementation PR, run the proof wave, inspect all failures before patching, batch exact repairs if needed, and merge when green.
+a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
 ```
 
 S9 proof workflow:
@@ -24,10 +26,22 @@ S9 proof workflow:
 .github/workflows/proof-build-accelerator.yml
 ```
 
-merge-aware next action after S9 is green and merged:
+Completed S9 implementation branch:
 
 ```text
-Continue from current main and define S10 or the next selected mission using S9 one-drop mode. Record exact merge metadata only if truth requires it.
+build/s9-one-drop-build-accelerator
+```
+
+Immediate next action:
+
+```text
+Define or choose S10.
+```
+
+merge-aware cleanup continuation:
+
+```text
+After this post-S9 cleanup PR merges green, continue from current main and define or choose S10. Do not begin S10 implementation inside the cleanup PR.
 ```
 
 Do not reopen:
@@ -38,12 +52,7 @@ S7 architecture
 S8 architecture
 S8 proof-driven remediation claim rule
 S9 selected name and purpose
-```
-
-Boundary:
-
-```text
-No secrets, no paid compute, no production deployment, no database mutation, no account permission changes, and no browser-cookie/session-token automation.
+S9 merged proof truth
 ```
 
 No-weakening invariant:

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document defines the exact StealthEye Cloud handoff procedure for continuing work from one ChatGPT tab to the next.
+This document defines the StealthEye Cloud handoff procedure for continuing work from one ChatGPT tab to the next.
 
 ## Canonical handoff files
 
@@ -18,7 +18,7 @@ NEXT_ACTION.md
 
 ## Resume order
 
-The next active tab must read, in order:
+The next active tab must read:
 
 1. `AGENTS.md`
 2. `STEALTHEYE_DECISIONS.md`
@@ -32,58 +32,21 @@ Then it performs `NEXT_ACTION.md` unless a true boundary is present.
 
 ## Current continuation target
 
-S9 — One-Drop Build Accelerator implementation.
+Post-S9 truth cleanup.
 
-Implementation branch:
-
-```text
-build/s9-one-drop-build-accelerator
-```
-
-Current proof workflow:
+Cleanup branch:
 
 ```text
-.github/workflows/proof-build-accelerator.yml
+build/post-s9-truth-cleanup
 ```
 
-## Current operating envelope
+If the cleanup is already merged, continue from current `main`.
 
-Allowed:
+## S9 final status
 
-1. GitHub-direct cloud-only implementation
-2. one branch per coherent drop
-3. one PR per coherent drop
-4. CI proof before merge
-5. exact failure repair
-6. merge when green if approved envelope allows it
-7. mission-level approval for routine actions
+S9 is complete and merged through PR #16 at merge SHA `a5540d1fe77a0752a6a32b086a66b7b4bbec33ec`.
 
-Stop for:
-
-1. secrets
-2. paid compute
-3. account permission changes
-4. production deployment without explicit approval
-5. database mutation without explicit approval
-6. browser-cookie/session-token automation
-7. private data exposure risk
-8. unresolved high-impact product ambiguity
-
-## S7 final status
-
-S7 is complete and merged. It activated mobile browser playtest proof, notification dry-run/conditional dispatch, and knowledge mirror export. It did not commit or print secrets, use paid compute, deploy production systems, mutate databases, perform live external mirror sync, or automate browser sessions/cookies.
-
-## S8 final status
-
-S8 is complete and merged through PR #13 at merge SHA `12081b4d311844b62aecafb5ff045414e94a4a7c`.
-
-S8 added `crates/secloud-remediator`, active S8 validators, `proof-remediator`, and a synthetic broken-repo remediation proof that reproduces failure, applies a bounded patch, reruns proof green, emits remediation artifacts, and preserves diagnosis-only handling for unreproduced failures.
-
-## S9 implementation status
-
-S9 is the active implementation mission.
-
-S9 exists to make future phases and projects operate as close as possible to:
+S9 — One-Drop Build Accelerator makes future phases and projects operate as close as possible to:
 
 ```text
 one mission approval
@@ -94,12 +57,23 @@ one mission approval
 → merge when green
 ```
 
-S9 implementation includes build accelerator contracts, schemas, CLI/doctor validators, proof workflow, build velocity and friction artifacts, state consistency checks, no-cleanup-PR checks, batch repair checks, mission approval envelope checks, no-silent-downgrade checks, and the future phase default prompt.
+S9 merged green after these workflows passed:
 
-## S9 handoff rule
+```text
+proof-fast
+proof-full
+proof-browser
+proof-mobile
+proof-e2e
+proof-gateway
+proof-activations
+proof-remediator
+proof-build-accelerator
+proof-windows-targeted
+```
 
-Do not ask the user to re-explain S0–S8 or the S9 objective. Use the repo docs, S9 spec, and prompt artifacts as continuation truth.
+No S10 implementation has started.
 
-Do not reopen S6, S7, or S8 architecture unless the user explicitly asks.
+The next action is to define or choose S10.
 
 Fast mode reduces avoidable process friction only. It must not weaken validators, schemas, proof gates, safety boundaries, or merge discipline.
