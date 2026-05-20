@@ -1,19 +1,19 @@
 {
   "schema_version": "StealthEyeRelayV0",
-  "relay_id": "relay-post-s9-truth-cleanup",
-  "created_at": "2026-05-19T21:15:00Z",
+  "relay_id": "relay-s10-assistant-optimization-layer-setup",
+  "created_at": "2026-05-19T22:20:00Z",
   "product_name": "StealthEye Cloud",
-  "mission_id": "post-s9-truth-cleanup",
-  "mission_title": "Post-S9 truth cleanup",
-  "mission_status": "cleanup_branch_active",
+  "mission_id": "s10-assistant-optimization-layer-setup",
+  "mission_title": "S10 setup docs",
+  "mission_status": "setup_branch_active",
   "active_repo": "StealthEyeLLC/stealtheye-cloud",
-  "active_branch": "build/post-s9-truth-cleanup",
+  "active_branch": "build/s10-assistant-optimization-layer-setup",
   "active_pr": null,
   "active_pr_url": null,
-  "latest_seal_id": "seal-post-s9-truth-cleanup",
-  "latest_ci_status": "pending_cleanup_pr_proof_wave",
+  "latest_seal_id": "seal-s10-assistant-optimization-layer-setup",
+  "latest_ci_status": "pending_setup_pr_proof_wave",
   "latest_browser_status": "not_required",
-  "current_approval": "user-approved-post-s9-truth-cleanup-only",
+  "current_approval": "user-approved-s10-docs-and-implementation-prompt-setup-only",
   "completed_milestone": {
     "mission_id": "s9-one-drop-build-accelerator",
     "title": "S9 — One-Drop Build Accelerator",
@@ -34,14 +34,24 @@
       "proof-windows-targeted"
     ]
   },
-  "next_action": "Define or choose S10.",
-  "s10_status": "not_started",
+  "selected_next_mission": {
+    "mission_id": "s10-assistant-optimization-layer",
+    "title": "S10 — Assistant Optimization Layer",
+    "setup_branch": "build/s10-assistant-optimization-layer-setup",
+    "implementation_branch": "build/s10-assistant-optimization-layer",
+    "status": "selected_setup_active",
+    "implementation_status": "not_started",
+    "purpose": "Optimize the assistant/operator layer so ChatGPT uses the S9 one-drop rail with better context loading, tool planning, recovery, proof reasoning, low-attention operation, handoff quality, read-only verification, and self-audit."
+  },
+  "next_action": "Complete and merge the S10 setup docs PR, then start S10 implementation from current main using docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md.",
+  "s10_status": "selected_setup_active_no_implementation_started",
   "blocked_reason": null,
   "do_not_reopen": [
     "S6/S7/S8 naming",
     "no-placeholder rule",
     "Remediator naming",
     "S9 One-Drop Build Accelerator naming and purpose",
+    "S10 Assistant Optimization Layer naming and purpose",
     "S9 PR #16 merged truth",
     "S9 merge SHA a5540d1fe77a0752a6a32b086a66b7b4bbec33ec",
     "no-local default",
@@ -51,6 +61,6 @@
     "forbidden session automation",
     "S6/S7/S8/S9 architecture and proof"
   ],
-  "safety_boundary": "Future work must remain public-safe unless explicitly approved.",
-  "resume_prompt": "Resume StealthEye Cloud from current main if this cleanup is merged. S0-S9 are merged green. S9 PR #16 merged at a5540d1fe77a0752a6a32b086a66b7b4bbec33ec. No S10 implementation has started. Next action: define or choose S10."
+  "safety_boundary": "Future work must remain public-safe unless explicitly approved. S10 setup is docs/state/prompt only and must not implement S10 runtime/contracts in this branch.",
+  "resume_prompt": "Resume StealthEye Cloud from current main if S10 setup is merged. S0-S9 are merged green. S10 is selected as Assistant Optimization Layer. No S10 implementation has started. Start S10 on build/s10-assistant-optimization-layer using docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md."
 }

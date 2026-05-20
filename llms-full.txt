@@ -20,7 +20,7 @@ Use one active ChatGPT tab until saturation. At saturation, update Relay, Seal, 
 - `STEALTHEYE_SEAL.json` checkpoints truth.
 - `NEXT_ACTION.md` gives one exact next action.
 
-## Build sequence
+## Completed build sequence
 
 1. S0 — Foundation, Continuity, Packet Spine, and Cheap CI
 2. S1 — Mission Executor, Atomic Drop Rail, Authority Queue, and GitHub Evidence
@@ -28,6 +28,95 @@ Use one active ChatGPT tab until saturation. At saturation, update Relay, Seal, 
 4. S3 — MCP/App Control Plane, Tool Registry, Skills, Workers, and Background Capability Reality
 5. S4 — Self-Improving Skills, Past-Session Search, Hypothesis Racing, and Public Proof Canvas
 6. S5 — Full Hardening, Public Release Candidate, and First End-to-End Mission
+7. S6 — Zero-Trust Cross-Cloud Gateway
+8. S7 — First Real Activations
+9. S8 — StealthEye Cloud Remediator
+10. S9 — One-Drop Build Accelerator
+
+## Selected next mission
+
+```text
+S10 — Assistant Optimization Layer
+```
+
+S10 is selected for setup. No S10 implementation has started.
+
+S10 optimizes the assistant/operator layer so ChatGPT uses the S9 one-drop rail with better mission intake, context loading, repo-truth handling, tool planning, fallback recovery, proof reasoning, low-attention operation, handoff quality, read-only verification, and self-audit.
+
+## S10 setup branch
+
+```text
+build/s10-assistant-optimization-layer-setup
+```
+
+## S10 implementation branch after setup merges
+
+```text
+build/s10-assistant-optimization-layer
+```
+
+## S10 implementation prompt
+
+```text
+docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md
+```
+
+## S10 implementation scan pack
+
+Before implementing S10, read:
+
+```text
+AGENTS.md
+STEALTHEYE_DECISIONS.md
+STEALTHEYE_ACTIVE.md
+STEALTHEYE_RELAY.md
+STEALTHEYE_RELAY.json
+STEALTHEYE_SEAL.json
+NEXT_ACTION.md
+README.md
+AGENT_REPO_MAP.md
+llms.txt
+llms-full.txt
+docs/StealthEye_Cloud_Build_Plan.md
+docs/HANDOFF_AND_CONTINUATION.md
+docs/S9_ONE_DROP_BUILD_ACCELERATOR.md
+docs/ONE_DROP_BUILD_MODE.md
+docs/MISSION_APPROVAL_ENVELOPE.md
+docs/BATCH_REPAIR_POLICY.md
+docs/MERGE_AWARE_HANDOFF.md
+docs/PHASE_TEMPLATE_SYSTEM.md
+docs/S10_ASSISTANT_OPTIMIZATION_LAYER.md
+docs/ASSISTANT_OPERATING_PROFILE.md
+docs/MISSION_INTAKE_OPTIMIZER.md
+docs/CONTEXT_LOAD_POLICY.md
+docs/REPO_TRUTH_FIRST_POLICY.md
+docs/LOW_ATTENTION_WORKDAY_MODE.md
+docs/HANDOFF_QUALITY_GATE.md
+docs/TOOL_USE_PLANNER.md
+docs/TOOL_FALLBACK_POLICY.md
+docs/PROMPT_COMPRESSION.md
+docs/SCOPE_DRIFT_GUARD.md
+docs/PROOF_AWARENESS_LAYER.md
+docs/REPAIR_INTELLIGENCE_LAYER.md
+docs/READ_ONLY_VERIFICATION_MODE.md
+docs/ASSISTANT_SELF_AUDIT.md
+docs/CAPABILITY_REALITY_MAP.md
+docs/BUILD_COCKPIT_CARD.md
+docs/AGENT_OBSERVABILITY_TRACE_DIGEST.md
+docs/MCP_AWARE_OPERATOR_POLICY.md
+```
+
+## S10 implementation shape
+
+S10 implementation must add:
+
+```text
+crates/secloud-assistant-optimizer
+.github/workflows/proof-assistant-optimizer.yml
+scripts/s10-assistant-optimizer-proof.mjs
+scripts/check-s10-assistant-optimizer-artifacts.mjs
+.stealtheye/assistant-optimizer/
+```
 
 ## Non-negotiables
 
@@ -37,3 +126,5 @@ Use one active ChatGPT tab until saturation. At saturation, update Relay, Seal, 
 - No private leakage in public repo.
 - No watered-down core builds.
 - No per-file confirmation model.
+- No validator, schema, workflow, proof, safety, or merge-discipline weakening.
+- No browser-cookie/session-token automation.

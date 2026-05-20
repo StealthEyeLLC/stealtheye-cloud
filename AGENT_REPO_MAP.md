@@ -6,12 +6,24 @@ This file gives ChatGPT and future agent workers a fast map of the StealthEye Cl
 
 ## Current phase
 
-S0–S9 are merged green. S9 — One-Drop Build Accelerator is complete. No S10 implementation has started.
+S0–S9 are merged green. S9 — One-Drop Build Accelerator is complete. S10 — Assistant Optimization Layer is selected for setup. No S10 implementation has started.
+
+## Current setup branch
+
+```text
+build/s10-assistant-optimization-layer-setup
+```
+
+## Next implementation branch
+
+```text
+build/s10-assistant-optimization-layer
+```
 
 ## Next action
 
 ```text
-Define or choose S10.
+Complete and merge the S10 setup docs PR, then start S10 implementation from current main using docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md.
 ```
 
 ## Root files
@@ -66,6 +78,16 @@ Define or choose S10.
 - `.github/workflows/` — public proof workflows
 - `.stealtheye/` — state, memory, Relay, Seal, packet, Skill, and worker artifacts
 
+## S10 planned implementation folders/files
+
+S10 implementation must add:
+
+- `crates/secloud-assistant-optimizer/` — S10 assistant/operator optimization contracts
+- `.github/workflows/proof-assistant-optimizer.yml` — S10 proof workflow
+- `scripts/s10-assistant-optimizer-proof.mjs` — S10 proof artifact generator
+- `scripts/check-s10-assistant-optimizer-artifacts.mjs` — S10 artifact checker
+- `.stealtheye/assistant-optimizer/` — generated S10 proof artifacts
+
 ## Current proof workflows
 
 - `proof-fast.yml` — fast Linux proof
@@ -78,6 +100,33 @@ Define or choose S10.
 - `proof-remediator.yml` — S8 active Remediator Mode proof
 - `proof-build-accelerator.yml` — S9 one-drop build accelerator proof
 - `proof-windows-targeted.yml` — targeted Windows proof
+
+S10 implementation must add:
+
+- `proof-assistant-optimizer.yml` — S10 assistant optimizer proof
+
+## S10 docs to scan before implementation
+
+- `docs/S10_ASSISTANT_OPTIMIZATION_LAYER.md`
+- `docs/ASSISTANT_OPERATING_PROFILE.md`
+- `docs/MISSION_INTAKE_OPTIMIZER.md`
+- `docs/CONTEXT_LOAD_POLICY.md`
+- `docs/REPO_TRUTH_FIRST_POLICY.md`
+- `docs/LOW_ATTENTION_WORKDAY_MODE.md`
+- `docs/HANDOFF_QUALITY_GATE.md`
+- `docs/TOOL_USE_PLANNER.md`
+- `docs/TOOL_FALLBACK_POLICY.md`
+- `docs/PROMPT_COMPRESSION.md`
+- `docs/SCOPE_DRIFT_GUARD.md`
+- `docs/PROOF_AWARENESS_LAYER.md`
+- `docs/REPAIR_INTELLIGENCE_LAYER.md`
+- `docs/READ_ONLY_VERIFICATION_MODE.md`
+- `docs/ASSISTANT_SELF_AUDIT.md`
+- `docs/CAPABILITY_REALITY_MAP.md`
+- `docs/BUILD_COCKPIT_CARD.md`
+- `docs/AGENT_OBSERVABILITY_TRACE_DIGEST.md`
+- `docs/MCP_AWARE_OPERATOR_POLICY.md`
+- `docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md`
 
 ## Completed S9 implementation branch
 

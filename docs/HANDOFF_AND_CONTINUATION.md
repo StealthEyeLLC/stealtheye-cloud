@@ -32,15 +32,19 @@ Then it performs `NEXT_ACTION.md` unless a true boundary is present.
 
 ## Current continuation target
 
-Post-S9 truth cleanup.
+S10 setup docs.
 
-Cleanup branch:
+Setup branch:
 
 ```text
-build/post-s9-truth-cleanup
+build/s10-assistant-optimization-layer-setup
 ```
 
-If the cleanup is already merged, continue from current `main`.
+If the setup is already merged, continue from current `main` and begin S10 implementation using:
+
+```text
+docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md
+```
 
 ## S9 final status
 
@@ -72,8 +76,47 @@ proof-build-accelerator
 proof-windows-targeted
 ```
 
-No S10 implementation has started.
+## S10 selected status
 
-The next action is to define or choose S10.
+S10 is selected as:
+
+```text
+S10 — Assistant Optimization Layer
+```
+
+S10 setup branch is docs/state/prompt only. No S10 implementation has started.
+
+S10 implementation branch after setup merges:
+
+```text
+build/s10-assistant-optimization-layer
+```
+
+S10 exists to make the active ChatGPT/StealthEye Cloud tab faster, less needy, more reliable across tabs, better at context loading, better at tool use, better at recovery, better at proof reasoning, and better at minimizing operator attention burden.
+
+## S10 implementation handoff rule
+
+The implementation tab must read `docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md` and all files listed in that prompt before building.
+
+Do not ask the user to re-explain S0–S9 or the S10 objective. Use the repo docs, S10 spec, S10 support docs, and prompt artifact as continuation truth.
+
+Do not reopen S6, S7, S8, or S9 architecture unless the user explicitly asks.
 
 Fast mode reduces avoidable process friction only. It must not weaken validators, schemas, proof gates, safety boundaries, or merge discipline.
+
+## Boundary reminders
+
+Do not create or rely on:
+
+```text
+CLAUDE.md
+.github/copilot-instructions.md
+.cursorrules
+soul.md
+generic root MEMORY.md
+generic root rules.md
+```
+
+Do not use browser-cookie/session-token automation.
+
+Do not introduce secrets, paid compute, production deployment, database mutation, private data exposure, or account permission changes without explicit approval.

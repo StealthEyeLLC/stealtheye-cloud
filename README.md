@@ -6,12 +6,36 @@ It is optimized for one active ChatGPT tab until saturation, public free CI proo
 
 ## Current build state
 
-Current status: **S0–S9 merged green. S9 — One-Drop Build Accelerator is complete. No S10 implementation has started.**
+Current status: **S0–S9 merged green. S10 — Assistant Optimization Layer is selected for setup. No S10 implementation has started.**
 
 Latest completed mission:
 
 ```text
 S9 — One-Drop Build Accelerator
+```
+
+Next selected mission:
+
+```text
+S10 — Assistant Optimization Layer
+```
+
+S10 setup branch:
+
+```text
+build/s10-assistant-optimization-layer-setup
+```
+
+S10 implementation branch after setup merges:
+
+```text
+build/s10-assistant-optimization-layer
+```
+
+S10 purpose:
+
+```text
+Make ChatGPT/StealthEye Cloud faster, less needy, more reliable across tabs, better at context loading, better at tool use, better at recovery, better at proof reasoning, and better at minimizing the operator's attention burden.
 ```
 
 S9 PR:
@@ -56,6 +80,12 @@ S8 — StealthEye Cloud Remediator
 S9 — One-Drop Build Accelerator
 ```
 
+Selected next spine entry:
+
+```text
+S10 — Assistant Optimization Layer
+```
+
 S9 makes every future phase/project operate as close as possible to:
 
 ```text
@@ -67,7 +97,29 @@ one mission approval
 → merge when green
 ```
 
-S9 does not reduce proof strength. It adds no-silent-downgrade checks and preserves validators, schema coverage, workflow proof, safety boundaries, and green-before-merge discipline.
+S10 makes the assistant/operator layer use that rail better:
+
+```text
+repo truth first
+context load compiler
+mission intake optimizer
+tool use planner
+tool fallback ladder
+low-attention workday mode
+handoff quality gate
+prompt compression
+scope drift guard
+proof awareness
+repair intelligence
+capability reality map
+read-only verification
+assistant self-audit
+build cockpit card
+trace digest
+MCP-aware operator policy
+```
+
+S10 does not reduce proof strength. It must preserve S9 one-drop mode, validators, schema coverage, workflow proof, safety boundaries, and green-before-merge discipline.
 
 ## Recent completion truth
 
@@ -78,6 +130,7 @@ S7 PR #11 merge SHA: d814507740b1ab9a58dd5a2e9a4e079e21bf1d78
 S8 PR #13 merge SHA: 12081b4d311844b62aecafb5ff045414e94a4a7c
 Post-S8 cleanup PR #14 merge SHA: e45b0e75fc9b1f8a9e1ed09db90d69037fe9c11d
 S9 PR #16 merge SHA: a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
+Post-S9 cleanup PR #17 merged
 ```
 
 ## Start here
@@ -91,7 +144,7 @@ S9 PR #16 merge SHA: a5540d1fe77a0752a6a32b086a66b7b4bbec33ec
 ## Next action
 
 ```text
-Define or choose S10.
+Complete the S10 setup docs PR, then use docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md in a new tab to implement S10.
 ```
 
 ## Canonical docs
@@ -100,6 +153,25 @@ Define or choose S10.
 - `docs/StealthEye_Cloud_Build_Plan.md`
 - `docs/S8_STEALTHEYE_CLOUD_REMEDIATOR.md`
 - `docs/S9_ONE_DROP_BUILD_ACCELERATOR.md`
+- `docs/S10_ASSISTANT_OPTIMIZATION_LAYER.md`
+- `docs/ASSISTANT_OPERATING_PROFILE.md`
+- `docs/MISSION_INTAKE_OPTIMIZER.md`
+- `docs/CONTEXT_LOAD_POLICY.md`
+- `docs/REPO_TRUTH_FIRST_POLICY.md`
+- `docs/LOW_ATTENTION_WORKDAY_MODE.md`
+- `docs/HANDOFF_QUALITY_GATE.md`
+- `docs/TOOL_USE_PLANNER.md`
+- `docs/TOOL_FALLBACK_POLICY.md`
+- `docs/PROMPT_COMPRESSION.md`
+- `docs/SCOPE_DRIFT_GUARD.md`
+- `docs/PROOF_AWARENESS_LAYER.md`
+- `docs/REPAIR_INTELLIGENCE_LAYER.md`
+- `docs/READ_ONLY_VERIFICATION_MODE.md`
+- `docs/ASSISTANT_SELF_AUDIT.md`
+- `docs/CAPABILITY_REALITY_MAP.md`
+- `docs/BUILD_COCKPIT_CARD.md`
+- `docs/AGENT_OBSERVABILITY_TRACE_DIGEST.md`
+- `docs/MCP_AWARE_OPERATOR_POLICY.md`
 - `docs/ONE_DROP_BUILD_MODE.md`
 - `docs/MISSION_APPROVAL_ENVELOPE.md`
 - `docs/BATCH_REPAIR_POLICY.md`
@@ -108,6 +180,7 @@ Define or choose S10.
 - `docs/HANDOFF_AND_CONTINUATION.md`
 - `docs/PROMPTS/NEXT_TAB_PROMPT.md`
 - `docs/PROMPTS/FUTURE_PHASE_DEFAULT_PROMPT.md`
+- `docs/PROMPTS/S10_IMPLEMENTATION_PROMPT.md`
 
 ## Current proof workflows
 
@@ -121,6 +194,12 @@ Define or choose S10.
 - `proof-remediator.yml`
 - `proof-build-accelerator.yml`
 - `proof-windows-targeted.yml`
+
+S10 implementation must add:
+
+```text
+.github/workflows/proof-assistant-optimizer.yml
+```
 
 ## Canonical operating model
 

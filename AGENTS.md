@@ -37,11 +37,11 @@ Build in big, final-form drops. Do not create toy/prototype versions of core sys
 
 After mission approval, do not ask whether to continue, rerun safe CI, update tests, update docs, repair a compile/test failure, or generate handoff artifacts. Continue until green, blocked, saturated, or a true boundary is reached.
 
-Stop only for secrets, passwords, paid compute, destructive irreversible action, private data exposure risk, account permission changes, or unresolved high-impact ambiguity.
+Stop only for secrets, passwords, paid compute, destructive irreversible action, private data exposure risk, account permission changes, production deployment, database mutation, browser-cookie/session-token automation, or unresolved high-impact ambiguity.
 
 ## Stack
 
-- Rust owns durable core, schemas, validators, CLI, packets, Relay, Seal, memory, mission executor, and proof models.
+- Rust owns durable core, schemas, validators, CLI, packets, Relay, Seal, memory, mission executor, proof models, build accelerator, and S10 assistant optimizer contracts.
 - TypeScript owns browser proof and browser observation.
 - JSON Schema owns public packet contracts.
 - Markdown owns agent-readable state and docs.
@@ -71,6 +71,18 @@ Do not create or rely on:
 - generic root `MEMORY.md`
 - generic root `rules.md`
 
-## S0 current objective
+## Current state
 
-Implement the foundation, continuity, packet spine, and cheap CI proof.
+S0 through S9 are merged green. S9 — One-Drop Build Accelerator is complete.
+
+S10 is selected as **S10 — Assistant Optimization Layer**. The setup branch updates docs, state, and the implementation prompt only. No S10 implementation has started.
+
+## S10 setup objective
+
+Prepare the repo for S10 implementation by documenting the Assistant Optimization Layer and creating the next-tab implementation prompt. The next execution tab must read the S10 docs before building.
+
+## Next implementation branch
+
+```text
+build/s10-assistant-optimization-layer
+```
