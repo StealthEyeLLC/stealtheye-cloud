@@ -2,7 +2,7 @@
 
 ## 1. Resume Command
 
-Resume StealthEye Cloud from this Relay. If `build/post-s9-truth-cleanup` is not merged, continue that cleanup PR. If it is already merged, continue from current `main` and perform the Next Exact Action: define or choose S10. Do not begin S10 implementation inside the cleanup.
+Resume this StealthEye Cloud mission from this Relay. If `build/post-s9-truth-cleanup` is not merged, continue that cleanup PR. If it is already merged, continue from current `main` and perform the Next Exact Action: define or choose S10. Do not begin S10 implementation inside the cleanup.
 
 ## 2. Current Mission
 
