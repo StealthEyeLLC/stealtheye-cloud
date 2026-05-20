@@ -8,6 +8,21 @@ StealthEye Cloud is the no-local, ChatGPT-native GitHub/browser execution-body a
 
 Use one active ChatGPT tab until saturation. At saturation, update Relay, Seal, Active, and Next Action. The next tab resumes from those artifacts.
 
+## Default operating mode
+
+When planning, evaluating, enumerating, choosing, researching, or prepping a StealthEye phase, automatically apply:
+
+1. source-grounded full pass if repo/files are involved
+2. web research if the topic is current, technical, protocol/security/GitHub-related, or uncertain
+3. inventory before recommendation
+4. enumerate options, upgrades, and failure modes
+5. rank by leverage/friction
+6. define proof path and acceptance criteria
+7. list non-goals
+8. give the minimum complete version
+9. do not act unless the operator explicitly says execute, prep, or build
+10. use one planning document maximum if repo prep is requested
+
 ## Canonical files
 
 - `AGENTS.md` instructs agents.
@@ -34,6 +49,12 @@ Use one active ChatGPT tab until saturation. At saturation, update Relay, Seal, 
 10. S9 — One-Drop Build Accelerator
 11. S10 — Assistant Optimization Layer
 12. S11 — One-Accept Mission Executor
+
+## Selected next mission
+
+```text
+S12 — One-Accept Mission Gauntlet
+```
 
 ## Latest completed mission
 
@@ -77,26 +98,41 @@ scripts/check-s11-mission-executor-artifacts.mjs
 docs/S11_FINAL_REPORT.md
 ```
 
-## S11 validation targets
+## S12 goal
+
+S12 proves and hardens S11 by running real bounded missions through the one-accept executor, adding a connector leverage layer for high-frequency proof/mission/repo actions, closing GitHub token/workflow/merge gaps, mirroring mission receipts safely through MCP-style resources, and proving one initial approval with zero routine midpoint approvals.
+
+## S12 planning doc
 
 ```text
-mission-lease
-mission-executor-request
-github-capability-preflight
-batch-repo-mutation
-branch-controller
-pr-controller
-proof-controller
-proof-repair-loop
-merge-when-green
-post-merge-proof-freshness
-boundary-stop
-mission-journal
-mission-state
-idempotency
-approval-count-proof
-mission-executor
+docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md
 ```
+
+## S12 implementation branch
+
+```text
+build/s12-one-accept-mission-gauntlet
+```
+
+## S12 likely implementation shape
+
+```text
+crates/secloud-mission-gauntlet/
+crates/secloud-connector-leverage/
+.github/workflows/stealtheye-command-dispatch.yml
+.github/workflows/proof-mission-gauntlet.yml
+scripts/s12-mission-gauntlet-proof.mjs
+scripts/check-s12-mission-gauntlet-artifacts.mjs
+.stealtheye/mission-gauntlet/
+.stealtheye/command-outbox/
+docs/S12_FINAL_REPORT.md
+```
+
+## S12 must solve
+
+Direct post-S11 truth commit `8988e32fc61e2824dcc19eef30da2894112ea9f9` is present but not proven because no fresh workflow runs or combined statuses are visible for that commit through the connector.
+
+S12 must add a safe command-dispatch or connector leverage path that can trigger and verify fresh main-head proof.
 
 ## Non-negotiables
 
@@ -109,7 +145,9 @@ mission-executor
 - No validator, schema, workflow, proof, safety, or merge-discipline weakening.
 - No browser-cookie/session-token automation.
 - No direct post-merge truth commit counts as proven without fresh proof on the resulting main HEAD.
+- No prompt docs unless explicitly requested.
+- No subsystem document forest.
 
 ## Next action
 
-Await the next operator-selected mission. Do not start S12 until the operator chooses it.
+Implement S12 — One-Accept Mission Gauntlet from `docs/S12_ONE_ACCEPT_MISSION_GAUNTLET.md` after the compact S12 prep PR merges green.
