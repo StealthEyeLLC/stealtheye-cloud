@@ -2,7 +2,7 @@
 
 ## 1. Resume Command
 
-Resume this StealthEye Cloud mission from current repo state. S0–S10 are merged. S10 — Assistant Optimization Layer is complete. S11 is selected as **One-Accept Mission Executor**. The next exact action is to implement S11 from `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md` on `build/s11-one-accept-mission-executor`, unless the compact S11 prep PR is still open.
+Resume this StealthEye Cloud mission from this Relay. S0–S10 are merged. S10 — Assistant Optimization Layer is complete. S11 is selected as **One-Accept Mission Executor**. The next exact action is to implement S11 from `docs/S11_ONE_ACCEPT_MISSION_EXECUTOR.md` on `build/s11-one-accept-mission-executor`, unless the compact S11 prep PR is still open.
 
 ## 2. Current Mission
 
