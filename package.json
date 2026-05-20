@@ -18,7 +18,9 @@
     "proof:assistant-optimizer": "node scripts/s10-assistant-optimizer-proof.mjs",
     "proof:assistant-optimizer:summary": "node scripts/check-s10-assistant-optimizer-artifacts.mjs",
     "proof:mission-executor": "node scripts/s11-mission-executor-proof.mjs",
-    "proof:mission-executor:summary": "node scripts/check-s11-mission-executor-artifacts.mjs"
+    "proof:mission-executor:summary": "node scripts/check-s11-mission-executor-artifacts.mjs",
+    "proof:mission-gauntlet": "node scripts/s12-mission-gauntlet-proof.mjs",
+    "proof:mission-gauntlet:summary": "node scripts/check-s12-mission-gauntlet-artifacts.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",
