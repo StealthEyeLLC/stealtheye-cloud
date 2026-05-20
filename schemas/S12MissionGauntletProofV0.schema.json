@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "S12MissionGauntletProofV0",
+  "type": "object",
+  "required": ["schema_version", "status", "acceptance"],
+  "properties": {
+    "schema_version": { "const": "S12MissionGauntletProofV0" },
+    "status": { "enum": ["passed", "failed", "boundary"] },
+    "acceptance": { "type": "object" },
+    "artifacts": { "type": "array", "items": { "type": "string" } },
+    "post_merge_main_proof": { "type": "object" }
+  },
+  "additionalProperties": true
+}
