@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GauntletResultV0",
+  "type": "object",
+  "required": ["schema_version", "status", "bounded_missions", "routine_midpoint_approvals"],
+  "properties": {
+    "schema_version": { "const": "GauntletResultV0" },
+    "status": { "enum": ["passed", "failed", "boundary"] },
+    "bounded_missions": { "type": "integer", "minimum": 5 },
+    "routine_midpoint_approvals": { "type": "integer", "minimum": 0, "maximum": 0 },
+    "synthetic_failure_repaired": { "type": "boolean" },
+    "branch_pr_reuse_proven": { "type": "boolean" },
+    "fresh_main_head_gate": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}
